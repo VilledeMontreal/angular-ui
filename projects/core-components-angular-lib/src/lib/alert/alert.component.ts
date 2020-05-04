@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'lib-alert',
@@ -9,4 +9,5 @@ export class AlertComponent {
   @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';
   @Input() public title: string;
   @Input() public dismissible = false;
+  @Input() public showIcon = false;
 }

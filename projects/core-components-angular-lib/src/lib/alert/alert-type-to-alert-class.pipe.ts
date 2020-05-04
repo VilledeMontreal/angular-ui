@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class AlertTypeToAlertClassPipe implements PipeTransform {
 
   transform(value: string): any {
-    const prefix = 'alert alert-dismissible fade show';
+    const prefix = 'alert alert-with-icon alert-dismissible fade show';
     let suffix = '';
     switch (value) {
       case 'success':

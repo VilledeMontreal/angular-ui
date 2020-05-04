@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "core-components-angular-lib": [
+        "dist/core-components-angular-lib"
+      ],
+      "core-components-angular-lib/*": [
+        "dist/core-components-angular-lib/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

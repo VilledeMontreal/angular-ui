@@ -1,0 +1,66 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { AlertComponent, AlertTypeToAlertClassPipe } from 'core-components-angular-lib';
+
+<Meta title='Alertes' decorators={[
+  moduleMetadata({
+    declarations: [AlertComponent, AlertTypeToAlertClassPipe]
+  })
+]} />
+
+# Alertes
+
+Les alertes affichent un message important et les actions facultatives associées.
+
+## Utilisation
+```html
+<lib-alert [title]="monTitre" [type]="monType">
+ <div alert-content>
+  Pour permettre une plus grande flexibilité, le contenue d l'alerte 
+  est inclus par transclusion dans. Attention d'utiliser tag 'alert-content'
+ </div>
+</lib-alert>
+```
+
+## Propriétées
+
+<Props of={AlertComponent} />
+
+## Couleurs
+L'alerte par défaut est grise. 
+Pour modifier celle-ci utiliser le `input` `type`
+
+* `'success'` pour une alerte de type positive
+* `'danger'` pour une alerte de type négative
+* `'warning'` pour une alerte de type avertissement
+* `'info'` pour une alerte de type informative
+
+<Preview>
+  <Story name='alertes'>{{
+    component: AlertComponent,
+    template: `
+      <lib-alert [title]="title">
+        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      </lib-alert>
+      <lib-alert [title]="title" type="success">
+        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      </lib-alert>
+      <lib-alert [title]="title" type="danger">
+        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      </lib-alert>
+      <lib-alert [title]="title" type="warning">
+        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      </lib-alert>
+      <lib-alert [title]="title" type="info">
+        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      </lib-alert>
+            <lib-alert [title]="title" [dismissible]="true" type="info">
+        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      </lib-alert>
+    `,
+    props: {
+      title: 'Titre du message'
+    },
+  }}
+  </Story>
+</Preview>

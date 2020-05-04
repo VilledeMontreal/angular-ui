@@ -1,0 +1,295 @@
+{
+    "pipes": [
+        {
+            "name": "AlertTypeToAlertClassPipe",
+            "id": "pipe-AlertTypeToAlertClassPipe-ff937fa6920404c779bcd6d2fc2ee2f9",
+            "file": "projects/core-components-angular-lib/src/lib/alert/alert-type-to-alert-class.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 8,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "alertTypeToAlertClass",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\n\n@Pipe({\n  name: 'alertTypeToAlertClass'\n})\nexport class AlertTypeToAlertClassPipe implements PipeTransform {\n\n  transform(value: string): any {\n    const prefix = 'alert alert-dismissible fade show';\n    let suffix = '';\n    switch (value) {\n      case 'success':\n        suffix = 'alert-success';\n        break;\n      case 'danger':\n        suffix = 'alert-danger';\n        break;\n      case 'warning':\n        suffix = 'alert-warning';\n        break;\n      case 'info':\n        suffix = 'alert-info';\n        break;\n      default:\n        suffix = '';\n    }\n    return `${prefix} ${suffix}`\n  }\n\n}\n"
+        }
+    ],
+    "interfaces": [],
+    "injectables": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AlertComponent",
+            "id": "component-AlertComponent-a60e4409d339c6cfab5b092e10127083",
+            "file": "projects/core-components-angular-lib/src/lib/alert/alert.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-alert",
+            "styleUrls": [
+                "./alert.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./alert.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "dismissible",
+                    "defaultValue": "false",
+                    "line": 11,
+                    "type": "boolean"
+                },
+                {
+                    "name": "title",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "''",
+                    "line": 9,
+                    "type": "\"\" | \"success\" | \"danger\" | \"warning\" | \"info\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'lib-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.css']\n})\nexport class AlertComponent {\n  @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';\n  @Input() public title: string;\n  @Input() public dismissible: boolean = false;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./alert.component.css"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div [class]=\"type | alertTypeToAlertClass\" role=\"alert\">\n    <div class=\"alert-heading\">{{ title }}</div>\n    <ng-content class=\"alert-content\" select=\"[alert-content]\"></ng-content>\n    <button *ngIf=\"dismissible\" type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Fermer le message\">\n        <span class=\"icon icon-x\" aria-hidden=\"true\"></span>\n    </button>\n</div>"
+        },
+        {
+            "name": "FooComponent",
+            "id": "component-FooComponent-391b7c78340a8de01b425adea91c7199",
+            "file": "projects/core-components-angular-lib/src/lib/foo/foo.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-foo",
+            "styleUrls": [
+                "./foo.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./foo.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-foo',\n  templateUrl: './foo.component.html',\n  styleUrls: ['./foo.component.css']\n})\nexport class FooComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./foo.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>foo works!</p>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "CoreAngularComponentsLibModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AlertComponent"
+                        },
+                        {
+                            "name": "AlertTypeToAlertClassPipe"
+                        },
+                        {
+                            "name": "FooComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core-components-angular-lib/src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core-components-angular-lib/src/test.ts",
+                "type": "any"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/core-components-angular-lib/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core-components-angular-lib/src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core-components-angular-lib/src/test.ts",
+                    "type": "any"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/core-components-angular-lib/src/lib/alert/alert-type-to-alert-class.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "AlertTypeToAlertClassPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core-components-angular-lib/src/lib/alert/alert.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AlertComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core-components-angular-lib/src/lib/foo/foo.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FooComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core-components-angular-lib/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core-components-angular-lib/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

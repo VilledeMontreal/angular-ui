@@ -1,5 +1,5 @@
 {
-  "name": "core-angular-components",
+  "name": "core-components-angular-lib",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006 -s src/assets",
+    "build-storybook": "build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -19,17 +22,32 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@compodoc/compodoc": "^1.1.11",
+    "@storybook/addon-a11y": "^5.3.18",
+    "@storybook/addon-docs": "^5.3.18",
+    "css-loader": "^3.5.3",
+    "react": "^16.13.1",
+    "react-is": "^16.13.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.25",
+    "@angular-devkit/build-ng-packagr": "~0.803.25",
     "@angular/cli": "~8.3.21",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
+    "@babel/core": "^7.9.6",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-notes": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/angular": "^5.3.18",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "babel-loader": "^8.1.0",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -38,8 +56,10 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-packagr": "^5.0.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
   }

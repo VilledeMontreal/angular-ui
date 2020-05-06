@@ -15,7 +15,7 @@ ctx = pipeline.createContext([
         namespace: ["sn", "core-components-angular-lib"],
         application: [
                 name: "core-components-angular-lib",
-                tier: "lib",
+                type: "lib",
                 runtime: "nodejs", // Available Platforms: nodejs, drupal
                 framework: "NA",
                 description: "Une librairie de composantes angular aux couleurs de la ville! Elle est basée sur la [boîte à outils v4](https://services.montreal.ca/boite-outils4/)",

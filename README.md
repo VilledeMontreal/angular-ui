@@ -1,27 +1,24 @@
-# CoreAngularComponents
+# CoreAngularComponents aka "BAO"
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+## Installation et configuration de la librairie dans vos projets
+### Installer la librairie
+`npm i @villemontreal/core-components-angular-lib`
 
-## Development server
+## Build de la librairie
+Pour lancer le build de la librairie exécuter la commande 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm run build` 
 
-## Code scaffolding
+ceci génèrera un build de la librairie dans dist/core-components-angular-lib
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Lancer Storybook
+Storybook est une documentation interactive de la librairie, elle permet de montrer en action les diffèrentes composantes ainsi que de documenter leur fonctionnement. Pour visualiser le storybook localement, exécutez la commande 
 
-## Build
+`npm run storybook`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Ceci démarrera un serveur web local et fera pointer votre browser par défaut pointant vers la page du storybook local.
 
-## Running unit tests
+**Attention** il faut avoir complété le build de la librairie au préalable.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contribuer à la librairie
+**TODO**

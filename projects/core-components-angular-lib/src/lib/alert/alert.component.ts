@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class AlertComponent {
   @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';
   @Input() public title: string;
-  @Input() public dismissible: boolean = false;
+  @Input() public dismissible = false;
 }

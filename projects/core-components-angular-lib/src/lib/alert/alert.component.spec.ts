@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlertComponent } from './alert.component';
+import { AlertTypeToAlertClassPipe } from './alert-type-to-alert-class.pipe';
+import { AlertTypeToAlertIconClassPipe } from './alert-type-to-alert-icon-class.pipe';
 
 describe('AlertComponent', () => {
   let component: AlertComponent;
@@ -8,7 +10,7 @@ describe('AlertComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertComponent ]
+      declarations: [ AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe]
     })
     .compileComponents();
   }));

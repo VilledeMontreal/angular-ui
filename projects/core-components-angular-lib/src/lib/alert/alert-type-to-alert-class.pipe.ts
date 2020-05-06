@@ -24,7 +24,7 @@ export class AlertTypeToAlertClassPipe implements PipeTransform {
       default:
         suffix = '';
     }
-    return `${prefix} ${suffix}`
+    return `${prefix} ${suffix}`;
   }
 
 }

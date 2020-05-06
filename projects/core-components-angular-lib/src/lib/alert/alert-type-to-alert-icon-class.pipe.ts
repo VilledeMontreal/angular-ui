@@ -4,8 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'alertTypeToAlertIconClass'
 })
 export class AlertTypeToAlertIconClassPipe implements PipeTransform {
-
-  transform(value: string): any {
+  public transform(value: string): any {
     const prefix = 'icon';
     let suffix = '';
     switch (value) {
@@ -21,7 +20,6 @@ export class AlertTypeToAlertIconClassPipe implements PipeTransform {
       default:
         suffix = 'icon-info';
     }
-    return `${prefix} ${suffix}`;
+    return new Error(`${prefix} ${suffix}`);
   }
-
 }

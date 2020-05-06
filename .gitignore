@@ -40,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+storybook-static/
 
 # tests
 coverage/
@@ -51,3 +52,4 @@ storybook-static/
 # System Files
 .DS_Store
 Thumbs.db
+

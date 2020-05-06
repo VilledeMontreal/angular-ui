@@ -1,4 +1,4 @@
-# CoreAngularComponents aka "BAO"
+# CoreComponentsAngular aka "Bao"
 
 Une librairie de composantes angular aux couleurs de la ville! Elle est basée sur la [boîte à outils v4](https://services.montreal.ca/boite-outils4/)
 

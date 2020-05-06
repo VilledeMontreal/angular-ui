@@ -7,6 +7,6 @@ import { AlertComponent } from './alert/alert.component';
 @NgModule({
   declarations: [AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe],
   imports: [CommonModule],
-  exports: []
+  exports: [AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe]
 })
-export class CoreAngularComponentsLibModule {}
+export class BaoModule {}

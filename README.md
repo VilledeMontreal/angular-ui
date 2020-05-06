@@ -1,5 +1,7 @@
 # CoreAngularComponents aka "BAO"
 
+Une librairie de composantes angular aux couleurs de la ville! Elle est basée sur la [boîte à outils v4](https://services.montreal.ca/boite-outils4/)
+
 ## Installation et configuration de la librairie dans vos projets
 ### Installer la librairie
 `npm i @villemontreal/core-components-angular-lib`

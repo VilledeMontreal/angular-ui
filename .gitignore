@@ -40,8 +40,13 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-storybook-static/
+
+# tests
 coverage/
+
+# storybook
+documentation.json
+storybook-static/
 
 # System Files
 .DS_Store

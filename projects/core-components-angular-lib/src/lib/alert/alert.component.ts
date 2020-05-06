@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'lib-alert',
+  selector: 'bao-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css']
 })

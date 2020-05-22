@@ -1,4 +1,2 @@
-FROM python:latest
-COPY ./storybook-static / 
-EXPOSE 80
-CMD python -m http.server 80
+FROM nginx:alpine
+COPY storybook-static /usr/share/nginx/html/bao-storybook

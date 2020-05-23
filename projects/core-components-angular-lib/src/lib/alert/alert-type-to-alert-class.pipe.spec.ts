@@ -1,8 +1,8 @@
 import { AlertTypeToAlertClassPipe } from './alert-type-to-alert-class.pipe';
 
 describe('AlertTypeToAlertClassPipe', () => {
-  it('create an instance', () => {
+  it('create an instance', async () => {
     const pipe = new AlertTypeToAlertClassPipe();
-    expect(pipe).toBeTruthy();
+    await expect(pipe).toBeTruthy();
   });
 });

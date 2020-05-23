@@ -41,6 +41,20 @@ yarn-error.log
 testem.log
 /typings
 
+# tests
+coverage/
+
+# storybook
+storybook-static/
+
+# tests
+coverage/
+
+# storybook
+documentation.json
+storybook-static/
+
 # System Files
 .DS_Store
 Thumbs.db
+

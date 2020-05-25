@@ -109,11 +109,6 @@ sbCtx = pipeline.createContext([
         //icon: "https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-lightbulb.svg"
     ],
     build: [
-        triggers: [
-            crons: [
-                "H 00 * * *",
-            ]
-        ],
         containers: [
             // [ 
             //     name: "hugo",

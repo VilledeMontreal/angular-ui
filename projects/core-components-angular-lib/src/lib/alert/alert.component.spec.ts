@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AlertTypeToAlertClassPipe } from './alert-type-to-alert-class.pipe';
-import { AlertTypeToAlertIconClassPipe } from './alert-type-to-alert-icon-class.pipe';
-import { AlertComponent } from './alert.component';
+import { BaoAlertComponent } from './alert.component';
+import { BaoAlertModule } from './module';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('BaoAlertComponent', () => {
+  let component: BaoAlertComponent;
+  let fixture: ComponentFixture<BaoAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe]
+      imports: [BaoAlertModule]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(BaoAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

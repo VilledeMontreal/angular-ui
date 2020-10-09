@@ -1,12 +1,9 @@
-<div [class]="type | alertTypeToAlertClass" role="alert">
-    <div *ngIf="showIcon" class="alert-icon-container">
-        <span [class]="type | alertTypeToAlertIconClass" aria-hidden="true"></span>
-    </div>
-    <div class="alert-content">
-        <div class="alert-heading">{{title}}</div>
-        <ng-content select="[alert-content]"></ng-content>
-    </div>
-    <button *ngIf="dismissible" type="button" class="close" data-dismiss="alert" aria-label="Fermer le message">
-        <span class="icon icon-x" aria-hidden="true"></span>
-    </button>
+<div *ngIf="showIcon" class="alert-icon-container">
+    <span [class]="iconClass" aria-hidden="true"></span>
 </div>
+<div class="alert-content">
+    <ng-content></ng-content>
+</div>
+<button *ngIf="dismissible" type="button" class="close" data-dismiss="alert" aria-label="Fermer le message">
+    <span class="icon icon-x" aria-hidden="true"></span>
+</button>

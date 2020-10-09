@@ -1,10 +1,10 @@
 import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
-import { AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe } from 'core-components-angular-lib';
+import { BaoAlertTitle, BaoAlertContent, BaoAlertActions, BaoAlertComponent } from 'core-components-angular-lib';
 
 <Meta title='Alertes' decorators={[
   moduleMetadata({
-    declarations: [AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe]
+    declarations: [BaoAlertContent, BaoAlertTitle, BaoAlertActions, BaoAlertComponent]
   })
 ]} />
 
@@ -14,17 +14,17 @@ Les alertes affichent un message important et les actions facultatives associée
 
 ## Utilisation
 ```html
-<bao-alert [title]="monTitre" [type]="monType">
- <div alert-content>
-  Pour permettre une plus grande flexibilité, le contenue de l'alerte 
-  est inclus par transclusion dans celle-ci. Attention d'utiliser tag 'alert-content'
- </div>
+<bao-alert [type]="monType">
+ <bao-alert-title>Mon titre</bao-alert-title>
+ <bao-alert-content>
+  Le contenu de mon alerte...
+ </bao-alert-content>
 </bao-alert>
 ```
 
 ## Propriétées
 
-<Props of={AlertComponent} />
+<Props of={BaoAlertComponent} />
 
 ## Couleurs
 L'alerte par défaut est grise. 
@@ -37,22 +37,28 @@ Pour modifier celle-ci utiliser le `input` `type`
 
 <Preview>
   <Story name='alertes'>{{
-    component: AlertComponent,
+    component: BaoAlertComponent,
     template: `
-      <bao-alert [title]="title">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert>
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="success">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="success">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="danger">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="danger">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="warning">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="warning">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="info">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="info">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+      </bao-alert>
     `,
     props: {
       title: 'Titre du message'
@@ -65,22 +71,28 @@ Pour modifier celle-ci utiliser le `input` `type`
 En utilisant le `input` `showIcon` on peut spécifier qu'une alerte affichera l'icône approprié pour son `type`.
 <Preview>
   <Story name='alertes avec icônes'>{{
-    component: AlertComponent,
+    component: BaoAlertComponent,
     template: `
-      <bao-alert [title]="title" [showIcon]="showIcon">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert [showIcon]="showIcon">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="success" [showIcon]="showIcon">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="success" [showIcon]="showIcon">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="danger" [showIcon]="showIcon">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="danger" [showIcon]="showIcon">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="warning" [showIcon]="showIcon">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="warning" [showIcon]="showIcon">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="info" [showIcon]="showIcon">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert type="info" [showIcon]="showIcon">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+      </bao-alert>
     `,
     props: {
       title: 'Titre du message',
@@ -94,26 +106,89 @@ En utilisant le `input` `showIcon` on peut spécifier qu'une alerte affichera l'
 En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut être fermable
 <Preview>
   <Story name='alertes fermables'>{{
-    component: AlertComponent,
+    component: BaoAlertComponent,
     template: `
-      <bao-alert [title]="title" [dismissible]="dismissible">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert [dismissible]="dismissible">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="success" [dismissible]="dismissible">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert  type="success" [dismissible]="dismissible">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="danger" [dismissible]="dismissible">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert  type="danger" [dismissible]="dismissible">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="warning" [dismissible]="dismissible">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert  type="warning" [dismissible]="dismissible">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
-      <bao-alert [title]="title" type="info" [dismissible]="dismissible">
-        <div alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</div>
+      <bao-alert  type="info" [dismissible]="dismissible">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+      </bao-alert>
     `,
     props: {
       title: 'Titre du message',
       dismissible: true
+    },
+  }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name='alertes avec actions'>{{
+    component: BaoAlertComponent,
+    template: `
+      <bao-alert>
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-actions>
+          <button type="button" class="btn btn-primary btn-squared">Libellé</button>
+          <button type="button" class="btn btn-secondary btn-squared">Libellé</button>
+          <button type="button" class="btn btn-tertiary btn-squared">Libellé</button>
+        </bao-alert-actions>
+      </bao-alert>
+      <bao-alert type="success">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-actions>
+          <button type="button" class="btn btn-primary btn-squared btn-success">Libellé</button>
+          <button type="button" class="btn btn-secondary btn-squared btn-success">Libellé</button>
+          <button type="button" class="btn btn-tertiary btn-squared btn-success">Libellé</button>
+        </bao-alert-actions>
+      </bao-alert>
+      <bao-alert type="danger">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-actions>
+          <button type="button" class="btn btn-primary btn-squared btn-danger">Libellé</button>
+          <button type="button" class="btn btn-secondary btn-squared btn-danger">Libellé</button>
+          <button type="button" class="btn btn-tertiary btn-squared btn-danger">Libellé</button>
+        </bao-alert-actions>
+      </bao-alert>
+      <bao-alert type="warning">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-actions>
+          <button type="button" class="btn btn-primary btn-squared btn-warning">Libellé</button>
+          <button type="button" class="btn btn-secondary btn-squared btn-warning">Libellé</button>
+          <button type="button" class="btn btn-tertiary btn-squared btn-warning">Libellé</button>
+        </bao-alert-actions>
+      </bao-alert>
+      <bao-alert type="info">
+        <bao-alert-title>{{ title }}</bao-alert-title>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-actions>
+          <button type="button" class="btn btn-primary btn-squared btn-info">Libellé</button>
+          <button type="button" class="btn btn-secondary btn-squared btn-info">Libellé</button>
+          <button type="button" class="btn btn-tertiary btn-squared btn-info">Libellé</button>
+        </bao-alert-actions>
+      </bao-alert>
+    `,
+    props: {
+      title: 'Titre du message'
     },
   }}
   </Story>

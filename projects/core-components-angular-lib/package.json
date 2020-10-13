@@ -2,8 +2,8 @@
   "name": "@villemontreal/core-components-angular-lib",
   "version": "0.0.2",
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
+    "@angular/common": ">=8.0.0 <11.0.0",
+    "@angular/core": ">=8.0.0 <11.0.0",
     "@villemontreal/boite-outils4-web": "^4.0.0"
   }
 }

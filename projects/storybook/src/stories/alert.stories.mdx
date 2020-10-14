@@ -1,10 +1,10 @@
 import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
-import { BaoAlertTitle, BaoAlertContent, BaoAlertActions, BaoAlertComponent } from 'core-components-angular-lib';
+import { BaoAlertTitle, BaoAlertContent, BaoAlertActions, BaoAlertLink, BaoAlertComponent } from 'core-components-angular-lib';
 
 <Meta title='Alertes' decorators={[
   moduleMetadata({
-    declarations: [BaoAlertContent, BaoAlertTitle, BaoAlertActions, BaoAlertComponent]
+    declarations: [BaoAlertContent, BaoAlertTitle, BaoAlertActions, BaoAlertLink, BaoAlertComponent]
   })
 ]} />
 
@@ -41,23 +41,23 @@ Pour modifier celle-ci utiliser le `input` `type`
     template: `
       <bao-alert>
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="success">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="danger">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="warning">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="info">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
     `,
     props: {
@@ -75,23 +75,23 @@ En utilisant le `input` `showIcon` on peut spécifier qu'une alerte affichera l'
     template: `
       <bao-alert [showIcon]="showIcon">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="success" [showIcon]="showIcon">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="danger" [showIcon]="showIcon">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="warning" [showIcon]="showIcon">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert type="info" [showIcon]="showIcon">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
     `,
     props: {
@@ -110,23 +110,23 @@ En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut êtr
     template: `
       <bao-alert [dismissible]="dismissible">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert  type="success" [dismissible]="dismissible">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert  type="danger" [dismissible]="dismissible">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert  type="warning" [dismissible]="dismissible">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
       <bao-alert  type="info" [dismissible]="dismissible">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
       </bao-alert>
     `,
     props: {
@@ -143,7 +143,7 @@ En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut êtr
     template: `
       <bao-alert>
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
         <bao-alert-actions>
           <button type="button" class="btn btn-primary btn-squared">Libellé</button>
           <button type="button" class="btn btn-secondary btn-squared">Libellé</button>
@@ -152,7 +152,7 @@ En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut êtr
       </bao-alert>
       <bao-alert type="success">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
         <bao-alert-actions>
           <button type="button" class="btn btn-primary btn-squared btn-success">Libellé</button>
           <button type="button" class="btn btn-secondary btn-squared btn-success">Libellé</button>
@@ -161,7 +161,7 @@ En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut êtr
       </bao-alert>
       <bao-alert type="danger">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
         <bao-alert-actions>
           <button type="button" class="btn btn-primary btn-squared btn-danger">Libellé</button>
           <button type="button" class="btn btn-secondary btn-squared btn-danger">Libellé</button>
@@ -170,7 +170,7 @@ En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut êtr
       </bao-alert>
       <bao-alert type="warning">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
         <bao-alert-actions>
           <button type="button" class="btn btn-primary btn-squared btn-warning">Libellé</button>
           <button type="button" class="btn btn-secondary btn-squared btn-warning">Libellé</button>
@@ -179,7 +179,7 @@ En utilisant le `input` `dismissible` on peut spécifier qu'une alerte peut êtr
       </bao-alert>
       <bao-alert type="info">
         <bao-alert-title>{{ title }}</bao-alert-title>
-        <bao-alert-content>Description du message obligatoire avec <a href="#" class="alert-link">un lien facultatif</a> si besoin.</bao-alert-content>
+        <bao-alert-content>Description du message obligatoire avec <a href="#" bao-alert-link>un lien facultatif</a> si besoin.</bao-alert-content>
         <bao-alert-actions>
           <button type="button" class="btn btn-primary btn-squared btn-info">Libellé</button>
           <button type="button" class="btn btn-secondary btn-squared btn-info">Libellé</button>

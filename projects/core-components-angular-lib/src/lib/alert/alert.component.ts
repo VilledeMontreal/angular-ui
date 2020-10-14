@@ -50,10 +50,27 @@ export class BaoAlertContent {}
 export class BaoAlertActions {}
 
 /**
- * BAO alert component. Alert contain content and actions about a single subject.
- * See https://material.io/design/components/cards.html
+ * Link inside an alert message, intended for use within `<bao-alert>`.
+ * This component is an optional convenience for use with other convenience elements, such as
+ * `<bao-alert-content>`; any custom action block element may be used in its place.
  *
- * MatCard provides no behaviors, instead serving as a purely visual treatment.
+ * BaoAlertLink provides no behaviors, instead serving as a purely visual treatment.
+ */
+@Directive({
+  selector: 'bao-alert-link',
+  host: {
+    class: 'alert-link'
+  }
+})
+export class BaoAlertLink {}
+
+/**
+ * BAO alert component. Alerts should be used when the message concerns an
+ * external subject or a part of the page
+ *
+ * See https://zeroheight.com/575tugn0n/p/03c51f-messages-dalerte/t/80b47c
+ *
+ * BaoAlertComponent provides no behaviors, instead serving as a purely visual treatment.
  */
 @Component({
   selector: 'bao-alert',
@@ -83,20 +100,13 @@ export class BaoAlertComponent implements OnChanges {
 
   public alertTypeToAlertIcon(value: string): any {
     const prefix = 'icon';
-    let suffix = '';
-    switch (value) {
-      case 'success':
-        suffix = 'icon-check-circle';
-        break;
-      case 'danger':
-        suffix = 'icon-error';
-        break;
-      case 'warning':
-        suffix = 'icon-warning';
-        break;
-      default:
-        suffix = 'icon-info';
-    }
+    const typesToSuffixes = {
+      success: 'icon-check-circle',
+      danger: 'icon-error',
+      warning: 'icon-warning',
+      default: 'icon-info'
+    };
+    const suffix = typesToSuffixes[value] || typesToSuffixes.default;
     return `${prefix} ${suffix}`;
   }
 }

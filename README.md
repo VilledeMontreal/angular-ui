@@ -22,5 +22,13 @@ Ceci démarrera un serveur web local et fera pointer votre browser par défaut p
 
 **Attention** il faut avoir complété le build de la librairie au préalable.
 
+## Dépendances
+
+Les seules dépendances sont [Angular](https://angular.io) et [Boîte à outil 4](https://services.montreal.ca/boite-outils4/) CSS.
+Les versions supportées sont:
+| @villemontreal/core-components-angular-lib | Angular | @villemontreal/boite-outils4-web |
+|-|-|-|
+| 1.x.x | >=8.0.0 < 11 | 4.x.x |
+
 ## Contribuer à la librairie
 **TODO**

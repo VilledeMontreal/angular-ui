@@ -1,12 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AlertTypeToAlertClassPipe } from './alert/alert-type-to-alert-class.pipe';
-import { AlertTypeToAlertIconClassPipe } from './alert/alert-type-to-alert-icon-class.pipe';
-import { AlertComponent } from './alert/alert.component';
+import { BaoAlertModule } from './alert/module';
 
 @NgModule({
-  declarations: [AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe],
-  imports: [CommonModule],
-  exports: [AlertComponent, AlertTypeToAlertClassPipe, AlertTypeToAlertIconClassPipe]
+  imports: [BaoAlertModule],
+  exports: [BaoAlertModule]
 })
 export class BaoModule {}

@@ -82,7 +82,7 @@ export class BaoAlertLink {}
     '[class.alert-danger]': 'type === "danger"',
     '[class.alert-warning]': 'type === "warning"',
     '[class.alert-info]': 'type === "info"',
-    role: 'alert"'
+    role: 'alert'
   }
 })
 export class BaoAlertComponent implements OnChanges {

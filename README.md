@@ -6,6 +6,11 @@ Une librairie de composantes angular aux couleurs de la ville! Elle est basée s
 ### Installer la librairie
 `npm i @villemontreal/core-components-angular-lib`
 
+## Documentation
+Une documentation sur l'utilisation des composantes de la librairie avec des exemples de code est disponible [ici](https://services.interne.montreal.ca/bao-storybook).
+
+Le site de documentation est contruit avec l'outil [Storybook](https://storybook.js.org/)
+
 ## Build de la librairie
 Pour lancer le build de la librairie exécuter la commande 
 

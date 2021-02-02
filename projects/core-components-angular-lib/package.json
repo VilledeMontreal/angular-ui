@@ -5,5 +5,8 @@
     "@angular/common": ">=8.0.0 <11.0.0",
     "@angular/core": ">=8.0.0 <11.0.0",
     "@villemontreal/boite-outils4-web": "^4.0.0"
+  },
+  "dependencies": {
+    "@angular/cdk": "^8.0.0"
   }
 }

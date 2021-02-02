@@ -1,0 +1,11 @@
+<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-icon">
+    <span class="icon icon-check-circle" aria-hidden="true"></span>
+  </div>
+  <div class="toast-body">
+    {{ data.message }}
+  </div>
+  <div *ngIf="hasAction" class="toast-action">
+    <button (click)="action()" class="btn btn-tertiary btn-reversed">{{ data.action }}</button>
+  </div>
+</div>

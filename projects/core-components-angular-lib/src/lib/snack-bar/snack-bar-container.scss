@@ -1,6 +1,8 @@
 @import '~@angular/cdk/_a11y.scss';
+@import '~@angular/cdk/_overlay';
 
 @include cdk-a11y();
+@include cdk-overlay();
 
 $mat-snack-bar-padding: 14px 16px !default;
 $mat-snack-bar-min-height: 48px !default;

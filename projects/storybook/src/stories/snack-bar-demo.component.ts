@@ -11,7 +11,7 @@ export class SnackBarDemoComponent {
   constructor(@Inject(BaoSnackBarService) private baoSnackBarService: BaoSnackBarService) {}
 
   public doStuff() {
-    this.baoSnackBarService.open('Bonjour collegue!', 'close', '', {
+    this.baoSnackBarService.open('Bonjour collègue!', 'close', '', {
       duration: 2000
     });
   }

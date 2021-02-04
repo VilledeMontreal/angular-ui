@@ -16,7 +16,6 @@ import {
   Type
 } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { BaoSnackBarModule } from './module';
 import { BaoSimpleSnackBarComponent, ITextOnlySnackBar } from './simple-snack-bar.component';
 import { BAO_SNACK_BAR_DATA, BaoSnackBarConfig } from './snack-bar-config';
 import { BaoSnackBarContainerComponent, IBaoSnackBarContainer } from './snack-bar-container';
@@ -35,7 +34,7 @@ export const MAT_SNACK_BAR_DEFAULT_OPTIONS = new InjectionToken<BaoSnackBarConfi
 /**
  * Service to dispatch Material Design snack bar messages.
  */
-@Injectable({ providedIn: BaoSnackBarModule })
+@Injectable({ providedIn: 'root' })
 export class BaoSnackBarService implements OnDestroy {
   /**
    * Reference to the current snack bar in the view *at this level* (in the Angular injector tree).

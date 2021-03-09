@@ -14,3 +14,5 @@ export * from './lib/snack-bar/module';
 export * from './lib/snack-bar/simple-snack-bar.component';
 export * from './lib/snack-bar/snack-bar-container';
 export * from './lib/snack-bar/snack-bar';
+
+export * from './lib/card';

@@ -1,0 +1,49 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { BaoModule } from 'core-components-angular-lib';
+
+<Meta
+  title="Cards"
+  decorators={[
+    moduleMetadata({
+      imports: [BaoModule]
+    })
+  ]}
+/>
+
+# Tuile avec icône
+
+La tuile avec icône permet de lister une série de liens, tout en affichant plus d'information sur le lien, comme une icône d'illustration ou une description.
+
+## Où est-il utilisé?
+
+Les tuiles avec icône sur les pages d'accueil ou de section pour lister des sous-sections importantes.
+
+<Preview>
+  <Story name="Card-icon">
+    {{
+      template: `
+        <ul class="row list-unstyled">
+          <li class="col-4">
+            <a bao-card-icon icon='icon-contraventions-et-reglementation' href="#">
+              <bao-card-title>Titre de la carte</bao-card-title>
+              <bao-card-text-interface>Description optionnelle</bao-card-text-interface>
+            </a>
+          </li>
+          <li class="col-4">
+            <a bao-card-icon icon='icon-machine' href="#">
+              <bao-card-title>Titre de la carte 2</bao-card-title>
+              <bao-card-text-interface>Description optionnelle</bao-card-text-interface>
+            </a>
+          </li>
+          <li class="col-4">
+            <a bao-card-icon icon='icon-culture' href="#">
+              <bao-card-title>Titre de la carte 3</bao-card-title>
+              <bao-card-text-interface>Description optionnelle</bao-card-text-interface>
+            </a>
+          </li>
+        </ul>
+      `
+    }}
+  </Story>
+</Preview>

@@ -1,3 +1,9 @@
 pre code {
-    color: #e83e8c
+  color: #e83e8c;
+}
+
+/* Hack that will no longer be needed in later bao4 implementations 
+   Fixes cards not being full height in lists */
+ul.cards > li {
+  display: flex;
 }

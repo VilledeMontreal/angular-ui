@@ -7,7 +7,11 @@ L'objectif de cette librairie est de faciliter la création de SPA angular visue
 
 ## Philosophie
 ### De la composition plutôt que de la configuration
-Lorsque possible nous voulons laisser le développeur libre de composer le contenu de sa composante comme il le souhaite. Par contre, nous recommandons de suivre les recommandations du [Ville de Montréal Design System](https://zeroheight.com/575tugn0n/p/139208-ville-de-montral-design-system). Ceci veut dire qu'il est préférable de pouvoir injecter du contenu dans la composante via des balises `<ng-content></ng-content>` plutôt que d'avoir une liste interminable de `@Input` permettant d'avoir l'affichage/comportement désiré.
+Lorsque possible nous voulons laisser le développeur libre de composer le contenu de sa composante comme il le souhaite. 
+Par contre, nous recommandons de suivre les recommandations du [Ville de Montréal Design System](https://zeroheight.com/575tugn0n/p/139208-ville-de-montral-design-system). 
+Ceci veut dire qu'il est préférable de pouvoir injecter du contenu dans la composante via des balises `<ng-content></ng-content>` plutôt que d'avoir une liste interminable de `@Input` permettant d'avoir l'affichage/comportement désiré.
+L'idée générale est d'utiliser les `@Input()` pour tout ce qui est 'state' de la composante et les 'child-components' pour tout ce qui est contenu.
+
 ### Limiter les dépendances
 Afin de rendre la librairie facile à utiliser dans nos différents projets nous tentons de limiter au maximum nos dépendances externes (Voir [Dépendances](#dependances)).
 

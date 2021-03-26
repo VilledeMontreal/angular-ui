@@ -16,3 +16,4 @@ export * from './lib/snack-bar/snack-bar-container';
 export * from './lib/snack-bar/snack-bar';
 
 export * from './lib/card';
+export * from './lib/header-info';

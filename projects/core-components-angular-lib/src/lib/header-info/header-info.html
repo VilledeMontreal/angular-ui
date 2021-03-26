@@ -1,0 +1,21 @@
+<div *ngIf="imageUrl" class="document-heading-image-container">
+  <div
+    [ngStyle]="{
+      'background-image': 'url(\'' + imageUrl + '\')'}"
+    class="document-heading-background"
+  ></div>
+</div>
+<div class="container position-relative">
+  <div class="row document-heading-header">
+    <div class="col-12 col-lg-7">
+      <ng-content select="bao-header-info-title-group"></ng-content>
+      <ng-content></ng-content>
+      <div *ngIf="brandBorder" class="brand-border-bottom"></div>
+    </div>
+  </div>
+  <div *ngIf="notch" class="document-heading-wrapper">
+    <div class="document-heading-content-wrapper">
+      <div class="document-heading-content col-12"></div>
+    </div>
+  </div>
+</div>

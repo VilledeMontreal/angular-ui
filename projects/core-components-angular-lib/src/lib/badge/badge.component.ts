@@ -3,13 +3,13 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'bao-badge',
   templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.css'],
+  styleUrls: ['./badge.component.scss'],
   host: {
-    class: 'badge badge-pill',
-    '[class.badge-success]': 'type === "success"',
-    '[class.badge-danger]': 'type === "danger"',
-    '[class.badge-warning]': 'type === "warning"',
-    '[class.badge-info]': 'type === "info"'
+    class: '',
+    '[class.positive]': 'type === "success"',
+    '[class.negative]': 'type === "danger"',
+    '[class.warning]': 'type === "warning"',
+    '[class.informative]': 'type === "info"'
   }
 })
 export class BaoBadgeComponent {

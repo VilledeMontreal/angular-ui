@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:watch": "ng build --watch",
     "e2e": "ng e2e",
     "lint": "node_modules/.bin/tslint --project . && prettier -l \"projects/**/*.ts\"",
     "lint-fix": "node_modules/.bin/tslint --fix --project . && prettier -l \"projects/**/*.ts\" --write",

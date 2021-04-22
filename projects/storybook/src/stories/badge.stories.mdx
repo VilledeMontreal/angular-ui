@@ -38,15 +38,11 @@ Pour modifier celle-ci utiliser le `input` `type`
   <Story name='badges'>{{
     component: BaoBadgeComponent,
     template: `
-      <bao-badge >{{value}}</bao-badge>
-      <bao-badge type="success">{{value}}</bao-badge>
-      <bao-badge type="danger">{{value}}</bao-badge>
-      <bao-badge type="warning">{{value}}</bao-badge>
-      <bao-badge type="info">{{value}}</bao-badge>
-    `,
-    props: {
-      value: 0
-    },
+        <bao-badge style="margin-right: 1rem;" type="success">10</bao-badge>
+        <bao-badge style="margin-right: 1rem;" type="danger">100</bao-badge>
+        <bao-badge style="margin-right: 1rem;" type="warning">1000</bao-badge>
+        <bao-badge type="info">10000</bao-badge>
+    `
   }}
   </Story>
 </Preview>

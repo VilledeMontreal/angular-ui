@@ -4,16 +4,16 @@
 @include cdk-a11y();
 @include cdk-overlay();
 
-$mat-snack-bar-padding: 14px 16px !default;
-$mat-snack-bar-min-height: 48px !default;
-$mat-snack-bar-min-width: 344px !default;
+$mat-snack-bar-padding: 0.875rem 1rem !default;
+$mat-snack-bar-min-height: 3rem !default;
+$mat-snack-bar-min-width: 21.5rem !default;
 $mat-snack-bar-max-width: 33vw !default;
-$mat-snack-bar-spacing-margin: 24px !default;
-$mat-snack-bar-spacing-margin-handset: 8px !default;
+$mat-snack-bar-spacing-margin: 1.5rem !default;
+$mat-snack-bar-spacing-margin-handset: 0.5rem !default;
 
 
 .mat-snack-bar-container {
-  border-radius: 4px;
+  border-radius: 0.25rem;
   box-sizing: border-box;
   display: block;
   margin: $mat-snack-bar-spacing-margin;
@@ -24,7 +24,7 @@ $mat-snack-bar-spacing-margin-handset: 8px !default;
   transform-origin: center;
 
 //  @include cdk-high-contrast(active, off) {
-//    border: solid 1px;
+//    border: solid 0.0625rem;
 //  }
 }
 

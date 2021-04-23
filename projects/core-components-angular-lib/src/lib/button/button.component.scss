@@ -1,0 +1,216 @@
+@import "../core/colors";
+@import "../core/radius";
+@import "../core/shadows";
+@import "../core/typography";
+
+@mixin not-allowed {
+  cursor: not-allowed;
+}
+
+@mixin state-focus {
+  outline: none;
+  @include shadow-focus;
+}
+
+@mixin state-disabled {
+  @include not-allowed;
+}
+
+@mixin button-transition {
+  transition: color .15s ease-in-out, 
+  background-color .15s ease-in-out, 
+  border-color .15s ease-in-out, 
+  box-shadow .15s ease-in-out;
+}
+
+@mixin button-border($color) {
+  border: solid 0.0625rem $color;
+}
+
+@mixin button-border-neutral-stroke {
+  @include button-border($neutral-stroke)
+}
+
+$radius-xlarge: 4rem;
+
+:host {
+  @include typo-interface-small-bold;
+  @include button-transition;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+
+  .button-spinner {
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: .5rem;
+    vertical-align: text-bottom;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin .75s linear infinite;
+  }
+  
+
+  &:focus {
+    @include state-focus;
+  }
+
+  &:disabled {
+    @include state-disabled;
+  }
+
+  &.utility {
+    border-radius: $radius-medium;
+    padding: 0.625rem 1rem;
+  }
+  &.primary {
+    background-color: $action;
+    border: none;
+    color: $neutral-primary-reversed;
+    &.reversed {
+      background-color: $neutral-primary-reversed;
+      color: $neutral-primary;
+    }
+    &:hover {
+      background-color: $action-darker;
+      &.reversed {
+        background-color: $highlight-light;
+        color: $action;
+      }
+    }
+    &:focus {
+      &.reversed {
+        background-color: $highlight-light;
+        color: $action;
+      }
+    }
+    &:disabled {
+      color: $neutral-secondary;
+      background-color: $neutral-tertiary;
+      &.reversed {
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        color: rgba($neutral-primary-reversed, 0.5);
+      }
+    }
+  }
+  &.secondary {
+    background-color: $neutral-primary-reversed;
+    color: $action;
+    @include button-border-neutral-stroke;
+    &.reversed {
+      background-color: $transparent;
+      color: $neutral-primary-reversed;
+      @include button-border(rgba($neutral-stroke, 0.5));
+    }
+    &:hover{
+      @include button-border($action);
+      background-color: $highlight-light;
+      &.reversed {
+        background-color: $transparent;
+        color: $neutral-primary-reversed;
+        @include button-border-neutral-stroke;
+      }
+    }
+    &:focus{
+      @include button-border($action);
+      background-color: $highlight-light;
+      &.reversed{
+        background-color: $transparent;
+        color: $neutral-primary-reversed;
+        @include button-border-neutral-stroke;
+      }
+    }
+    &:disabled {
+      color: $neutral-secondary;
+      &:hover{
+        border-color: $neutral-stroke;
+        background-color: $neutral-primary-reversed;
+        &.reversed {
+          @include button-border(rgba($neutral-stroke, 0.5));
+          background-color: $transparent;
+          color: $neutral-secondary;
+        }
+      }
+      &:focus{
+        border-color: $neutral-stroke;
+        background-color: $neutral-primary-reversed;
+        &.reversed {
+          background-color: $transparent;
+        }
+      }
+    }
+  }
+  &.tertiary {
+    border: none;
+    background-color: $transparent;
+    color: $action;
+    &.reversed{
+      color: $neutral-primary-reversed;
+    }
+    &:hover{
+      background-color: $highlight-light;
+      &.reversed{
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        color: $neutral-primary-reversed;
+      }
+    }
+    &:focus{
+      background-color: $highlight-light;
+      &.reversed{
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        color: $neutral-primary-reversed;
+      }
+    }
+    &:disabled {
+      color: $neutral-secondary;
+      &:hover{
+        background-color: $transparent;
+        &.reversed {
+          color: $neutral-secondary;
+        }
+      }
+      &:focus{
+        background-color: $transparent;
+        &.reversed {
+          color: $neutral-secondary;
+        }
+      }
+    }
+  }
+
+  &.editorial {
+    border-radius: $radius-large;
+    padding: 0.625rem 2rem;
+    &.small {
+      padding: 0.5rem 1rem;
+    }
+    &.large {
+      border-radius: $radius-xlarge;
+      @include typo-interface-medium-bold;
+      padding: 1rem 2rem;
+    }
+  }
+
+  &.small {
+    @include typo-interface-xsmall-bold;
+    padding: 0.5rem;
+    .spinner {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+}

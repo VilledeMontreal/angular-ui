@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && npm run bundle-styles",
+    "bundle-styles": "scss-bundle -c scss-bundle.config.json",
     "build:watch": "ng build --watch",
     "e2e": "ng e2e",
     "lint": "node_modules/.bin/tslint --project . && prettier -l \"projects/**/*.ts\"",
@@ -46,6 +47,7 @@
     "react": "^16.13.1",
     "react-is": "^16.13.1",
     "rxjs": "~6.4.0",
+    "scss-bundle": "^3.1.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

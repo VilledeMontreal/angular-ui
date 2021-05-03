@@ -6,7 +6,6 @@
     "start": "ng serve",
     "build": "ng build && npm run bundle-styles",
     "bundle-styles": "scss-bundle -c scss-bundle.config.json",
-    "build:watch": "ng build --watch",
     "e2e": "ng e2e",
     "lint": "node_modules/.bin/tslint --project . && prettier -l \"projects/**/*.ts\"",
     "lint-fix": "node_modules/.bin/tslint --fix --project . && prettier -l \"projects/**/*.ts\" --write",

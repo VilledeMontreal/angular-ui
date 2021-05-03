@@ -1,0 +1,26 @@
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+@mixin typo-interface-medium-bold {
+  font-weight: $font-weight-bold;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@mixin typo-interface-small {
+  font-weight: $font-weight-normal;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@mixin typo-interface-small-bold {
+  font-weight: $font-weight-bold;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@mixin typo-interface-xsmall-bold {
+  font-weight: $font-weight-bold;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}

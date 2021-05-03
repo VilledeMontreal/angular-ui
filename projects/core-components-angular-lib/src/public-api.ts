@@ -4,6 +4,9 @@
 
 export * from './lib/bao.module';
 
+export * from './lib/button/module';
+export * from './lib/button/button.component';
+
 export * from './lib/alert/module';
 export * from './lib/alert/alert.component';
 

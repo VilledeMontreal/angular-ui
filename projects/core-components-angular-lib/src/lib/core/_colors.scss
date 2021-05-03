@@ -1,6 +1,14 @@
+// Action
+$action: #097D6C;
+$action-darker: #075B4F;
+$action-lighter: #0CB097;
+
 // Neutral
-$primary: #000000;
-$primary-reversed: #FFFFFF;
+$neutral-primary: #000000;
+$neutral-primary-reversed: #FFFFFF;
+$neutral-secondary: #637381;
+$neutral-tertiary:#ADB5BD;
+$neutral-stroke: #CED4DA;
 
 // Message
 $informative: #004B7B;
@@ -12,3 +20,11 @@ $warning-reversed: #FFB833;
 $negative: #851A00;
 $negative-reversed: #D3310A;
 
+// Highlight
+$highlight-light: #EEFAF8;
+$highlight-dark: #D0F3EE;
+$highlight-focus: #98BCDE;
+$highlight-focus-reversed: #FFFFFF;
+
+// Other
+$transparent: rgba(#FFFFFF, 0.0001);

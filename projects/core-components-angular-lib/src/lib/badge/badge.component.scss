@@ -2,8 +2,8 @@
 
 :host {
   display: inline-block;
-  border: 1px solid transparent;
-  color: $primary-reversed;
+  border: 0.0625rem solid transparent;
+  color: $neutral-primary-reversed;
   padding: 0 0.4375rem;
   border-radius: 10rem;
   min-width: 1.5rem;
@@ -22,7 +22,7 @@
   }
   &.warning{
     background-color: $warning-reversed;
-    color: $primary;
+    color: $neutral-primary;
   }
   &.negative{
     background-color: $negative-reversed;

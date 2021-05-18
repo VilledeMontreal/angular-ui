@@ -1,0 +1,139 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { BaoIconComponent } from 'core-components-angular-lib';
+
+<Meta title='Icons' decorators={[
+  moduleMetadata({
+    declarations: [BaoIconComponent],
+  })
+]} />
+
+# Buttons
+
+## Properties
+
+<Props of={BaoIconComponent} />
+
+## Icons
+<Preview>
+  <Story name='Icons'>{{
+    component: BaoIconComponent,
+    template: `
+      <div style="display: grid; grid-column-gap: 1rem; grid-template-columns: 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem">
+        <bao-icon title="anchor" svgIcon="icon-anchor"></bao-icon>
+        <bao-icon title="apps" svgIcon="icon-apps"></bao-icon>
+        <bao-icon title="archive" svgIcon="icon-archive"></bao-icon>
+        <bao-icon title="arrow-left" svgIcon="icon-arrow-left"></bao-icon>
+        <bao-icon title="arrow-right" svgIcon="icon-arrow-right"></bao-icon>
+        <bao-icon title="bell-active" svgIcon="icon-bell-active"></bao-icon>
+        <bao-icon title="bell-off" svgIcon="icon-bell-off"></bao-icon>
+        <bao-icon title="bell" svgIcon="icon-bell"></bao-icon>
+        <bao-icon title="bolt" svgIcon="icon-bolt"></bao-icon>
+        <bao-icon title="book" svgIcon="icon-book"></bao-icon>
+        <bao-icon title="briefcase" svgIcon="icon-briefcase"></bao-icon>
+        <bao-icon title="calendar" svgIcon="icon-calendar"></bao-icon>
+        <bao-icon title="check-circle-full" svgIcon="icon-check-circle-full"></bao-icon>
+        <bao-icon title="check-circle" svgIcon="icon-check-circle"></bao-icon>
+        <bao-icon title="check" svgIcon="icon-check"></bao-icon>
+        <bao-icon title="chevron-down" svgIcon="icon-chevron-down"></bao-icon>
+        <bao-icon title="chevron-left" svgIcon="icon-chevron-left"></bao-icon>
+        <bao-icon title="chevron-right" svgIcon="icon-chevron-right"></bao-icon>
+        <bao-icon title="chevron-up" svgIcon="icon-chevron-up"></bao-icon>
+        <bao-icon title="clipboard" svgIcon="icon-clipboard"></bao-icon>
+        <bao-icon title="clock" svgIcon="icon-clock"></bao-icon>
+        <bao-icon title="comment" svgIcon="icon-comment"></bao-icon>
+        <bao-icon title="cone-fill" svgIcon="icon-cone-fill"></bao-icon>
+        <bao-icon title="cone" svgIcon="icon-cone"></bao-icon>
+        <bao-icon title="copy" svgIcon="icon-copy"></bao-icon>
+        <bao-icon title="copyright" svgIcon="icon-copyright"></bao-icon>
+        <bao-icon title="cut" svgIcon="icon-cut"></bao-icon>
+        <bao-icon title="delivery" svgIcon="icon-delivery"></bao-icon>
+        <bao-icon title="dot-bullet" svgIcon="icon-dot-bullet"></bao-icon>
+        <bao-icon title="dot-interpunct" svgIcon="icon-dot-interpunct"></bao-icon>
+        <bao-icon title="download" svgIcon="icon-download"></bao-icon>
+        <bao-icon title="droplet" svgIcon="icon-droplet"></bao-icon>
+        <bao-icon title="duplicate" svgIcon="icon-duplicate"></bao-icon>
+        <bao-icon title="edit" svgIcon="icon-edit"></bao-icon>
+        <bao-icon title="email" svgIcon="icon-email"></bao-icon>
+        <bao-icon title="error" svgIcon="icon-error"></bao-icon>
+        <bao-icon title="exclamation" svgIcon="icon-exclamation"></bao-icon>
+        <bao-icon title="externallink" svgIcon="icon-externallink"></bao-icon>
+        <bao-icon title="eye-off" svgIcon="icon-eye-off"></bao-icon>
+        <bao-icon title="eye" svgIcon="icon-eye"></bao-icon>
+        <bao-icon title="file-edit" svgIcon="icon-file-edit"></bao-icon>
+        <bao-icon title="file-pdf" svgIcon="icon-file-pdf"></bao-icon>
+        <bao-icon title="file" svgIcon="icon-file"></bao-icon>
+        <bao-icon title="filters" svgIcon="icon-filters"></bao-icon>
+        <bao-icon title="flag" svgIcon="icon-flag"></bao-icon>
+        <bao-icon title="folder" svgIcon="icon-folder"></bao-icon>
+        <bao-icon title="heart" svgIcon="icon-heart"></bao-icon>
+        <bao-icon title="help" svgIcon="icon-help"></bao-icon>
+        <bao-icon title="home" svgIcon="icon-home"></bao-icon>
+        <bao-icon title="image" svgIcon="icon-image"></bao-icon>
+        <bao-icon title="info" svgIcon="icon-info"></bao-icon>
+        <bao-icon title="key" svgIcon="icon-key"></bao-icon>
+        <bao-icon title="layers" svgIcon="icon-layers"></bao-icon>
+        <bao-icon title="link" svgIcon="icon-link"></bao-icon>
+        <bao-icon title="list" svgIcon="icon-list"></bao-icon>
+        <bao-icon title="location" svgIcon="icon-location"></bao-icon>
+        <bao-icon title="lock" svgIcon="icon-lock"></bao-icon>
+        <bao-icon title="log-in" svgIcon="icon-log-in"></bao-icon>
+        <bao-icon title="log-out" svgIcon="icon-log-out"></bao-icon>
+        <bao-icon title="map" svgIcon="icon-map"></bao-icon>
+        <bao-icon title="menu" svgIcon="icon-menu"></bao-icon>
+        <bao-icon title="minus-circle-full" svgIcon="icon-minus-circle-full"></bao-icon>
+        <bao-icon title="minus-circle" svgIcon="icon-minus-circle"></bao-icon>
+        <bao-icon title="minus" svgIcon="icon-minus"></bao-icon>
+        <bao-icon title="money" svgIcon="icon-money"></bao-icon>
+        <bao-icon title="more-horizontal" svgIcon="icon-more-horizontal"></bao-icon>
+        <bao-icon title="more-vertical" svgIcon="icon-more-vertical"></bao-icon>
+        <bao-icon title="music" svgIcon="icon-music"></bao-icon>
+        <bao-icon title="package" svgIcon="icon-package"></bao-icon>
+        <bao-icon title="paperclip" svgIcon="icon-paperclip"></bao-icon>
+        <bao-icon title="partner-bell" svgIcon="icon-partner-bell"></bao-icon>
+        <bao-icon title="partner-hydroquebec" svgIcon="icon-partner-hydroquebec"></bao-icon>
+        <bao-icon title="phone" svgIcon="icon-phone"></bao-icon>
+        <bao-icon title="plus-circle-full" svgIcon="icon-plus-circle-full"></bao-icon>
+        <bao-icon title="plus-circle" svgIcon="icon-plus-circle"></bao-icon>
+        <bao-icon title="plus" svgIcon="icon-plus"></bao-icon>
+        <bao-icon title="position" svgIcon="icon-position"></bao-icon>
+        <bao-icon title="print" svgIcon="icon-print"></bao-icon>
+        <bao-icon title="refresh" svgIcon="icon-refresh"></bao-icon>
+        <bao-icon title="road" svgIcon="icon-road"></bao-icon>
+        <bao-icon title="save" svgIcon="icon-save"></bao-icon>
+        <bao-icon title="search" svgIcon="icon-search"></bao-icon>
+        <bao-icon title="send" svgIcon="icon-send"></bao-icon>
+        <bao-icon title="settings" svgIcon="icon-settings"></bao-icon>
+        <bao-icon title="share" svgIcon="icon-share"></bao-icon>
+        <bao-icon title="shoppingbag" svgIcon="icon-shoppingbag"></bao-icon>
+        <bao-icon title="social-facebook" svgIcon="icon-social-facebook"></bao-icon>
+        <bao-icon title="social-flickr" svgIcon="icon-social-flickr"></bao-icon>
+        <bao-icon title="social-instagram" svgIcon="icon-social-instagram"></bao-icon>
+        <bao-icon title="social-linkedin" svgIcon="icon-social-linkedin"></bao-icon>
+        <bao-icon title="social-twitter" svgIcon="icon-social-twitter"></bao-icon>
+        <bao-icon title="social-youtube" svgIcon="icon-social-youtube"></bao-icon>
+        <bao-icon title="star" svgIcon="icon-star"></bao-icon>
+        <bao-icon title="steps" svgIcon="icon-steps"></bao-icon>
+        <bao-icon title="table" svgIcon="icon-table"></bao-icon>
+        <bao-icon title="tag" svgIcon="icon-tag"></bao-icon>
+        <bao-icon title="thumb-down-full" svgIcon="icon-thumb-down-full"></bao-icon>
+        <bao-icon title="thumb-down" svgIcon="icon-thumb-down"></bao-icon>
+        <bao-icon title="thumb-up-full" svgIcon="icon-thumb-up-full"></bao-icon>
+        <bao-icon title="thumb-up" svgIcon="icon-thumb-up"></bao-icon>
+        <bao-icon title="ticket" svgIcon="icon-ticket"></bao-icon>
+        <bao-icon title="trash" svgIcon="icon-trash"></bao-icon>
+        <bao-icon title="unlock" svgIcon="icon-unlock"></bao-icon>
+        <bao-icon title="upload" svgIcon="icon-upload"></bao-icon>
+        <bao-icon title="user-circle" svgIcon="icon-user-circle"></bao-icon>
+        <bao-icon title="user" svgIcon="icon-user"></bao-icon>
+        <bao-icon title="users" svgIcon="icon-users"></bao-icon>
+        <bao-icon title="warning" svgIcon="icon-warning"></bao-icon>
+        <bao-icon title="website" svgIcon="icon-website"></bao-icon>
+        <bao-icon title="wheelchair" svgIcon="icon-wheelchair"></bao-icon>
+        <bao-icon title="x-circle-full" svgIcon="icon-x-circle-full"></bao-icon>
+        <bao-icon title="x-circle" svgIcon="icon-x-circle"></bao-icon>
+        <bao-icon title="x" svgIcon="icon-x"></bao-icon>
+      </div>
+    `
+  }}</Story>
+</Preview>

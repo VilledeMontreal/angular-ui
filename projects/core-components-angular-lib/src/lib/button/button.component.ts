@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
 
 @Component({
   /**
@@ -11,17 +11,19 @@ import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } fro
   selector: 'button[bao-button]',
   styleUrls: ['./button.component.scss'],
   templateUrl: './button.component.html',
+  encapsulation: ViewEncapsulation.None,
   host: {
-    '[class.utility]': 'type === "utility"',
-    '[class.editorial]': 'type === "editorial"',
-    '[class.primary]': 'level === "primary"',
-    '[class.secondary]': 'level === "secondary"',
-    '[class.tertiary]': 'level === "tertiary"',
-    '[class.large]': 'size === "large"',
-    '[class.medium]': 'size === "medium"',
-    '[class.small]': 'size === "small"',
-    '[class.reversed]': 'reversed === true',
-    '[class.loading]': 'loading === true'
+    class: 'bao-button',
+    '[class.bao-button-utility]': 'type === "utility"',
+    '[class.bao-button-editorial]': 'type === "editorial"',
+    '[class.bao-button-primary]': 'level === "primary"',
+    '[class.bao-button-secondary]': 'level === "secondary"',
+    '[class.bao-button-tertiary]': 'level === "tertiary"',
+    '[class.bao-button-large]': 'size === "large"',
+    '[class.bao-button-medium]': 'size === "medium"',
+    '[class.bao-button-small]': 'size === "small"',
+    '[class.bao-button-reversed]': 'reversed === true',
+    '[class.bao-button-loading]': 'loading === true'
   }
 })
 export class BaoButtonComponent implements OnChanges {

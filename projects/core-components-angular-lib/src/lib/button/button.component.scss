@@ -33,7 +33,7 @@
 
 $radius-xlarge: 4rem;
 
-:host {
+.bao-button {
   @include typo-interface-small-bold;
   @include button-transition;
   text-align: center;
@@ -41,19 +41,12 @@ $radius-xlarge: 4rem;
   vertical-align: middle;
   user-select: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 
-  .button-spinner {
-    display: inline-block;
-    width: 0.875rem;
-    height: 0.875rem;
-    margin-right: .5rem;
-    vertical-align: text-bottom;
-    border: 0.2em solid currentColor;
-    border-right-color: transparent;
-    border-radius: 50%;
-    animation: spin .75s linear infinite;
+  & span {
+    @include typo-interface-small-bold;
   }
-  
 
   &:focus {
     @include state-focus;
@@ -63,27 +56,30 @@ $radius-xlarge: 4rem;
     @include state-disabled;
   }
 
-  &.utility {
+  &.bao-button-utility {
     border-radius: $radius-medium;
-    padding: 0.625rem 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: calc(0.625rem - 0.0625rem);
+    padding-bottom: calc(0.625rem - 0.0625rem);
   }
-  &.primary {
+  &.bao-button-primary {
     background-color: $action;
-    border: none;
+    @include button-border($action);
     color: $neutral-primary-reversed;
-    &.reversed {
+    &.bao-button-reversed {
       background-color: $neutral-primary-reversed;
       color: $neutral-primary;
     }
     &:hover {
       background-color: $action-darker;
-      &.reversed {
+      &.bao-button-reversed {
         background-color: $highlight-light;
         color: $action;
       }
     }
     &:focus {
-      &.reversed {
+      &.bao-button-reversed {
         background-color: $highlight-light;
         color: $action;
       }
@@ -91,17 +87,19 @@ $radius-xlarge: 4rem;
     &:disabled {
       color: $neutral-secondary;
       background-color: $neutral-tertiary;
-      &.reversed {
+      @include button-border($neutral-tertiary);
+      &.bao-button-reversed {
         background-color: rgba($neutral-primary-reversed, 0.3);
+        @include button-border(gba($neutral-primary-reversed, 0.3));
         color: rgba($neutral-primary-reversed, 0.5);
       }
     }
   }
-  &.secondary {
+  &.bao-button-secondary {
     background-color: $neutral-primary-reversed;
     color: $action;
     @include button-border-neutral-stroke;
-    &.reversed {
+    &.bao-button-reversed {
       background-color: $transparent;
       color: $neutral-primary-reversed;
       @include button-border(rgba($neutral-stroke, 0.5));
@@ -109,7 +107,7 @@ $radius-xlarge: 4rem;
     &:hover{
       @include button-border($action);
       background-color: $highlight-light;
-      &.reversed {
+      &.bao-button-reversed {
         background-color: $transparent;
         color: $neutral-primary-reversed;
         @include button-border-neutral-stroke;
@@ -118,7 +116,7 @@ $radius-xlarge: 4rem;
     &:focus{
       @include button-border($action);
       background-color: $highlight-light;
-      &.reversed{
+      &.bao-button-reversed{
         background-color: $transparent;
         color: $neutral-primary-reversed;
         @include button-border-neutral-stroke;
@@ -129,7 +127,7 @@ $radius-xlarge: 4rem;
       &:hover{
         border-color: $neutral-stroke;
         background-color: $neutral-primary-reversed;
-        &.reversed {
+        &.bao-button-reversed {
           @include button-border(rgba($neutral-stroke, 0.5));
           background-color: $transparent;
           color: $neutral-secondary;
@@ -138,29 +136,29 @@ $radius-xlarge: 4rem;
       &:focus{
         border-color: $neutral-stroke;
         background-color: $neutral-primary-reversed;
-        &.reversed {
+        &.bao-button-reversed {
           background-color: $transparent;
         }
       }
     }
   }
-  &.tertiary {
-    border: none;
+  &.bao-button-tertiary {
+    @include button-border($transparent);
     background-color: $transparent;
     color: $action;
-    &.reversed{
+    &.bao-button-reversed{
       color: $neutral-primary-reversed;
     }
     &:hover{
       background-color: $highlight-light;
-      &.reversed{
+      &.bao-button-reversed{
         background-color: rgba($neutral-primary-reversed, 0.3);
         color: $neutral-primary-reversed;
       }
     }
     &:focus{
       background-color: $highlight-light;
-      &.reversed{
+      &.bao-button-reversed{
         background-color: rgba($neutral-primary-reversed, 0.3);
         color: $neutral-primary-reversed;
       }
@@ -169,35 +167,38 @@ $radius-xlarge: 4rem;
       color: $neutral-secondary;
       &:hover{
         background-color: $transparent;
-        &.reversed {
+        &.bao-button-reversed {
           color: $neutral-secondary;
         }
       }
       &:focus{
         background-color: $transparent;
-        &.reversed {
+        &.bao-button-reversed {
           color: $neutral-secondary;
         }
       }
     }
   }
 
-  &.editorial {
+  &.bao-button-editorial {
     border-radius: $radius-large;
     padding: 0.625rem 2rem;
-    &.small {
-      padding: 0.5rem 1rem;
+    &.bao-button-small {
+      padding: 0.4375rem 1rem;
     }
-    &.large {
+    &.bao-button-large {
       border-radius: $radius-xlarge;
       @include typo-interface-medium-bold;
       padding: 1rem 2rem;
     }
   }
 
-  &.small {
+  &.bao-button-small {
     @include typo-interface-xsmall-bold;
-    padding: 0.5rem;
+    span {
+      @include typo-interface-xsmall-bold;
+    }
+    padding: 0.4375rem;
     .spinner {
       display: inline-block;
       width: 0.75rem;
@@ -211,6 +212,52 @@ $radius-xlarge: 4rem;
     }
     100% {
       transform: rotateZ(360deg);
+    }
+  }
+
+  .button-spinner {
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: 0.625rem;
+    vertical-align: text-bottom;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin .75s linear infinite;
+  }
+
+  /* Rules to adjust padding, margins if there is a bao-icon in the button */
+
+  &.bao-button-loading > .bao-icon {
+    display: none;
+  }
+
+  & > .bao-icon {
+    margin: -0.125rem 0rem;
+    &:first-child {
+      margin-right: 0.625rem;
+    }
+    &:last-child {
+      margin-left: 0.625rem;
+    }
+    &:first-child:last-child {
+      margin: -0.125rem -0.5625rem;
+    }
+  }
+
+  &.bao-button-small > .bao-icon {
+    height: 1rem;
+    width: 1rem;
+    margin: -0.125rem 0rem;
+    &:first-child {
+      margin-right: 0.25rem;
+    }
+    &:last-child {
+      margin-left: 0.25rem;
+    }
+    &:first-child:last-child {
+      margin: 0rem 0rem;
     }
   }
 }

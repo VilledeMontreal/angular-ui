@@ -20,11 +20,11 @@ import { BaoSnackBarModule } from './snack-bar/module';
   exports: [
     BaoIconModule,
     BaoButtontModule,
-    BaoAlertModule,
-    BaoBadgeModule,
-    BaoSnackBarModule,
-    BaoCardModule,
-    BaoHeaderInfoModule
+    // TODO: reactivate once component does not depend on global css BaoAlertModule,
+    // TODO: reactivate once component does not depend on global css BaoBadgeModule,
+    // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
+    // TODO: reactivate once component does not depend on global css BaoCardModule,
+    // TODO: reactivate once component does not depend on global css BaoHeaderInfoModule
   ]
 })
 export class BaoModule {}

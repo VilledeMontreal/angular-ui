@@ -1,4 +1,4 @@
-import { Component, Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Directive, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
 
 /**
  * Content of an alert, intended for use within `<bao-alert>`. This component is an optional
@@ -29,7 +29,7 @@ export class BaoAlertTitle {}
  */
 @Directive({
   selector: 'bao-alert-content',
-  host: { class: 'bao-alert-content d-block' }
+  host: { class: 'bao-alert-content' }
 })
 export class BaoAlertContent {}
 
@@ -57,6 +57,7 @@ export class BaoAlertActions {}
  * BaoAlertLink provides no behaviors, instead serving as a purely visual treatment.
  */
 @Directive({
+  // tslint:disable-next-line: directive-selector
   selector: 'bao-alert-link',
   host: {
     class: 'alert-link'
@@ -75,7 +76,8 @@ export class BaoAlertLink {}
 @Component({
   selector: 'bao-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css'],
+  styleUrls: ['./alert.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'alert alert-with-icon alert-dismissible fade show',
     '[class.alert-success]': 'type === "success"',
@@ -89,24 +91,33 @@ export class BaoAlertComponent implements OnChanges {
   @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';
   @Input() public title: string;
   @Input() public dismissible = false;
-  @Input() public showIcon = false;
-  public iconClass = 'icon icon-info';
+  @Input() public showIcon = true;
+  public iconType = 'icon-info';
+  public iconTitle = 'Information';
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.type) {
-      this.iconClass = this.alertTypeToAlertIcon(changes.type.currentValue);
+      this.iconType = this.alertTypeIcon(changes.type.currentValue);
+      this.iconTitle = this.alertTitleIcon(changes.type.currentValue);
     }
   }
 
-  public alertTypeToAlertIcon(value: string): any {
-    const prefix = 'icon';
-    const typesToSuffixes = {
+  public alertTypeIcon(value: string): any {
+    const typesAlertIcon = {
       success: 'icon-check-circle',
       danger: 'icon-error',
       warning: 'icon-warning',
       default: 'icon-info'
     };
-    const suffix = typesToSuffixes[value] || typesToSuffixes.default;
-    return `${prefix} ${suffix}`;
+    return typesAlertIcon[value] || typesAlertIcon.default;
+  }
+  public alertTitleIcon(value: string): any {
+    const titleIcon = {
+      success: 'Succès',
+      danger: 'Erreur',
+      warning: 'Attention',
+      default: 'Information'
+    };
+    return titleIcon[value] || titleIcon.default;
   }
 }

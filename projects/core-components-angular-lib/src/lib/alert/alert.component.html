@@ -1,9 +1,9 @@
 <div *ngIf="showIcon" class="alert-icon-container">
-    <span [class]="iconClass" aria-hidden="true"></span>
+    <bao-icon [svgIcon]= "iconType" [title]="iconTitle"></bao-icon>
 </div>
 <div class="alert-content">
     <ng-content></ng-content>
 </div>
-<button *ngIf="dismissible" type="button" class="close" data-dismiss="alert" aria-label="Fermer le message">
-    <span class="icon icon-x" aria-hidden="true"></span>
+<button bao-button *ngIf="dismissible" type="utility" level="tertiary" data-dismiss="alert" role="button" aria-label="Cacher le message">
+    <bao-icon svgIcon= "icon-x"></bao-icon>
 </button>

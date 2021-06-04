@@ -19,8 +19,8 @@ import { BaoSnackBarModule } from './snack-bar/module';
   ],
   exports: [
     BaoIconModule,
-    BaoButtontModule
-    // TODO: reactivate once component does not depend on global css BaoAlertModule,
+    BaoButtontModule,
+    BaoAlertModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
     // TODO: reactivate once component does not depend on global css BaoCardModule,

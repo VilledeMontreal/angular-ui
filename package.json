@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build && npm run storybook",
     "build": "ng build && npm run bundle-styles",
     "bundle-styles": "scss-bundle -c scss-bundle.config.json",
     "e2e": "ng e2e",

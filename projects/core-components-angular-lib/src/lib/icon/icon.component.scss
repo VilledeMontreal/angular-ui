@@ -1,10 +1,11 @@
 // The width/height of the icon element.
 $size: 1.5rem !default;
 
-  .bao-icon {
-    background-repeat: no-repeat;
-    display: inline-block;
-    fill: currentColor;
-    height: $size;
-    width: $size;
-  }
+.bao-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: $size;
+  width: $size;
+}
+ 

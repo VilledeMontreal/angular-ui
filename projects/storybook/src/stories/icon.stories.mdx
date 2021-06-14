@@ -132,7 +132,61 @@ import { BaoIconComponent } from 'core-components-angular-lib';
         <bao-icon title="x-circle-full" svgIcon="icon-x-circle-full"></bao-icon>
         <bao-icon title="x-circle" svgIcon="icon-x-circle"></bao-icon>
         <bao-icon title="x" svgIcon="icon-x"></bao-icon>
+        <bao-icon title="spinner" svgIcon="icon-spinner"></bao-icon>
       </div>
+    `
+  }}</Story>
+</Preview>
+
+## Color
+
+If a color is provided, it will be used as the icon's color. If no color is provided, the default behaviour is to use the parent's text color.
+
+<Preview>
+  <Story name='Icons - Color'>{{
+    component: BaoIconComponent,
+    template: `
+    <div style="color: fuchsia">
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="action"></bao-icon>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="primary"></bao-icon>
+      <div style="background-color: #000000; display: inline-block"><bao-icon title="anchor" svgIcon="icon-anchor" color="primary-reversed"></bao-icon></div>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="secondary"></bao-icon>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="tertiary"></bao-icon>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="informative"></bao-icon>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="negative"></bao-icon>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="positive"></bao-icon>
+      <bao-icon title="anchor" svgIcon="icon-anchor" color="warning"></bao-icon>
+      <!-- no color provided, using parent's color -->
+      <bao-icon title="anchor" svgIcon="icon-anchor"></bao-icon>
+    </div>
+    `
+  }}</Story>
+</Preview>
+
+## Size
+
+
+<Preview>
+  <Story name='Icons - Size'>{{
+    component: BaoIconComponent,
+    template: `
+    <bao-icon size="medium" svgIcon="icon-anchor"></bao-icon>
+    <bao-icon size="small" svgIcon="icon-anchor"></bao-icon>
+    <bao-icon size="x-small" svgIcon="icon-anchor"></bao-icon>
+    <bao-icon size="xx-small" svgIcon="icon-anchor"></bao-icon>
+    `
+  }}</Story>
+</Preview>
+
+## Title
+
+If a title is provided, it will be used as the aria-label for the icon
+
+<Preview>
+  <Story name='Icons - Title'>{{
+    component: BaoIconComponent,
+    template: `
+    <bao-icon title="a very nice title" svgIcon="icon-anchor"></bao-icon>
     `
   }}</Story>
 </Preview>

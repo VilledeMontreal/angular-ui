@@ -5,9 +5,9 @@
   box-shadow: $offsetX $offsetY $blurRadius $spreadRadius rgba($color, $opacity);
 }
 
-@mixin shadow-focus {
+@mixin shadow-focus($reversed: false) {
   @include box-shadow-opacity(0, 0, 0, 0.1875rem, $highlight-focus);
-  &.reversed {
+  @if $reversed {
     @include box-shadow-opacity(0, 0, 0, 0.1875rem, $highlight-focus-reversed, 0.3);
   }
 }

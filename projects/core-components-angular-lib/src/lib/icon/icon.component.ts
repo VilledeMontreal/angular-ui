@@ -8,6 +8,7 @@ import {
   Renderer2,
   ViewEncapsulation
 } from '@angular/core';
+import { BaoColors, baoColorToHex } from '../core/colors';
 import { BaoIconDictionary as BaoIconRegistry } from './bao-icon-registry';
 
 const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
@@ -27,10 +28,17 @@ const TITLE = 'title';
   styleUrls: ['icon.component.scss'],
   host: {
     role: 'img',
-    class: 'bao-icon notranslate',
+    // '[class]': "'bao-icon notranslate ' + svgIcon",
+    '[class.bao-icon]': 'true',
+    '[class.notranslate]': 'true',
+    '[class.bao-icon-medium]': 'size === "medium"',
+    '[class.bao-icon-small]': 'size === "small"',
+    '[class.bao-icon-x-small]': 'size === "x-small"',
+    '[class.bao-icon-xx-small]': 'size === "xx-small"',
     '[attr.data-bao-icon-type]': '"svg"',
     '[attr.aria-labelledby]': 'titleId',
-    '[attr.aria-hidden]': '!title'
+    '[attr.aria-hidden]': '!title',
+    '[style.color]': 'hexColor'
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -49,6 +57,16 @@ export class BaoIconComponent implements OnDestroy {
         this.clearSvgElement();
       }
       this._svgIcon = value;
+      this.renderer.addClass(this.elementRef.nativeElement, this._svgIcon);
+    }
+  }
+
+  /** The color of the icon, if not specified the icon's parent current text color will be used */
+  @Input() public color: BaoColors;
+
+  get hexColor(): string | void {
+    if (this.color) {
+      return baoColorToHex(this.color);
     }
   }
 
@@ -67,6 +85,12 @@ export class BaoIconComponent implements OnDestroy {
   get titleId(): string {
     return this._titleId;
   }
+
+  /**
+   * The size of the icon
+   */
+  @Input() public size: 'medium' | 'small' | 'x-small' | 'xx-small' = 'x-small';
+
   private _svgIcon: string;
   private _title: string;
   private _titleId: string;

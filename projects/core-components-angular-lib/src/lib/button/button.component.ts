@@ -1,4 +1,18 @@
-import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  Renderer2,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
+
+const BAO_ICON_NODE_NAME = 'BAO-ICON';
+const LOADING_SPINNER_CLASS = 'loading-spinner';
 
 @Component({
   /**
@@ -12,6 +26,7 @@ import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, View
   styleUrls: ['./button.component.scss'],
   templateUrl: './button.component.html',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'bao-button',
     '[class.bao-button-utility]': 'type === "utility"',
@@ -23,10 +38,12 @@ import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, View
     '[class.bao-button-medium]': 'size === "medium"',
     '[class.bao-button-small]': 'size === "small"',
     '[class.bao-button-reversed]': 'reversed === true',
-    '[class.bao-button-loading]': 'loading === true'
+    '[class.bao-button-loading]': 'loading === true',
+    '[class.bao-button-no-text]': 'noText === true',
+    '[class.bao-button-full-width]': 'fullWidth === true'
   }
 })
-export class BaoButtonComponent implements OnChanges {
+export class BaoButtonComponent implements OnChanges, AfterViewInit {
   /**
    * The type of the button
    */
@@ -47,11 +64,40 @@ export class BaoButtonComponent implements OnChanges {
    * Flag to set the button reversed color mode
    */
   @Input() public reversed: boolean = false;
+  /**
+   * The aria-label of the loading spinner if it displayed alone
+   */
+  @Input() public loadingSpinnerAriaLabel = 'chargement';
+  /**
+   * Allows the button to grow to the width of it's container
+   */
+  @Input() public fullWidth = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  /**
+   * If there is no text, some margin/padding will be different, i.e. for the spinner
+   */
+  public noText = false;
+
+  /**
+   * If the icon is on the right of the label, the loading spinner will need to be on the right of the label
+   */
+  public rightIcon = false;
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
+  }
+
+  public ngAfterViewInit() {
+    const childNodes = Array.from(this.nativeElement.childNodes);
+    const textIndex = childNodes.findIndex(c => c.nodeType === Node.TEXT_NODE);
+    this.noText = textIndex === -1;
+    const iconIdex = childNodes.findIndex(
+      c => c.nodeName === BAO_ICON_NODE_NAME && !(c as HTMLElement).classList.contains(LOADING_SPINNER_CLASS)
+    );
+    this.rightIcon = iconIdex > textIndex;
+    this.cdr.detectChanges();
   }
 
   /**

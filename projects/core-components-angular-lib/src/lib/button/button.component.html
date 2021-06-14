@@ -1,4 +1,4 @@
-<ng-container *ngIf="loading">
-  <span class="button-spinner" role="status"></span>
-</ng-container>
+
+<bao-icon *ngIf="loading && !rightIcon" class="loading-spinner" svgIcon="icon-spinner" [title]="noText ? loadingSpinnerAriaLabel : ''"></bao-icon>
 <ng-content></ng-content>
+<bao-icon *ngIf="loading && rightIcon" class="loading-spinner loading-spinner-right" svgIcon="icon-spinner" [title]="noText ? loadingSpinnerAriaLabel : ''"></bao-icon>

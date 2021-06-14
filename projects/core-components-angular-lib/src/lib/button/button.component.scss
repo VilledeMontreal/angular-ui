@@ -7,9 +7,9 @@
   cursor: not-allowed;
 }
 
-@mixin state-focus {
+@mixin state-focus($reversed: false) {
   outline: none;
-  @include shadow-focus;
+  @include shadow-focus($reversed);
 }
 
 @mixin state-disabled {
@@ -33,6 +33,9 @@
 
 $radius-xlarge: 4rem;
 
+$space-between-icon-and-text: 0.5rem;
+$space-between-icon-and-text-small: 0.25rem;
+
 .bao-button {
   @include typo-interface-small-bold;
   @include button-transition;
@@ -43,6 +46,10 @@ $radius-xlarge: 4rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  &.bao-button-full-width {
+    width: 100%;
+    display: block;
+  }
 
   & span {
     @include typo-interface-small-bold;
@@ -50,6 +57,10 @@ $radius-xlarge: 4rem;
 
   &:focus {
     @include state-focus;
+    &.bao-button-reversed {
+      @include state-focus($reversed: true);
+    }
+    
   }
 
   &:disabled {
@@ -69,6 +80,7 @@ $radius-xlarge: 4rem;
     color: $neutral-primary-reversed;
     &.bao-button-reversed {
       background-color: $neutral-primary-reversed;
+      @include button-border($neutral-primary-reversed);
       color: $neutral-primary;
     }
     &:hover {
@@ -86,8 +98,8 @@ $radius-xlarge: 4rem;
     }
     &:disabled {
       color: $neutral-secondary;
-      background-color: $neutral-tertiary;
-      @include button-border($neutral-tertiary);
+      background-color: $underground-2;
+      @include button-border($underground-2);
       &.bao-button-reversed {
         background-color: rgba($neutral-primary-reversed, 0.3);
         @include button-border(gba($neutral-primary-reversed, 0.3));
@@ -96,7 +108,7 @@ $radius-xlarge: 4rem;
     }
   }
   &.bao-button-secondary {
-    background-color: $neutral-primary-reversed;
+    background-color: $transparent;
     color: $action;
     @include button-border-neutral-stroke;
     &.bao-button-reversed {
@@ -117,7 +129,7 @@ $radius-xlarge: 4rem;
       @include button-border($action);
       background-color: $highlight-light;
       &.bao-button-reversed{
-        background-color: $transparent;
+        background-color: rgba($neutral-primary-reversed, 0.3);
         color: $neutral-primary-reversed;
         @include button-border-neutral-stroke;
       }
@@ -189,7 +201,10 @@ $radius-xlarge: 4rem;
     &.bao-button-large {
       border-radius: $radius-xlarge;
       @include typo-interface-medium-bold;
-      padding: 1rem 2rem;
+      padding: 0.9375rem 2rem;
+    }
+    &.bao-button-medium {
+      padding: 0.5625rem 2rem;
     }
   }
 
@@ -199,11 +214,6 @@ $radius-xlarge: 4rem;
       @include typo-interface-xsmall-bold;
     }
     padding: 0.4375rem;
-    .spinner {
-      display: inline-block;
-      width: 0.75rem;
-      height: 0.75rem;
-    }
   }
 
   @keyframes spin {
@@ -215,49 +225,72 @@ $radius-xlarge: 4rem;
     }
   }
 
-  .button-spinner {
-    display: inline-block;
-    width: 0.875rem;
-    height: 0.875rem;
-    margin-right: 0.625rem;
-    vertical-align: text-bottom;
-    border: 0.2em solid currentColor;
-    border-right-color: transparent;
-    border-radius: 50%;
-    animation: spin .75s linear infinite;
+  .loading-spinner {
+    margin-right: $space-between-icon-and-text;
+    margin-left: -0.5rem;
+  }
+  .loading-spinner-right {
+      margin-right: -0.5rem;
+      margin-left: $space-between-icon-and-text;
+  }
+
+  &.bao-button-no-text {
+    .loading-spinner-right {
+      margin: -0.125rem -0.5625rem
+    }
+  }
+
+  &.bao-button-small {
+    .loading-spinner {
+      width: 1rem;
+      height: 1rem;
+      margin-right: $space-between-icon-and-text-small;
+      margin-left: 0;
+    }
+    .loading-spinner-right {
+        margin-right: 0;
+        margin-left: $space-between-icon-and-text-small;
+    }
   }
 
   /* Rules to adjust padding, margins if there is a bao-icon in the button */
 
-  &.bao-button-loading > .bao-icon {
+  &.bao-button-loading > bao-icon:not(.loading-spinner) {
     display: none;
   }
 
-  & > .bao-icon {
-    margin: -0.125rem 0rem;
-    &:first-child {
-      margin-right: 0.625rem;
-    }
-    &:last-child {
-      margin-left: 0.625rem;
-    }
-    &:first-child:last-child {
+  >.bao-button-no-text.bao-button-loading {
+    >.loading-spinner {
       margin: -0.125rem -0.5625rem;
     }
   }
 
-  &.bao-button-small > .bao-icon {
+  & > bao-icon {
+    margin: -0.125rem 0rem;
+    &:first-child:not(.loading-spinner) {
+      margin-right: $space-between-icon-and-text;
+      margin-left: -$space-between-icon-and-text;
+    }
+    &:last-child:not(.loading-spinner) {
+      margin-left: $space-between-icon-and-text;
+      margin-right: -$space-between-icon-and-text;
+    }
+    &:first-child:last-child:not(.loading-spinner) {
+      margin: -0.125rem -0.5625rem;
+    }
+  }
+
+  &.bao-button-small > bao-icon {
     height: 1rem;
     width: 1rem;
     margin: -0.125rem 0rem;
-    &:first-child {
-      margin-right: 0.25rem;
+    &:first-child:not(.loading-spinner) {
+      margin-left: 0rem;
+      margin-right: $space-between-icon-and-text-small;
     }
-    &:last-child {
-      margin-left: 0.25rem;
-    }
-    &:first-child:last-child {
-      margin: 0rem 0rem;
+    &:last-child:not(.loading-spinner) {
+      margin-left: $space-between-icon-and-text-small;
+      margin-right: 0rem;
     }
   }
 }

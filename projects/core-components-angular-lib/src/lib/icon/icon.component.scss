@@ -1,11 +1,44 @@
 // The width/height of the icon element.
-$size: 1.5rem !default;
+$size-medium: 2.5rem !default;
+$size-small: 2rem !default;
+$size-x-small: 1.5rem !default;
+$size-xx-small: 1rem !default;
 
-.bao-icon {
+bao-icon {
   background-repeat: no-repeat;
   display: inline-block;
   fill: currentColor;
-  height: $size;
-  width: $size;
+
+  &.bao-icon-medium {
+    height: $size-medium;
+    width: $size-medium;
+  }
+
+  &.bao-icon-small {
+    height: $size-small;
+    width: $size-small;
+  }
+
+  &.bao-icon-x-small {
+    height: $size-x-small;
+    width: $size-x-small;
+  }
+
+  &.bao-icon-xx-small {
+    height: $size-xx-small;
+    width: $size-xx-small;
+  }
+
+  &.icon-spinner {
+    animation: spin .75s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
 }
- 

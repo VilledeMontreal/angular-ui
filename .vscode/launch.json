@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "type": "chrome",
+          "request": "launch",
+          "name": "Launch Chrome against localhost",
+          "url": "http://localhost:4200",
+          "webRoot": "${workspaceFolder}"
+      },
+      {
+          "type": "pwa-chrome",
+          "request": "attach",
+          "name": "Debug tests - Attach to Karma",
+          "address": "localhost",
+          "port": 9222,
+          "timeout": 600000,
+          "sourceMaps": true,
+          "webRoot": "${workspaceFolder}",
+          "pathMapping": {
+            "/_karma_webpack_": "${workspaceFolder}"
+          }
+      }
+  ]
+}

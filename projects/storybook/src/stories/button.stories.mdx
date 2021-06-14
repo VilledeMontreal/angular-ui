@@ -1,0 +1,267 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { Overlay } from '@angular/cdk/overlay';
+import { BaoIconComponent, BaoButtonComponent } from 'core-components-angular-lib';
+
+<Meta title='Buttons' decorators={[
+  moduleMetadata({
+    declarations: [BaoIconComponent, BaoButtonComponent],
+  })
+]} />
+
+# Buttons
+
+## Properties
+
+<Props of={BaoButtonComponent} />
+
+
+## Editorial Buttons
+### Sizes
+<Preview>
+  <Story name='Editorial Buttons - Sizes'>{{
+    component: BaoButtonComponent,
+    template: `
+          <button bao-button type="editorial" level="primary" size="large" style="margin-right: 1rem;">Label</button>
+          <button bao-button type="editorial" level="primary" size="medium" style="margin-right: 1rem;">Label</button>
+          <button bao-button type="editorial" level="primary" size="small">Label</button>
+    `
+  }}</Story>
+</Preview>
+
+### Levels
+<Preview>
+  <Story name='Editorial Buttons - Levels'>{{
+    component: BaoButtonComponent,
+    template: `
+          <button bao-button type="editorial" level="primary" style="margin-right: 1rem;">Label</button>
+          <button bao-button type="editorial" level="secondary" style="margin-right: 1rem;">Label</button>
+          <button bao-button type="editorial" level="tertiary">Label</button>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Disabled
+<Preview>
+  <Story name='Editorial Buttons - Disabled'>{{
+    component: BaoButtonComponent,
+    template: `
+          <button bao-button type="editorial" level="primary" disabled style="margin-right: 1rem;">Label</button>
+          <button bao-button type="editorial" level="secondary" disabled style="margin-right: 1rem;">Label</button>
+          <button bao-button type="editorial" level="tertiary" disabled>Label</button>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Reversed
+<Preview>
+  <Story name='Editorial Buttons - Reversed'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div style="background-color: black; padding: 1rem;">
+            <button bao-button type="editorial" level="primary" [reversed]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="editorial" level="secondary" [reversed]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="editorial" level="tertiary" [reversed]="true">Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Reversed + Disabled
+<Preview>
+  <Story name='Editorial Buttons - Reversed + Disabled'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div style="background-color: black; padding: 1rem;">
+            <button bao-button type="editorial" level="primary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="editorial" level="secondary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="editorial" level="tertiary" [reversed]="true" disabled>Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+## Utility
+### Sizes
+<Preview>
+  <Story name='Utility Buttons - Sizes'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div>
+            <button bao-button type="utility" level="primary" size="medium" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" size="medium" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" size="medium">Label</button>
+          </div>
+          <div style="margin-top:1rem;">
+            <button bao-button type="utility" level="primary" size="small" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" size="small" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" size="small">Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Icons
+<Preview>
+  <Story name='Utility Buttons - Icons'>{{
+    component: BaoButtonComponent,
+    template: `
+      <div>
+        <button bao-button type="utility" level="primary" size="medium" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon><span>Label</span></button>
+        <button bao-button type="utility" level="secondary" size="medium" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon><span>Label</span></button>
+        <button bao-button type="utility" level="tertiary" size="medium" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon><span>Label</span></button>
+      </div>
+      <div style="margin-top: 1rem">
+        <button bao-button type="utility" level="primary" size="medium" style="margin-right: 1rem;"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></button>
+        <button bao-button type="utility" level="secondary" size="medium" style="margin-right: 1rem;"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></button>
+        <button bao-button type="utility" level="tertiary" size="medium" style="margin-right: 1rem;"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></button>
+      </div>
+      <div style="margin-top: 1rem">
+        <button bao-button type="utility" level="primary" size="medium" aria-label="help" style="margin-right: 1rem;"><bao-icon title="help" svgIcon="icon-help"></bao-icon></button>
+        <button bao-button type="utility" level="secondary" size="medium" aria-label="help" style="margin-right: 1rem;"><bao-icon title="help" svgIcon="icon-help"></bao-icon></button>
+        <button bao-button type="utility" level="tertiary" size="medium" aria-label="help" style="margin-right: 1rem;"><bao-icon title="help" svgIcon="icon-help"></bao-icon></button>
+      </div>
+      <div style="margin-top: 1rem">
+        <button bao-button type="utility" level="primary" size="small" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon><span>Label</span></button>
+        <button bao-button type="utility" level="secondary" size="small" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon><span>Label</span></button>
+        <button bao-button type="utility" level="tertiary" size="small" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon><span>Label</span></button>
+      </div>
+      <div style="margin-top: 1rem">
+        <button bao-button type="utility" level="primary" size="small" style="margin-right: 1rem;"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></button>
+        <button bao-button type="utility" level="secondary" size="small" style="margin-right: 1rem;"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></button>
+        <button bao-button type="utility" level="tertiary" size="small" style="margin-right: 1rem;"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></button>
+      </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Levels
+<Preview>
+  <Story name='Utility Buttons - Levels'>{{
+    component: BaoButtonComponent,
+    template: `
+          <button bao-button type="utility" level="primary" style="margin-right: 1rem;">Label</button>
+          <button bao-button type="utility" level="secondary" style="margin-right: 1rem;">Label</button>
+          <button bao-button type="utility" level="tertiary">Label</button>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Disabled
+<Preview>
+  <Story name='Utility Buttons - Disabled'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div>
+            <button bao-button type="utility" level="primary" size="medium" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" size="medium" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" size="medium" disabled>Label</button>
+          </div>
+          <div style="margin-top: 1rem">
+            <button bao-button type="utility" level="primary" size="small" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" size="small" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" size="small" disabled>Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Reversed
+<Preview>
+  <Story name='Utility Buttons - Reversed'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div style="background-color: black; padding: 1rem;">
+            <button bao-button type="utility" level="primary" [reversed]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" [reversed]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" [reversed]="true">Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+
+### Reversed + Disabled
+<Preview>
+  <Story name='Utility Buttons - Reversed + Disabled'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div style="background-color: black; padding: 1rem;">
+            <button bao-button type="utility" level="primary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" [reversed]="true" disabled>Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Loading
+
+If the input `loading` is set to `true`, the button will be disabled and a loading spinner will appear. The spinner will appear in place of the icon in the button if there is one or to the left of the button's text.
+
+<Preview>
+  <Story name='Utility Buttons - Loading'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div>
+            <button bao-button type="utility" level="primary" [loading]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" [loading]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" [loading]="true" >Label</button>
+          </div>
+          <div style="margin-top: 1rem;">
+            <button bao-button type="utility" level="primary" [loading]="true" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon>Label</button>
+            <button bao-button type="utility" level="secondary" [loading]="true" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon>Label</button>
+            <button bao-button type="utility" level="tertiary" [loading]="true"><bao-icon svgIcon="icon-help"></bao-icon>Label</button>
+          </div>
+          <div style="margin-top: 1rem;">
+            <button bao-button type="utility" level="primary" [loading]="true" style="margin-right: 1rem;">Label<bao-icon svgIcon="icon-help"></bao-icon></button>
+            <button bao-button type="utility" level="secondary" [loading]="true" style="margin-right: 1rem;">Label<bao-icon svgIcon="icon-help"></bao-icon></button>
+            <button bao-button type="utility" level="tertiary" [loading]="true">Label<bao-icon svgIcon="icon-help"></bao-icon></button>
+          </div>
+          <div style="margin-top: 1rem;">
+            <button bao-button type="utility" level="primary" [loading]="true" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon></button>
+            <button bao-button type="utility" level="secondary" [loading]="true" style="margin-right: 1rem;"><bao-icon svgIcon="icon-help"></bao-icon></button>
+            <button bao-button type="utility" level="tertiary" [loading]="true"><bao-icon svgIcon="icon-help"></bao-icon></button>
+          </div>
+          <div style="margin-top: 1rem;">
+            <button bao-button type="utility" level="primary" size="small" [loading]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="secondary" size="small"  [loading]="true" style="margin-right: 1rem;">Label</button>
+            <button bao-button type="utility" level="tertiary" size="small"  [loading]="true" >Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Full width
+
+If the input `fullWidth` is set to `true`, the button will grow to the width of it's container
+
+<Preview>
+  <Story name='Utility Buttons - Full width'>{{
+    component: BaoButtonComponent,
+    template: `
+          <div>
+            <button bao-button type="editorial" level="primary" [fullWidth]="true">Label</button>
+            <button bao-button type="editorial" level="secondary" [fullWidth]="true">Label</button>
+            <button bao-button type="editorial" level="tertiary" [fullWidth]="true">Label</button>
+          </div>
+          <div style="margin-top: 1rem">
+            <button bao-button type="utility" level="primary" [fullWidth]="true">Label</button>
+            <button bao-button type="utility" level="secondary" [fullWidth]="true">Label</button>
+            <button bao-button type="utility" level="tertiary" [fullWidth]="true">Label</button>
+          </div>
+    `
+  }}
+  </Story>
+</Preview>

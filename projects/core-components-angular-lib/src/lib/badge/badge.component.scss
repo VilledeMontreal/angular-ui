@@ -1,0 +1,30 @@
+@import '../core/colors';
+
+:host {
+  display: inline-block;
+  border: 0.0625rem solid transparent;
+  color: $neutral-primary-reversed;
+  padding: 0 0.4375rem;
+  border-radius: 10rem;
+  min-width: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: baseline;
+  &.informative{
+    background-color: $informative-reversed;
+  }
+  &.positive{
+    background-color: $positive-reversed;
+  }
+  &.warning{
+    background-color: $warning-reversed;
+    color: $neutral-primary;
+  }
+  &.negative{
+    background-color: $negative-reversed;
+  }
+}

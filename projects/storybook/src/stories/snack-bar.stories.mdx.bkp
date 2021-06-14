@@ -1,0 +1,32 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { Component } from "@angular/core";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Overlay } from '@angular/cdk/overlay';
+import { BaoModule, BaoSimpleSnackBarComponent, BaoSnackBarContainerComponent, BaoSnackBarService } from 'core-components-angular-lib';
+import { SnackBarDemoComponent } from "./snack-bar-demo.component.ts";
+
+<Meta title='Snack-bar' decorators={[
+  moduleMetadata({
+    imports: [BaoModule, BrowserAnimationsModule],
+    declarations: [SnackBarDemoComponent],
+    entryComponents: [BaoSimpleSnackBarComponent, BaoSnackBarContainerComponent],
+    providers: [BaoSnackBarService, Overlay]
+  })
+]} />
+
+# Snack-bar
+
+Les snack-bar servent à afficher de l'information hors du context du contexte d'un component, donc globalement.
+
+TODO: Documenter l'utilisation du component ici, entre temps, il est possible de se fier exactement à: https://material.angular.io/components/snack-bar/overview
+
+<Preview>
+  <Story name='demo'>{{
+    component: SnackBarDemoComponent,
+    template: `
+      <app-snack-bar></app-snack-bar>
+    `
+  }}
+  </Story>
+</Preview>

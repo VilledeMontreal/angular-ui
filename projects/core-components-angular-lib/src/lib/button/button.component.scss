@@ -1,0 +1,296 @@
+@import "../core/colors";
+@import "../core/radius";
+@import "../core/shadows";
+@import "../core/typography";
+
+@mixin not-allowed {
+  cursor: not-allowed;
+}
+
+@mixin state-focus($reversed: false) {
+  outline: none;
+  @include shadow-focus($reversed);
+}
+
+@mixin state-disabled {
+  @include not-allowed;
+}
+
+@mixin button-transition {
+  transition: color .15s ease-in-out, 
+  background-color .15s ease-in-out, 
+  border-color .15s ease-in-out, 
+  box-shadow .15s ease-in-out;
+}
+
+@mixin button-border($color) {
+  border: solid 0.0625rem $color;
+}
+
+@mixin button-border-neutral-stroke {
+  @include button-border($neutral-stroke)
+}
+
+$radius-xlarge: 4rem;
+
+$space-between-icon-and-text: 0.5rem;
+$space-between-icon-and-text-small: 0.25rem;
+
+.bao-button {
+  @include typo-interface-small-bold;
+  @include button-transition;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  &.bao-button-full-width {
+    width: 100%;
+    display: block;
+  }
+
+  & span {
+    @include typo-interface-small-bold;
+  }
+
+  &:focus {
+    @include state-focus;
+    &.bao-button-reversed {
+      @include state-focus($reversed: true);
+    }
+    
+  }
+
+  &:disabled {
+    @include state-disabled;
+  }
+
+  &.bao-button-utility {
+    border-radius: $radius-medium;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: calc(0.625rem - 0.0625rem);
+    padding-bottom: calc(0.625rem - 0.0625rem);
+  }
+  &.bao-button-primary {
+    background-color: $action;
+    @include button-border($action);
+    color: $neutral-primary-reversed;
+    &.bao-button-reversed {
+      background-color: $neutral-primary-reversed;
+      @include button-border($neutral-primary-reversed);
+      color: $neutral-primary;
+    }
+    &:hover {
+      background-color: $action-darker;
+      &.bao-button-reversed {
+        background-color: $highlight-light;
+        color: $action;
+      }
+    }
+    &:focus {
+      &.bao-button-reversed {
+        background-color: $highlight-light;
+        color: $action;
+      }
+    }
+    &:disabled {
+      color: $neutral-secondary;
+      background-color: $underground-2;
+      @include button-border($underground-2);
+      &.bao-button-reversed {
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        @include button-border(gba($neutral-primary-reversed, 0.3));
+        color: rgba($neutral-primary-reversed, 0.5);
+      }
+    }
+  }
+  &.bao-button-secondary {
+    background-color: $transparent;
+    color: $action;
+    @include button-border-neutral-stroke;
+    &.bao-button-reversed {
+      background-color: $transparent;
+      color: $neutral-primary-reversed;
+      @include button-border(rgba($neutral-stroke, 0.5));
+    }
+    &:hover{
+      @include button-border($action);
+      background-color: $highlight-light;
+      &.bao-button-reversed {
+        background-color: $transparent;
+        color: $neutral-primary-reversed;
+        @include button-border-neutral-stroke;
+      }
+    }
+    &:focus{
+      @include button-border($action);
+      background-color: $highlight-light;
+      &.bao-button-reversed{
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        color: $neutral-primary-reversed;
+        @include button-border-neutral-stroke;
+      }
+    }
+    &:disabled {
+      color: $neutral-secondary;
+      &:hover{
+        border-color: $neutral-stroke;
+        background-color: $neutral-primary-reversed;
+        &.bao-button-reversed {
+          @include button-border(rgba($neutral-stroke, 0.5));
+          background-color: $transparent;
+          color: $neutral-secondary;
+        }
+      }
+      &:focus{
+        border-color: $neutral-stroke;
+        background-color: $neutral-primary-reversed;
+        &.bao-button-reversed {
+          background-color: $transparent;
+        }
+      }
+    }
+  }
+  &.bao-button-tertiary {
+    @include button-border($transparent);
+    background-color: $transparent;
+    color: $action;
+    &.bao-button-reversed{
+      color: $neutral-primary-reversed;
+    }
+    &:hover{
+      background-color: $highlight-light;
+      &.bao-button-reversed{
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        color: $neutral-primary-reversed;
+      }
+    }
+    &:focus{
+      background-color: $highlight-light;
+      &.bao-button-reversed{
+        background-color: rgba($neutral-primary-reversed, 0.3);
+        color: $neutral-primary-reversed;
+      }
+    }
+    &:disabled {
+      color: $neutral-secondary;
+      &:hover{
+        background-color: $transparent;
+        &.bao-button-reversed {
+          color: $neutral-secondary;
+        }
+      }
+      &:focus{
+        background-color: $transparent;
+        &.bao-button-reversed {
+          color: $neutral-secondary;
+        }
+      }
+    }
+  }
+
+  &.bao-button-editorial {
+    border-radius: $radius-large;
+    padding: 0.625rem 2rem;
+    &.bao-button-small {
+      padding: 0.4375rem 1rem;
+    }
+    &.bao-button-large {
+      border-radius: $radius-xlarge;
+      @include typo-interface-medium-bold;
+      padding: 0.9375rem 2rem;
+    }
+    &.bao-button-medium {
+      padding: 0.5625rem 2rem;
+    }
+  }
+
+  &.bao-button-small {
+    @include typo-interface-xsmall-bold;
+    span {
+      @include typo-interface-xsmall-bold;
+    }
+    padding: 0.4375rem;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+
+  .loading-spinner {
+    margin-right: $space-between-icon-and-text;
+    margin-left: -0.5rem;
+  }
+  .loading-spinner-right {
+      margin-right: -0.5rem;
+      margin-left: $space-between-icon-and-text;
+  }
+
+  &.bao-button-no-text {
+    .loading-spinner-right {
+      margin: -0.125rem -0.5625rem
+    }
+  }
+
+  &.bao-button-small {
+    .loading-spinner {
+      width: 1rem;
+      height: 1rem;
+      margin-right: $space-between-icon-and-text-small;
+      margin-left: 0;
+    }
+    .loading-spinner-right {
+        margin-right: 0;
+        margin-left: $space-between-icon-and-text-small;
+    }
+  }
+
+  /* Rules to adjust padding, margins if there is a bao-icon in the button */
+
+  &.bao-button-loading > bao-icon:not(.loading-spinner) {
+    display: none;
+  }
+
+  >.bao-button-no-text.bao-button-loading {
+    >.loading-spinner {
+      margin: -0.125rem -0.5625rem;
+    }
+  }
+
+  & > bao-icon {
+    margin: -0.125rem 0rem;
+    &:first-child:not(.loading-spinner) {
+      margin-right: $space-between-icon-and-text;
+      margin-left: -$space-between-icon-and-text;
+    }
+    &:last-child:not(.loading-spinner) {
+      margin-left: $space-between-icon-and-text;
+      margin-right: -$space-between-icon-and-text;
+    }
+    &:first-child:last-child:not(.loading-spinner) {
+      margin: -0.125rem -0.5625rem;
+    }
+  }
+
+  &.bao-button-small > bao-icon {
+    height: 1rem;
+    width: 1rem;
+    margin: -0.125rem 0rem;
+    &:first-child:not(.loading-spinner) {
+      margin-left: 0rem;
+      margin-right: $space-between-icon-and-text-small;
+    }
+    &:last-child:not(.loading-spinner) {
+      margin-left: $space-between-icon-and-text-small;
+      margin-right: 0rem;
+    }
+  }
+}

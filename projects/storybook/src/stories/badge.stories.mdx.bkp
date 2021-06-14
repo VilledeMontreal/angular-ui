@@ -1,0 +1,48 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { BaoBadgeComponent } from 'core-components-angular-lib';
+
+<Meta title='Badges' decorators={[
+  moduleMetadata({
+    declarations: [BaoBadgeComponent]
+  })
+]} />
+
+# Badges
+
+Les Badges servent à alerter sur des nouveaux événements ou des mises-à-jour dont l'utilisateur actif n'est pas la source. Par exemple, un badge peut indiquer que 5 nouveaux projets on été créés depuis la dernière connexion de l'utilisateur.
+
+Les Badges ne contiennent que des valeurs numériques. Si vous avez besoin d'afficher un autre type de contenu, veuillez utiliser les Tags (TODO).
+
+Cette composante devrait se retrouver sur des éléments de navigation uniquement, et disparaître quand l'utilisateur arrive dans la dite section.
+
+## Utilisation
+```html
+<bao-badge [type]="monType">Mon contenu...</bao-badge>
+```
+
+## Propriétées
+
+<Props of={BaoBadgeComponent} />
+
+## Couleurs
+L'alerte par défaut est grise. 
+Pour modifier celle-ci utiliser le `input` `type`
+
+* `'success'` pour un badge de type positif
+* `'danger'` pour un badge de type négatif
+* `'warning'` pour un badge de type avertissement
+* `'info'` pour un badge de type informatif
+
+<Preview>
+  <Story name='badges'>{{
+    component: BaoBadgeComponent,
+    template: `
+        <bao-badge style="margin-right: 1rem;" type="success">10</bao-badge>
+        <bao-badge style="margin-right: 1rem;" type="danger">100</bao-badge>
+        <bao-badge style="margin-right: 1rem;" type="warning">1000</bao-badge>
+        <bao-badge type="info">10000</bao-badge>
+    `
+  }}
+  </Story>
+</Preview>

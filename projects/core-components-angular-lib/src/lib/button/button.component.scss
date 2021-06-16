@@ -63,7 +63,7 @@ $space-between-icon-and-text-small: 0.25rem;
     
   }
 
-  &:disabled {
+  &:disabled , &.bao-button-loading {
     @include state-disabled;
   }
 
@@ -96,7 +96,7 @@ $space-between-icon-and-text-small: 0.25rem;
         color: $action;
       }
     }
-    &:disabled {
+    &:disabled , &.bao-button-loading {
       color: $neutral-secondary;
       background-color: $underground-2;
       @include button-border($underground-2);
@@ -134,7 +134,7 @@ $space-between-icon-and-text-small: 0.25rem;
         @include button-border-neutral-stroke;
       }
     }
-    &:disabled {
+    &:disabled , &.bao-button-loading {
       color: $neutral-secondary;
       &:hover{
         border-color: $neutral-stroke;
@@ -175,7 +175,7 @@ $space-between-icon-and-text-small: 0.25rem;
         color: $neutral-primary-reversed;
       }
     }
-    &:disabled {
+    &:disabled , &.bao-button-loading {
       color: $neutral-secondary;
       &:hover{
         background-color: $transparent;

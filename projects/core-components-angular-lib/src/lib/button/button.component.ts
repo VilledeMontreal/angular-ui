@@ -5,9 +5,6 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
-  Renderer2,
-  SimpleChanges,
   ViewEncapsulation
 } from '@angular/core';
 
@@ -43,7 +40,7 @@ const LOADING_SPINNER_CLASS = 'loading-spinner';
     '[class.bao-button-full-width]': 'fullWidth === true'
   }
 })
-export class BaoButtonComponent implements OnChanges, AfterViewInit {
+export class BaoButtonComponent implements AfterViewInit {
   /**
    * The type of the button
    */
@@ -83,7 +80,7 @@ export class BaoButtonComponent implements OnChanges, AfterViewInit {
    */
   public rightIcon = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
@@ -98,27 +95,5 @@ export class BaoButtonComponent implements OnChanges, AfterViewInit {
     );
     this.rightIcon = iconIdex > textIndex;
     this.cdr.detectChanges();
-  }
-
-  /**
-   * @ignore
-   */
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.loading) {
-      // if the button is in loading state, it should also be disabled
-      if (changes.loading.currentValue === true) {
-        this.disable();
-      } else {
-        this.enable();
-      }
-    }
-  }
-
-  private enable() {
-    this.renderer.setAttribute(this.nativeElement, 'disabled', 'false');
-  }
-
-  private disable() {
-    this.renderer.setAttribute(this.nativeElement, 'disabled', 'true');
   }
 }

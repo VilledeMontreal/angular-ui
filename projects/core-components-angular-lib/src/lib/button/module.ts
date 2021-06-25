@@ -7,7 +7,7 @@ const BUTTON_DIRECTIVES = [BaoButtonComponent];
 
 @NgModule({
   imports: [CommonModule, BaoIconModule],
-  declarations: [...BUTTON_DIRECTIVES],
-  exports: [BUTTON_DIRECTIVES, BaoIconModule]
+  declarations: BUTTON_DIRECTIVES,
+  exports: [...BUTTON_DIRECTIVES, BaoIconModule]
 })
 export class BaoButtonModule {}

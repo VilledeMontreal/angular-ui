@@ -5,16 +5,11 @@ import { BaoCardModule } from './card/module';
 import { BaoIconModule } from './icon/module';
 
 @NgModule({
-  imports: [
-    BaoIconModule,
-    BaoButtonModule,
-    BaoAlertModule,
-    BaoCardModule
-  ],
+  imports: [BaoIconModule, BaoButtonModule, BaoAlertModule, BaoCardModule],
   exports: [
     BaoIconModule,
     BaoButtonModule,
-    BaoAlertModule,
+    BaoAlertModule
     // TODO: reactivate once component does not depend on global css BaoCardModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,

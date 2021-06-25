@@ -8,7 +8,7 @@ const ALERT_DIRECTIVES = [BaoAlertTitle, BaoAlertContent, BaoAlertActions, BaoAl
 
 @NgModule({
   imports: [CommonModule, BaoIconModule, BaoButtonModule],
-  declarations: [ALERT_DIRECTIVES],
+  declarations: ALERT_DIRECTIVES,
   exports: [...ALERT_DIRECTIVES, BaoIconModule, BaoButtonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

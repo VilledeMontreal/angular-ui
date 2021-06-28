@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+/*import { Component, Inject } from '@angular/core';
 import { BaoSnackBarService } from 'core-components-angular-lib';
 
 @Component({
@@ -15,4 +15,4 @@ export class SnackBarDemoComponent {
       duration: 2000
     });
   }
-}
+}*/

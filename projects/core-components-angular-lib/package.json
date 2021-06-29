@@ -1,6 +1,6 @@
 {
   "name": "@villemontreal/core-components-angular-lib",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "peerDependencies": {
     "@angular/common": ">=8.0.0 <11.0.0",
     "@angular/core": ">=8.0.0 <11.0.0",

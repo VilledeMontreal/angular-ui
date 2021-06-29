@@ -46,10 +46,10 @@ $alert-colors: (
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: $radius-none;
-    .alert-content {
+    .bao-alert-content {
         margin-right: .5rem;
     }
-    .alert-heading {
+    .bao-alert-title {
         font-weight: $font-weight-bold;
     }
     .bao-alert-content {
@@ -82,7 +82,7 @@ $alert-colors: (
         }
     }
     // buttons alert
-    .alert-actions {
+    .bao-alert-actions {
         .bao-button {
             margin: 1rem 1rem 0 0;
         }
@@ -96,11 +96,11 @@ $alert-colors: (
     $color-darker: darken($color-dark, 10%);
     $color-shadow: rgba($color-dark, .3);
   
-    .alert-#{$label} {
+    .bao-alert-#{$label} {
         background-color: $color-light;
         @include alert-border($color-base);
         color: $color-dark;
-        .alert-heading {
+        .bao-alert-title {
             color: $color-dark;
         }
         a {

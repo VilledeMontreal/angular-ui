@@ -1,4 +1,13 @@
-import { Component, Directive, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Directive,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 
 /**
  * Content of an alert, intended for use within `<bao-alert>`. This component is an optional
@@ -92,7 +101,7 @@ export class BaoAlertComponent implements OnChanges {
   @Input() public title: string;
   @Input() public dismissible = false;
   @Input() public showIcon = true;
-  @Output() public dismissed = new EventEmitter();
+  @Output() public dismiss = new EventEmitter();
   public iconType = 'icon-info';
   public iconTitle = 'Information';
 
@@ -123,6 +132,6 @@ export class BaoAlertComponent implements OnChanges {
   }
 
   public onDismissClicked() {
-    this.dismissed.emit();
+    this.dismiss.emit();
   }
 }

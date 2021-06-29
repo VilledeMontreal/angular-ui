@@ -1,4 +1,13 @@
-import { Component, Directive, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Directive,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 
 /**
  * Content of an alert, intended for use within `<bao-alert>`. This component is an optional
@@ -79,7 +88,7 @@ export class BaoAlertLink {}
   styleUrls: ['./alert.component.scss'],
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'alert alert-with-icon alert-dismissible fade show',
+    class: 'bao-alert bao-alert-with-icon bao-alert-dismissible fade show',
     '[class.bao-alert-success]': 'type === "success"',
     '[class.bao-alert-danger]': 'type === "danger"',
     '[class.bao-alert-warning]': 'type === "warning"',
@@ -92,6 +101,7 @@ export class BaoAlertComponent implements OnChanges {
   @Input() public title: string;
   @Input() public dismissible = false;
   @Input() public showIcon = true;
+  @Output() public dismiss = new EventEmitter();
   public iconType = 'icon-info';
   public iconTitle = 'Information';
 
@@ -119,5 +129,9 @@ export class BaoAlertComponent implements OnChanges {
       default: 'Information'
     };
     return titleIcon[value] || titleIcon.default;
+  }
+
+  public onDismissClicked() {
+    this.dismiss.emit();
   }
 }

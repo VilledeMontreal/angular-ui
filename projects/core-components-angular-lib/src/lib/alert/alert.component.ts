@@ -79,7 +79,7 @@ export class BaoAlertLink {}
   styleUrls: ['./alert.component.scss'],
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'alert alert-with-icon alert-dismissible fade show',
+    class: 'bao-alert bao-alert-with-icon bao-alert-dismissible fade show',
     '[class.bao-alert-success]': 'type === "success"',
     '[class.bao-alert-danger]': 'type === "danger"',
     '[class.bao-alert-warning]': 'type === "warning"',
@@ -119,5 +119,9 @@ export class BaoAlertComponent implements OnChanges {
       default: 'Information'
     };
     return titleIcon[value] || titleIcon.default;
+  }
+
+  public onDismissClicked() {
+    
   }
 }

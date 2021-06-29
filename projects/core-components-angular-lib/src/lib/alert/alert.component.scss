@@ -41,12 +41,12 @@ $alert-colors: (
     )
 );
 // General rules
-.alert {
+.bao-alert {
     @include typo-interface-medium-normal;
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: $radius-none;
-    .bao-alert-content {
+    .bao-alert-content-container {
         margin-right: .5rem;
     }
     .bao-alert-title {
@@ -59,15 +59,15 @@ $alert-colors: (
     a {
         font-weight: $font-weight-bold;
     }
-    &.alert-with-icon {
+    &.bao-alert-with-icon {
         display: flex;
     }
     // icon display left
-    .alert-icon-container {
+    .bao-alert-icon-container {
         margin-right: 1rem;
     }
     // icon display right
-    &.alert-dismissible {
+    &.bao-alert-dismissible {
         .bao-button[data-dismiss="alert"] {
             background-color: $transparent;
             border-radius: $radius-none;

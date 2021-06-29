@@ -57,7 +57,7 @@ export class BaoIconComponent implements OnDestroy {
         this.clearSvgElement();
       }
       this._svgIcon = value;
-      this.renderer.addClass(this.elementRef.nativeElement, this._svgIcon);
+      this.renderer.addClass(this.elementRef.nativeElement, `bao-${this._svgIcon}`);
     }
   }
 

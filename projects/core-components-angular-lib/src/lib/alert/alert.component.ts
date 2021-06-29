@@ -16,7 +16,7 @@ import { Component, Directive, Input, OnChanges, SimpleChanges, ViewEncapsulatio
  */
 @Directive({
   selector: 'bao-alert-title',
-  host: { class: 'alert-heading' }
+  host: { class: 'bao-alert-title' }
 })
 export class BaoAlertTitle {}
 
@@ -44,7 +44,7 @@ export class BaoAlertContent {}
   selector: 'bao-alert-actions',
   exportAs: 'baoAlertActions',
   host: {
-    class: 'alert-actions'
+    class: 'bao-alert-actions'
   }
 })
 export class BaoAlertActions {}
@@ -60,7 +60,7 @@ export class BaoAlertActions {}
   // tslint:disable-next-line: directive-selector
   selector: 'bao-alert-link',
   host: {
-    class: 'alert-link'
+    class: 'bao-alert-link'
   }
 })
 export class BaoAlertLink {}
@@ -80,10 +80,10 @@ export class BaoAlertLink {}
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'alert alert-with-icon alert-dismissible fade show',
-    '[class.alert-success]': 'type === "success"',
-    '[class.alert-danger]': 'type === "danger"',
-    '[class.alert-warning]': 'type === "warning"',
-    '[class.alert-info]': 'type === "info"',
+    '[class.bao-alert-success]': 'type === "success"',
+    '[class.bao-alert-danger]': 'type === "danger"',
+    '[class.bao-alert-warning]': 'type === "warning"',
+    '[class.bao-alert-info]': 'type === "info"',
     role: 'alert'
   }
 })

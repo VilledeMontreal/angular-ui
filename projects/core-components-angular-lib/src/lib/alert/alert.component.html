@@ -4,6 +4,9 @@
 <div class="bao-alert-content-container">
     <ng-content></ng-content>
 </div>
-<button bao-button *ngIf="dismissible" type="utility" level="tertiary" data-dismiss="alert" role="button" aria-label="Cacher le message">
+<button bao-button *ngIf="dismissible" type="utility" 
+        level="tertiary" data-dismiss="alert" role="button" 
+        aria-label="Cacher le message"
+        (click)="onDismissClicked()">
     <bao-icon svgIcon= "icon-x"></bao-icon>
 </button>

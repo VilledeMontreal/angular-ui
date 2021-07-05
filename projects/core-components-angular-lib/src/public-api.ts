@@ -6,3 +6,4 @@ export * from './lib/icon/index';
 export * from './lib/button/index';
 export * from './lib/alert/index';
 export * from './lib/card/index';
+export * from './lib/breadcrumb/index';

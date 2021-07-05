@@ -1,0 +1,38 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { Overlay } from '@angular/cdk/overlay';
+import { BaoModule, BaoBreadcrumbComponent } from 'core-components-angular-lib';
+
+<Meta title='Breadcrumb' decorators={[
+  moduleMetadata({
+      imports: [BaoModule]
+  })
+]} />
+
+# Breadcrumb trail
+The breadcrumb trail component allows users to locate themselves within the depth of a website's pages, while keeping a quick access to previous levels they've already visited.
+## Utilization
+```html
+<bao-breadcrumb>
+  <a [routerLink]="Previous page's URL">Parent page</a>
+  <a [routerLink]=#>Current page</a>
+</bao-breadcrumb>
+```
+
+## Properties
+The breadcrumb component has no properties.
+                     
+
+## Default look
+<Preview>
+  <Story name='breadcrumb'>{{
+    component: BaoBreadcrumbComponent,
+    template: `
+            <bao-breadcrumb>
+              <a href=#>parent page</a>
+              <a href=#>parent page</a>
+              <a href=#>current page</a>
+            </bao-breadcrumb>
+    `
+  }}</Story>
+</Preview>

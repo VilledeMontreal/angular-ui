@@ -6,16 +6,18 @@ Une librairie de composantes angular aux couleurs de la ville! Elle est basée s
 L'objectif de cette librairie est de faciliter la création de SPA angular visuellement conforme au [Ville de Montréal Design System](https://zeroheight.com/575tugn0n/p/139208-ville-de-montral-design-system).
 
 ## Installation et configuration de la librairie dans vos projets
-1. Installer la librairie `@villemontreal/core-components-angular-lib`
+1. Configurer le dépôt npm en ajoutant un fichier .npmrc à la racine du projet contenant: ` registry=https://npm.registry.interne.montreal.ca`
+
+2. Installer la librairie `@villemontreal/core-components-angular-lib`
 
    `npm i @villemontreal/core-components-angular-lib`
 
-2. Installer la peerDependency `@angular/cdk` (attention il faut installer la même MAJOR que votre `@angular/cli`)
+3. Installer la peerDependency `@angular/cdk` (attention il faut installer la même MAJOR que votre `@angular/cli`)
 
    `npm i @angular/cdk@^10.0.0`
 
 
-3. Ajouter la feuille de style `globabl.scss` (contient la définition des fonts à utiliser) dans le fichier `angular.json`
+4. Ajouter la feuille de style `globabl.scss` (contient la définition des fonts à utiliser) dans le fichier `angular.json`
 ``` 
 ...
 "styles": [
@@ -24,7 +26,7 @@ L'objectif de cette librairie est de faciliter la création de SPA angular visue
 ],
 ...
 ```
-4. Importer `BaoModule` dans votre module principal
+5. Importer `BaoModule` dans votre module principal
 ```
 ...
 import { BaoModule } from '@villemontreal/core-components-angular-lib';

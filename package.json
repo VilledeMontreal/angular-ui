@@ -40,6 +40,7 @@
     "@compodoc/compodoc": "^1.1.11",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
+    "@villemontreal/boite-outils4-web": "^4.17.0",
     "css-loader": "^3.5.3",
     "karma-spec-reporter": "0.0.32",
     "react": "^16.13.1",

@@ -2,13 +2,7 @@
 @import "../core/radius";
 @import "../core/shadows";
 @import "../core/typography";
-
-@mixin hover-focus {
-    &:hover,
-    &:focus {
-      @content;
-    }
-}
+@import "../core/mixins";
 
 @mixin alert-border($color) {
     border-left: 0.125rem solid $color; //2px

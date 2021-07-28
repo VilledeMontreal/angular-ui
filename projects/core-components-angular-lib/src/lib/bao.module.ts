@@ -11,8 +11,8 @@ import { BaoIconModule } from './icon/module';
     BaoIconModule,
     BaoButtonModule,
     BaoAlertModule,
-    BaoBreadcrumbModule
-    // TODO: reactivate once component does not depend on global css BaoCardModule
+    BaoBreadcrumbModule,
+    BaoCardModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
     // TODO: reactivate once component does not depend on global css BaoHeaderInfoModule

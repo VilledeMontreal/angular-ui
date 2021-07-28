@@ -1,0 +1,73 @@
+@import "../core/colors";
+@import "../core/radius";
+@import "../core/typography";
+@import "../core/mixins";
+
+
+// card style
+ul.cards {
+    padding-left: 0;
+    > li {
+        display: flex;
+    }
+}
+
+.bao-card {
+    background-color: $neutral-ground;
+    border: 0.063rem solid $neutral-stroke; // 1px
+    border-radius: $radius-medium;
+    display: block;
+    font-weight: $font-weight-normal;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    text-decoration: none;
+    width: 100%;
+    @include hover-focus {
+        text-decoration: none;
+        background-color: $white;
+        border: 1px solid transparent;
+        box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.1);
+        .bao-card-content {
+            .bao-card-title {
+                color: $action
+            }
+        }
+        >bao-card-header {
+            color: $action;
+        }
+    }
+
+    .bao-card-content {
+        display: flex;
+        flex-flow: column;
+
+        // remove margin-bottom on last-child of card-body
+        > :last-child {
+            margin-bottom: 0;
+        }
+        .bao-card-title {
+            @include typo-interface-large-bold;
+            color: $neutral-primary;
+            margin: 0 0 1rem 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .bao-card-text-interface {
+            line-height: 1.5rem;
+            color: $neutral-secondary;
+        }
+    }
+
+    > bao-card-header {
+        color: $neutral-tertiary;
+    }
+
+    > bao-card-header + bao-card-content {
+    margin-top: 1rem;
+    }
+
+    &.bao-card-large-padding {
+        padding: 2rem;
+    }
+}

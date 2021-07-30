@@ -141,3 +141,27 @@ the component emitting a `dismiss` event that the parent component will be able 
   }}
   </Story>
 </Preview>
+
+<Preview>
+  <Story name='alerts without title'>{{
+    component: BaoAlertComponent,
+    template: `
+      <bao-alert type="success">
+        <bao-alert-content>Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.</bao-alert-content>
+      </bao-alert>
+      <bao-alert type="danger">
+        <bao-alert-content>Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.</bao-alert-content>
+      </bao-alert>
+      <bao-alert type="warning">
+        <bao-alert-content>Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.</bao-alert-content>
+      </bao-alert>
+      <bao-alert type="info">
+        <bao-alert-content>Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.</bao-alert-content>
+      </bao-alert>
+      `,
+    props: {
+      title: 'The alert\'s title'
+    },
+  }}
+  </Story>
+</Preview>

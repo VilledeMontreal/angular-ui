@@ -98,7 +98,6 @@ export class BaoAlertLink {}
 })
 export class BaoAlertComponent implements OnChanges {
   @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';
-  @Input() public title: string;
   @Input() public dismissible = false;
   @Input() public showIcon = true;
   @Output() public dismiss = new EventEmitter();

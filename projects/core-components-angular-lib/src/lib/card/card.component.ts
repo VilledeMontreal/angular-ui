@@ -10,47 +10,40 @@ import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation
  * - bao-card-body
  * - bao-card-title
  * - bao-card-bao-text-interface
- * - bao-card-icon-top
  * - More to come!
  */
 @Component({
   selector: 'bao-card, [bao-card], [baoCard]',
-  templateUrl: 'card.html',
+  templateUrl: 'card.component.html',
+  styleUrls: ['./card.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'card' }
+  host: {
+    class: 'bao-card',
+    '[class.bao-card-large-padding]': 'padding === "large"'
+  }
 })
-export class BaoCardComponent {}
+export class BaoCardComponent {
+  @Input() public padding: 'normal' | 'large' = 'normal';
+}
 
 /**
- * A specific content container component that serves the purpose of displaying a card
- * with a icon header the way it is intended by the DVM design system.
- *
- * While this component can be used alone, it also provides a number
- * of preset styles to use in the body:
- * - bao-card-body
- * - bao-card-title
- * - bao-card-bao-text-interface
+ * Header of a card, needed as it's used as a selector in the API.
  */
-@Component({
-  selector: 'bao-card-icon, [bao-card-icon], [baoCardIcon]',
-  templateUrl: 'card-icon.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'card card-icon' }
+@Directive({
+  selector: 'bao-card-header, [bao-card-header], [baoCardHeader]',
+  host: { class: 'bao-card-header' }
 })
-export class BaoCardIconComponent {
-  @Input() public icon: string;
-}
+export class BaoCardHeader {}
 
 /**
  * Body of a card, needed as it's used as a selector in the API.
  */
 @Directive({
-  selector: 'bao-card-body, [bao-card-body], [baoCardBody]',
-  host: { class: 'card-body' }
+  selector: 'bao-card-content, [bao-card-content], [baoCardContent]',
+  host: { class: 'bao-card-content' }
 })
-export class BaoCardBody {}
+export class BaoCardContent {}
 
 /**
  * Title of a card, needed as it's used as a selector in the API.
@@ -58,7 +51,7 @@ export class BaoCardBody {}
 @Directive({
   selector: `bao-card-title, [bao-card-title], [baoCardTitle]`,
   host: {
-    class: 'card-title'
+    class: 'bao-card-title'
   }
 })
 export class BaoCardTitle {}
@@ -69,18 +62,7 @@ export class BaoCardTitle {}
 @Directive({
   selector: `bao-card-text-interface, [bao-card-text-interface], [baoCardTextInterface]`,
   host: {
-    class: 'card-text-interface'
+    class: 'bao-card-text-interface'
   }
 })
 export class BaoCardTextInterface {}
-
-/**
- * Card Icon Top, should be used in card-icon component.
- */
-@Directive({
-  selector: `bao-card-icon-top, [bao-card-icon-top], [baoCardIconTop]`,
-  host: {
-    class: 'card-icon-top'
-  }
-})
-export class BaoCardIconTop {}

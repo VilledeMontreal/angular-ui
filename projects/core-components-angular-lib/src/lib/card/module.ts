@@ -1,19 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
-  BaoCardBody,
   BaoCardComponent,
-  BaoCardIconComponent,
-  BaoCardIconTop,
+  BaoCardContent,
+  BaoCardHeader,
   BaoCardTextInterface,
   BaoCardTitle
 } from './card.component';
 
 const CARD_DIRECTIVES = [
   BaoCardComponent,
-  BaoCardIconComponent,
-  BaoCardBody,
-  BaoCardIconTop,
+  BaoCardContent,
+  BaoCardHeader,
   BaoCardTextInterface,
   BaoCardTitle
 ];

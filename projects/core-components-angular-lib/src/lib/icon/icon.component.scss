@@ -8,6 +8,7 @@ bao-icon {
   background-repeat: no-repeat;
   display: inline-block;
   fill: currentColor;
+  line-height: normal;
 
   &.bao-icon-medium {
     height: $size-medium;
@@ -17,16 +18,19 @@ bao-icon {
   &.bao-icon-small {
     height: $size-small;
     width: $size-small;
+    line-height: 1.75rem;
   }
 
   &.bao-icon-x-small {
     height: $size-x-small;
     width: $size-x-small;
+    line-height: 1.15rem;
   }
 
   &.bao-icon-xx-small {
     height: $size-xx-small;
     width: $size-xx-small;
+    line-height: 0.85rem;
   }
 
   &.bao-icon-spinner {

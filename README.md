@@ -76,7 +76,7 @@ Les versions supportées sont:
 
 | @villemontreal/core-components-angular-lib | Angular | Angular CDK |
 |-|-|-|
-| 0.3.x | >= 8.0.0 < 11 | >= 8.0.0 < 11 |
+| 0.4.x | >= 8.0.0 < 11 | >= 8.0.0 < 11 |
 
 ## Contribuer à la librairie
 

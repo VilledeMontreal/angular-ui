@@ -6,7 +6,8 @@ $size-xx-small: 1rem !default;
 
 bao-icon {
   background-repeat: no-repeat;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   fill: currentColor;
   line-height: normal;
 

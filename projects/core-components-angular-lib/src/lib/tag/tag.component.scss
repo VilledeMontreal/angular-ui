@@ -1,0 +1,88 @@
+@import '../core/colors';
+@import '../core/typography';
+
+$tag-colors: (
+    info: (
+        background-light: $informative-light,
+        background-strong: $informative-reversed,
+        color-light: $informative,
+        color-strong: $white
+    ),
+    positive: (
+        background-light: $positive-light,
+        background-strong: $positive-reversed,
+        color-light: $positive,
+        color-strong: $white
+    ),
+    negative: (
+        background-light: $negative-light,
+        background-strong: $negative-reversed,
+        color-light: $negative,
+        color-strong: $white
+    ),
+    alert: (
+        background-light: $warning-light,
+        background-strong: $warning-reversed,
+        color-light: $warning,
+        color-strong: $ground-reversed
+    ),
+    neutral: (
+        background-light: $underground-2,
+        background-strong: $ground-reversed,
+        color-light: $ground-reversed,
+        color-strong: $white
+    )
+);
+
+$space-between-icon-and-text: 0.25rem;
+$tag-padding: 0.125rem 0.5rem;
+$padding-icon: 0.25rem;
+$corner-radius: 0.125rem;
+$icon-size: 1rem;
+$line-height: 1.5rem;
+
+.bao-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: $tag-padding;
+    border-radius: $corner-radius;
+    line-height: $line-height;
+
+    &.has-left-icon {
+        padding-left: $padding-icon;
+    }
+    &.has-right-icon {
+        padding-right: $padding-icon;
+    }
+
+    @each $type, $map in $tag-colors {
+        $variant-light: map-get($map, background-light);
+        $variant-strong: map-get($map, background-strong);
+        $color-light: map-get($map, color-light);
+        $color-strong: map-get($map, color-strong);
+
+        &.bao-tag-#{$type}-light {
+            background-color: $variant-light;
+            color: $color-light;
+        }
+
+        &.bao-tag-#{$type}-strong {
+            background-color: $variant-strong;
+            color: $color-strong;
+        }
+    }
+    & > span {
+        @include typo-interface-small-bold;
+    }
+    & > .bao-icon {
+        height: $icon-size;
+        width: $icon-size;
+        flex-shrink: 0;
+    }
+    & > .bao-icon:first-child {
+        margin-right: $space-between-icon-and-text;
+    }
+    & > .bao-icon:last-child {
+        margin-left: $space-between-icon-and-text;
+    }
+}

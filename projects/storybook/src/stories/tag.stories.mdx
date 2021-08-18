@@ -1,0 +1,91 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { BaoTagComponent, BaoIconComponent } from 'core-components-angular-lib';
+
+<Meta title='Tags' decorators={[
+  moduleMetadata({
+    declarations: [BaoTagComponent, BaoIconComponent]
+  })
+]} />
+
+# Tag
+Tags are used to categorize, identify and organize content.
+
+
+## Properties
+
+<Props of={BaoTagComponent} />
+
+## Type
+
+* `'positive'` is a green tag
+* `'negative'` is a red tag
+* `'alert'` is a yellow tag
+* `'info'` is a blue tag
+* `'neutral'` is a grey tag
+
+## Variant
+
+* `'light'` tag's color is light
+* `'strong'` tag's color is bold
+
+## Tags light shade
+<Preview>
+  <Story name='Tags - Light'>{{
+    component: BaoTagComponent,
+    template: `
+      <bao-tag type="positive" hiddenText="Positif" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag type="negative" variant="light" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag hiddenText="Neutre" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag type="alert" variant="light" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag type="info" variant="light" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+    `
+  }}
+  </Story>
+</Preview>
+
+## Tags strong shade
+<Preview>
+  <Story name='Tags - Strong'>{{
+    component: BaoTagComponent,
+    template: `
+      <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag type="negative" variant="strong" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag variant="strong" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag type="alert" variant="strong" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+      <bao-tag type="info" variant="strong" style="margin-right:1.5rem"><span>Label</span></bao-tag>
+    `
+  }}
+  </Story>
+</Preview>
+
+## Tags with icon
+### Icon left
+<Preview>
+  <Story name='Tags - Icon left'>{{
+    component: BaoTagComponent,
+    template: `
+      <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-check-circle"></bao-icon><span>Label</span></bao-tag>
+      <bao-tag type="negative" style="margin-right:1.5rem"><bao-icon svgIcon="icon-minus-circle"></bao-icon><span>Label</span></bao-tag>
+      <bao-tag hiddenText="Neutre" style="margin-right:1.5rem"><bao-icon svgIcon="icon-bell"></bao-icon><span>Label</span></bao-tag>
+      <bao-tag type="alert" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-warning"></bao-icon><span>Label</span></bao-tag>
+      <bao-tag type="info" variant="light" style="margin-right:1.5rem"><bao-icon svgIcon="icon-info"></bao-icon><span>Label</span></bao-tag>
+    `
+  }}
+  </Story>
+</Preview>
+
+### Icon right 
+<Preview>
+  <Story name='Tags - Icon right'>{{
+    component: BaoTagComponent,
+    template: `
+      <bao-tag type="positive" variant="light" style="margin-right:1.5rem"><span>Label</span><bao-icon svgIcon="icon-help"></bao-icon></bao-tag>
+      <bao-tag type="negative" variant="strong" style="margin-right:1.5rem"><span>Label</span><bao-icon svgIcon="icon-thumb-down"></bao-icon></bao-tag>
+      <bao-tag type="neutral" variant="strong" style="margin-right:1.5rem"><span>Label</span><bao-icon svgIcon="icon-website"></bao-icon></bao-tag>
+      <bao-tag type="alert" hiddenText="Alerte" style="margin-right:1.5rem"><span>Label</span><bao-icon svgIcon="icon-location"></bao-icon></bao-tag>
+      <bao-tag type="info" variant="strong" style="margin-right:1.5rem"><span>Label</span><bao-icon svgIcon="icon-home"></bao-icon></bao-tag>
+    `
+  }}
+  </Story>
+</Preview>

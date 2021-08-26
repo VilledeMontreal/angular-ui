@@ -69,6 +69,13 @@ Ceci démarrera un serveur web local et fera pointer votre browser par défaut p
 
 **Attention** il faut avoir complété le build de la librairie au préalable.
 
+## WATCH mode (dev)
+Afin de faciliter le développement de la librairie, un script `npm` additionnel est disponible
+
+`npm run dev`
+
+Ceci lancera le build de la librairie Angular en `watch` mode et storybook dans des processus parallèles dans le même terminal. Ceci veut dire que tout changement au code typescript, aux fichiers .scss ou au stories mdx seront reflétés dans le browser sans relancer de commande à partir du terminal.
+
 ## Dépendances
 
 Les seules dépendances sont [Angular Core](https://angular.io) et [Angular CDK](https://material.angular.io/cdk/categories).

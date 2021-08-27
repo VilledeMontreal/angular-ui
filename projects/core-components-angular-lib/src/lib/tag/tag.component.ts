@@ -1,11 +1,18 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  Renderer2,
+  ViewEncapsulation
+} from '@angular/core';
 
 const SPAN = 'span';
 const SPAN_TEXT_PROPERTY = 'textContent';
 const SCREEN_READER_CLASS_NAME = 'sr-only';
 const BAO_ICON = 'bao-icon';
-const HAS_LEFT_ICON = 'has-left-icon';
-const HAS_RIGHT_ICON = 'has-right-icon';
+const HAS_ICON = 'has-icon';
 
 @Component({
   selector: 'bao-tag, [bao-tag], [baoTag]',
@@ -64,11 +71,8 @@ export class BaoTagComponent implements AfterViewInit {
 
   private addIconClass() {
     const children = Array.from(this.nativeElement.children);
-    const iconIndex = children.findIndex(c => c.localName === BAO_ICON);
-    if (iconIndex > -1) {
-      const labelIndex = children.findIndex(c => c.localName === SPAN);
-      const iconClass = iconIndex < labelIndex? HAS_LEFT_ICON: HAS_RIGHT_ICON;
-      this.renderer.addClass(this.nativeElement, iconClass);
+    if (children.some(c => c.localName === BAO_ICON)) {
+      this.renderer.addClass(this.nativeElement, HAS_ICON);
     }
   }
 }

@@ -3,6 +3,7 @@ import { BaoAlertModule } from './alert/module';
 import { BaoBreadcrumbModule } from './breadcrumb/module';
 import { BaoButtonModule } from './button/module';
 import { BaoCardModule } from './card/module';
+import { BaoHeaderInfoModule } from './header-info/module';
 import { BaoIconModule } from './icon/module';
 import { BaoTagModule } from './tag/module';
 
@@ -14,10 +15,10 @@ import { BaoTagModule } from './tag/module';
     BaoAlertModule,
     BaoBreadcrumbModule,
     BaoCardModule,
-    BaoTagModule
+    BaoTagModule,
+    BaoHeaderInfoModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
-    // TODO: reactivate once component does not depend on global css BaoHeaderInfoModule
   ]
 })
 export class BaoModule {}

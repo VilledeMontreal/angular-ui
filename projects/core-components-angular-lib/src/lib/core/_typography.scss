@@ -1,8 +1,36 @@
+@import './colors';
+
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 
+@mixin typo-heading-1 {
+  font-weight: 700;
+  color: $ground-reversed;
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+}
+
+@mixin typo-heading-2 {
+  font-weight: 700;
+  color: $ground-reversed;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
 @mixin typo-interface-large-bold {
   font-weight: $font-weight-bold;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@mixin typo-interface-large-bold {
+  font-weight: $font-weight-bold;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@mixin typo-interface-large {
+  font-weight: $font-weight-normal;
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
@@ -34,4 +62,11 @@ $font-weight-bold: 700;
   font-weight: $font-weight-bold;
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+@mixin typo-paragraph-large {
+  font-weight: $font-weight-normal;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  margin: 1rem 0;
 }

@@ -5,17 +5,20 @@
     class="document-heading-background"
   ></div>
 </div>
-<div class="container position-relative">
-  <div class="row document-heading-header">
-    <div class="col-12 col-lg-7">
+
+<div class="bao-container document-heading-header-container">
+  <div class="bao-row document-heading-header">
+    <div class="bao-col-12 bao-col-lg-7">
       <ng-content select="bao-header-info-title-group"></ng-content>
-      <ng-content></ng-content>
+      <div class="bao-header-content">
+        <ng-content></ng-content>
+      </div>
       <div *ngIf="brandBorder" class="brand-border-bottom"></div>
     </div>
   </div>
-  <div *ngIf="notch" class="document-heading-wrapper">
+  <div *ngIf="notch" class="document-heading-wrapper notch">
     <div class="document-heading-content-wrapper">
-      <div class="document-heading-content col-12"></div>
+      <div class="document-heading-content"></div>
     </div>
   </div>
 </div>

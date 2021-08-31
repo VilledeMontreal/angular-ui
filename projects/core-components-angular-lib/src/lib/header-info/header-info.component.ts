@@ -19,15 +19,12 @@ import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'document-heading document-heading-fullwidth',
-    '[class.document-heading-left-notch]': 'notch === "left"',
-    '[class.document-heading-sm]': 'size === "small"',
-    '[class.document-heading-xl]': 'size === "large"'
+    class: 'bao-document-heading',
+    '[class.document-heading-left-notch]': 'notch === "left"'
   }
 })
 export class BaoHeaderInfoComponent {
   @Input() public notch: '' | 'left' | 'center' = '';
-  @Input() public size: '' | 'small' | 'large' = '';
   @Input() public imageUrl: string = '';
   @Input() public brandBorder: boolean = false;
 }
@@ -38,7 +35,7 @@ export class BaoHeaderInfoComponent {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'bao-header-info-title-group pb-2'
+    class: 'bao-header-info-title-group'
   }
 })
 export class BaoHeaderInfoTitleGroupComponent {}
@@ -46,7 +43,7 @@ export class BaoHeaderInfoTitleGroupComponent {}
 @Directive({
   selector: 'bao-header-info-content',
   host: {
-    class: 'bao-header-info-content pb-4'
+    class: 'bao-header-info-content'
   }
 })
 export class BaoHeaderInfoContent {}
@@ -70,7 +67,7 @@ export class BaoHeaderInfoSubtitle {}
 @Directive({
   selector: 'bao-header-info-title, [bao-header-info-title], [baoHeaderInfoTitle]',
   host: {
-    class: 'h1'
+    class: 'document-heading-title'
   }
 })
 export class BaoHeaderInfoTitle {}

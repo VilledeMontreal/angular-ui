@@ -1,6 +1,9 @@
+@import './variables';
+
 @mixin hover-focus {
-    &:hover,
-    &:focus {
-      @content;
-    }
+  &:hover,
+  &:focus {
+    @content;
+  }
 }
+

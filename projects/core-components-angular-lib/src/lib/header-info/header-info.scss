@@ -1,8 +1,127 @@
-.document-heading,
+@import '../core/variables';
+@import '../core/typography';
+@import '../core/colors';
+@import '../core/grid';
+
 .bao-header-info-title-group,
 .bao-header-info-content,
 .document-heading-subtitle,
-.document-heading-surtitle
- {
+.document-heading-surtitle {
   display: block;
+}
+
+.document-heading-header-container {
+  position: relative !important;
+}
+
+.bao-document-heading {
+  display: block;
+  padding: 2rem 0;
+  position: relative;
+  width: 100%;
+
+  .document-heading-title {
+    @include typo-heading-2();
+    margin-bottom: 0;
+  }
+
+  .document-heading-surtitle {
+    @include typo-interface-medium-bold();
+    margin-bottom: 1rem;
+    color: $ground-reversed;
+  }
+
+  .document-heading-subtitle {
+    @include typo-interface-medium-normal();
+    color: $neutral-primary;
+  }
+
+  // To handle spacing in info title group
+  .bao-header-info-title-group {
+    & > *:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+
+  .bao-header-content {
+    &:not(:empty) {
+      margin-top: 2rem;
+    }
+  }
+
+  .brand-border-bottom {
+    margin-top: 2rem;
+  }
+
+  .document-heading-background {
+    background-color: $neutral-underground;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .document-heading-content {
+    background-color: $white;
+    height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    bottom: -2rem;
+  }
+
+  @include respond-to(md) {
+    .document-heading-title {
+      @include typo-heading-1();
+    }
+
+    .document-heading-surtitle {
+      @include typo-interface-large-bold();
+      margin-bottom: 1rem;
+      color: $ground-reversed;
+    }
+
+    .document-heading-subtitle {
+      @include typo-interface-large();
+      color: $neutral-primary;
+    }
+  }
+
+  @include respond-to(lg) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .document-heading-content {
+      bottom: -4rem;
+      height: 3.5rem;
+      margin: auto;
+    }
+
+    &.document-heading-left-notch {
+      .document-heading-content {
+        max-width: 66.66667%;
+        margin: 0;
+        &:before {
+          content: '';
+          background: $white;
+          width: 1000px;
+          height: 100%;
+          position: absolute;
+          left: -1000px;
+        }
+        &:after {
+          content: '';
+          background: $white;
+          width: 1rem;
+          height: 100%;
+          position: absolute;
+        }
+      }
+    }
+  }
 }

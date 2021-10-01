@@ -1,0 +1,126 @@
+@import '../core/typography';
+@import '../core/colors';
+@import '../core/shadows';
+@import '../core/radius';
+@import '../core/grid';
+@import '../core/variables';
+
+$size-xx-small: 1rem;
+
+.bao-list {
+  padding: 0;
+  margin: 0;
+  > .bao-list-item:last-child {
+    border-radius: $radius-small $radius-small $radius-small $radius-small;
+    box-shadow: inset 0 0.0625rem 0 $neutral-stroke, inset 0 -0.0625rem 0 $neutral-stroke;
+  }
+  > a.bao-list-item {
+    border-bottom: none;
+    &:focus {
+      @include shadow-focus;
+      background-color: $neutral-underground;
+      .bao-list-item-title {
+        color: $action;
+      }
+    }
+    &:hover {
+      background-color: $neutral-underground;
+      .bao-list-item-text,
+      .bao-list-item-title {
+        color: $action;
+      }
+    }
+  }
+  .bao-list-item {
+    display: flex;
+    padding: 1rem;
+    background-color: $transparent;
+    border-radius: $radius-small $radius-small $radius-none $radius-none;
+    @include box-shadow-opacity(inset, 0, 0.0625rem, 0, $neutral-stroke);
+
+    > .bao-list-item-header {
+      align-self: flex-start;
+      color: $neutral-tertiary;
+      line-height: 0;
+      .bao-icon {
+        margin-right: 1em;
+      }
+    }
+    > .bao-list-item-content {
+      display: flex;
+      flex-grow: 2;
+      @include respond-to(xs) {
+        flex-direction: column;
+      }
+      @include respond-to(md) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      > .bao-list-item-text {
+        display: flex;
+        flex-direction: column;
+        color: $ground-reversed;
+        @include typo-interface-medium-bold;
+
+        > .bao-list-item-title {
+          @include typo-interface-medium-bold;
+        }
+        > ul.bao-list-item-description {
+          padding: 0;
+          margin: 0;
+          @include respond-to(md) {
+            display: inline-flex;
+            flex-wrap: wrap;
+          }
+        }
+        > .bao-list-item-description {
+          color: $neutral-secondary;
+          margin-right: 0 1rem;
+          > * {
+            @include typo-interface-small;
+            list-style-type: none;
+          }
+          @include respond-to(xs) {
+            display: block;
+            > * {
+              margin-bottom: 0.25rem;
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+          @include respond-to(md) {
+            > li {
+              display: inline-flex;
+              align-items: center;
+              margin-bottom: 0;
+              &:before {
+                content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ADB5BD' fill-rule='evenodd'><circle cx='12' cy='12' r='2'/></svg>");
+                height: $size-xx-small;
+                width: $size-xx-small;
+                margin: 0 0.25rem;
+                flex-shrink: 0;
+              }
+              &:first-child {
+                &:before {
+                  content: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      > .bao-list-item-tag {
+          line-height: 0;
+          .bao-tag {
+            @include respond-to(xs) {
+              margin: 0.5rem 0 0 0;
+            }
+            @include respond-to(md) {
+              margin: 0 0 0 1rem;
+            }
+          }
+      }
+    }
+  }
+}

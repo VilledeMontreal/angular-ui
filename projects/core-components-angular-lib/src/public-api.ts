@@ -9,3 +9,4 @@ export * from './lib/card/index';
 export * from './lib/breadcrumb/index';
 export * from './lib/tag/index';
 export * from './lib/header-info/index';
+export * from './lib/list/index';

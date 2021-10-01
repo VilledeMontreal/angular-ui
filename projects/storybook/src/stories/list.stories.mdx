@@ -1,0 +1,343 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { Overlay } from '@angular/cdk/overlay';
+import { BaoModule } from 'core-components-angular-lib';
+
+<Meta
+  title="List"
+  decorators={[
+    moduleMetadata({
+      imports: [BaoModule]
+    })
+  ]}
+/>
+
+# Utility list
+
+A list of utility items is a list composed of complex objects intended for an application or a tool.
+
+## Properties
+
+This component has no properties.
+
+## Simple list
+
+<Preview>
+  <Story name="Simple list">
+    {{
+      template: `
+          <bao-list>
+            <bao-list-item>Example 1</bao-list-item>
+            <bao-list-item>Example 2</bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Simple list with an icon
+
+<Preview>
+  <Story name="Simple list - Icon">
+    {{
+      template: `
+          <bao-list>
+            <bao-list-item>
+              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <span bao-list-item-title>Title</span>
+            </bao-list-item>
+            <bao-list-item>
+              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <span bao-list-item-title>Title</span>
+            </bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Simple list with a tag
+
+<Preview>
+  <Story name="Simple list - tag">
+    {{
+      template: `
+          <bao-list>
+            <bao-list-item>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </bao-list-item>
+            <bao-list-item>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Simple list with a tag and an icon
+
+<Preview>
+  <Story name="Simple list - tag & icon">
+    {{
+      template: `
+          <bao-list>
+            <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </bao-list-item>
+            <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Simple list with descriptions
+
+<Preview>
+  <Story name="Simple list - Description">
+    {{
+      template: `
+          <bao-list>
+              <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+                <bao-list-item-description>
+                  <div>Description 1</div>
+                  <div>Description 2</div>
+                </bao-list-item-description>
+              </bao-list-item>
+              <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+                <bao-list-item-description>
+                  <div>Description 1</div>
+                  <div>Description 2</div>
+                </bao-list-item-description>
+              </bao-list-item>
+              <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+                <bao-list-item-description>
+                  <div>Description 1</div>
+                  <div>Description 2</div>
+                </bao-list-item-description>
+              </bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Simple list with inline descriptions
+
+<Preview>
+  <Story name="Simple list - Inline description">
+    {{
+      template: `
+          <bao-list>
+              <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <ul bao-list-item-description>
+                  <li>Description 1</li>
+                  <li>Description 2</li>
+                </ul>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+              </bao-list-item>
+              <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <ul bao-list-item-description>
+                  <li>Description 1</li>
+                  <li>Description 2</li>
+                </ul>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+              </bao-list-item>
+              <bao-list-item>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <ul bao-list-item-description>
+                  <li>Description 1</li>
+                  <li>Description 2</li>
+                </ul>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+              </bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+
+
+## Navigation list
+
+<Preview>
+  <Story name="Navigation list">
+    {{
+      template: `
+          <bao-nav-list>
+            <a bao-list-item href="#">Navigation list 1</a>
+            <a bao-list-item href="#">Navigation list 2</a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Navigation list with an icon
+
+<Preview>
+  <Story name="Navigation list - Icon">
+    {{
+      template: `
+          <bao-nav-list>
+            <a bao-list-item href=#>
+              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <span bao-list-item-title>Title</span>
+            </a>
+            <a bao-list-item href=#>
+              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <span bao-list-item-title>Title</span>
+            </a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Navigation list with a tag
+
+<Preview>
+  <Story name="Navigation list - tag">
+    {{
+      template: `
+          <bao-nav-list>
+            <a bao-list-item href=#>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </a>
+            <a bao-list-item href=#>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Navigation list with a tag and an icon
+
+<Preview>
+  <Story name="Navigation list - tag & icon">
+    {{
+      template: `
+          <bao-nav-list>
+            <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </a>
+            <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+            </a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Navigation list with descriptions
+
+<Preview>
+  <Story name="Navigation list - Description">
+    {{
+      template: `
+          <bao-nav-list>
+              <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+                <bao-list-item-description>
+                  <div>Description 1</div>
+                  <div>Description 2</div>
+                </bao-list-item-description>
+              </a>
+              <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+                <bao-list-item-description>
+                  <div>Description 1</div>
+                  <div>Description 2</div>
+                </bao-list-item-description>
+              </a>
+              <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+                <bao-list-item-description>
+                  <div>Description 1</div>
+                  <div>Description 2</div>
+                </bao-list-item-description>
+              </a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Navigation list with inline descriptions
+
+<Preview>
+  <Story name="Navigation list - Inline description">
+    {{
+      template: `
+          <bao-nav-list>
+              <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <ul bao-list-item-description>
+                  <li>Description 1</li>
+                  <li>Description 2</li>
+                </ul>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+              </a>
+              <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <ul bao-list-item-description>
+                  <li>Description 1</li>
+                  <li>Description 2</li>
+                </ul>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+              </a>
+              <a bao-list-item href=#>
+                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <span bao-list-item-title>Title</span>
+                <ul bao-list-item-description>
+                  <li>Description 1</li>
+                  <li>Description 2</li>
+                </ul>
+                <bao-tag type="positive"><span>Label</span></bao-tag>
+              </a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>

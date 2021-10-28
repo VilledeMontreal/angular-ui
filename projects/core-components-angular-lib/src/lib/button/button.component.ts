@@ -26,8 +26,8 @@ const LOADING_SPINNER_CLASS = 'loading-spinner';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'bao-button',
-    '[class.bao-button-utility]': 'type === "utility"',
-    '[class.bao-button-editorial]': 'type === "editorial"',
+    '[class.bao-button-utility]': 'displayType === "utility"',
+    '[class.bao-button-editorial]': 'displayType === "editorial"',
     '[class.bao-button-primary]': 'level === "primary"',
     '[class.bao-button-secondary]': 'level === "secondary"',
     '[class.bao-button-tertiary]': 'level === "tertiary"',
@@ -42,9 +42,9 @@ const LOADING_SPINNER_CLASS = 'loading-spinner';
 })
 export class BaoButtonComponent implements AfterViewInit {
   /**
-   * The type of the button
+   * The display type of the button
    */
-  @Input() public type: 'utility' | 'editorial' = 'utility';
+  @Input() public displayType: 'utility' | 'editorial' = 'utility';
   /**
    * The hierarchy level of the button
    */

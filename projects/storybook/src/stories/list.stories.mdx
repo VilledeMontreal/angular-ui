@@ -35,20 +35,41 @@ This component has no properties.
   </Story>
 </Preview>
 
-## Simple list with an icon
+## Simple list with a left icon
 
 <Preview>
-  <Story name="Simple list - Icon">
+  <Story name="Simple list - Left icon">
     {{
       template: `
           <bao-list>
             <bao-list-item>
-              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
               <span bao-list-item-title>Title</span>
             </bao-list-item>
             <bao-list-item>
-              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
               <span bao-list-item-title>Title</span>
+            </bao-list-item>
+          </bao-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Simple list with a right icon
+
+<Preview>
+  <Story name="Simple list - Right icon">
+    {{
+      template: `
+          <bao-list>
+            <bao-list-item>
+              <span bao-list-item-title>Title</span>
+              <bao-icon baoIconTag svgIcon="icon-check"></bao-icon>
+            </bao-list-item>
+            <bao-list-item>
+              <span bao-list-item-title>Title</span>
+              <bao-icon baoIconTag svgIcon="icon-check"></bao-icon>
             </bao-list-item>
           </bao-list>
     `
@@ -59,7 +80,7 @@ This component has no properties.
 ## Simple list with a tag
 
 <Preview>
-  <Story name="Simple list - tag">
+  <Story name="Simple list - Tag">
     {{
       template: `
           <bao-list>
@@ -80,17 +101,17 @@ This component has no properties.
 ## Simple list with a tag and an icon
 
 <Preview>
-  <Story name="Simple list - tag & icon">
+  <Story name="Simple list - Tag & icon">
     {{
       template: `
           <bao-list>
             <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
             </bao-list-item>
             <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
             </bao-list-item>
@@ -108,7 +129,7 @@ This component has no properties.
       template: `
           <bao-list>
               <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
                 <bao-list-item-description>
@@ -117,7 +138,7 @@ This component has no properties.
                 </bao-list-item-description>
               </bao-list-item>
               <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
                 <bao-list-item-description>
@@ -126,7 +147,7 @@ This component has no properties.
                 </bao-list-item-description>
               </bao-list-item>
               <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
                 <bao-list-item-description>
@@ -148,7 +169,7 @@ This component has no properties.
       template: `
           <bao-list>
               <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <ul bao-list-item-description>
                   <li>Description 1</li>
@@ -157,7 +178,7 @@ This component has no properties.
                 <bao-tag type="positive"><span>Label</span></bao-tag>
               </bao-list-item>
               <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <ul bao-list-item-description>
                   <li>Description 1</li>
@@ -166,7 +187,7 @@ This component has no properties.
                 <bao-tag type="positive"><span>Label</span></bao-tag>
               </bao-list-item>
               <bao-list-item>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <ul bao-list-item-description>
                   <li>Description 1</li>
@@ -197,20 +218,41 @@ This component has no properties.
   </Story>
 </Preview>
 
-## Navigation list with an icon
+## Navigation list with a left icon
 
 <Preview>
-  <Story name="Navigation list - Icon">
+  <Story name="Navigation list - Left icon">
     {{
       template: `
           <bao-nav-list>
             <a bao-list-item href=#>
-              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
               <span bao-list-item-title>Title</span>
             </a>
             <a bao-list-item href=#>
-              <bao-icon svgIcon="icon-eye"></bao-icon>
+              <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
               <span bao-list-item-title>Title</span>
+            </a>
+          </bao-nav-list>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Navigation list with a right icon
+
+<Preview>
+  <Story name="Navigation list - Right icon">
+    {{
+      template: `
+          <bao-nav-list>
+            <a bao-list-item href=#>
+              <span bao-list-item-title>Title</span>
+              <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
+            </a>
+            <a bao-list-item href=#>
+              <span bao-list-item-title>Title</span>
+              <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
             </a>
           </bao-nav-list>
     `
@@ -221,7 +263,7 @@ This component has no properties.
 ## Navigation list with a tag
 
 <Preview>
-  <Story name="Navigation list - tag">
+  <Story name="Navigation list - Tag">
     {{
       template: `
           <bao-nav-list>
@@ -242,17 +284,17 @@ This component has no properties.
 ## Navigation list with a tag and an icon
 
 <Preview>
-  <Story name="Navigation list - tag & icon">
+  <Story name="Navigation list - Tag & icon">
     {{
       template: `
           <bao-nav-list>
             <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
             </a>
             <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
             </a>
@@ -270,7 +312,7 @@ This component has no properties.
       template: `
           <bao-nav-list>
               <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
                 <bao-list-item-description>
@@ -279,7 +321,7 @@ This component has no properties.
                 </bao-list-item-description>
               </a>
               <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
                 <bao-list-item-description>
@@ -288,7 +330,7 @@ This component has no properties.
                 </bao-list-item-description>
               </a>
               <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <bao-tag type="positive"><span>Label</span></bao-tag>
                 <bao-list-item-description>
@@ -310,7 +352,7 @@ This component has no properties.
       template: `
           <bao-nav-list>
               <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <ul bao-list-item-description>
                   <li>Description 1</li>
@@ -319,7 +361,7 @@ This component has no properties.
                 <bao-tag type="positive"><span>Label</span></bao-tag>
               </a>
               <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <ul bao-list-item-description>
                   <li>Description 1</li>
@@ -328,7 +370,7 @@ This component has no properties.
                 <bao-tag type="positive"><span>Label</span></bao-tag>
               </a>
               <a bao-list-item href=#>
-                <bao-icon svgIcon="icon-eye"></bao-icon>
+                <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
                 <span bao-list-item-title>Title</span>
                 <ul bao-list-item-description>
                   <li>Description 1</li>

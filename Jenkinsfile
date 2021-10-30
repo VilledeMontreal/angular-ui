@@ -28,7 +28,7 @@ libCtx = pipeline.createContext([
                chat: [
                     room: 'core-components-angular-lib-notifications',
                     notify: true,
-                    ],            
+                    ],
                 mail: [
                         to: [
                                 // Full email, or prefix of the email address ville.montreal.qc.ca
@@ -110,14 +110,14 @@ sbCtx = pipeline.createContext([
     ],
     build: [
         containers: [
-            // [ 
+            // [
             //     name: "hugo",
             //     image: "cibuilds/hugo:0.62.2",
             //     ttyEnabled: true,
             //     command: "cat",
             //     alwaysPullImage: true,
             // ],
-            [ 
+            [
                 name: "nodejs",
                 image: "node:10-alpine",
                 ttyEnabled: true,
@@ -182,7 +182,7 @@ sbCtx = pipeline.createContext([
     ],
     approval: [
         enabled: false,
-        approvers: ["udeboya"]
+        approvers: ["usamtol"]
     ],
     notifications: [
         chat: [
@@ -195,7 +195,7 @@ sbCtx = pipeline.createContext([
                 // ex: "john.doe", "jane.dear@mailinator.com"
                 // Note that the code U (e.g., udev123) will not work since there
                 // is no email using that id.
-                "yann.debonnel",
+                "tola.sam",
             ]
         ]
     ],

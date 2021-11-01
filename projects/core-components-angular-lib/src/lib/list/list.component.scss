@@ -112,7 +112,7 @@ $size-xx-small: 1rem;
       }
       > .bao-list-item-tag {
           line-height: 0;
-          .bao-tag {
+          > * {
             @include respond-to(xs) {
               margin: 0.5rem 0 0 0;
             }

@@ -1,7 +1,17 @@
 {
-  "extends": "@villemontreal/lint-config-villemontreal/rules/tslint-angular",
+  "extends": "@villedemontreal/lint-config/rules/tslint-angular",
   "rules": {
     "max-classes-per-file": false,
-    "directive-class-suffix": false
+    "directive-class-suffix": false,
+    "template-accessibility-alt-text": true,
+    "template-accessibility-elements-content": true,
+    "template-accessibility-label-for": true,
+    "template-accessibility-tabindex-no-positive": true,
+    "template-accessibility-table-scope": true,
+    "template-accessibility-valid-aria": true,
+    "template-click-events-have-key-events": true,
+    "template-mouse-events-have-key-events": true,
+    "template-no-autofocus": true,
+    "template-no-distracting-elements": true
   }
 }

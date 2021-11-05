@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@villemontreal/lint-config-villemontreal/rules/tsconfig-base.json",
+  "extends": "./node_modules/@villedemontreal/lint-config/rules/tsconfig-base.json",
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",

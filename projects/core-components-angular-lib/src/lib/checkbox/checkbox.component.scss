@@ -1,0 +1,180 @@
+@import '../core/colors';
+
+.bao-checkbox {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  min-height: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  position: relative;
+  z-index: 1;
+
+  input {
+    box-sizing: border-box;
+    left: 0;
+    opacity: 0;
+    overflow: visible;
+    padding: 0;
+    position: absolute;
+    z-index: -1;
+
+    &:focus {
+      ~ .bao-checkbox-content-container {
+        &::before {
+          box-shadow: 0 0 0 0.1875rem rgb(0 121 196 / 50%);
+        }
+      }
+    }
+  }
+
+  label.bao-checkbox-content-container {
+    color: $ground-reversed;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 0;
+    position: relative;
+    vertical-align: top;
+
+    &::before {
+      border-radius: 0.125rem;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: -2rem;
+      display: block;
+      margin: 0.125rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      pointer-events: none;
+      content: '';
+      background-color: $white;
+      border: $neutral-stroke solid 1px;
+      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    &::after {
+      box-sizing: border-box;
+      background: no-repeat 50%/1.5rem;
+      content: '';
+      display: block;
+      height: 1.5rem;
+      left: -2rem;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 1.5rem;
+    }
+
+    .bao-checkbox-label {
+      color: $ground-reversed;
+      display: block;
+    }
+
+    .bao-checkbox-description {
+      color: $neutral-secondary;
+      display: block;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &.bao-checkbox-inline {
+    display: inline-flex;
+    margin-right: 1rem;
+  }
+
+  &.bao-checkbox-card {
+    padding: 0;
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    label.bao-checkbox-content-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+      padding: 1rem;
+      padding-left: 3.5rem;
+      position: relative;
+      border: 1px solid $neutral-stroke;
+      border-radius: 0.25rem;
+      color: $neutral-secondary;
+      min-height: 3.5rem;
+
+      &::before {
+        top: 1rem;
+        left: 0;
+        margin-left: 1.125rem;
+      }
+
+      &::after {
+        top: 1rem;
+        left: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  //// DIFFERENT CHECKBOX STATES //////
+  /** INDETERMINATE STATE **/
+  &.bao-checkbox-indeterminate {
+    .bao-checkbox-content-container {
+      &::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23097d6c' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+      }
+    }
+  }
+
+  /** CHECKED STATE **/
+  input:checked {
+    ~ .bao-checkbox-content-container {
+      &::before {
+        border-color: $action;
+        background-color: $action;
+      }
+      &::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='%23ffffff' d='M16.7 8.3C17.1 8.7 17.1 9.3 16.7 9.7L10.7 15.7 10.7 15.7C10.6 15.9 10.4 15.9 10.2 16L10.1 16 10.1 16 9.9 16C9.7 16 9.5 15.9 9.3 15.7L7.3 13.7C6.9 13.3 6.9 12.7 7.3 12.3 7.7 11.9 8.3 11.9 8.7 12.3L10 13.6 15.3 8.3C15.7 7.9 16.3 7.9 16.7 8.3Z'/%3e%3c/svg%3e");
+      }
+    }
+  }
+
+  /** DISABLED STATE **/
+  input:disabled {
+    ~ .bao-checkbox-content-container {
+      color: $neutral-secondary;
+      &::before {
+        border-color: $neutral-stroke;
+        background-color: $neutral-stroke;
+      }
+
+      .bao-checkbox-label,
+      .bao-checkbox-description {
+        color: $neutral-secondary;
+      }
+    }
+  }
+
+  &.bao-checkbox-hidden-label {
+    .bao-checkbox-label {
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      width: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+    }
+
+    label.bao-checkbox-content-container {
+      .bao-checkbox-description {
+        margin-top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+@import '../core/colors';
+
+.bao-radio-button {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  min-height: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  position: relative;
+  z-index: 1;
+
+  input {
+    box-sizing: border-box;
+    left: 0;
+    opacity: 0;
+    overflow: visible;
+    padding: 0;
+    position: absolute;
+    z-index: -1;
+
+    &:focus {
+      ~ .bao-radio-button-content-container {
+        &::before {
+          box-shadow: 0 0 0 0.1875rem rgb(0 121 196 / 50%);
+        }
+      }
+    }
+  }
+
+  label.bao-radio-button-content-container {
+    color: $ground-reversed;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 0;
+    position: relative;
+    vertical-align: top;
+
+    &::before {
+      border-radius: 50%;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: -2rem;
+      display: block;
+      margin: 0.125rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      pointer-events: none;
+      content: '';
+      background-color: $white;
+      border: $neutral-stroke solid 1px;
+      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    &::after {
+      box-sizing: border-box;
+      background: no-repeat 50%/1.5rem;
+      content: '';
+      display: block;
+      height: 1.5rem;
+      left: -2rem;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 1.5rem;
+    }
+
+    .bao-radio-button-label {
+      color: $ground-reversed;
+      display: block;
+    }
+
+    .bao-radio-button-description {
+      color: $neutral-secondary;
+      display: block;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &.bao-radio-button-inline {
+    display: inline-flex;
+    margin-right: 1rem;
+  }
+
+  &.bao-radio-button-card {
+    padding: 0;
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    label.bao-radio-button-content-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+      padding: 1rem;
+      padding-left: 3.5rem;
+      position: relative;
+      border: 1px solid $neutral-stroke;
+      border-radius: 0.25rem;
+      color: $neutral-secondary;
+      min-height: 3.5rem;
+
+      &::before {
+        top: 1rem;
+        left: 0;
+        margin-left: 1.125rem;
+      }
+
+      &::after {
+        top: 1rem;
+        left: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  //// DIFFERENT RADIO STATES //////
+  /** CHECKED STATE **/
+  input:checked {
+    ~ .bao-radio-button-content-container {
+      &::before {
+        border-color: $action;
+        background-color: $action;
+      }
+      &::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3ccircle cx='12' cy='12' r='4' fill='%23ffffff'/%3e%3c/svg%3e");
+      }
+    }
+  }
+
+  /** DISABLED STATE **/
+  input:disabled {
+    ~ .bao-radio-button-content-container {
+      color: $neutral-secondary;
+      &::before {
+        border-color: $neutral-stroke;
+        background-color: $neutral-stroke;
+      }
+
+      .bao-radio-button-label,
+      .bao-radio-button-description {
+        color: $neutral-secondary;
+      }
+    }
+  }
+
+  &.bao-radio-button-hidden-label {
+    .bao-radio-button-label {
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      width: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+    }
+
+    label.bao-radio-button-content-container {
+      .bao-radio-button-description {
+        margin-top: 0;
+      }
+    }
+  }
+}

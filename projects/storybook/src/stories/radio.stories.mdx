@@ -1,0 +1,153 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { Overlay } from '@angular/cdk/overlay';
+import { BaoModule } from 'core-components-angular-lib';
+import { BaoRadioButtonComponent, BaoRadioButtonGroupComponent } from 'core-components-angular-lib';
+
+<Meta
+  title="Radio button"
+  decorators={[
+    moduleMetadata({
+      imports: [BaoModule]
+    })
+  ]}
+/>
+
+# Radio
+
+## Radio button group properties
+
+<Props of={BaoRadioButtonGroupComponent} />
+
+## Radio button properties
+
+<Props of={BaoRadioButtonComponent} />
+
+## Simple radio button
+
+<Preview>
+  <Story name="Radio - Simple">
+    {{
+      component: BaoRadioButtonComponent,
+      template: `
+        <bao-radio-button-group>
+          <bao-legend required="true">Radio button avec texte d'assistance</bao-legend>
+          <bao-radio-button id="ID1" name="name" value="example1">
+            Label
+          </bao-radio-button>
+          <bao-radio-button id="ID2" name="name" checked="true" value="example2">
+            Label (checked)
+          </bao-radio-button>
+          <bao-radio-button id="ID3" name="name" disabled="true" value="example3">
+            Label (disabled)
+          </bao-radio-button>
+        </bao-radio-button-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Inline radio button and guiding text
+
+<Preview>
+  <Story name="Radio - Inline & guiding text">
+    {{
+      component: BaoRadioButtonComponent,
+      template: `
+        <bao-radio-button-group>
+          <bao-legend required="true">Radio button avec texte d'assistance</bao-legend>
+          <bao-radio-button id="ID1" name="name" value="example1" inline="true">
+            Label
+          </bao-radio-button>
+          <bao-radio-button id="ID2" name="name" checked="true" value="example2" inline="true">
+            Label (checked)
+          </bao-radio-button>
+          <bao-radio-button id="ID3" name="name" disabled="true" value="example3" inline="true">
+            Label (disabled)
+          </bao-radio-button>
+          <bao-guiding-text>Texte d'assistance pour le groupe</bao-guiding-text>
+        </bao-radio-button-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Radio button with description and border
+
+<Preview>
+  <Story name="Radio - Description and border">
+    {{
+      component: BaoRadioButtonComponent,
+      template: `
+      <bao-radio-button-group>
+          <bao-legend required="true">Radio button avec erreur</bao-legend>
+          <bao-radio-button id="ID1" name="name" value="example1" brandBorder="true">
+            Label
+            <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+          </bao-radio-button>
+          <bao-radio-button id="ID2" name="name" checked="true" value="example2" brandBorder="true">
+            Label (checked)
+            <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+          </bao-radio-button>
+          <bao-radio-button id="ID3" name="name" disabled="true" value="example3" brandBorder="true">
+            Label (disabled)
+            <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+          </bao-radio-button>
+        <bao-error>Erreur pour le groupe</bao-error>
+      </bao-radio-button-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Radio button with description and hidden label
+
+<Preview>
+  <Story name="Radio - Description and hidden label">
+    {{
+      component: BaoRadioButtonComponent,
+      template: `
+      <bao-radio-button-group>
+          <bao-legend required="true">Radio button avec l'étiquette invisble</bao-legend>
+          <bao-radio-button id="ID1" name="name" value="example1" brandBorder="true" hiddenLabel="true">
+            Label
+            <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+          </bao-radio-button>
+          <bao-radio-button id="ID2" name="name" checked="true" value="example2" brandBorder="true" hiddenLabel="true">
+            Label (checked)
+            <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+          </bao-radio-button>
+          <bao-radio-button id="ID3" name="name" disabled="true" value="example3" brandBorder="true" hiddenLabel="true">
+            Label (disabled)
+            <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+          </bao-radio-button>
+      </bao-radio-button-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Radio button - Basic example
+
+<Preview>
+  <Story name=" Radio button - Basic example">
+    {{
+      template: `
+         <bao-radio-button-example></bao-radio-button-example>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Radio button - Reactive form example
+
+<Preview>
+  <Story name="Radio button - Reactive form example">
+    {{
+      template: `
+         <bao-radio-button-reactive-form-example></bao-radio-button-reactive-form-example>
+    `
+    }}
+  </Story>
+</Preview>
+

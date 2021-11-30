@@ -1,0 +1,14 @@
+<form [formGroup]="cars" (ngSubmit)="onSubmit()">
+  <bao-radio-button-group aria-label="Choisir un animal" formControlName="car">
+    <bao-legend required="true">Choisir une voiture</bao-legend>
+    <bao-radio-button value="Honda" borderBrand="true">Honda</bao-radio-button>
+    <bao-radio-button value="Toyota">Toyota</bao-radio-button>
+    <bao-radio-button value="Mercedes">Mercedes</bao-radio-button>
+    <bao-radio-button value="Kia">Kia</bao-radio-button>
+    <bao-error *ngIf="!cars.valid">Vous devez choisir une voiture</bao-error>
+  </bao-radio-button-group>
+  <button bao-button type="submit" displayType="utility" level="primary" size="medium"  style="margin: 2rem 0 0 0;">Soumettre</button>
+</form>
+<section style="margin: 1rem 0;">
+  {{ cars.value | json }}
+</section>

@@ -1,0 +1,20 @@
+<input
+  #input
+  type="checkbox"
+  [id]="inputID"
+  [checked]="checked"
+  [disabled]="disabled"
+  [attr.name]="name"
+  [required]="required"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-labelledby]="ariaLabelledby"
+  [attr.aria-describedby]="ariaDescribedby"
+  [attr.aria-checked]="getAriaState()"
+  (change)="onInteractionEvent($event)"
+  (click)="onInputClick($event)"
+  role="checkbox"
+/>
+<label class="bao-checkbox-content-container" [attr.for]="inputID">
+  <div class="bao-checkbox-label" [id]="ariaLabelledby"><ng-content></ng-content></div>
+  <ng-content select="bao-checkbox-description, [bao-checkbox-description], [baoCheckboxDescription]"></ng-content>
+</label>

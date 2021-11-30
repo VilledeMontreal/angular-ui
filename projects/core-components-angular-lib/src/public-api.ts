@@ -10,3 +10,6 @@ export * from './lib/breadcrumb/index';
 export * from './lib/tag/index';
 export * from './lib/header-info/index';
 export * from './lib/list/index';
+export * from './lib/checkbox/index';
+export * from './lib/radio/index';
+export * from './lib/common-components/index';

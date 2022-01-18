@@ -1,0 +1,163 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { Overlay } from '@angular/cdk/overlay';
+import { BaoModule } from 'core-components-angular-lib';
+import { BaoCheckboxComponent } from 'core-components-angular-lib';
+
+<Meta
+  title="Checkbox"
+  decorators={[
+    moduleMetadata({
+      imports: [BaoModule]
+    })
+  ]}
+/>
+
+# Checkbox
+
+## Properties
+
+<Props of={BaoCheckboxComponent} />
+
+## Simple checkbox
+
+<Preview>
+  <Story name="Checkbox - Simple">
+    {{
+      component: BaoCheckboxComponent,
+      template: `
+        <bao-checkbox-group>
+          <bao-legend required="true">Liste d'options</bao-legend>
+          <bao-checkbox id="ID1" name="name">
+            Label
+          </bao-checkbox>
+          <bao-checkbox id="ID2" name="name2" checked="true">
+            Label (checked)
+          </bao-checkbox>
+          <bao-checkbox id="ID3" name="name3" indeterminate="true">
+            Label (indeterminate)
+          </bao-checkbox>
+          <bao-checkbox id="ID4" name="name4" disabled="true">
+            Label (disabled)
+          </bao-checkbox>
+        </bao-checkbox-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Inline checkbox with guiding text
+
+<Preview>
+  <Story name="Checkbox - Inline & guiding text">
+    {{
+      component: BaoCheckboxComponent,
+      template: `
+      <bao-checkbox-group>
+          <bao-legend required="true">Liste d'options avec texte d'assistance</bao-legend>
+          <bao-checkbox id="ID1" name="name" inline="true">
+            Label
+          </bao-checkbox>
+          <bao-checkbox id="ID2" name="name2" checked="true" inline="true">
+            Label (checked)
+          </bao-checkbox>
+          <bao-checkbox id="ID3" name="name3" indeterminate="true" inline="true">
+            Label (indeterminate)
+          </bao-checkbox>
+          <bao-checkbox id="ID4" name="name4" disabled="true" inline="true">
+            Label (disabled)
+          </bao-checkbox>
+          <bao-guiding-text>Texte d'assistance pour le groupe</bao-guiding-text>
+        </bao-checkbox-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Checkbox with description, error and border (card)
+
+<Preview>
+  <Story name="Checkbox - Description & error">
+    {{
+      component: BaoCheckboxComponent,
+      template: `
+      <bao-checkbox-group>
+          <bao-legend required="true">Liste d'options avec erreur</bao-legend>
+          <bao-checkbox id="ID1" name="name1" brandBorder="true">
+            Label
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-checkbox id="ID2" name="name2" brandBorder="true" checked="true">
+            Label (checked)
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-checkbox id="ID3" name="name3" brandBorder="true" indeterminate="true">
+            Label (indeterminate)
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-checkbox id="ID4" name="name4" brandBorder="true" disabled="true">
+            Label (disabled)
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-error>Erreur pour le groupe</bao-error>
+        </bao-checkbox-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Checkbox with description, hidden label and border (card)
+
+<Preview>
+  <Story name="Checkbox - Description & hidden label">
+    {{
+      component: BaoCheckboxComponent,
+      template: `
+      <bao-checkbox-group>
+          <bao-legend required="true">Liste d'options avec l'étiquette invisble</bao-legend>
+          <bao-checkbox id="ID1" name="name1" brandBorder="true" hiddenLabel="true">
+            Label
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-checkbox id="ID2" name="name2" brandBorder="true" checked="true" hiddenLabel="true">
+            Label (checked)
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-checkbox id="ID3" name="name3" brandBorder="true" indeterminate="true" hiddenLabel="true">
+            Label (indeterminate)
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+          <bao-checkbox id="ID4" name="name4" brandBorder="true" disabled="true" hiddenLabel="true">
+            Label (disabled)
+            <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
+          </bao-checkbox>
+        </bao-checkbox-group>
+    `
+    }}
+  </Story>
+</Preview>
+
+
+## Checkbox - Basic example
+
+<Preview>
+  <Story name="Checkbox - Basic example">
+    {{
+      template: `
+          <bao-checkbox-example></bao-checkbox-example>
+    `
+    }}
+  </Story>
+</Preview>
+
+## Checkbox - Reactive form example
+
+<Preview>
+  <Story name="Checkbox - Reactive form example">
+    {{
+      template: `
+          <bao-checkbox-reactive-form-example></bao-checkbox-reactive-form-example>
+    `
+    }}
+  </Story>
+</Preview>

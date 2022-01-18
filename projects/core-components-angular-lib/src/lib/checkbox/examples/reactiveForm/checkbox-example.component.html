@@ -1,0 +1,13 @@
+<form [formGroup]="cars">
+  <bao-checkbox-group>
+    <bao-legend required="true">Choisir vos voitures :</bao-legend>
+    <bao-checkbox formControlName="honda" id="honda">Honda</bao-checkbox>
+    <bao-checkbox formControlName="toyota" id="toyota" [indeterminate]="true">Toyota</bao-checkbox>
+    <bao-checkbox formControlName="mercedes" id="mercedes">Mercedes</bao-checkbox>
+    <bao-checkbox formControlName="kia" id="kia">Kia</bao-checkbox>
+    <bao-guiding-text>Vos voitures seront une indice de votre personalité</bao-guiding-text>
+  </bao-checkbox-group>
+</form>
+<section class="mt-4">
+  {{ cars.value | json }}
+</section>

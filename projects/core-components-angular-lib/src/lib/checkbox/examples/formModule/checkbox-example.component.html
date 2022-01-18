@@ -1,0 +1,33 @@
+<section class="example-section">
+  <bao-checkbox-group>
+    <bao-legend required="true">Veuillez choisir vos animaux favoris</bao-legend>
+  <span class="example-list-section">
+    <bao-checkbox
+      [checked]="allComplete"
+      [indeterminate]="someComplete()"
+      id="exampleIDParent"
+      (change)="setAll($event)"
+    >
+      {{ task.name }}
+    </bao-checkbox>
+  </span>
+  <span class="example-list-section">
+    <ul style="list-style-type: none; margin-bottom: 0;">
+      <li *ngFor="let subtask of task.subtasks; let uniqueID = index">
+        <bao-checkbox
+          [(ngModel)]="subtask.completed"
+          [id]="uniqueID"
+          [name]="subtask.name"
+          (ngModelChange)="updateAllComplete()"
+        >
+          {{ subtask.name }}
+        </bao-checkbox>
+      </li>
+    </ul>
+  </span>
+  <bao-guiding-text>Vos animaux favoris indiqueront votre personalité</bao-guiding-text>
+</bao-checkbox-group>
+</section>
+<section class="mt-4">
+  {{ task | json }}
+</section>

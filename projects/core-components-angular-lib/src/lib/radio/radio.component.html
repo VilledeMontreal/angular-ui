@@ -1,0 +1,21 @@
+<input
+  #input
+  type="radio"
+  [id]="inputID"
+  [checked]="checked"
+  [disabled]="disabled"
+  [attr.name]="name"
+  [attr.value]="value"
+  [required]="required"
+  [attr.aria-label]="ariaLabel"
+  [attr.aria-labelledby]="ariaLabelledby"
+  [attr.aria-describedby]="ariaDescribedby"
+  (change)="onInputInteraction($event)"
+  role="radio"
+/>
+<label class="bao-radio-button-content-container" [attr.for]="inputID">
+  <div class="bao-radio-button-label" [id]="ariaLabelledby"><ng-content></ng-content></div>
+  <ng-content
+    select="bao-radio-button-description, [bao-radio-button-description], [baoRadioButtonDescription]"
+  ></ng-content>
+</label>

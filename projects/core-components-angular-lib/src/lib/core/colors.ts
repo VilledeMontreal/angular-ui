@@ -15,9 +15,9 @@ export function baoColorToHex(baoColor: BaoColors): string {
     case BaoColors.ACTION:
       return '#097D6C';
     case BaoColors.PRIMARY:
-      return '#FFFFFF';
-    case BaoColors.PRIMARY_REVERSED:
       return '#000000';
+    case BaoColors.PRIMARY_REVERSED:
+      return '#FFFFFF';
     case BaoColors.SECONDARY:
       return '#637381';
     case BaoColors.TERTIARY:

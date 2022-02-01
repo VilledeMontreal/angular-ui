@@ -1,19 +1,16 @@
 {
-  "extends": "../projects/core-components-angular-lib/tsconfig.lib.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
     "types": [
       "node"
     ]
   },
   "exclude": [
-    "../src/test.ts",
-    "../src/**/*.spec.ts",
+    "../node_modules",
     "../projects/**/*.spec.ts"
   ],
   "include": [
-    "../src/**/*",
-    "../projects/**/*"
+    "../projects/**/*" 
   ],
   "files": [
     "./typings.d.ts"

@@ -130,7 +130,7 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   /**
    * The aria-label for web accessibility
    */
-  @Input('aria-label') public ariaLabel: string = null;
+  @Input('aria-label') public ariaLabel?: string;
 
   /**
    * Whether the checkbox has a border and is considered as a card.
@@ -145,7 +145,7 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   /**
    * The name property of the checkbox
    */
-  @Input() public name: string = null;
+  @Input() public name?: string;
 
   /**
    * The visible state of the label
@@ -170,12 +170,12 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   /**
    * The aria-describedby id for web accessibilty
    */
-  public ariaDescribedby: string = null;
+  public ariaDescribedby?: string;
 
   /**
    * The aria-labeledby id for web accessibilty
    */
-  public ariaLabelledby: string = null;
+  public ariaLabelledby?: string;
 
   /**
    * The ID of the input html element
@@ -330,7 +330,7 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
         this.ariaDescribedby = `${this.id}-ariadescribedby`;
         (descriptionNode as HTMLElement).setAttribute('id', this.ariaDescribedby);
       } else {
-        this.ariaDescribedby = null;
+        this.ariaDescribedby = undefined;
       }
 
       this.cdr.detectChanges();

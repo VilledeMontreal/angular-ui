@@ -44,8 +44,8 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
     { descendants: true }
   )
   private _radios: QueryList<BaoRadioButtonComponent>;
-  private _value: string = null;
-  private _name: string = null;
+  private _value: string | null = null;
+  private _name: string | null = null;
   private _selected: BaoRadioButtonComponent | null = null;
   private _isInitialized: boolean = false;
   private _disabled: boolean = false;
@@ -62,10 +62,10 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
    * Define the name property of all radio buttons. Default : null
    */
   @Input()
-  get name(): string {
+  get name(): string | null {
     return this._name;
   }
-  set name(value: string) {
+  set name(value: string | null) {
     this._name = value;
     this.updateRadioButtonNames();
   }
@@ -74,10 +74,10 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
    * Define the value of the selected radio button. Default : null
    */
   @Input()
-  get value(): string {
+  get value(): string | null {
     return this._value;
   }
-  set value(newValue: string) {
+  set value(newValue: string | null) {
     if (this._value !== newValue) {
       this._value = newValue;
       this.updateSelectedRadioFromValue();
@@ -130,7 +130,7 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
   /**
    * The aria-describedby for web accessibilty
    */
-  public ariaDescribedby: string = null;
+  public ariaDescribedby: string | null = null;
 
   @ViewChild('container', { static: false }) private staticContainer: ElementRef;
 
@@ -226,7 +226,7 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
    */
   public emitChangeEvent(): void {
     if (this._isInitialized) {
-      this.change.emit(this.value);
+      this.change.emit(this.value!);
     }
   }
 

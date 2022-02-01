@@ -30,7 +30,7 @@ export class BaoCheckboxGroupComponent implements AfterViewInit {
   /**
    * The aria-describedby id for web accessibilty
    */
-  public ariaDescribedby: string = null;
+  public ariaDescribedby?: string = undefined;
 
   @ViewChild('container', { static: false }) private staticContainer: ElementRef;
 
@@ -59,6 +59,6 @@ export class BaoCheckboxGroupComponent implements AfterViewInit {
   }
 
   private showAriaDescribedBy(value: boolean) {
-    this.ariaDescribedby = value ? `${this.id}-ariadescribedby` : null;
+    this.ariaDescribedby = value ? `${this.id}-ariadescribedby` : undefined;
   }
 }

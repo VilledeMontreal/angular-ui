@@ -7,10 +7,10 @@ import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation
  *
  * While this component can be used alone, it also provides a number
  * of preset styles for common card sections, including:
- * - bao-card-body
- * - bao-card-title
- * - bao-card-bao-text-interface
- * - More to come!
+ * * bao-card-body
+ * * bao-card-title
+ * * bao-card-bao-text-interface
+ * * More to come!
  */
 @Component({
   selector: 'bao-card, [bao-card], [baoCard]',
@@ -24,7 +24,9 @@ import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation
   }
 })
 export class BaoCardComponent {
-  @Input() public padding: 'normal' | 'large' = 'normal';
+  
+  @Input() 
+  public padding: 'normal' | 'large' = 'normal';
 }
 
 /**

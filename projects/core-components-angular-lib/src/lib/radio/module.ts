@@ -4,16 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaoButtonModule } from '../button';
 import { BaoCommonComponentsModule } from '../common-components/module';
-import { BaoRadioExampleComponent } from './examples/formModule/radio-example.component';
-import { BaoRadioReactiveFormExampleComponent } from './examples/reactiveForm/radio-example.component';
 import { BaoRadioButtonGroupComponent } from './radio-group.component';
 import { BaoRadioButtonComponent, BaoRadioDescription } from './radio.component';
 
 const RADIO_DIRECTIVES = [
   BaoRadioButtonComponent,
   BaoRadioDescription,
-  BaoRadioExampleComponent,
-  BaoRadioReactiveFormExampleComponent,
   BaoRadioButtonGroupComponent
 ];
 

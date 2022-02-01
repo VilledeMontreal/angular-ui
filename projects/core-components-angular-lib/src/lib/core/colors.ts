@@ -8,7 +8,6 @@ export enum BaoColors {
   NEGATIVE = 'negative',
   POSITIVE = 'positive',
   WARNING = 'warning',
-  INHERIT = 'INHERIT'
 }
 
 export function baoColorToHex(baoColor: BaoColors): string {

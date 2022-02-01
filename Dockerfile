@@ -10,7 +10,7 @@ WORKDIR /usr/src/lib
 COPY --chown=node:node . /usr/src/lib
 
 # Install deps
-RUN npm i --ignore-scripts
+RUN npm i
 
 # Build library
 RUN npm run build 

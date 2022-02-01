@@ -1,5 +1,5 @@
 FROM node:16-alpine3.9
-MAINTAINER VdMtl
+LABEL MAINTAINER="VdMtl" 
 
 # Create app directory
 RUN mkdir -p /usr/src/lib

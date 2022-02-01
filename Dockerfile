@@ -1,4 +1,4 @@
-FROM node:10.22.1-alpine3.9
+FROM node:16-alpine3.9
 MAINTAINER VdMtl
 
 # Create app directory

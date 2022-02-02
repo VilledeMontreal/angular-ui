@@ -2,6 +2,53 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../models/task.model';
 
 @Component({
+  styles: [`
+  /* TASKBOX APP  */
+  .bao-list-item-content .actions {
+    transition: all 200ms ease-in;
+    padding-right: 20px;
+    position: absolute;
+  }
+  .bao-list-item-content .actions a, .actions a  {
+    position: relative;
+    left: 900px;
+    top: 10px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    cursor: pointer;
+    color: #eee;
+  }
+
+  .bao-list-item-content .actions a, .actions a.PIN_TASK  {
+    color: #097d6c;
+  }
+
+  .actions a {
+    border: 0;
+  }
+
+  .actions {
+    position: absolute;
+  }
+
+  .bao-list-item-content .actions .bao-icon {
+    font-size: 16px;
+    line-height: 24px;
+    line-height: 3rem;
+    text-align: center;
+  }
+  .bao-list-item-content .bao-icon {
+    color: #a6a9a871;
+  }
+
+  .bao-checkbox, .bao-list-item-text, .bao-checkbox label.bao-checkbox-content-container:after, .bao-list-item-title  {
+    cursor: pointer;
+  }
+  .bao-list-item-content + .bao-list-item-content {
+    border-top: 1px solid #f0f9fb;
+  }
+`],
   selector: 'app-task-item',
   template: `
       <bao-list-item>

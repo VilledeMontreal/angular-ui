@@ -6,7 +6,7 @@
     "start": "npm run storybook",
     "clean": "rimraf dist",
     "build": "npm run clean && ng build core-components-angular-lib && npm run bundle-styles",
-    "build:watch": "npm run clean && ng build --watch",
+    "build:watch": "npm run clean && ng build core-components-angular-lib --watch",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",

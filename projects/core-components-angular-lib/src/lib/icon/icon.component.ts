@@ -25,7 +25,7 @@ const TITLE = 'title';
   template: '<ng-content></ng-content>',
   selector: 'bao-icon',
   exportAs: 'baoIcon',
-  styleUrls: ['icon.component.scss'],
+  styleUrls: ['./icon.component.scss'],
   host: {
     role: 'img',
     // '[class]': "'bao-icon notranslate ' + svgIcon",
@@ -109,6 +109,9 @@ export class BaoIconComponent implements OnDestroy {
     if (!ariaHidden) {
       this.elementRef.nativeElement.setAttribute('aria-hidden', 'true');
     }
+    this._titleId = '';
+    this._title = '';
+    this._svgIcon = '';
   }
 
   public ngOnDestroy() {

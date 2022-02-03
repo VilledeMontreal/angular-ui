@@ -69,22 +69,6 @@ Ceci démarrera un serveur web local et fera pointer votre browser par défaut p
 
 **Attention** il faut avoir complété le build de la librairie au préalable.
 
-## WATCH mode (dev)
-Afin de faciliter le développement de la librairie, un script `npm` additionnel est disponible
-
-`npm run dev`
-
-Ceci lancera le build de la librairie Angular en `watch` mode et storybook dans des processus parallèles dans le même terminal. Ceci veut dire que tout changement au code typescript, aux fichiers .scss ou au stories mdx seront reflétés dans le browser sans relancer de commande à partir du terminal.
-
-## Dépendances
-
-Les seules dépendances sont [Angular Core](https://angular.io) et [Angular CDK](https://material.angular.io/cdk/categories).
-Les versions supportées sont:
-
-| @villemontreal/core-components-angular-lib | Angular | Angular CDK |
-|-|-|-|
-| 0.4.x | >= 8.0.0 < 11 | >= 8.0.0 < 11 |
-
 ## Contribuer à la librairie
 
 1. Regarder si le component existe déjà ou si quelqu'un travail déjà sur celui-ci.
@@ -97,3 +81,28 @@ Les versions supportées sont:
 8. Mettre le component en PR et se conformer aux demandes de changements.
 9. Une fois la PR approuvé par au moins deux des maintainers, le travail est terminé! Une nouvelle version de la lib est sur le point d'être released!
 10. Upgrader la version de la lib où nécessaire et apprécier un travail bien fait et standard qui sera utiliser par tous!
+
+
+## Projects
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

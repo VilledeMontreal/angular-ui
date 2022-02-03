@@ -1,13 +1,13 @@
-FROM node:10.22.1-alpine3.9
-MAINTAINER VdMtl
+FROM node:16-alpine
+LABEL MAINTAINER="VdMtl" 
 
 # Create app directory
-RUN mkdir -p /usr/src/lib
+RUN mkdir -p /usr/src/lib && chown -R node:node /usr
 
 WORKDIR /usr/src/lib
 
 # Install all dependencies
-COPY . /usr/src/lib
+COPY --chown=node:node . /usr/src/lib
 
 # Install deps
 RUN npm i

@@ -23,14 +23,14 @@ export class BaoCheckboxGroupComponent implements AfterViewInit {
   private _uniqueId: string = `bao-checkbox-group-${++checkboxGroupNextUniqueId}`;
 
   /**
-   * The checkbox group ID. Is is set dynamically with an unique ID by default
+   * The checkbox group ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
 
   /**
    * The aria-describedby id for web accessibilty
    */
-  public ariaDescribedby: string = null;
+  public ariaDescribedby?: string = undefined;
 
   @ViewChild('container', { static: false }) private staticContainer: ElementRef;
 
@@ -59,6 +59,6 @@ export class BaoCheckboxGroupComponent implements AfterViewInit {
   }
 
   private showAriaDescribedBy(value: boolean) {
-    this.ariaDescribedby = value ? `${this.id}-ariadescribedby` : null;
+    this.ariaDescribedby = value ? `${this.id}-ariadescribedby` : undefined;
   }
 }

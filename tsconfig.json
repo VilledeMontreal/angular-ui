@@ -1,12 +1,14 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "./node_modules/@villemontreal/lint-config-villemontreal/rules/tsconfig-base.json",
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "skipLibCheck": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "allowSyntheticDefaultImports":true,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -23,13 +25,16 @@
       "core-components-angular-lib": [
         "dist/core-components-angular-lib"
       ],
-      "core-components-angular-lib/*": [
-        "dist/core-components-angular-lib/*"
+      "storybook-angular-examples": [
+        "dist/storybook-angular-examples"
       ]
-    }
+    },
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  "exclude": [
+    "./node_modules"
+  ],
 }

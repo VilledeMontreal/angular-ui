@@ -1,10 +1,26 @@
-import '!style-loader!css-loader!../dist/core-components-angular-lib/global.scss';
-import '!style-loader!css-loader!../node_modules/@villemontreal/boite-outils4-web/dist/css/styles.min.css';
-import '!style-loader!css-loader!./fix-code-block-in-preview.css';
-import { withA11y } from '@storybook/addon-a11y';
-import { setCompodocJson } from '@storybook/addon-docs/angular';
+import { setCompodocJson } from "@storybook/addon-docs/angular";
 import { addDecorator } from '@storybook/angular';
-import docJson from '../documentation.json';
-
+import docJson from "../documentation.json";
+import { withA11y } from '@storybook/addon-a11y';
 setCompodocJson(docJson);
 addDecorator(withA11y);
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+  backgrounds: {
+    default: 'white',
+    values: [
+      {
+        name: 'white',
+        value: 'white',
+      },
+    ],
+  },
+  docs: { inlineStories: true },
+  viewMode: 'docs'
+}

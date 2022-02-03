@@ -97,6 +97,9 @@ export class BaoAlertLink {}
   }
 })
 export class BaoAlertComponent implements OnChanges {
+  /**
+   * Alert type
+   */
   @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';
   @Input() public dismissible = false;
   @Input() public showIcon = true;
@@ -105,9 +108,9 @@ export class BaoAlertComponent implements OnChanges {
   public iconTitle = 'Information';
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.type) {
-      this.iconType = this.alertTypeIcon(changes.type.currentValue);
-      this.iconTitle = this.alertTitleIcon(changes.type.currentValue);
+    if (changes['type']) {
+      this.iconType = this.alertTypeIcon(changes['type'].currentValue);
+      this.iconTitle = this.alertTitleIcon(changes['type'].currentValue);
     }
   }
 
@@ -118,7 +121,7 @@ export class BaoAlertComponent implements OnChanges {
       warning: 'icon-warning',
       default: 'icon-info'
     };
-    return typesAlertIcon[value] || typesAlertIcon.default;
+    return (typesAlertIcon as any)[value] || typesAlertIcon.default;
   }
   public alertTitleIcon(value: string): any {
     const titleIcon = {
@@ -127,7 +130,7 @@ export class BaoAlertComponent implements OnChanges {
       warning: 'Attention',
       default: 'Information'
     };
-    return titleIcon[value] || titleIcon.default;
+    return (titleIcon as any)[value] || titleIcon.default;
   }
 
   public onDismissClicked() {

@@ -14,7 +14,7 @@ export class BaoIconDictionary {
     const rawIconString = this.getRawIconStringFromIconName(iconName);
     const literal = this.domSanitizer.bypassSecurityTrustHtml(rawIconString);
     const svgString = this.domSanitizer.sanitize(SecurityContext.HTML, literal);
-    return this.svgElementFromString(svgString);
+    return this.svgElementFromString(svgString || '');
   }
 
   private getRawIconStringFromIconName(iconName: string) {

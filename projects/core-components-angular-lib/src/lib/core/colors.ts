@@ -7,7 +7,7 @@ export enum BaoColors {
   INFORMATIVE = 'informative',
   NEGATIVE = 'negative',
   POSITIVE = 'positive',
-  WARNING = 'warning'
+  WARNING = 'warning',
 }
 
 export function baoColorToHex(baoColor: BaoColors): string {

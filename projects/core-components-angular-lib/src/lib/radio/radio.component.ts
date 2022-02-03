@@ -53,18 +53,18 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   private _checked: boolean = false;
   private _disabled: boolean = false;
   private _required: boolean = false;
-  private _value: string = null;
+  private _value: string | null = null;
   private _uniqueId: string = `bao-radio-button-${++radioNextUniqueId}`;
 
   /**
-   * The radio button ID. Is is set dynamically with an unique ID by default
+   * The radio button ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
 
   /**
    * The aria-label for web accessibility
    */
-  @Input('aria-label') public ariaLabel: string = null;
+  @Input('aria-label') public ariaLabel: string | null = null;
 
   /**
    * Whether the radio button has a border and is considered as a card.
@@ -79,7 +79,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   /**
    * The name property of the radio button
    */
-  @Input() public name: string = null;
+  @Input() public name: string | null = null;
 
   /**
    * Whether the radio button is checked. Default : false
@@ -99,7 +99,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
       }
 
       if (newCheckedState) {
-        this.radioDispatcher.notify(this.id, this.name);
+        this.radioDispatcher.notify(this.id, this.name!);
       }
       this.cdr.markForCheck();
     }
@@ -110,7 +110,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
    */
   @Input()
   get value(): string {
-    return this._value;
+    return this._value!;
   }
   set value(value: string) {
     if (value !== this._value) {
@@ -171,12 +171,12 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   /**
    * The aria-describedby id for web accessibilty
    */
-  public ariaDescribedby: string = null;
+  public ariaDescribedby: string | null = null;
 
   /**
    * The aria-labeledby id for web accessibilty
    */
-  public ariaLabelledby: string = null;
+  public ariaLabelledby: string | null = null;
 
   /**
    * The ID of the input html element
@@ -240,7 +240,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
       }
     });
 
-    this.setAriaDescribedByToDescription(this.nativeElement, this.ariaDescribedby);
+    this.setAriaDescribedByToDescription(this.nativeElement, this.ariaDescribedby!);
   }
 
   public ngOnDestroy() {

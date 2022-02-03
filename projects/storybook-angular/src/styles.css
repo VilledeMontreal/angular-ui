@@ -1,0 +1,5 @@
+#docs-root a[class^="css-"] {
+  color: #097d6c;
+  border: 0;
+  font-weight: 700
+}

@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
-import { BaoAlertModule } from './alert/module';
-import { BaoBreadcrumbModule } from './breadcrumb/module';
-import { BaoButtonModule } from './button/module';
-import { BaoCardModule } from './card/module';
+import { BaoAlertModule } from './alert';
+import { BaoBreadcrumbModule } from './breadcrumb';
+import { BaoButtonModule } from './button';
+import { BaoCardModule } from './card';
 import { BaoCheckboxModule } from './checkbox';
-import { BaoCommonComponentsModule } from './common-components/module';
-import { BaoHeaderInfoModule } from './header-info/module';
-import { BaoIconModule } from './icon/module';
-import { BaoListModule } from './list/module';
+import { BaoCommonComponentsModule } from './common-components';
+import { BaoHeaderInfoModule } from './header-info';
+import { BaoIconModule } from './icon';
+import { BaoListModule } from './list';
 import { BaoRadioModule } from './radio';
-import { BaoTagModule } from './tag/module';
+import { BaoTagModule } from './tag';
 
 @NgModule({
   imports: [
-    BaoIconModule,
-    BaoButtonModule,
-    BaoAlertModule,
+    BaoIconModule, 
+    BaoButtonModule, 
+    BaoAlertModule, 
+    BaoCardModule, 
     BaoBreadcrumbModule,
-    BaoCardModule,
-    BaoCheckboxModule,
-    BaoRadioModule
   ],
   exports: [
     BaoIconModule,
@@ -27,12 +25,12 @@ import { BaoTagModule } from './tag/module';
     BaoAlertModule,
     BaoBreadcrumbModule,
     BaoCardModule,
-    BaoCheckboxModule,
-    BaoRadioModule,
     BaoTagModule,
     BaoHeaderInfoModule,
     BaoListModule,
-    BaoCommonComponentsModule
+    BaoCommonComponentsModule,
+    BaoCheckboxModule,
+    BaoRadioModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
   ]

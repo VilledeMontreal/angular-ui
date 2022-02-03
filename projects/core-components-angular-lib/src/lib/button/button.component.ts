@@ -23,7 +23,7 @@ const LOADING_SPINNER_CLASS = 'loading-spinner';
   styleUrls: ['./button.component.scss'],
   templateUrl: './button.component.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush, 
   host: {
     class: 'bao-button',
     '[class.bao-button-utility]': 'displayType === "utility"',

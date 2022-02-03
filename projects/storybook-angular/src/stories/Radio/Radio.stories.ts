@@ -86,7 +86,7 @@ export const RadioWithDescAndHiddenLabel: Story = (args) => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel">
-    <bao-legend required="true">Radio button avec l'étiquette invisble</bao-legend>
+    <bao-legend required="true">Radio button avec l'étiquette invisible</bao-legend>
     <bao-radio-button id="ID119" name="name144" value="example1" brandBorder="true" hiddenLabel="true">
       Label
       <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>

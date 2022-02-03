@@ -54,7 +54,7 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
   private _uniqueId: string = `bao-checkbox-group-${++radioGroupNextUniqueId}`;
 
   /**
-   * The checkbox group ID. Is is set dynamically with an unique ID by default
+   * The checkbox group ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
 

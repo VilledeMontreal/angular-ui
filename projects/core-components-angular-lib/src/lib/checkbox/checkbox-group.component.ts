@@ -23,7 +23,7 @@ export class BaoCheckboxGroupComponent implements AfterViewInit {
   private _uniqueId: string = `bao-checkbox-group-${++checkboxGroupNextUniqueId}`;
 
   /**
-   * The checkbox group ID. Is is set dynamically with an unique ID by default
+   * The checkbox group ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
 

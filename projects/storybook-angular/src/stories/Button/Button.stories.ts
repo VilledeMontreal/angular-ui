@@ -25,41 +25,18 @@ export default {
         disable: true,
       },
     },
-    // size: {
-    //   options: ['large', 'medium', 'small'],
-    //   control: { type: 'radio' },
-    // },
-    // displayType: {
-    //   options: ['utility', 'editorial'],
-    //   control: { type: 'radio' },
-    // },
-    // loading: {
-    //   control: { type: 'boolean' },
-    // },
-    // reversed: {
-    //   control: { type: 'boolean' },
-    // },
-    // fullWidth: {
-    //   control: { type: 'boolean' },
-    // },
-    // noText: {
-    //   control: { type: 'boolean' },
-    // },
-    // rightIcon: {
-    //   control: { type: 'boolean' },
-    // }
   },
 } as Meta;
 
 const Template: Story<BaoButtonComponent & { label: string }> = (args: BaoButtonComponent) => ({
   component: BaoButtonComponent,
   template: `
-  <button 
-    bao-button 
-    type="button" 
-    [reversed]="reversed" 
-    [fullWidth]="fullWidth" 
-    [displayType]="displayType" 
+  <button
+    bao-button
+    type="button"
+    [reversed]="reversed"
+    [fullWidth]="fullWidth"
+    [displayType]="displayType"
     [loading]="loading"
     [size]="size"
     [level]="level"

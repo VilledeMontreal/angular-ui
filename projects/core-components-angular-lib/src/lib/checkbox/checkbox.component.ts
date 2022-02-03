@@ -123,7 +123,7 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   }
 
   /**
-   * The checkbox ID. Is is set dynamically with an unique ID by default
+   * The checkbox ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
 

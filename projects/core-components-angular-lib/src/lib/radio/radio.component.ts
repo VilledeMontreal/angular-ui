@@ -57,7 +57,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   private _uniqueId: string = `bao-radio-button-${++radioNextUniqueId}`;
 
   /**
-   * The radio button ID. Is is set dynamically with an unique ID by default
+   * The radio button ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
 

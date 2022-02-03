@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { BaoModule } from 'core-components-angular-lib';
 
 import { TaskModule } from './taskbox/task.module';
 import { NgxsModule } from '@ngxs/store';
@@ -14,7 +13,6 @@ import { PureInboxScreenComponent } from './taskbox/task-list/pure-inbox-screen.
   declarations: [AppComponent, InboxScreenComponent, PureInboxScreenComponent],
   imports: [
     BrowserModule,
-    // BaoModule,
     TaskModule,
     NgxsModule.forRoot([]),
     NgxsReduxDevtoolsPluginModule.forRoot(),

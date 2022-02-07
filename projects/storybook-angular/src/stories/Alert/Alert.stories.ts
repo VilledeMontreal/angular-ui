@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoAlertActions, BaoAlertComponent, BaoAlertContent, BaoAlertLink, BaoAlertTitle, BaoButtonComponent, BaoIconComponent } from 'core-components-angular-lib';
+import { BaoIconModule, BaoAlertActions, BaoAlertComponent, BaoAlertContent, BaoAlertLink, BaoAlertTitle, BaoButtonComponent } from 'core-components-angular-lib';
 
 
 const description = `
@@ -22,8 +22,8 @@ export default {
   title: 'Components/Alert',
   decorators: [
     moduleMetadata({
-      declarations: [BaoAlertContent, BaoAlertTitle, BaoAlertActions, BaoAlertLink, BaoIconComponent, BaoButtonComponent],
-      imports: [CommonModule],
+      declarations: [BaoAlertContent, BaoAlertTitle, BaoAlertActions, BaoAlertLink, BaoButtonComponent],
+      imports: [CommonModule, BaoIconModule],
     }),
   ],
   component: BaoAlertComponent,
@@ -50,8 +50,18 @@ export default {
         disable: true,
       },
     },
+    iconTitle: {
+      table: {
+        disable: true,
+      },
+    },
+    iconType: {
+      table: {
+        disable: true,
+      },
+    },
     type: {
-      options: ['success', 'danger', 'warning', ''],
+      options: ['success', 'danger', 'warning', 'info', ''],
       control: { type: 'radio' },
     },
   },

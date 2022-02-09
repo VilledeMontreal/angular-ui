@@ -1,33 +1,39 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconModule, BaoListItem, BaoListModule, BaoTagModule } from 'core-components-angular-lib';
-
+import {
+  BaoIconModule,
+  BaoListItem,
+  BaoListModule,
+  BaoTagModule
+} from 'core-components-angular-lib';
 
 const description = `
 A list of utility items is a list composed of complex objects intended for an application or a tool.
-`
+`;
 
 export default {
   title: 'Components/List',
   decorators: [
     moduleMetadata({
       // declarations: [BaoListItem],
-      imports: [BaoListModule, BaoIconModule, BaoTagModule],
-    }),
+      imports: [BaoListModule, BaoIconModule, BaoTagModule]
+    })
   ],
   component: BaoListItem,
   parameters: {
     docs: {
       description: {
         component: description
-      },
-    },
+      }
+    }
   },
-  argTypes: {},
+  argTypes: {}
 } as Meta;
 
-const Template: Story<BaoListItem & { content: string }> = (args: BaoListItem) => ({
+const Template: Story<BaoListItem & { content: string }> = (
+  args: BaoListItem
+) => ({
   component: BaoListItem,
   template: `
     <bao-list>
@@ -35,16 +41,16 @@ const Template: Story<BaoListItem & { content: string }> = (args: BaoListItem) =
       <bao-list-item>{{content}}</bao-list-item>
     </bao-list>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});
 
 Primary.args = {
-  content: 'content',
+  content: 'content'
 };
 
-export const SimpleListWithLeftIcon: Story = (args) => ({
+export const SimpleListWithLeftIcon: Story = args => ({
   props: args,
   template: `
     <bao-list>
@@ -57,14 +63,14 @@ export const SimpleListWithLeftIcon: Story = (args) => ({
         <span bao-list-item-title>Title</span>
       </bao-list-item>
     </bao-list>
-    `,
+    `
 });
 SimpleListWithLeftIcon.storyName = 'Simple list - Left icon';
 SimpleListWithLeftIcon.args = {
   ...Primary.args
 };
 
-export const SimpleListWithRightIcon: Story = (args) => ({
+export const SimpleListWithRightIcon: Story = args => ({
   props: args,
   template: `
     <bao-list>
@@ -77,14 +83,14 @@ export const SimpleListWithRightIcon: Story = (args) => ({
         <bao-icon baoIconTag svgIcon="icon-check"></bao-icon>
       </bao-list-item>
     </bao-list>
-    `,
+    `
 });
 SimpleListWithRightIcon.storyName = 'Simple list - Right icon';
 SimpleListWithRightIcon.args = {
   ...Primary.args
 };
 
-export const SimpleListWithTag: Story = (args) => ({
+export const SimpleListWithTag: Story = args => ({
   props: args,
   template: `
     <bao-list>
@@ -97,14 +103,14 @@ export const SimpleListWithTag: Story = (args) => ({
           <bao-tag type="positive"><span>Label</span></bao-tag>
       </bao-list-item>
     </bao-list>
-    `,
+    `
 });
 SimpleListWithTag.storyName = 'Simple list - Tag';
 SimpleListWithTag.args = {
   ...Primary.args
 };
 
-export const SimpleListWithTagAndIcon: Story = (args) => ({
+export const SimpleListWithTagAndIcon: Story = args => ({
   props: args,
   template: `
   <bao-list>
@@ -119,14 +125,14 @@ export const SimpleListWithTagAndIcon: Story = (args) => ({
         <bao-tag type="positive"><span>Label</span></bao-tag>
     </bao-list-item>
   </bao-list>
-  `,
+  `
 });
 SimpleListWithTagAndIcon.storyName = 'Simple list - Tag & Icon';
 SimpleListWithTagAndIcon.args = {
   ...Primary.args
 };
 
-export const SimpleListWithDescription: Story = (args) => ({
+export const SimpleListWithDescription: Story = args => ({
   props: args,
   template: `
   <bao-list>
@@ -158,15 +164,14 @@ export const SimpleListWithDescription: Story = (args) => ({
       </bao-list-item-description>
     </bao-list-item>
   </bao-list>
-  `,
+  `
 });
 SimpleListWithDescription.storyName = 'Simple list - Description';
 SimpleListWithDescription.args = {
   ...Primary.args
 };
 
-
-export const SimpleListWithInlineDescription: Story = (args) => ({
+export const SimpleListWithInlineDescription: Story = args => ({
   props: args,
   template: `
   <bao-list>
@@ -198,7 +203,7 @@ export const SimpleListWithInlineDescription: Story = (args) => ({
       <bao-tag type="positive"><span>Label</span></bao-tag>
     </bao-list-item>
   </bao-list>
-  `,
+  `
 });
 SimpleListWithInlineDescription.storyName = 'Simple list - Inline Description';
 SimpleListWithInlineDescription.args = {

@@ -1,18 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
-  "exclude": [
-    "../node_modules",
-    "../projects/**/*.spec.ts"
-  ],
-  "include": [
-    "../projects/**/*" 
-  ],
-  "files": [
-    "./typings.d.ts"
-  ]
+  "exclude": ["../node_modules", "../projects/**/*.spec.ts"],
+  "include": ["../projects/**/*"],
+  "files": ["./typings.d.ts"]
 }

@@ -5,7 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaoButtonModule } from '../button';
 import { BaoCommonComponentsModule } from '../common-components/module';
 import { BaoRadioButtonGroupComponent } from './radio-group.component';
-import { BaoRadioButtonComponent, BaoRadioDescription } from './radio.component';
+import {
+  BaoRadioButtonComponent,
+  BaoRadioDescription
+} from './radio.component';
 
 const RADIO_DIRECTIVES = [
   BaoRadioButtonComponent,

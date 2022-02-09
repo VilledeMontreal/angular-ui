@@ -13,18 +13,18 @@ export default {
     moduleMetadata({
       declarations: [PureInboxScreenComponent],
       imports: [CommonModule, TaskModule, NgxsModule.forRoot([TasksState])],
-      providers: [Store],
-    }),
-  ],
+      providers: [Store]
+    })
+  ]
 } as Meta;
 
 const Template: Story = args => ({
-  props: args,
+  props: args
 });
 
 export const Default = Template.bind({});
 
 export const Error = Template.bind({});
 Error.args = {
-  error: true,
+  error: true
 };

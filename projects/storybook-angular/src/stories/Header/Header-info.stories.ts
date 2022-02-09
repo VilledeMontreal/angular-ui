@@ -1,33 +1,38 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoBreadcrumbComponent, BaoHeaderInfoComponent, BaoHeaderInfoModule } from 'core-components-angular-lib';
-
+import {
+  BaoBreadcrumbComponent,
+  BaoHeaderInfoComponent,
+  BaoHeaderInfoModule
+} from 'core-components-angular-lib';
 
 const description = `
 Header info is used to present the title of a page and must contain an h1 tag.
-`
+`;
 
 export default {
   title: 'Components/Header/HeaderInfo',
   decorators: [
     moduleMetadata({
       declarations: [BaoBreadcrumbComponent],
-      imports: [BaoHeaderInfoModule],
-    }),
+      imports: [BaoHeaderInfoModule]
+    })
   ],
   component: BaoHeaderInfoComponent,
   parameters: {
     docs: {
       description: {
         component: description
-      },
-    },
+      }
+    }
   },
-  argTypes: {},
+  argTypes: {}
 } as Meta;
 
-const Template: Story<BaoHeaderInfoComponent & { title: string, subtitle: string }> = (args: BaoHeaderInfoComponent) => ({
+const Template: Story<
+  BaoHeaderInfoComponent & { title: string; subtitle: string }
+> = (args: BaoHeaderInfoComponent) => ({
   component: BaoHeaderInfoComponent,
   template: `
     <bao-header-info [brandBorder]="brandBorder" [notch]="notch" [imageUrl]="imageUrl">
@@ -37,7 +42,7 @@ const Template: Story<BaoHeaderInfoComponent & { title: string, subtitle: string
         </bao-header-info-title-group>
     </bao-header-info>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});
@@ -45,12 +50,13 @@ export const Primary = Template.bind({});
 Primary.args = {
   title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   subtitle: 'Sous-titre optionnel',
-  imageUrl: 'https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1570212188/portail/background/texture-large-undeground.png',
+  imageUrl:
+    'https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1570212188/portail/background/texture-large-undeground.png',
   brandBorder: true,
   notch: 'left'
 };
 
-export const HeaderInfo: Story = (args) => ({
+export const HeaderInfo: Story = args => ({
   props: args,
   template: `
     <bao-header-info [brandBorder]="true">
@@ -61,14 +67,14 @@ export const HeaderInfo: Story = (args) => ({
       <div class="badge badge-info">libele</div>
     </bao-header-info-content>
   </bao-header-info>
-    `,
+    `
 });
 HeaderInfo.storyName = 'Header Info';
 HeaderInfo.args = {
   ...Primary.args
 };
 
-export const HeaderInfoComplex: Story = (args) => ({
+export const HeaderInfoComplex: Story = args => ({
   props: args,
   template: `
   <bao-header-info imageUrl="https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1570212188/portail/background/texture-large-undeground.png">
@@ -99,14 +105,14 @@ export const HeaderInfoComplex: Story = (args) => ({
       </div> 
     </bao-header-info-content>
   </bao-header-info>
-    `,
+    `
 });
 HeaderInfoComplex.storyName = 'Header Info - search';
 HeaderInfoComplex.args = {
   ...Primary.args
 };
 
-export const HeaderInfoBreadcrumb: Story = (args) => ({
+export const HeaderInfoBreadcrumb: Story = args => ({
   props: args,
   template: `
   <bao-header-info imageUrl="https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1573672979/portail/background/EnteteVitrine_Quartier.png">
@@ -119,14 +125,14 @@ export const HeaderInfoBreadcrumb: Story = (args) => ({
       <h1 bao-header-info-title>Lorem ipsum dolor.</h1>
     </bao-header-info-title-group>
   </bao-header-info>
-    `,
+    `
 });
 HeaderInfoBreadcrumb.storyName = 'Header Info - breadcrumb';
 HeaderInfoBreadcrumb.args = {
   ...Primary.args
 };
 
-export const HeaderInfoCenterNotch: Story = (args) => ({
+export const HeaderInfoCenterNotch: Story = args => ({
   props: args,
   template: `
   <bao-header-info notch="center" imageUrl="https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1570212188/portail/background/texture-large-undeground.png">
@@ -134,7 +140,7 @@ export const HeaderInfoCenterNotch: Story = (args) => ({
       <h1 bao-header-info-title>Lorem ipsum dolor.</h1>
     </bao-header-info-title-group>
   </bao-header-info>
-    `,
+    `
 });
 HeaderInfoCenterNotch.storyName = 'Header Info - center notch';
 HeaderInfoCenterNotch.args = {

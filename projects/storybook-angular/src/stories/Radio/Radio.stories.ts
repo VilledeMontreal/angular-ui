@@ -1,7 +1,12 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoRadioButtonComponent, BaoRadioModule, BaoCommonComponentsModule, BaoButtonModule } from 'core-components-angular-lib';
+import {
+  BaoRadioButtonComponent,
+  BaoRadioModule,
+  BaoCommonComponentsModule,
+  BaoButtonModule
+} from 'core-components-angular-lib';
 import { BaoRadioExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/form/radio-example.component';
 import { BaoRadioReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/reactiveForm/radio-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,22 +14,33 @@ export default {
   title: 'Components/Radio',
   decorators: [
     moduleMetadata({
-      declarations: [BaoRadioExampleComponent, BaoRadioReactiveFormExampleComponent],
-      imports: [BaoRadioModule, BaoCommonComponentsModule, FormsModule, ReactiveFormsModule, BaoButtonModule],
-    }),
+      declarations: [
+        BaoRadioExampleComponent,
+        BaoRadioReactiveFormExampleComponent
+      ],
+      imports: [
+        BaoRadioModule,
+        BaoCommonComponentsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BaoButtonModule
+      ]
+    })
   ],
   component: BaoRadioButtonComponent,
-  argTypes: {},
+  argTypes: {}
 } as Meta;
 
-const Template: Story<BaoRadioButtonComponent & { label: string }> = (args: BaoRadioButtonComponent) => ({
+const Template: Story<BaoRadioButtonComponent & { label: string }> = (
+  args: BaoRadioButtonComponent
+) => ({
   component: BaoRadioButtonComponent,
   template: `
   <bao-radio-button id="ID1" name="name" value="example1">
     {{label}}
   </bao-radio-button>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});
@@ -33,7 +49,7 @@ Primary.args = {
   label: 'Label'
 };
 
-export const RadioSimple: Story = (args) => ({
+export const RadioSimple: Story = args => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioSimple" name="RadioSimple">
@@ -49,14 +65,14 @@ export const RadioSimple: Story = (args) => ({
     </bao-radio-button>
     <bao-guiding-text>Texte d'assistance pour le groupe</bao-guiding-text>
   </bao-radio-button-group>
-  `,
+  `
 });
 RadioSimple.storyName = 'Radio - Inline & guiding text';
 RadioSimple.args = {
   ...Primary.args
 };
 
-export const RadioWithDescriptionAndBorder: Story = (args) => ({
+export const RadioWithDescriptionAndBorder: Story = args => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioWithDescriptionAndBorder" name="RadioWithDescriptionAndBorder">
@@ -75,14 +91,14 @@ export const RadioWithDescriptionAndBorder: Story = (args) => ({
     </bao-radio-button>
   <bao-error>Erreur pour le groupe</bao-error>
   </bao-radio-button-group>
-  `,
+  `
 });
 RadioWithDescriptionAndBorder.storyName = 'Radio - Description and border';
 RadioWithDescriptionAndBorder.args = {
   ...Primary.args
 };
 
-export const RadioWithDescAndHiddenLabel: Story = (args) => ({
+export const RadioWithDescAndHiddenLabel: Story = args => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel">
@@ -100,30 +116,29 @@ export const RadioWithDescAndHiddenLabel: Story = (args) => ({
       <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
     </bao-radio-button>
   </bao-radio-button-group>
-  `,
+  `
 });
 RadioWithDescAndHiddenLabel.storyName = 'Radio - Description and hidden label';
 RadioWithDescAndHiddenLabel.args = {
   ...Primary.args
 };
 
-
-export const RadioExample: Story = (args) => ({
+export const RadioExample: Story = args => ({
   props: args,
   template: `
     <bao-radio-button-example></bao-radio-button-example>
-  `,
+  `
 });
 RadioExample.storyName = 'Radio button - Basic example';
 RadioExample.args = {
   ...Primary.args
 };
 
-export const RadioReactiveExample: Story = (args) => ({
+export const RadioReactiveExample: Story = args => ({
   props: args,
   template: `
     <bao-radio-button-reactive-form-example></bao-radio-button-reactive-form-example>
-  `,
+  `
 });
 RadioReactiveExample.storyName = 'Radio button - Reactive form example';
 RadioReactiveExample.args = {

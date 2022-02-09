@@ -1,10 +1,15 @@
-<bao-radio-button-group aria-labelledby="Choisir un animal" [(ngModel)]="animalFavori">
+<bao-radio-button-group
+  aria-labelledby="Choisir un animal"
+  [(ngModel)]="animalFavori"
+>
   <bao-legend required="true">Choisissez votre animal favori</bao-legend>
   <ng-container *ngFor="let animal of animaux; let id = index">
     <bao-radio-button [value]="animal" name="amimaux">
       {{ animal }}
     </bao-radio-button>
   </ng-container>
-  <bao-guiding-text>Vous recevrez en cadeau votre animal favori</bao-guiding-text>
+  <bao-guiding-text
+    >Vous recevrez en cadeau votre animal favori</bao-guiding-text
+  >
 </bao-radio-button-group>
 <div class="mt-4">Your favorite animal is: {{ animalFavori }}</div>

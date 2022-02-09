@@ -71,15 +71,9 @@
           "builder": "@angular-builders/jest:run"
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.json",
-              "tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "lintFilePatterns": ["projects/storybook-angular/src/**/*.ts"]
           }
         },
         "storybook": {
@@ -106,7 +100,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            
             "project": "projects/core-components-angular-lib/ng-package.json"
           },
           "configurations": {
@@ -125,6 +118,15 @@
             "main": "projects/core-components-angular-lib/src/test.ts",
             "tsConfig": "projects/core-components-angular-lib/tsconfig.spec.json",
             "karmaConfig": "projects/core-components-angular-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/core-components-angular-lib/**/*.ts",
+              "projects/core-components-angular-lib/**/*.html"
+            ]
           }
         }
       }
@@ -156,9 +158,7 @@
               "projects/storybook-angular-examples/src/favicon.ico",
               "projects/storybook-angular-examples/src/assets"
             ],
-            "styles": [
-              "projects/storybook-angular-examples/src/styles.scss"
-            ],
+            "styles": ["projects/storybook-angular-examples/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -224,14 +224,15 @@
               "projects/storybook-angular-examples/src/favicon.ico",
               "projects/storybook-angular-examples/src/assets"
             ],
-            "styles": [
-              "projects/storybook-angular-examples/src/styles.scss"
-            ],
+            "styles": ["projects/storybook-angular-examples/src/styles.scss"],
             "scripts": []
           }
         }
       }
     }
   },
-  "defaultProject": "storybook-angular"
+  "defaultProject": "storybook-angular",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

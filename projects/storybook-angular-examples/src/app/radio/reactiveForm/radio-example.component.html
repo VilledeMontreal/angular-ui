@@ -7,8 +7,17 @@
     <bao-radio-button value="Kia">Kia</bao-radio-button>
     <bao-error *ngIf="!cars.valid">Vous devez choisir une voiture</bao-error>
   </bao-radio-button-group>
-  <button bao-button type="submit" displayType="utility" level="primary" size="medium"  style="margin: 2rem 0 0 0;">Soumettre</button>
+  <button
+    bao-button
+    type="submit"
+    displayType="utility"
+    level="primary"
+    size="medium"
+    style="margin: 2rem 0 0 0"
+  >
+    Soumettre
+  </button>
 </form>
-<section style="margin: 1rem 0;">
+<section style="margin: 1rem 0">
   {{ cars.value | json }}
 </section>

@@ -1,34 +1,47 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoCardComponent, BaoCardContent, BaoCardHeader, BaoCardTextInterface, BaoCardTitle, BaoIconModule } from 'core-components-angular-lib';
-
+import {
+  BaoCardComponent,
+  BaoCardContent,
+  BaoCardHeader,
+  BaoCardTextInterface,
+  BaoCardTitle,
+  BaoIconModule
+} from 'core-components-angular-lib';
 
 const cardWithIconHeaderDescription = `
 To define a main icon for a card, a \`bao-icon\` component should be used inside a \`bao-card-header\` tag, 
 also to adhere to the design guide, in this case the \`padding\` input should be set to \`'large'\`.
-`
+`;
 
 export default {
   title: 'Components/Card',
   decorators: [
     moduleMetadata({
-      declarations: [BaoCardContent, BaoCardHeader, BaoCardTextInterface, BaoCardTitle],
-      imports: [BaoIconModule],
-    }),
+      declarations: [
+        BaoCardContent,
+        BaoCardHeader,
+        BaoCardTextInterface,
+        BaoCardTitle
+      ],
+      imports: [BaoIconModule]
+    })
   ],
   component: BaoCardComponent,
   parameters: {
     docs: {
       description: {
         component: cardWithIconHeaderDescription
-      },
-    },
+      }
+    }
   },
-  argTypes: {},
+  argTypes: {}
 } as Meta;
 
-const Template: Story<BaoCardComponent & { title: string, content: string }> = (args: BaoCardComponent) => ({
+const Template: Story<BaoCardComponent & { title: string; content: string }> = (
+  args: BaoCardComponent
+) => ({
   component: BaoCardComponent,
   template: `
   <div class="container">
@@ -47,18 +60,19 @@ const Template: Story<BaoCardComponent & { title: string, content: string }> = (
   </div>
 </div>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});
 
 Primary.args = {
   title: 'Card title',
-  content: 'Optional description on multiple lines. Maximal number of characters recommended - 140 characters.',
+  content:
+    'Optional description on multiple lines. Maximal number of characters recommended - 140 characters.',
   padding: 'normal'
 };
 
-export const Cards: Story = (args) => ({
+export const Cards: Story = args => ({
   props: args,
   template: `
   <div class="container">
@@ -97,10 +111,9 @@ export const Cards: Story = (args) => ({
       </div>
     </div>
   </div>
-  `,
+  `
 });
 Cards.storyName = 'Cards';
 Cards.args = {
   ...Primary.args
 };
-

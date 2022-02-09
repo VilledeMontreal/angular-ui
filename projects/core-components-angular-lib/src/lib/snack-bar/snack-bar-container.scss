@@ -11,7 +11,6 @@ $mat-snack-bar-max-width: 33vw !default;
 $mat-snack-bar-spacing-margin: 1.5rem !default;
 $mat-snack-bar-spacing-margin-handset: 0.5rem !default;
 
-
 .mat-snack-bar-container {
   border-radius: 0.25rem;
   box-sizing: border-box;
@@ -23,9 +22,9 @@ $mat-snack-bar-spacing-margin-handset: 0.5rem !default;
   min-height: $mat-snack-bar-min-height;
   transform-origin: center;
 
-//  @include cdk-high-contrast(active, off) {
-//    border: solid 0.0625rem;
-//  }
+  //  @include cdk-high-contrast(active, off) {
+  //    border: solid 0.0625rem;
+  //  }
 }
 
 /**

@@ -8,7 +8,10 @@ const SVG_SUFFIX = `</svg>`;
 
 @Injectable({ providedIn: 'root' })
 export class BaoIconDictionary {
-  constructor(@Inject(DOCUMENT) private document: any, private domSanitizer: DomSanitizer) {}
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private domSanitizer: DomSanitizer
+  ) {}
 
   public getNamedSvgIcon(iconName: string): SVGElement {
     const rawIconString = this.getRawIconStringFromIconName(iconName);

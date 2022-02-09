@@ -8,33 +8,22 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "allowSyntheticDefaultImports":true,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "core-components-angular-lib": [
-        "dist/core-components-angular-lib"
-      ],
-      "storybook-angular-examples": [
-        "dist/storybook-angular-examples"
-      ]
-    },
+      "core-components-angular-lib": ["dist/core-components-angular-lib"],
+      "storybook-angular-examples": ["dist/storybook-angular-examples"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   },
-  "exclude": [
-    "./node_modules"
-  ],
+  "exclude": ["./node_modules"]
 }

@@ -21,37 +21,45 @@ import { BaoRadioButtonComponent } from '.';
 /**
  * We have to inject the radio button group and all its children to each child.
  */
-export const BAO_RADIO_GROUP = new InjectionToken<BaoRadioButtonGroupComponent>('BaoRadioButtonGroup');
+export const BAO_RADIO_GROUP = new InjectionToken<BaoRadioButtonGroupComponent>(
+  'BaoRadioButtonGroup'
+);
 /**
  * Unique ID for each radio group counter
  */
 let radioGroupNextUniqueId = 0;
 
 @Component({
-  selector: 'bao-radio-button-group, [bao-radio-button-group], [baoRadioButtonGroup]',
+  selector:
+    'bao-radio-button-group, [bao-radio-button-group], [baoRadioButtonGroup]',
   exportAs: 'baoRadioGroup',
   templateUrl: './radio-group.component.html',
   styleUrls: ['./radio-group.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => BaoRadioButtonGroupComponent), multi: true },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => BaoRadioButtonGroupComponent),
+      multi: true
+    },
     { provide: BAO_RADIO_GROUP, useExisting: BaoRadioButtonGroupComponent }
   ]
 })
-export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlValueAccessor, AfterViewInit {
-  @ContentChildren(
-    forwardRef(() => BaoRadioButtonComponent),
-    { descendants: true }
-  )
+export class BaoRadioButtonGroupComponent
+  implements AfterContentInit, ControlValueAccessor, AfterViewInit
+{
+  @ContentChildren(forwardRef(() => BaoRadioButtonComponent), {
+    descendants: true
+  })
   private _radios: QueryList<BaoRadioButtonComponent>;
   private _value: string | null = null;
   private _name: string | null = null;
   private _selected: BaoRadioButtonComponent | null = null;
-  private _isInitialized: boolean = false;
-  private _disabled: boolean = false;
-  private _required: boolean = false;
+  private _isInitialized = false;
+  private _disabled = false;
+  private _required = false;
 
-  private _uniqueId: string = `bao-checkbox-group-${++radioGroupNextUniqueId}`;
+  private _uniqueId = `bao-checkbox-group-${++radioGroupNextUniqueId}`;
 
   /**
    * The checkbox group ID. It is set dynamically with an unique ID by default
@@ -125,14 +133,16 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
   /**
    * Emit the value of the selected radio button
    */
-  @Output() public readonly change: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public readonly change: EventEmitter<string> =
+    new EventEmitter<string>();
 
   /**
    * The aria-describedby for web accessibilty
    */
   public ariaDescribedby: string | null = null;
 
-  @ViewChild('container', { static: false }) private staticContainer: ElementRef;
+  @ViewChild('container', { static: false })
+  private staticContainer: ElementRef;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -200,7 +210,8 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
    * Define which radio button is selected.
    */
   public updateSelectedRadioFromValue(): void {
-    const isAlreadySelected = this._selected !== null && this._selected.value === this._value;
+    const isAlreadySelected =
+      this._selected !== null && this._selected.value === this._value;
     if (this._radios && !isAlreadySelected) {
       this._selected = null;
       this._radios.forEach((radio: BaoRadioButtonComponent) => {
@@ -226,7 +237,7 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
    */
   public emitChangeEvent(): void {
     if (this._isInitialized) {
-      this.change.emit(this.value!);
+      this.change.emit(this.value);
     }
   }
 
@@ -235,7 +246,9 @@ export class BaoRadioButtonGroupComponent implements AfterContentInit, ControlVa
    */
   public markRadiosForCheck() {
     if (this._radios) {
-      this._radios.forEach((radio: BaoRadioButtonComponent) => radio.markForCheck());
+      this._radios.forEach((radio: BaoRadioButtonComponent) =>
+        radio.markForCheck()
+      );
     }
   }
 

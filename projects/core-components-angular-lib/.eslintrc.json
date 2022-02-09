@@ -1,0 +1,26 @@
+{
+  "extends": "../../.eslintrc.json",
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "projects/core-components-angular-lib/tsconfig.lib.json",
+          "projects/core-components-angular-lib/tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "rules": {
+        "@typescript-eslint/no-explicit-any": 0
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "parserOptions": {
+        "project": ["projects/core-components-angular-lib/tsconfig.lib.json"]
+      },
+      "rules": {}
+    }
+  ]
+}

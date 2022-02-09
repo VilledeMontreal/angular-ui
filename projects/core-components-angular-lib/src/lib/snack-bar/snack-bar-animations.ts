@@ -1,4 +1,11 @@
-import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  AnimationTriggerMetadata,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 
 /**
  * Animations used by the Material snack bar.

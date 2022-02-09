@@ -1,6 +1,12 @@
-// tslint:disable: directive-selector
+/* eslint-disable @angular-eslint/directive-selector */
 
-import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  Input,
+  ViewEncapsulation
+} from '@angular/core';
 
 /**
  * A basic content container component that adds the styles of a BAO design card.
@@ -24,8 +30,7 @@ import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation
   }
 })
 export class BaoCardComponent {
-  
-  @Input() 
+  @Input()
   public padding: 'normal' | 'large' = 'normal';
 }
 

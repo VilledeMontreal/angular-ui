@@ -14,17 +14,17 @@
   white-space: nowrap;
   overflow: hidden;
   vertical-align: baseline;
-  &.informative{
+  &.informative {
     background-color: $informative-reversed;
   }
-  &.positive{
+  &.positive {
     background-color: $positive-reversed;
   }
-  &.warning{
+  &.warning {
     background-color: $warning-reversed;
     color: $neutral-primary;
   }
-  &.negative{
+  &.negative {
     background-color: $negative-reversed;
   }
 }

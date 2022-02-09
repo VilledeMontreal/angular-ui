@@ -13,11 +13,11 @@ import { BaoTagModule } from './tag';
 
 @NgModule({
   imports: [
-    BaoIconModule, 
-    BaoButtonModule, 
-    BaoAlertModule, 
-    BaoCardModule, 
-    BaoBreadcrumbModule,
+    BaoIconModule,
+    BaoButtonModule,
+    BaoAlertModule,
+    BaoCardModule,
+    BaoBreadcrumbModule
   ],
   exports: [
     BaoIconModule,

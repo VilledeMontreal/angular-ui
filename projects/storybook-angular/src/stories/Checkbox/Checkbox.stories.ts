@@ -1,7 +1,11 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoCheckboxComponent, BaoCheckboxModule, BaoCommonComponentsModule } from 'core-components-angular-lib';
+import {
+  BaoCheckboxComponent,
+  BaoCheckboxModule,
+  BaoCommonComponentsModule
+} from 'core-components-angular-lib';
 import { BaoCheckboxExampleComponent } from 'projects/storybook-angular-examples/src/app/checkbox/form/checkbox-example.component';
 import { BaoCheckboxReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/checkbox/reactiveForm/checkbox-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,15 +13,25 @@ export default {
   title: 'Components/Checkbox',
   decorators: [
     moduleMetadata({
-      declarations: [BaoCheckboxExampleComponent, BaoCheckboxReactiveFormExampleComponent],
-      imports: [BaoCheckboxModule, BaoCommonComponentsModule, FormsModule, ReactiveFormsModule],
-    }),
+      declarations: [
+        BaoCheckboxExampleComponent,
+        BaoCheckboxReactiveFormExampleComponent
+      ],
+      imports: [
+        BaoCheckboxModule,
+        BaoCommonComponentsModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
+    })
   ],
   component: BaoCheckboxComponent,
-  argTypes: {},
+  argTypes: {}
 } as Meta;
 
-const Template: Story<BaoCheckboxComponent & { label: string }> = (args: BaoCheckboxComponent) => ({
+const Template: Story<BaoCheckboxComponent & { label: string }> = (
+  args: BaoCheckboxComponent
+) => ({
   component: BaoCheckboxComponent,
   template: `
   <bao-checkbox id="ID1" name="name" 
@@ -31,7 +45,7 @@ const Template: Story<BaoCheckboxComponent & { label: string }> = (args: BaoChec
     {{label}}
   </bao-checkbox>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});
@@ -40,7 +54,7 @@ Primary.args = {
   label: 'Label'
 };
 
-export const CheckboxSimple: Story = (args) => ({
+export const CheckboxSimple: Story = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -58,14 +72,14 @@ export const CheckboxSimple: Story = (args) => ({
       Label (disabled)
     </bao-checkbox>
   </bao-checkbox-group>
-  `,
+  `
 });
 CheckboxSimple.storyName = 'Checkbox - Simple';
 CheckboxSimple.args = {
   ...Primary.args
 };
 
-export const InlineCheckboxWithGuidingText: Story = (args) => ({
+export const InlineCheckboxWithGuidingText: Story = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -84,14 +98,14 @@ export const InlineCheckboxWithGuidingText: Story = (args) => ({
     </bao-checkbox>
     <bao-guiding-text>Texte d'assistance pour le groupe</bao-guiding-text>
   </bao-checkbox-group>
-  `,
+  `
 });
 InlineCheckboxWithGuidingText.storyName = 'Inline checkbox with guiding text';
 InlineCheckboxWithGuidingText.args = {
   ...Primary.args
 };
 
-export const CheckboxDescriptionError: Story = (args) => ({
+export const CheckboxDescriptionError: Story = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -114,15 +128,14 @@ export const CheckboxDescriptionError: Story = (args) => ({
     </bao-checkbox>
     <bao-error>Erreur pour le groupe</bao-error>
   </bao-checkbox-group>
-  `,
+  `
 });
 CheckboxDescriptionError.storyName = 'Checkbox - Description & error';
 CheckboxDescriptionError.args = {
   ...Primary.args
 };
 
-
-export const CheckboxDescriptionHiddenLabel: Story = (args) => ({
+export const CheckboxDescriptionHiddenLabel: Story = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -144,29 +157,30 @@ export const CheckboxDescriptionHiddenLabel: Story = (args) => ({
       <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>
     </bao-checkbox>
   </bao-checkbox-group>
-  `,
+  `
 });
-CheckboxDescriptionHiddenLabel.storyName = 'Checkbox - Description & hidden label';
+CheckboxDescriptionHiddenLabel.storyName =
+  'Checkbox - Description & hidden label';
 CheckboxDescriptionHiddenLabel.args = {
   ...Primary.args
 };
 
-export const CheckboxExample: Story = (args) => ({
+export const CheckboxExample: Story = args => ({
   props: args,
   template: `
     <bao-checkbox-example></bao-checkbox-example>
-  `,
+  `
 });
 CheckboxExample.storyName = 'Basic example';
 CheckboxExample.args = {
   ...Primary.args
 };
 
-export const CheckboxReactiveExample: Story = (args) => ({
+export const CheckboxReactiveExample: Story = args => ({
   props: args,
   template: `
     <bao-checkbox-reactive-form-example></bao-checkbox-reactive-form-example>
-  `,
+  `
 });
 CheckboxReactiveExample.storyName = 'Checkbox - Reactive form example';
 CheckboxReactiveExample.args = {

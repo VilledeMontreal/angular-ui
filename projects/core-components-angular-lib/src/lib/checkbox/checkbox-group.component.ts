@@ -20,7 +20,7 @@ let checkboxGroupNextUniqueId = 0;
   encapsulation: ViewEncapsulation.None
 })
 export class BaoCheckboxGroupComponent implements AfterViewInit {
-  private _uniqueId: string = `bao-checkbox-group-${++checkboxGroupNextUniqueId}`;
+  private _uniqueId = `bao-checkbox-group-${++checkboxGroupNextUniqueId}`;
 
   /**
    * The checkbox group ID. It is set dynamically with an unique ID by default
@@ -32,7 +32,8 @@ export class BaoCheckboxGroupComponent implements AfterViewInit {
    */
   public ariaDescribedby?: string = undefined;
 
-  @ViewChild('container', { static: false }) private staticContainer: ElementRef;
+  @ViewChild('container', { static: false })
+  private staticContainer: ElementRef;
 
   constructor(private cdr: ChangeDetectorRef) {}
 

@@ -2,10 +2,9 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { BaoIconComponent } from 'core-components-angular-lib';
 
-
 const description = `
 If a color is provided, it will be used as the icon's color. If no color is provided, the default behaviour is to use the parent's text color.
-`
+`;
 
 export default {
   title: 'Components/Icon',
@@ -14,64 +13,66 @@ export default {
     docs: {
       description: {
         component: description
-      },
-    },
+      }
+    }
   },
   argTypes: {
     addTitleToSVG: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     clearSvgElement: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     generateUniqueTitleId: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     ngOnDestroy: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     setSvgElement: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     updateSvgIcon: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     _elementsWithExternalReferences: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     _svgIcon: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     _title: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     _titleId: {
       table: {
-        disable: true,
-      },
-    },
-  },
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<BaoIconComponent & { title: string, content: string }> = (args: BaoIconComponent) => ({
+const Template: Story<BaoIconComponent & { title: string; content: string }> = (
+  args: BaoIconComponent
+) => ({
   component: BaoIconComponent,
   template: `
   <div style="display: grid; grid-column-gap: 1rem; grid-template-columns: 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem">
@@ -191,7 +192,7 @@ const Template: Story<BaoIconComponent & { title: string, content: string }> = (
   <bao-icon [color]="color" [size]="size" title="spinner" svgIcon="icon-spinner"></bao-icon>
 </div>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});

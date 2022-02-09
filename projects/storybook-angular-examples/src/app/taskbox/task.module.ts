@@ -8,9 +8,9 @@ import { TasksState } from './state/task.state';
 import { PureTaskListComponent } from './task-list/pure-task-list.component';
 
 @NgModule({
-  imports: [BaoModule,CommonModule, NgxsModule.forFeature([TasksState])],
+  imports: [BaoModule, CommonModule, NgxsModule.forFeature([TasksState])],
   exports: [TaskItemComponent, TaskListComponent],
   declarations: [TaskItemComponent, TaskListComponent, PureTaskListComponent],
-  providers: [],
+  providers: []
 })
 export class TaskModule {}

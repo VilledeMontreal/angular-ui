@@ -1,47 +1,52 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconModule, BaoListItem, BaoListModule, BaoTagModule } from 'core-components-angular-lib';
+import {
+  BaoIconModule,
+  BaoListItem,
+  BaoListModule,
+  BaoTagModule
+} from 'core-components-angular-lib';
 import { Primary } from './List.stories';
 
 const description = `
 A list of utility items is a list composed of complex objects intended for an application or a tool.
-`
+`;
 
 export default {
   title: 'Components/List/Navigation',
   decorators: [
     moduleMetadata({
       // declarations: [BaoListItem],
-      imports: [BaoListModule, BaoIconModule, BaoTagModule],
-    }),
+      imports: [BaoListModule, BaoIconModule, BaoTagModule]
+    })
   ],
   component: BaoListItem,
   parameters: {
     docs: {
       description: {
         component: description
-      },
-    },
+      }
+    }
   },
-  argTypes: {},
+  argTypes: {}
 } as Meta;
 
-export const navigationList: Story = (args) => ({
+export const navigationList: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
     <a bao-list-item href="#">Navigation list 1</a>
     <a bao-list-item href="#">Navigation list 2</a>
   </bao-nav-list>
-  `,
+  `
 });
 navigationList.storyName = 'Navigation list';
 navigationList.args = {
   ...Primary.args
 };
 
-export const navigationListWithLeftIcon: Story = (args) => ({
+export const navigationListWithLeftIcon: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -54,14 +59,14 @@ export const navigationListWithLeftIcon: Story = (args) => ({
       <span bao-list-item-title>Title</span>
     </a>
   </bao-nav-list>
-  `,
+  `
 });
 navigationListWithLeftIcon.storyName = 'Navigation list - Left icon';
 navigationListWithLeftIcon.args = {
   ...Primary.args
 };
 
-export const navigationListWithRightIcon: Story = (args) => ({
+export const navigationListWithRightIcon: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -74,14 +79,14 @@ export const navigationListWithRightIcon: Story = (args) => ({
       <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
     </a>
   </bao-nav-list>
-  `,
+  `
 });
 navigationListWithRightIcon.storyName = 'Navigation list - Right icon';
 navigationListWithRightIcon.args = {
   ...Primary.args
 };
 
-export const navigationListWithTag: Story = (args) => ({
+export const navigationListWithTag: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -94,14 +99,14 @@ export const navigationListWithTag: Story = (args) => ({
         <bao-tag type="positive"><span>Label</span></bao-tag>
     </a>
   </bao-nav-list>
-  `,
+  `
 });
 navigationListWithTag.storyName = 'Navigation list - Tag';
 navigationListWithTag.args = {
   ...Primary.args
 };
 
-export const navigationListWithTagAndIcon: Story = (args) => ({
+export const navigationListWithTagAndIcon: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -114,14 +119,14 @@ export const navigationListWithTagAndIcon: Story = (args) => ({
         <bao-tag type="positive"><span>Label</span></bao-tag>
     </a>
   </bao-nav-list>
-  `,
+  `
 });
 navigationListWithTagAndIcon.storyName = 'Navigation list - Tag & icon';
 navigationListWithTagAndIcon.args = {
   ...Primary.args
 };
 
-export const navigationListDescription: Story = (args) => ({
+export const navigationListDescription: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -153,14 +158,14 @@ export const navigationListDescription: Story = (args) => ({
       </bao-list-item-description>
     </a>
   </bao-nav-list>
-  `,
+  `
 });
 navigationListDescription.storyName = 'Navigation list - Description';
 navigationListDescription.args = {
   ...Primary.args
 };
 
-export const navigationListInlineDescription: Story = (args) => ({
+export const navigationListInlineDescription: Story = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -192,9 +197,10 @@ export const navigationListInlineDescription: Story = (args) => ({
       <bao-tag type="positive"><span>Label</span></bao-tag>
     </a>
   </bao-nav-list>
-  `,
+  `
 });
-navigationListInlineDescription.storyName = 'Navigation list - Inline Description';
+navigationListInlineDescription.storyName =
+  'Navigation list - Inline Description';
 navigationListInlineDescription.args = {
   ...Primary.args
 };

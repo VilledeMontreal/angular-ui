@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BaoCommonComponentsModule } from '../common-components/module';
 import { BaoCheckboxGroupComponent } from './checkbox-group.component';
-import { BaoCheckboxComponent, BaoCheckBoxDescription } from './checkbox.component';
+import {
+  BaoCheckboxComponent,
+  BaoCheckBoxDescription
+} from './checkbox.component';
 
 const CHECKBOX_DIRECTIVES = [
   BaoCheckboxComponent,
   BaoCheckboxGroupComponent,
-  BaoCheckBoxDescription,
+  BaoCheckBoxDescription
 ];
 
 @NgModule({

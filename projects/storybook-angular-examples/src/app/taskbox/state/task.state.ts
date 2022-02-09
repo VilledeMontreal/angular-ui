@@ -5,7 +5,7 @@ import { Task } from '../models/task.model';
 export const actions = {
   ARCHIVE_TASK: 'ARCHIVE_TASK',
   PIN_TASK: 'PIN_TASK',
-  ERROR: 'APP_ERROR',
+  ERROR: 'APP_ERROR'
 };
 
 export class ArchiveTask {
@@ -20,11 +20,11 @@ export class PinTask {
   constructor(public payload: string) {}
 }
 
- // The class definition for our error field
- export class AppError {
-   static readonly type = actions.ERROR;
-   constructor(public payload: boolean) {}
- }
+// The class definition for our error field
+export class AppError {
+  static readonly type = actions.ERROR;
+  constructor(public payload: boolean) {}
+}
 
 // The initial state of our store when the app loads.
 // Usually you would fetch this from a server
@@ -32,7 +32,7 @@ const defaultTasks = {
   1: { id: '1', title: 'Something', state: 'TASK_INBOX' },
   2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },
   3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },
-  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },
+  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' }
 };
 
 export class TaskStateModel {
@@ -45,8 +45,8 @@ export class TaskStateModel {
   name: 'tasks',
   defaults: {
     entities: defaultTasks,
-    error: false,
-  },
+    error: false
+  }
 })
 export class TasksState {
   @Selector()
@@ -61,42 +61,56 @@ export class TasksState {
     return error;
   }
 
-  
   @Action(PinTask)
-  pinTask({ patchState, getState }: StateContext<TaskStateModel>, { payload }: PinTask) {
+  pinTask(
+    { patchState, getState }: StateContext<TaskStateModel>,
+    { payload }: PinTask
+  ) {
     const state = getState().entities;
     const currentState = (state as any)[payload].state;
-    console.log('pinTask', currentState)
+    console.log('pinTask', currentState);
     const entities = {
       ...state,
-      [payload]: { ...(state as any)[payload], state: currentState === 'PIN_TASK' ? 'TASK_INBOX' : 'PIN_TASK' },
+      [payload]: {
+        ...(state as any)[payload],
+        state: currentState === 'PIN_TASK' ? 'TASK_INBOX' : 'PIN_TASK'
+      }
     };
 
     patchState({
-      entities,
+      entities
     });
   }
 
   @Action(ArchiveTask)
-  archiveTask({ patchState, getState }: StateContext<TaskStateModel>, { payload }: ArchiveTask) {
+  archiveTask(
+    { patchState, getState }: StateContext<TaskStateModel>,
+    { payload }: ArchiveTask
+  ) {
     const state = getState().entities;
     const currentState = (state as any)[payload].state;
-    console.log('archiveTask', currentState)
+    console.log('archiveTask', currentState);
     const entities = {
       ...state,
-      [payload]: { ...(state as any)[payload], state: currentState === 'TASK_ARCHIVED' ? 'TASK_INBOX' : 'TASK_ARCHIVED' },
+      [payload]: {
+        ...(state as any)[payload],
+        state: currentState === 'TASK_ARCHIVED' ? 'TASK_INBOX' : 'TASK_ARCHIVED'
+      }
     };
 
     patchState({
-      entities,
+      entities
     });
   }
-  
+
   @Action(AppError)
-  setAppError({ patchState, getState }: StateContext<TaskStateModel>, { payload }: AppError) {
+  setAppError(
+    { patchState, getState }: StateContext<TaskStateModel>,
+    { payload }: AppError
+  ) {
     const state = getState();
     patchState({
-      error: !state.error,
+      error: !state.error
     });
   }
 }

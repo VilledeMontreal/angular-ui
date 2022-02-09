@@ -1,0 +1,7 @@
+# Ignore artifacts:
+build
+coverage
+.angular
+.storybook
+dist
+node_modules

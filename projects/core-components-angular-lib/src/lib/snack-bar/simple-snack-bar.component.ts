@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  ViewEncapsulation
+} from '@angular/core';
 import { BAO_SNACK_BAR_DATA } from './snack-bar-config';
 import { BaoSnackBarRef } from './snack-bar-ref';
 
@@ -30,7 +35,10 @@ export class BaoSimpleSnackBarComponent implements ITextOnlySnackBar {
   /** Data that was injected into the snack bar. */
   public data: { message: string; action: string };
 
-  constructor(public snackBarRef: BaoSnackBarRef<BaoSimpleSnackBarComponent>, @Inject(BAO_SNACK_BAR_DATA) data: any) {
+  constructor(
+    public snackBarRef: BaoSnackBarRef<BaoSimpleSnackBarComponent>,
+    @Inject(BAO_SNACK_BAR_DATA) data: any
+  ) {
     this.data = data;
   }
 

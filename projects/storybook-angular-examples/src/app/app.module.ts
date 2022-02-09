@@ -16,8 +16,8 @@ import { PureInboxScreenComponent } from './taskbox/task-list/pure-inbox-screen.
     TaskModule,
     NgxsModule.forRoot([]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

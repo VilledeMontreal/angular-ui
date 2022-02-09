@@ -1,8 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BaoErrorTextComponent, BaoGuidingTextComponent, BaoLegendTextComponent } from '.';
+import {
+  BaoErrorTextComponent,
+  BaoGuidingTextComponent,
+  BaoLegendTextComponent
+} from '.';
 
-const DIRECTIVES = [BaoErrorTextComponent, BaoLegendTextComponent, BaoGuidingTextComponent];
+const DIRECTIVES = [
+  BaoErrorTextComponent,
+  BaoLegendTextComponent,
+  BaoGuidingTextComponent
+];
 
 @NgModule({
   imports: [CommonModule],

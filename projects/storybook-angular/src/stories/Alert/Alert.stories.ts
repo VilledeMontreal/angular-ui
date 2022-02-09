@@ -2,8 +2,15 @@
 import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconModule, BaoAlertActions, BaoAlertComponent, BaoAlertContent, BaoAlertLink, BaoAlertTitle, BaoButtonComponent } from 'core-components-angular-lib';
-
+import {
+  BaoIconModule,
+  BaoAlertActions,
+  BaoAlertComponent,
+  BaoAlertContent,
+  BaoAlertLink,
+  BaoAlertTitle,
+  BaoButtonComponent
+} from 'core-components-angular-lib';
 
 const description = `
 Alerts are used to display an important message and optional related **actions**.
@@ -16,68 +23,75 @@ To modify the color (and icon) of an alert, the \`type\` input property must be 
 * \`warning\` for a warning alert
 * \`info\` for an informational alert
 
-`
+`;
 
 export default {
   title: 'Components/Alert',
   decorators: [
     moduleMetadata({
-      declarations: [BaoAlertContent, BaoAlertTitle, BaoAlertActions, BaoAlertLink, BaoButtonComponent],
-      imports: [CommonModule, BaoIconModule],
-    }),
+      declarations: [
+        BaoAlertContent,
+        BaoAlertTitle,
+        BaoAlertActions,
+        BaoAlertLink,
+        BaoButtonComponent
+      ],
+      imports: [CommonModule, BaoIconModule]
+    })
   ],
   component: BaoAlertComponent,
   parameters: {
     docs: {
       description: {
         component: description
-      },
-    },
+      }
+    }
   },
   argTypes: {
     alertTitleIcon: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     alertTypeIcon: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     ngOnChanges: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     iconTitle: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     iconType: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     type: {
       options: ['success', 'danger', 'warning', 'info', ''],
-      control: { type: 'radio' },
-    },
-  },
+      control: { type: 'radio' }
+    }
+  }
 } as Meta;
 
-const Template: Story<BaoAlertComponent & { title: string, content: string }> = (args: BaoAlertComponent) => ({
-  component: BaoAlertComponent,
-  template: `
+const Template: Story<BaoAlertComponent & { title: string; content: string }> =
+  (args: BaoAlertComponent) => ({
+    component: BaoAlertComponent,
+    template: `
   <bao-alert [type]="type" [showIcon]="showIcon" [dismissible]="dismissible">
     <bao-alert-title>{{title}}</bao-alert-title>
     <bao-alert-content [innerHTML]="content">
     </bao-alert-content>
   </bao-alert>
  `,
-  props: args,
-});
+    props: args
+  });
 
 export const Primary = Template.bind({});
 
@@ -85,52 +99,51 @@ Primary.args = {
   type: 'info',
   showIcon: true,
   dismissible: false,
-  title: 'The alert\'s title',
-  content: 'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.'
+  title: "The alert's title",
+  content:
+    'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.'
 };
 
-
-export const DismissableAlert: Story = (args) => ({
+export const DismissableAlert: Story = args => ({
   props: args,
   template: `
   <bao-alert type="success" [dismissible]="dismissible">
-  <bao-alert-title>{{ title }}</bao-alert-title>
-  <bao-alert-content [innerHTML]="content"></bao-alert-content>
-</bao-alert>
-<bao-alert type="danger" [dismissible]="dismissible">
-  <bao-alert-title>{{ title }}</bao-alert-title>
-  <bao-alert-content [innerHTML]="content"></bao-alert-content>
-</bao-alert>
-<bao-alert type="warning" [dismissible]="dismissible">
-  <bao-alert-title>{{ title }}</bao-alert-title>
-  <bao-alert-content [innerHTML]="content"></bao-alert-content>
-</bao-alert>
-<bao-alert type="info" [dismissible]="dismissible">
-  <bao-alert-title>{{ title }}</bao-alert-title>
-  <bao-alert-content [innerHTML]="content"></bao-alert-content>
-</bao-alert>
-  `,
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  <bao-alert type="danger" [dismissible]="dismissible">
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  <bao-alert type="warning" [dismissible]="dismissible">
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  <bao-alert type="info" [dismissible]="dismissible">
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  `
 });
 
 const dismissableStoryDescription = `
 Setting the \`dismissible\` input to \`true\` will add a dismiss button to the top right of the alert. Clicking on the button will result in the
-the component emitting a \`dismiss\` event that the parent component will be able to handle.`
-
+the component emitting a \`dismiss\` event that the parent component will be able to handle.`;
 
 DismissableAlert.storyName = 'Dismissible alerts';
 DismissableAlert.parameters = {
   docs: {
     description: {
-      story: dismissableStoryDescription,
-    },
-  },
-}
+      story: dismissableStoryDescription
+    }
+  }
+};
 DismissableAlert.args = {
   ...Primary.args,
   dismissible: true
 };
 
-export const DismissableWithActionsAlert: Story = (args) => ({
+export const DismissableWithActionsAlert: Story = args => ({
   props: args,
   template: `
   <bao-alert type="success" [dismissible]="dismissible">
@@ -169,9 +182,8 @@ export const DismissableWithActionsAlert: Story = (args) => ({
     <button bao-button role="button" type="utility" level="tertiary">Label</button>
   </bao-alert-actions>
 </bao-alert>
-  `,
+  `
 });
-
 
 DismissableWithActionsAlert.storyName = 'Alerts with actions';
 
@@ -180,7 +192,7 @@ DismissableWithActionsAlert.args = {
   dismissible: true
 };
 
-export const DismissableWithoutTitleAlert: Story = (args) => ({
+export const DismissableWithoutTitleAlert: Story = args => ({
   props: args,
   template: `
   <bao-alert type="success" [dismissible]="dismissible">
@@ -195,9 +207,8 @@ export const DismissableWithoutTitleAlert: Story = (args) => ({
   <bao-alert type="info" [dismissible]="dismissible">
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
-  `,
+  `
 });
-
 
 DismissableWithoutTitleAlert.storyName = 'Alerts without title';
 

@@ -5,17 +5,17 @@ rules:
   subject-case: [1, 'always', 'sentence-case']
   scope-case: [1, 'always', 'upper-case']
   type-enum:
-  - 2
-  - always
-  - - ci
-    - feat
-    - fix
-    - docs
-    - style
-    - refactor
-    - perf
-    - test
-    - revert
+    - 2
+    - always
+    - - ci
+      - feat
+      - fix
+      - docs
+      - style
+      - refactor
+      - perf
+      - test
+      - revert
 help: |
   **Possible types**:
   `ci`:       Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)

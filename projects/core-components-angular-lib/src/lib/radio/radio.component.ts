@@ -20,7 +20,10 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BAO_RADIO_GROUP, BaoRadioButtonGroupComponent } from './radio-group.component';
+import {
+  BAO_RADIO_GROUP,
+  BaoRadioButtonGroupComponent
+} from './radio-group.component';
 
 /**
  * Unique ID for each radio button
@@ -49,12 +52,14 @@ let radioNextUniqueId = 0;
     '[class.bao-radio-button-hidden-label]': 'hiddenLabel'
   }
 })
-export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy {
-  private _checked: boolean = false;
-  private _disabled: boolean = false;
-  private _required: boolean = false;
+export class BaoRadioButtonComponent
+  implements AfterViewInit, OnInit, OnDestroy
+{
+  private _checked = false;
+  private _disabled = false;
+  private _required = false;
   private _value: string | null = null;
-  private _uniqueId: string = `bao-radio-button-${++radioNextUniqueId}`;
+  private _uniqueId = `bao-radio-button-${++radioNextUniqueId}`;
 
   /**
    * The radio button ID. It is set dynamically with an unique ID by default
@@ -69,12 +74,12 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   /**
    * Whether the radio button has a border and is considered as a card.
    */
-  @Input() public brandBorder: boolean = false;
+  @Input() public brandBorder = false;
 
   /**
    * Whether the radio button is inline.
    */
-  @Input() public inline: boolean = false;
+  @Input() public inline = false;
 
   /**
    * The name property of the radio button
@@ -92,14 +97,22 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
     const newCheckedState = coerceBooleanProperty(value);
     if (this._checked !== newCheckedState) {
       this._checked = newCheckedState;
-      if (newCheckedState && this.radioGroup && this.radioGroup.value !== this.value) {
+      if (
+        newCheckedState &&
+        this.radioGroup &&
+        this.radioGroup.value !== this.value
+      ) {
         this.radioGroup.selected = this;
-      } else if (!newCheckedState && this.radioGroup && this.radioGroup.value === this.value) {
+      } else if (
+        !newCheckedState &&
+        this.radioGroup &&
+        this.radioGroup.value === this.value
+      ) {
         this.radioGroup.selected = null;
       }
 
       if (newCheckedState) {
-        this.radioDispatcher.notify(this.id, this.name!);
+        this.radioDispatcher.notify(this.id, this.name);
       }
       this.cdr.markForCheck();
     }
@@ -110,7 +123,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
    */
   @Input()
   get value(): string {
-    return this._value!;
+    return this._value;
   }
   set value(value: string) {
     if (value !== this._value) {
@@ -151,17 +164,19 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   /**
    * The visible state of the label
    */
-  @Input() public hiddenLabel: boolean = false;
+  @Input() public hiddenLabel = false;
 
   /**
    * Emitted boolean on change
    */
-  @Output() public readonly change: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public readonly change: EventEmitter<string> =
+    new EventEmitter<string>();
 
   /**
    * Reference to the input html element
    */
-  @ViewChild('input', { static: false }) private inputElement: ElementRef<HTMLInputElement>;
+  @ViewChild('input', { static: false })
+  private inputElement: ElementRef<HTMLInputElement>;
 
   /**
    * The radio buttons group
@@ -184,18 +199,22 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   public inputID: string;
 
   constructor(
-    @Optional() @Inject(BAO_RADIO_GROUP) radioGroup: BaoRadioButtonGroupComponent,
+    @Optional()
+    @Inject(BAO_RADIO_GROUP)
+    radioGroup: BaoRadioButtonGroupComponent,
     private elementRef: ElementRef,
     private cdr: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private radioDispatcher: UniqueSelectionDispatcher
   ) {
     this.radioGroup = radioGroup;
-    this._removeUniqueSelectionListener = radioDispatcher.listen((id: string, name: string) => {
-      if (id !== this.id && name === this.name) {
-        this.checked = false;
+    this._removeUniqueSelectionListener = radioDispatcher.listen(
+      (id: string, name: string) => {
+        if (id !== this.id && name === this.name) {
+          this.checked = false;
+        }
       }
-    });
+    );
   }
 
   get nativeElement(): HTMLElement {
@@ -234,13 +253,15 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   }
 
   public ngAfterViewInit() {
-    this.focusMonitor.monitor(this.inputElement, true).subscribe(focusOrigin => {
-      if (!focusOrigin && this.radioGroup) {
-        this.radioGroup.onGroupTouch();
-      }
-    });
+    this.focusMonitor
+      .monitor(this.inputElement, true)
+      .subscribe(focusOrigin => {
+        if (!focusOrigin && this.radioGroup) {
+          this.radioGroup.onGroupTouch();
+        }
+      });
 
-    this.setAriaDescribedByToDescription(this.nativeElement, this.ariaDescribedby!);
+    this.setAriaDescribedByToDescription();
   }
 
   public ngOnDestroy() {
@@ -254,7 +275,8 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   public onInputInteraction(event: Event) {
     event.stopPropagation();
     if (!this.checked && !this.disabled) {
-      const groupValueChanged = this.radioGroup && this.value !== this.radioGroup.value;
+      const groupValueChanged =
+        this.radioGroup && this.value !== this.radioGroup.value;
       this.checked = true;
       this.emitChangeEvent();
 
@@ -281,7 +303,7 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
   /**
    * Set the id property to bao-radio-button-description as a description to the input
    */
-  private setAriaDescribedByToDescription(elementRef: HTMLElement, ariaDescribedby: string) {
+  private setAriaDescribedByToDescription() {
     const childNodes = Array.from(this.nativeElement.childNodes);
     const labelNode = childNodes.find(x => {
       return x.nodeName === 'LABEL';
@@ -294,7 +316,10 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
 
       if (descriptionNode) {
         this.ariaDescribedby = `${this.id}-ariadescribedby`;
-        (descriptionNode as HTMLElement).setAttribute('id', this.ariaDescribedby);
+        (descriptionNode as HTMLElement).setAttribute(
+          'id',
+          this.ariaDescribedby
+        );
       } else {
         this.ariaDescribedby = null;
       }
@@ -308,7 +333,8 @@ export class BaoRadioButtonComponent implements AfterViewInit, OnInit, OnDestroy
 }
 
 @Directive({
-  selector: 'bao-radio-button-description, [bao-radio-button-description],  [baoRadioButtonDescription]',
+  selector:
+    'bao-radio-button-description, [bao-radio-button-description],  [baoRadioButtonDescription]',
   host: { class: 'bao-radio-button-description' }
 })
 export class BaoRadioDescription {}

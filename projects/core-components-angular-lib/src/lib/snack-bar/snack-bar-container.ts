@@ -1,7 +1,12 @@
 import { AnimationEvent } from '@angular/animations';
 import { AriaLivePoliteness } from '@angular/cdk/a11y';
 import { Platform } from '@angular/cdk/platform';
-import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import {
+  BasePortalOutlet,
+  CdkPortalOutlet,
+  ComponentPortal,
+  TemplatePortal
+} from '@angular/cdk/portal';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -45,7 +50,7 @@ export interface IBaoSnackBarContainer {
   // In Ivy embedded views will be change detected from their declaration place, rather than
   // where they were stamped out. This means that we can't have the snack bar container be OnPush,
   // because it might cause snack bars that were opened from a template not to be out of date.
-  // tslint:disable-next-line:validate-decorators
+  // eslint-disable-next-line
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   animations: [matSnackBarAnimations.snackBarState],
@@ -55,7 +60,10 @@ export interface IBaoSnackBarContainer {
     '(@state.done)': 'onAnimationEnd($event)'
   }
 })
-export class BaoSnackBarContainerComponent extends BasePortalOutlet implements OnDestroy, IBaoSnackBarContainer {
+export class BaoSnackBarContainerComponent
+  extends BasePortalOutlet
+  implements OnDestroy, IBaoSnackBarContainer
+{
   /** The number of milliseconds to wait before announcing the snack bar's content. */
   private readonly _announceDelay: number = 150;
 
@@ -66,7 +74,8 @@ export class BaoSnackBarContainerComponent extends BasePortalOutlet implements O
   private _destroyed = false;
 
   /** The portal outlet inside of this container into which the snack bar content will be loaded. */
-  @ViewChild(CdkPortalOutlet, { static: true }) public _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, { static: true })
+  public _portalOutlet: CdkPortalOutlet;
 
   /** Subject for notifying that the snack bar has announced to screen readers. */
   public readonly _onAnnounce: Subject<void> = new Subject();
@@ -95,7 +104,10 @@ export class BaoSnackBarContainerComponent extends BasePortalOutlet implements O
 
     // Use aria-live rather than a live role like 'alert' or 'status'
     // because NVDA and JAWS have show inconsistent behavior with live roles.
-    if (snackBarConfig.politeness === 'assertive' && !snackBarConfig.announcementMessage) {
+    if (
+      snackBarConfig.politeness === 'assertive' &&
+      !snackBarConfig.announcementMessage
+    ) {
       this._live = 'assertive';
     } else if (snackBarConfig.politeness === 'off') {
       this._live = 'off';
@@ -112,7 +124,9 @@ export class BaoSnackBarContainerComponent extends BasePortalOutlet implements O
   }
 
   /** Attach a template portal as content to this snack bar container. */
-  public attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {
+  public attachTemplatePortal<C>(
+    portal: TemplatePortal<C>
+  ): EmbeddedViewRef<C> {
     this.assertNotAttached();
     this.applySnackBarClasses();
     return this._portalOutlet.attachTemplatePortal(portal);
@@ -209,7 +223,9 @@ export class BaoSnackBarContainerComponent extends BasePortalOutlet implements O
   /** Asserts that no content is already attached to the container. */
   private assertNotAttached() {
     if (this._portalOutlet.hasAttached()) {
-      throw Error('Attempting to attach snack bar content after content is already attached');
+      throw Error(
+        'Attempting to attach snack bar content after content is already attached'
+      );
     }
   }
 
@@ -221,8 +237,10 @@ export class BaoSnackBarContainerComponent extends BasePortalOutlet implements O
     if (!this._announceTimeoutId) {
       this._ngZone.runOutsideAngular(() => {
         this._announceTimeoutId = window.setTimeout(() => {
-          const inertElement = this._elementRef.nativeElement.querySelector('[aria-hidden]');
-          const liveElement = this._elementRef.nativeElement.querySelector('[aria-live]');
+          const inertElement =
+            this._elementRef.nativeElement.querySelector('[aria-hidden]');
+          const liveElement =
+            this._elementRef.nativeElement.querySelector('[aria-live]');
           if (inertElement && liveElement) {
             // If an element in the snack bar content is focused before being moved
             // track it and restore focus after moving to the live region.

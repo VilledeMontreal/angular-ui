@@ -35,7 +35,7 @@ bao-icon {
   }
 
   &.bao-icon-spinner {
-    animation: spin .75s linear infinite;
+    animation: spin 0.75s linear infinite;
   }
 
   @keyframes spin {

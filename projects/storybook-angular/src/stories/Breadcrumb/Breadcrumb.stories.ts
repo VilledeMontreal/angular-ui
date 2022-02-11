@@ -7,7 +7,7 @@ The breadcrumb trail component allows users to locate themselves within the dept
 ## Properties
 The breadcrumb component has no properties.
 
-`
+`;
 
 export default {
   title: 'Components/Breadcrumb',
@@ -16,34 +16,36 @@ export default {
     docs: {
       description: {
         component: description
-      },
-    },
+      }
+    }
   },
   argTypes: {
     ngAfterViewInit: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     setLastLinkAttribute: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     onContentChange: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     staticContainer: {
       table: {
-        disable: true,
-      },
-    },
-  },
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<BaoBreadcrumbComponent> = (args: BaoBreadcrumbComponent) => ({
+const Template: Story<BaoBreadcrumbComponent> = (
+  args: BaoBreadcrumbComponent
+) => ({
   component: BaoBreadcrumbComponent,
   template: `
   <bao-breadcrumb>
@@ -52,7 +54,7 @@ const Template: Story<BaoBreadcrumbComponent> = (args: BaoBreadcrumbComponent) =
     <a href=#>current page</a>
   </bao-breadcrumb>
  `,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});

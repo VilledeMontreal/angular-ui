@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
       </nav>
       <app-task-list></app-task-list>
     </div>
-  `,
+  `
 })
 export class PureInboxScreenComponent {
   @Input() error: any;

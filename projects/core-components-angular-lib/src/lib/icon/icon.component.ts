@@ -57,7 +57,10 @@ export class BaoIconComponent implements OnDestroy {
         this.clearSvgElement();
       }
       this._svgIcon = value;
-      this.renderer.addClass(this.elementRef.nativeElement, `bao-${this._svgIcon}`);
+      this.renderer.addClass(
+        this.elementRef.nativeElement,
+        `bao-${this._svgIcon}`
+      );
     }
   }
 
@@ -96,7 +99,10 @@ export class BaoIconComponent implements OnDestroy {
   private _titleId: string;
 
   // Keeps track of the elements and attributes that we've prefixed with the current path.
-  private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
+  private _elementsWithExternalReferences?: Map<
+    Element,
+    { name: string; value: string }[]
+  >;
 
   constructor(
     private elementRef: ElementRef<HTMLElement>,
@@ -125,8 +131,8 @@ export class BaoIconComponent implements OnDestroy {
     // Workaround for IE11 and Edge ignoring `style` tags inside dynamically-created SVGs.
     // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/10898469/
     // Do this before inserting the element into the DOM, in order to avoid a style recalculation.
-    const styleTags = svg.querySelectorAll('style') as NodeListOf<HTMLStyleElement>;
-    // tslint:disable-next-line: prefer-for-of
+    const styleTags = svg.querySelectorAll('style');
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < styleTags.length; i++) {
       styleTags[i].textContent += ' ';
     }
@@ -155,7 +161,10 @@ export class BaoIconComponent implements OnDestroy {
   }
 
   // Sets a new SVG icon with a particular name.
-  private updateSvgIcon(iconName: string | undefined, title: string | undefined) {
+  private updateSvgIcon(
+    iconName: string | undefined,
+    title: string | undefined
+  ) {
     if (iconName) {
       let svg = this.iconRegistry.getNamedSvgIcon(iconName);
       if (title) {
@@ -175,6 +184,8 @@ export class BaoIconComponent implements OnDestroy {
   }
 
   private generateUniqueTitleId(): string {
-    return this.title ? `${this.title}-${Math.random() * 10000000000000000}` : '';
+    return this.title
+      ? `${this.title}-${Math.random() * 10000000000000000}`
+      : '';
   }
 }

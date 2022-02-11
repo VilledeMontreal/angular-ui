@@ -12,7 +12,8 @@ $size-xx-small: 1rem;
   margin: 0;
   > .bao-list-item:last-child {
     border-radius: $radius-small $radius-small $radius-small $radius-small;
-    box-shadow: inset 0 0.0625rem 0 $neutral-stroke, inset 0 -0.0625rem 0 $neutral-stroke;
+    box-shadow: inset 0 0.0625rem 0 $neutral-stroke,
+      inset 0 -0.0625rem 0 $neutral-stroke;
   }
   > a.bao-list-item {
     border-bottom: none;
@@ -111,15 +112,15 @@ $size-xx-small: 1rem;
         }
       }
       > .bao-list-item-tag {
-          line-height: 0;
-          > * {
-            @include respond-to(xs) {
-              margin: 0.5rem 0 0 0;
-            }
-            @include respond-to(md) {
-              margin: 0 0 0 1rem;
-            }
+        line-height: 0;
+        > * {
+          @include respond-to(xs) {
+            margin: 0.5rem 0 0 0;
           }
+          @include respond-to(md) {
+            margin: 0 0 0 1rem;
+          }
+        }
       }
     }
   }

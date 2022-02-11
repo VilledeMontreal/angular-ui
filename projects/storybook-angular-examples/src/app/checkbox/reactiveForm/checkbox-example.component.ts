@@ -6,7 +6,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
  */
 @Component({
   selector: 'bao-checkbox-reactive-form-example',
-  templateUrl: './checkbox-example.component.html',
+  templateUrl: './checkbox-example.component.html'
 })
 export class BaoCheckboxReactiveFormExampleComponent {
   public cars: FormGroup;

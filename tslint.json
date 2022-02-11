@@ -1,7 +1,0 @@
-{
-  "extends": "@villemontreal/lint-config-villemontreal/rules/tslint-angular",
-  "rules": {
-    "max-classes-per-file": false,
-    "directive-class-suffix": false
-  }
-}

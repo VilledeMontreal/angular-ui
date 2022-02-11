@@ -55,7 +55,7 @@ pipeline.start(libCtx) {
 
     pipeline.withDraftDockerImage(libCtx) {
         pipeline.testInDraftDockerContainerStage(libCtx) {
-
+            sh "cd /usr/src/lib && npm run lint"
         }
 
        pipeline.publishStage(libCtx) {
@@ -205,6 +205,7 @@ sbCtx = pipeline.createContext([
 
     ],
 ])
+
 pipeline.start(sbCtx) {
 
     pipeline.withSourceCode(sbCtx) {

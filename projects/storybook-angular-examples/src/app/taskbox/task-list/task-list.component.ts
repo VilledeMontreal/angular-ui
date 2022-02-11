@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
       (onArchiveTask)="archiveTask($event)"
       (onPinTask)="pinTask($event)"
     ></app-pure-task-list>
-  `,
+  `
 })
 export class TaskListComponent {
   @Select(TasksState.getAllTasks) tasks$: Observable<Task[]>;

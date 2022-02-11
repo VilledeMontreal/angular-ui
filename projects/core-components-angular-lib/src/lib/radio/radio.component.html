@@ -14,7 +14,9 @@
   role="radio"
 />
 <label class="bao-radio-button-content-container" [attr.for]="inputID">
-  <div class="bao-radio-button-label" [id]="ariaLabelledby"><ng-content></ng-content></div>
+  <div class="bao-radio-button-label" [id]="ariaLabelledby">
+    <ng-content></ng-content>
+  </div>
   <ng-content
     select="bao-radio-button-description, [bao-radio-button-description], [baoRadioButtonDescription]"
   ></ng-content>

@@ -55,11 +55,13 @@ let checkboxNextUniqueId = 0;
     '[class.bao-checkbox-hidden-label]': 'hiddenLabel'
   }
 })
-export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit, OnInit, OnDestroy {
-  private _disabled: boolean = false;
-  private _checked: boolean = false;
-  private _indeterminate: boolean = false;
-  private _uniqueId: string = `bao-checkbox-${++checkboxNextUniqueId}`;
+export class BaoCheckboxComponent
+  implements ControlValueAccessor, AfterViewInit, OnInit, OnDestroy
+{
+  private _disabled = false;
+  private _checked = false;
+  private _indeterminate = false;
+  private _uniqueId = `bao-checkbox-${++checkboxNextUniqueId}`;
 
   /**
    * Whether the checkbox is checked.  Default value : false
@@ -135,12 +137,12 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   /**
    * Whether the checkbox has a border and is considered as a card.
    */
-  @Input() public brandBorder: boolean = false;
+  @Input() public brandBorder = false;
 
   /**
    * Whether the checkbox is inline.
    */
-  @Input() public inline: boolean = false;
+  @Input() public inline = false;
 
   /**
    * The name property of the checkbox
@@ -150,22 +152,25 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   /**
    * The visible state of the label
    */
-  @Input() public hiddenLabel: boolean = false;
+  @Input() public hiddenLabel = false;
 
   /**
    * Emitted object on change event
    */
-  @Output() public readonly change: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public readonly change: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
   /**
    * Inderminate value of the checkbox whenever
    */
-  @Output() public readonly indeterminateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public readonly indeterminateChange: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
   /**
    * Reference to the input html element
    */
-  @ViewChild('input', { static: false }) private inputElement: ElementRef<HTMLInputElement>;
+  @ViewChild('input', { static: false })
+  private inputElement: ElementRef<HTMLInputElement>;
 
   /**
    * The aria-describedby id for web accessibilty
@@ -182,7 +187,11 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
    */
   public inputID: string;
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef, private focusMonitor: FocusMonitor) {}
+  constructor(
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef,
+    private focusMonitor: FocusMonitor
+  ) {}
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
@@ -207,11 +216,11 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
             this.onTouch();
             this.cdr.markForCheck();
           })
-          .catch(err => undefined);
+          .catch(() => undefined);
       }
     });
 
-    this.setAriaDescribedByToDescription(this.nativeElement);
+    this.setAriaDescribedByToDescription();
     this.syncIndeterminate(this.indeterminate);
   }
 
@@ -282,7 +291,9 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
       return eCheckboxAriaState.TRUE;
     }
 
-    return this.indeterminate ? eCheckboxAriaState.MIXED : eCheckboxAriaState.FALSE;
+    return this.indeterminate
+      ? eCheckboxAriaState.MIXED
+      : eCheckboxAriaState.FALSE;
   }
 
   /**
@@ -315,7 +326,7 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
   /**
    * Set the aria-describedby property to bao-checkbox-description
    */
-  private setAriaDescribedByToDescription(elementRef: HTMLElement) {
+  private setAriaDescribedByToDescription() {
     const childNodes = Array.from(this.nativeElement.childNodes);
     const labelNode = childNodes.find(x => {
       return x.nodeName === 'LABEL';
@@ -328,7 +339,10 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
 
       if (descriptionNode) {
         this.ariaDescribedby = `${this.id}-ariadescribedby`;
-        (descriptionNode as HTMLElement).setAttribute('id', this.ariaDescribedby);
+        (descriptionNode as HTMLElement).setAttribute(
+          'id',
+          this.ariaDescribedby
+        );
       } else {
         this.ariaDescribedby = undefined;
       }
@@ -349,7 +363,8 @@ export class BaoCheckboxComponent implements ControlValueAccessor, AfterViewInit
 }
 
 @Directive({
-  selector: 'bao-checkbox-description, [bao-checkbox-description],  [baoCheckboxDescription]',
+  selector:
+    'bao-checkbox-description, [bao-checkbox-description],  [baoCheckboxDescription]',
   host: { class: 'bao-checkbox-description' }
 })
 export class BaoCheckBoxDescription {}

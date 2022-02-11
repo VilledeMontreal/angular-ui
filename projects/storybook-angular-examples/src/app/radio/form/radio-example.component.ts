@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'bao-radio-button-example',
-  templateUrl: './radio-example.component.html',
+  templateUrl: './radio-example.component.html'
 })
 export class BaoRadioExampleComponent {
   public animalFavori: string = 'Tortue';

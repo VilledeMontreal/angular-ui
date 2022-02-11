@@ -1,147 +1,145 @@
-@import "../core/colors";
-@import "../core/radius";
-@import "../core/shadows";
-@import "../core/typography";
-@import "../core/mixins";
+@import '../core/colors';
+@import '../core/radius';
+@import '../core/shadows';
+@import '../core/typography';
+@import '../core/mixins';
 
 @mixin alert-border($color) {
-    border-left: 0.125rem solid $color; //2px
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
+  border-left: 0.125rem solid $color; //2px
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 // Color variants
 $alert-colors: (
-    info: (
-        base:   $informative-reversed,
-        dark:   $informative,
-        light:  $informative-light
-    ),
-    success: (
-        base:   $positive-reversed,
-        dark:   $positive,
-        light:  $positive-light
-    ),
-    warning: (
-        base:   $warning-reversed,
-        dark:   $warning,
-        light:  $warning-light
-    ),
-    danger: (
-        base:   $negative-reversed,
-        dark:   $negative,
-        light:  $negative-light
-    )
+  info: (
+    base: $informative-reversed,
+    dark: $informative,
+    light: $informative-light
+  ),
+  success: (
+    base: $positive-reversed,
+    dark: $positive,
+    light: $positive-light
+  ),
+  warning: (
+    base: $warning-reversed,
+    dark: $warning,
+    light: $warning-light
+  ),
+  danger: (
+    base: $negative-reversed,
+    dark: $negative,
+    light: $negative-light
+  )
 );
 // General rules
 .bao-alert {
-    @include typo-interface-medium-normal;
+  @include typo-interface-medium-normal;
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $radius-none;
+  .bao-alert-content-container {
+    margin: 0 0.5rem 0 1rem;
     display: flex;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: $radius-none;
-    .bao-alert-content-container {
-        margin: 0 .5rem 0 1rem;
-        display: flex;
-        flex-direction: column;
-
+    flex-direction: column;
+  }
+  .bao-alert-title {
+    font-weight: $font-weight-bold;
+    padding-bottom: 0.5rem;
+  }
+  a {
+    font-weight: $font-weight-bold;
+  }
+  // icon display left
+  .bao-alert-icon-container {
+    .bao-icon {
+      display: flex;
     }
-    .bao-alert-title {
-        font-weight: $font-weight-bold;
-        padding-bottom: .5rem;;
+  }
+  // icon display right
+  &.bao-alert-dismissible {
+    .bao-button[data-dismiss='alert'] {
+      background-color: $transparent;
+      border-radius: $radius-none;
+      height: 2.5rem;
+      width: 2.5rem;
+      margin-left: auto;
+      margin-right: -0.5rem;
+      margin-top: -0.5rem;
+      @include hover-focus {
+        opacity: 0.75;
+      }
     }
-    a {
-        font-weight: $font-weight-bold;
+  }
+  // buttons alert
+  .bao-alert-actions {
+    .bao-button {
+      margin: 1rem 1rem 0 0;
     }
-    // icon display left
-    .bao-alert-icon-container {
-        .bao-icon {
-            display: flex;
-        }
-    }
-    // icon display right
-    &.bao-alert-dismissible {
-        .bao-button[data-dismiss="alert"] {
-            background-color: $transparent;
-            border-radius: $radius-none;
-            height: 2.5rem;
-            width: 2.5rem;
-            margin-left: auto;
-            margin-right: -.5rem;
-            margin-top: -.5rem;
-            @include hover-focus {
-                opacity: .75;
-            }
-        }
-    }
-    // buttons alert
-    .bao-alert-actions {
-        .bao-button {
-            margin: 1rem 1rem 0 0;
-        }
-    }
+  }
 }
 // Color variants of the alert
 @each $label, $map in $alert-colors {
-    $color-base: map-get($map, base);
-    $color-light: map-get($map, light);
-    $color-dark:  map-get($map, dark);
-    $color-darker: darken($color-dark, 10%);
-    $color-shadow: rgba($color-dark, .3);
-  
-    .bao-alert-#{$label} {
-        background-color: $color-light;
-        @include alert-border($color-base);
-        color: $color-dark;
-        .bao-alert-title {
-            color: $color-dark;
-        }
-        a {
-            color: $color-dark;
-            @include hover-focus {
-                background-color: lighten($color-light, 3%);
-            }
-        }
-        .bao-icon {
-            svg {
-                fill: $color-dark; 
-            }
-        }
-        .bao-button {
-            &.bao-button-primary {
-                background-color: $color-dark;
-                border-color: $color-dark;
-                @include hover-focus {
-                    background-color: $color-darker;
-                    border-color: $color-darker;
-                }
-                &:focus {
-                    box-shadow: 0 0 0 0.1875rem $color-shadow;
-                }
-            }
-            &.bao-button-secondary {
-                background-color: $color-light;
-                color: $color-dark;
-                @include hover-focus {
-                    background-color: $color-light;
-                    border-color: $color-dark;
-                }
-                &:focus {
-                    box-shadow: 0 0 0 0.1875rem $color-shadow;
-                }
-            }
-            &.bao-button-tertiary {
-                background-color: $color-light;
-                color: $color-dark;
-                @include hover-focus {
-                    background-color: $color-light;
-                }
-                &:focus {
-                    box-shadow: 0 0 0 0.1875rem $color-shadow;
-                }
-            }
-        }
+  $color-base: map-get($map, base);
+  $color-light: map-get($map, light);
+  $color-dark: map-get($map, dark);
+  $color-darker: darken($color-dark, 10%);
+  $color-shadow: rgba($color-dark, 0.3);
+
+  .bao-alert-#{$label} {
+    background-color: $color-light;
+    @include alert-border($color-base);
+    color: $color-dark;
+    .bao-alert-title {
+      color: $color-dark;
     }
+    a {
+      color: $color-dark;
+      @include hover-focus {
+        background-color: lighten($color-light, 3%);
+      }
+    }
+    .bao-icon {
+      svg {
+        fill: $color-dark;
+      }
+    }
+    .bao-button {
+      &.bao-button-primary {
+        background-color: $color-dark;
+        border-color: $color-dark;
+        @include hover-focus {
+          background-color: $color-darker;
+          border-color: $color-darker;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.1875rem $color-shadow;
+        }
+      }
+      &.bao-button-secondary {
+        background-color: $color-light;
+        color: $color-dark;
+        @include hover-focus {
+          background-color: $color-light;
+          border-color: $color-dark;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.1875rem $color-shadow;
+        }
+      }
+      &.bao-button-tertiary {
+        background-color: $color-light;
+        color: $color-dark;
+        @include hover-focus {
+          background-color: $color-light;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.1875rem $color-shadow;
+        }
+      }
+    }
+  }
 }
-  

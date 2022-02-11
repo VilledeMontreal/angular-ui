@@ -6,7 +6,12 @@ import { InjectionToken, ViewContainerRef } from '@angular/core';
 export const BAO_SNACK_BAR_DATA = new InjectionToken<any>('BaoSnackBarData');
 
 /** Possible values for horizontalPosition on MatSnackBarConfig. */
-export type BaoSnackBarHorizontalPosition = 'start' | 'center' | 'end' | 'left' | 'right';
+export type BaoSnackBarHorizontalPosition =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'left'
+  | 'right';
 
 /** Possible values for verticalPosition on MatSnackBarConfig. */
 export type BaoSnackBarVerticalPosition = 'top' | 'bottom';

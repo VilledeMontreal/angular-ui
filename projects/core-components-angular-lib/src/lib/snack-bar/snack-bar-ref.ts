@@ -42,7 +42,10 @@ export class BaoSnackBarRef<T> {
   /** Whether the snack bar was dismissed using the action button. */
   private _dismissedByAction = false;
 
-  constructor(containerInstance: IBaoSnackBarContainer, private _overlayRef: OverlayRef) {
+  constructor(
+    containerInstance: IBaoSnackBarContainer,
+    private _overlayRef: OverlayRef
+  ) {
     this.containerInstance = containerInstance;
     // Dismiss snackbar on action.
     this.onAction().subscribe(() => this.dismiss());
@@ -72,7 +75,10 @@ export class BaoSnackBarRef<T> {
     // it'll revert to 1 if somebody passes in something greater (e.g. `Infinity`). See #17234.
 
     // @TODO: window.setTimeout() ?
-    this._durationTimeoutId = window.setTimeout(() => this.dismiss(), Math.min(duration, MAX_TIMEOUT));
+    this._durationTimeoutId = window.setTimeout(
+      () => this.dismiss(),
+      Math.min(duration, MAX_TIMEOUT)
+    );
   }
 
   /** Marks the snackbar as opened */

@@ -1,7 +1,12 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal, ComponentType, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import {
+  ComponentPortal,
+  ComponentType,
+  PortalInjector,
+  TemplatePortal
+} from '@angular/cdk/portal';
 import {
   ComponentRef,
   EmbeddedViewRef,
@@ -16,9 +21,15 @@ import {
   Type
 } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { BaoSimpleSnackBarComponent, ITextOnlySnackBar } from './simple-snack-bar.component';
+import {
+  BaoSimpleSnackBarComponent,
+  ITextOnlySnackBar
+} from './simple-snack-bar.component';
 import { BAO_SNACK_BAR_DATA, BaoSnackBarConfig } from './snack-bar-config';
-import { BaoSnackBarContainerComponent, IBaoSnackBarContainer } from './snack-bar-container';
+import {
+  BaoSnackBarContainerComponent,
+  IBaoSnackBarContainer
+} from './snack-bar-container';
 import { BaoSnackBarRef } from './snack-bar-ref';
 
 export function baoFactory() {
@@ -26,10 +37,11 @@ export function baoFactory() {
 }
 
 /** Injection token that can be used to specify default snack bar. */
-export const MAT_SNACK_BAR_DEFAULT_OPTIONS = new InjectionToken<BaoSnackBarConfig>('mat-snack-bar-default-options', {
-  providedIn: 'root',
-  factory: baoFactory
-});
+export const MAT_SNACK_BAR_DEFAULT_OPTIONS =
+  new InjectionToken<BaoSnackBarConfig>('mat-snack-bar-default-options', {
+    providedIn: 'root',
+    factory: baoFactory
+  });
 
 /**
  * Service to dispatch Material Design snack bar messages.
@@ -44,10 +56,12 @@ export class BaoSnackBarService implements OnDestroy {
   private _snackBarRefAtThisLevel: BaoSnackBarRef<any> | null = null;
 
   /** The component that should be rendered as the snack bar's simple component. */
-  protected simpleSnackBarComponent: Type<ITextOnlySnackBar> = BaoSimpleSnackBarComponent;
+  protected simpleSnackBarComponent: Type<ITextOnlySnackBar> =
+    BaoSimpleSnackBarComponent;
 
   /** The container component that attaches the provided template or component. */
-  protected snackBarContainerComponent: Type<IBaoSnackBarContainer> = BaoSnackBarContainerComponent;
+  protected snackBarContainerComponent: Type<IBaoSnackBarContainer> =
+    BaoSnackBarContainerComponent;
 
   /** The CSS class to applie for handset mode. */
   protected handsetCssClass = 'mat-snack-bar-handset';
@@ -72,7 +86,8 @@ export class BaoSnackBarService implements OnDestroy {
     private _injector: Injector,
     private _breakpointObserver: BreakpointObserver,
     @Optional() @SkipSelf() private _parentSnackBar: BaoSnackBarService,
-    @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS) private _defaultConfig: BaoSnackBarConfig
+    @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS)
+    private _defaultConfig: BaoSnackBarConfig
   ) {}
 
   /**
@@ -82,7 +97,10 @@ export class BaoSnackBarService implements OnDestroy {
    * @param component Component to be instantiated.
    * @param config Extra configuration for the snack bar.
    */
-  public openFromComponent<T>(component: ComponentType<T>, config?: BaoSnackBarConfig): BaoSnackBarRef<T> {
+  public openFromComponent<T>(
+    component: ComponentType<T>,
+    config?: BaoSnackBarConfig
+  ): BaoSnackBarRef<T> {
     return this.attach(component, config) as BaoSnackBarRef<T>;
   }
 
@@ -108,8 +126,8 @@ export class BaoSnackBarService implements OnDestroy {
    */
   public open(
     message: string,
-    action: string = '',
-    type: string = '',
+    action = '',
+    type = '',
     config?: BaoSnackBarConfig
   ): BaoSnackBarRef<ITextOnlySnackBar> {
     const _config = { ...this._defaultConfig, ...config };
@@ -144,12 +162,24 @@ export class BaoSnackBarService implements OnDestroy {
   /**
    * Attaches the snack bar container component to the overlay.
    */
-  private attachSnackBarContainer(overlayRef: OverlayRef, config: BaoSnackBarConfig): IBaoSnackBarContainer {
-    const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
-    const injector = new PortalInjector(userInjector || this._injector, new WeakMap([[BaoSnackBarConfig, config]]));
+  private attachSnackBarContainer(
+    overlayRef: OverlayRef,
+    config: BaoSnackBarConfig
+  ): IBaoSnackBarContainer {
+    const userInjector =
+      config && config.viewContainerRef && config.viewContainerRef.injector;
+    const injector = new PortalInjector(
+      userInjector || this._injector,
+      new WeakMap([[BaoSnackBarConfig, config]])
+    );
 
-    const containerPortal = new ComponentPortal(this.snackBarContainerComponent, config.viewContainerRef, injector);
-    const containerRef: ComponentRef<IBaoSnackBarContainer> = overlayRef.attach(containerPortal);
+    const containerPortal = new ComponentPortal(
+      this.snackBarContainerComponent,
+      config.viewContainerRef,
+      injector
+    );
+    const containerRef: ComponentRef<IBaoSnackBarContainer> =
+      overlayRef.attach(containerPortal);
     containerRef.instance.snackBarConfig = config;
     return containerRef.instance;
   }
@@ -161,10 +191,17 @@ export class BaoSnackBarService implements OnDestroy {
     content: ComponentType<T> | TemplateRef<T>,
     userConfig?: BaoSnackBarConfig
   ): BaoSnackBarRef<T | EmbeddedViewRef<any>> {
-    const config = { ...new BaoSnackBarConfig(), ...this._defaultConfig, ...userConfig };
+    const config = {
+      ...new BaoSnackBarConfig(),
+      ...this._defaultConfig,
+      ...userConfig
+    };
     const overlayRef = this.createOverlay(config);
     const container = this.attachSnackBarContainer(overlayRef, config);
-    const snackBarRef = new BaoSnackBarRef<T | EmbeddedViewRef<any>>(container, overlayRef);
+    const snackBarRef = new BaoSnackBarRef<T | EmbeddedViewRef<any>>(
+      container,
+      overlayRef
+    );
 
     if (content instanceof TemplateRef) {
       const portal = new TemplatePortal(content, null!, {
@@ -190,7 +227,9 @@ export class BaoSnackBarService implements OnDestroy {
       .pipe(takeUntil(overlayRef.detachments()))
       .subscribe(state => {
         const classList = overlayRef.overlayElement.classList;
-        state.matches ? classList.add(this.handsetCssClass) : classList.remove(this.handsetCssClass);
+        state.matches
+          ? classList.add(this.handsetCssClass)
+          : classList.remove(this.handsetCssClass);
       });
 
     this.animateSnackBar(snackBarRef, config);
@@ -199,11 +238,14 @@ export class BaoSnackBarService implements OnDestroy {
   }
 
   /** Animates the old snack bar out and the new one in. */
-  private animateSnackBar(snackBarRef: BaoSnackBarRef<any>, config: BaoSnackBarConfig) {
+  private animateSnackBar(
+    snackBarRef: BaoSnackBarRef<any>,
+    config: BaoSnackBarConfig
+  ) {
     // When the snackbar is dismissed, clear the reference to it.
     snackBarRef.afterDismissed().subscribe(() => {
       // Clear the snackbar ref if it hasn't already been replaced by a newer snackbar.
-      // tslint:disable-next-line: triple-equals
+      // eslint-disable-next-line eqeqeq
       if (this._openedSnackBarRef == snackBarRef) {
         this._openedSnackBarRef = null;
       }
@@ -227,7 +269,9 @@ export class BaoSnackBarService implements OnDestroy {
 
     // If a dismiss timeout is provided, set up dismiss based on after the snackbar is opened.
     if (config.duration && config.duration > 0) {
-      snackBarRef.afterOpened().subscribe(() => snackBarRef.dismissAfter(config.duration!));
+      snackBarRef
+        .afterOpened()
+        .subscribe(() => snackBarRef.dismissAfter(config.duration));
     }
 
     if (config.announcementMessage) {
@@ -274,8 +318,12 @@ export class BaoSnackBarService implements OnDestroy {
    * @param config Config that was used to create the snack bar.
    * @param snackBarRef Reference to the snack bar.
    */
-  private createInjector<T>(config: BaoSnackBarConfig, snackBarRef: BaoSnackBarRef<T>): PortalInjector {
-    const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
+  private createInjector<T>(
+    config: BaoSnackBarConfig,
+    snackBarRef: BaoSnackBarRef<T>
+  ): PortalInjector {
+    const userInjector =
+      config && config.viewContainerRef && config.viewContainerRef.injector;
 
     return new PortalInjector(
       userInjector || this._injector,

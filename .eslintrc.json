@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["projects/core-components-angular-lib/**/*"],
+  "plugins": ["@angular-eslint"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": "./node_modules/@villedemontreal/lint-config/rules/eslint-angular.json",
+      "parserOptions": {
+        "project": ["tsconfig.json"]
+      },
+      "rules": {
+        "@typescript-eslint/no-explicit-any": 0
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "parserOptions": {
+        "project": ["tsconfig.json"]
+      },
+      "rules": {}
+    }
+  ]
+}

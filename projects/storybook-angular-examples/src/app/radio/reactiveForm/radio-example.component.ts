@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  */
 @Component({
   selector: 'bao-radio-button-reactive-form-example',
-  templateUrl: './radio-example.component.html',
+  templateUrl: './radio-example.component.html'
 })
 export class BaoRadioReactiveFormExampleComponent {
   public cars: FormGroup;

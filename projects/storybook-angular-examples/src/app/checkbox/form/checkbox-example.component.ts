@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'bao-checkbox-example',
-  templateUrl: './checkbox-example.component.html',
+  templateUrl: './checkbox-example.component.html'
 })
 export class BaoCheckboxExampleComponent {
   public task = {
@@ -20,14 +20,17 @@ export class BaoCheckboxExampleComponent {
   public allComplete: boolean = false;
 
   public updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    this.allComplete =
+      this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 
   public someComplete(): boolean {
     if (this.task.subtasks == null) {
       return false;
     }
-    const isSomeComplete = this.task.subtasks.filter((t: any) => t.completed).length > 0 && !this.allComplete;
+    const isSomeComplete =
+      this.task.subtasks.filter((t: any) => t.completed).length > 0 &&
+      !this.allComplete;
     return isSomeComplete;
   }
 

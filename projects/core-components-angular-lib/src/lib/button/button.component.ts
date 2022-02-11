@@ -18,12 +18,12 @@ const LOADING_SPINNER_CLASS = 'loading-spinner';
    * uses this technique with <button mat-button>. However, you wouldn't
    * use this technique on a custom element.
    */
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[bao-button]',
   styleUrls: ['./button.component.scss'],
   templateUrl: './button.component.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush, 
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'bao-button',
     '[class.bao-button-utility]': 'displayType === "utility"',
@@ -56,11 +56,11 @@ export class BaoButtonComponent implements AfterViewInit {
   /**
    * Flag to set the button in loading state
    */
-  @Input() public loading: boolean = false;
+  @Input() public loading = false;
   /**
    * Flag to set the button reversed color mode
    */
-  @Input() public reversed: boolean = false;
+  @Input() public reversed = false;
   /**
    * The aria-label of the loading spinner if it displayed alone
    */
@@ -91,7 +91,9 @@ export class BaoButtonComponent implements AfterViewInit {
     const textIndex = childNodes.findIndex(c => c.nodeType === Node.TEXT_NODE);
     this.noText = textIndex === -1;
     const iconIdex = childNodes.findIndex(
-      c => c.nodeName === BAO_ICON_NODE_NAME && !(c as HTMLElement).classList.contains(LOADING_SPINNER_CLASS)
+      c =>
+        c.nodeName === BAO_ICON_NODE_NAME &&
+        !(c as HTMLElement).classList.contains(LOADING_SPINNER_CLASS)
     );
     this.rightIcon = iconIdex > textIndex;
     this.cdr.detectChanges();

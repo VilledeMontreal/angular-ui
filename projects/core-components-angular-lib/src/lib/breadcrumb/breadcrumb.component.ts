@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Renderer2,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 
 const LAST_NODE_ATTRIBUTE = { 'aria-current': 'page' };
 
@@ -12,7 +19,8 @@ const LAST_NODE_ATTRIBUTE = { 'aria-current': 'page' };
   }
 })
 export class BaoBreadcrumbComponent implements AfterViewInit {
-  @ViewChild('container', { static: false }) private staticContainer: ElementRef;
+  @ViewChild('container', { static: false })
+  private staticContainer: ElementRef;
 
   constructor(private renderer: Renderer2) {}
 

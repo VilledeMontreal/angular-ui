@@ -1,5 +1,11 @@
-// tslint:disable: directive-selector
-import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation } from '@angular/core';
+/* eslint-disable @angular-eslint/directive-selector */
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  Input,
+  ViewEncapsulation
+} from '@angular/core';
 
 /**
  * A basic content container component that adds the styles of a BAO header-info
@@ -25,8 +31,8 @@ import { ChangeDetectionStrategy, Component, Directive, Input, ViewEncapsulation
 })
 export class BaoHeaderInfoComponent {
   @Input() public notch: '' | 'left' | 'center' = '';
-  @Input() public imageUrl: string = '';
-  @Input() public brandBorder: boolean = false;
+  @Input() public imageUrl = '';
+  @Input() public brandBorder = false;
 }
 
 @Component({
@@ -49,7 +55,8 @@ export class BaoHeaderInfoTitleGroupComponent {}
 export class BaoHeaderInfoContent {}
 
 @Directive({
-  selector: 'bao-header-info-surtitle, [bao-header-info-surtitle], [baoHeaderInfoSurtitle]',
+  selector:
+    'bao-header-info-surtitle, [bao-header-info-surtitle], [baoHeaderInfoSurtitle]',
   host: {
     class: 'document-heading-surtitle'
   }
@@ -57,7 +64,8 @@ export class BaoHeaderInfoContent {}
 export class BaoHeaderInfoSurtitle {}
 
 @Directive({
-  selector: 'bao-header-info-subtitle, [bao-header-info-subtitle], [baoHeaderInfoSubtitle]',
+  selector:
+    'bao-header-info-subtitle, [bao-header-info-subtitle], [baoHeaderInfoSubtitle]',
   host: {
     class: 'document-heading-subtitle'
   }
@@ -65,7 +73,8 @@ export class BaoHeaderInfoSurtitle {}
 export class BaoHeaderInfoSubtitle {}
 
 @Directive({
-  selector: 'bao-header-info-title, [bao-header-info-title], [baoHeaderInfoTitle]',
+  selector:
+    'bao-header-info-title, [bao-header-info-title], [baoHeaderInfoTitle]',
   host: {
     class: 'document-heading-title'
   }

@@ -66,7 +66,7 @@ export class BaoAlertActions {}
  * BaoAlertLink provides no behaviors, instead serving as a purely visual treatment.
  */
 @Directive({
-  // tslint:disable-next-line: directive-selector
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'bao-alert-link',
   host: {
     class: 'bao-alert-link'

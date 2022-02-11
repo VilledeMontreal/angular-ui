@@ -6,7 +6,10 @@ import { BaoSimpleSnackBarComponent } from './simple-snack-bar.component';
 import { BaoSnackBarService } from './snack-bar';
 import { BaoSnackBarContainerComponent } from './snack-bar-container';
 
-const SNACKBAR_DIRECTIVES = [BaoSimpleSnackBarComponent, BaoSnackBarContainerComponent];
+const SNACKBAR_DIRECTIVES = [
+  BaoSimpleSnackBarComponent,
+  BaoSnackBarContainerComponent
+];
 
 @NgModule({
   imports: [CommonModule, OverlayModule, PortalModule],

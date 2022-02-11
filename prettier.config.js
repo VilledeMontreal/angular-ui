@@ -1,1 +1,1 @@
-module.exports = require('@villemontreal/lint-config-villemontreal/rules/prettier.config');
+module.exports = require('@villedemontreal/lint-config/rules/prettier.config');

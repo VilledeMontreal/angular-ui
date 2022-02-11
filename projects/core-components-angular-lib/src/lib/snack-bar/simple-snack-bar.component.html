@@ -6,6 +6,8 @@
     {{ data.message }}
   </div>
   <div *ngIf="hasAction" class="toast-action">
-    <button (click)="action()" class="btn btn-tertiary btn-reversed">{{ data.action }}</button>
+    <button (click)="action()" class="btn btn-tertiary btn-reversed">
+      {{ data.action }}
+    </button>
   </div>
 </div>

@@ -19,40 +19,41 @@
   margin-left: auto;
   width: 100%;
 
-	// @include respond-to(sm) {
-	// 	max-width: 576px;
-	// }
+  // @include respond-to(sm) {
+  // 	max-width: 576px;
+  // }
 
-	@include respond-to(md) {
-		max-width: 768px;
-	}
+  @include respond-to(md) {
+    max-width: 768px;
+  }
 
-	@include respond-to(lg) {
-		max-width: 992px;
-	}
+  @include respond-to(lg) {
+    max-width: 992px;
+  }
 
-	@include respond-to(xl) {
-		max-width: 1200px;
-	}
+  @include respond-to(xl) {
+    max-width: 1200px;
+  }
 }
 
 .bao-row {
-	display: flex;
-	flex-wrap: wrap;
-	margin-right: -16px;
-	margin-left: -16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -16px;
+  margin-left: -16px;
 }
 
-.bao-col-12, .bao-col-lg-7{
-	position: relative;
-	width: 100%;
-	padding-right: 1rem;
-	padding-left: 1rem;
+.bao-col-12,
+.bao-col-lg-7 {
+  position: relative;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 @include respond-to(lg) {
-	.bao-col-lg-7 {
-		flex: 0 0 58.33333%;
+  .bao-col-lg-7 {
+    flex: 0 0 58.33333%;
     max-width: 58.33333%;
-	}
+  }
 }

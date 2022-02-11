@@ -1,7 +1,7 @@
-@import "../core/colors";
-@import "../core/radius";
-@import "../core/shadows";
-@import "../core/typography";
+@import '../core/colors';
+@import '../core/radius';
+@import '../core/shadows';
+@import '../core/typography';
 
 @mixin not-allowed {
   cursor: not-allowed;
@@ -17,10 +17,8 @@
 }
 
 @mixin button-transition {
-  transition: color .15s ease-in-out, 
-  background-color .15s ease-in-out, 
-  border-color .15s ease-in-out, 
-  box-shadow .15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @mixin button-border($color) {
@@ -28,7 +26,7 @@
 }
 
 @mixin button-border-neutral-stroke {
-  @include button-border($neutral-stroke)
+  @include button-border($neutral-stroke);
 }
 
 $radius-xlarge: 4rem;
@@ -60,10 +58,10 @@ $space-between-icon-and-text-small: 0.25rem;
     &.bao-button-reversed {
       @include state-focus($reversed: true);
     }
-    
   }
 
-  &:disabled , &.bao-button-loading {
+  &:disabled,
+  &.bao-button-loading {
     @include state-disabled;
   }
 
@@ -96,7 +94,8 @@ $space-between-icon-and-text-small: 0.25rem;
         color: $action;
       }
     }
-    &:disabled , &.bao-button-loading {
+    &:disabled,
+    &.bao-button-loading {
       color: $neutral-secondary;
       background-color: $underground-2;
       @include button-border($underground-2);
@@ -116,7 +115,7 @@ $space-between-icon-and-text-small: 0.25rem;
       color: $neutral-primary-reversed;
       @include button-border(rgba($neutral-stroke, 0.5));
     }
-    &:hover{
+    &:hover {
       @include button-border($action);
       background-color: $highlight-light;
       &.bao-button-reversed {
@@ -125,18 +124,19 @@ $space-between-icon-and-text-small: 0.25rem;
         @include button-border-neutral-stroke;
       }
     }
-    &:focus{
+    &:focus {
       @include button-border($action);
       background-color: $highlight-light;
-      &.bao-button-reversed{
+      &.bao-button-reversed {
         background-color: rgba($neutral-primary-reversed, 0.3);
         color: $neutral-primary-reversed;
         @include button-border-neutral-stroke;
       }
     }
-    &:disabled , &.bao-button-loading {
+    &:disabled,
+    &.bao-button-loading {
       color: $neutral-secondary;
-      &:hover{
+      &:hover {
         border-color: $neutral-stroke;
         background-color: $neutral-primary-reversed;
         &.bao-button-reversed {
@@ -145,7 +145,7 @@ $space-between-icon-and-text-small: 0.25rem;
           color: $neutral-secondary;
         }
       }
-      &:focus{
+      &:focus {
         border-color: $neutral-stroke;
         background-color: $neutral-primary-reversed;
         &.bao-button-reversed {
@@ -158,32 +158,33 @@ $space-between-icon-and-text-small: 0.25rem;
     @include button-border($transparent);
     background-color: $transparent;
     color: $action;
-    &.bao-button-reversed{
+    &.bao-button-reversed {
       color: $neutral-primary-reversed;
     }
-    &:hover{
+    &:hover {
       background-color: $highlight-light;
-      &.bao-button-reversed{
+      &.bao-button-reversed {
         background-color: rgba($neutral-primary-reversed, 0.3);
         color: $neutral-primary-reversed;
       }
     }
-    &:focus{
+    &:focus {
       background-color: $highlight-light;
-      &.bao-button-reversed{
+      &.bao-button-reversed {
         background-color: rgba($neutral-primary-reversed, 0.3);
         color: $neutral-primary-reversed;
       }
     }
-    &:disabled , &.bao-button-loading {
+    &:disabled,
+    &.bao-button-loading {
       color: $neutral-secondary;
-      &:hover{
+      &:hover {
         background-color: $transparent;
         &.bao-button-reversed {
           color: $neutral-secondary;
         }
       }
-      &:focus{
+      &:focus {
         background-color: $transparent;
         &.bao-button-reversed {
           color: $neutral-secondary;
@@ -230,13 +231,13 @@ $space-between-icon-and-text-small: 0.25rem;
     margin-left: -0.5rem;
   }
   .loading-spinner-right {
-      margin-right: -0.5rem;
-      margin-left: $space-between-icon-and-text;
+    margin-right: -0.5rem;
+    margin-left: $space-between-icon-and-text;
   }
 
   &.bao-button-no-text {
     .loading-spinner-right {
-      margin: -0.125rem -0.5625rem
+      margin: -0.125rem -0.5625rem;
     }
   }
 
@@ -248,8 +249,8 @@ $space-between-icon-and-text-small: 0.25rem;
       margin-left: 0;
     }
     .loading-spinner-right {
-        margin-right: 0;
-        margin-left: $space-between-icon-and-text-small;
+      margin-right: 0;
+      margin-left: $space-between-icon-and-text-small;
     }
   }
 
@@ -259,8 +260,8 @@ $space-between-icon-and-text-small: 0.25rem;
     display: none;
   }
 
-  >.bao-button-no-text.bao-button-loading {
-    >.loading-spinner {
+  > .bao-button-no-text.bao-button-loading {
+    > .loading-spinner {
       margin: -0.125rem -0.5625rem;
     }
   }

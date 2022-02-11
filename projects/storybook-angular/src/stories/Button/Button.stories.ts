@@ -2,33 +2,38 @@
 import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoButtonComponent, BaoIconComponent } from 'core-components-angular-lib';
+import {
+  BaoButtonComponent,
+  BaoIconComponent
+} from 'core-components-angular-lib';
 export default {
   title: 'Components/Button',
   decorators: [
     moduleMetadata({
       declarations: [BaoIconComponent],
-      imports: [CommonModule],
-    }),
+      imports: [CommonModule]
+    })
   ],
   component: BaoButtonComponent,
   parameters: {
     docs: {
       description: {
-        component: 'Primary UI component for user interaction',
-      },
-    },
+        component: 'Primary UI component for user interaction'
+      }
+    }
   },
   argTypes: {
     ngAfterViewInit: {
       table: {
-        disable: true,
-      },
-    },
-  },
+        disable: true
+      }
+    }
+  }
 } as Meta;
 
-const Template: Story<BaoButtonComponent & { label: string }> = (args: BaoButtonComponent) => ({
+const Template: Story<BaoButtonComponent & { label: string }> = (
+  args: BaoButtonComponent
+) => ({
   component: BaoButtonComponent,
   template: `
   <button
@@ -44,7 +49,7 @@ const Template: Story<BaoButtonComponent & { label: string }> = (args: BaoButton
     style="margin-right: 1rem;">
     {{label}}
   </button>`,
-  props: args,
+  props: args
 });
 
 export const Primary = Template.bind({});
@@ -58,10 +63,10 @@ Primary.args = {
   displayType: 'utility',
   label: 'Button',
   level: 'primary',
-  size: 'medium',
+  size: 'medium'
 };
 
-export const UtilitySizeButton: Story = (args) => ({
+export const UtilitySizeButton: Story = args => ({
   props: args,
   template: `
   <div>
@@ -74,14 +79,14 @@ export const UtilitySizeButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" size="small" style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary" size="small">{{label}}</button>
   </div>
-  `,
+  `
 });
 UtilitySizeButton.storyName = 'Utility - Sizes';
 UtilitySizeButton.args = {
   ...Primary.args
 };
 
-export const UtilityIconsButton: Story = (args) => ({
+export const UtilityIconsButton: Story = args => ({
   props: args,
   template: `
   <div style="">
@@ -109,27 +114,27 @@ export const UtilityIconsButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" size="small" style="margin-right: 1rem;"><span>{{label}}</span><bao-icon svgIcon="icon-help"></bao-icon></button>
     <button bao-button type="button" displayType="utility" level="tertiary" size="small" style="margin-right: 1rem;"><span>{{label}}</span><bao-icon svgIcon="icon-help"></bao-icon></button>
   </div>
-  `,
+  `
 });
 UtilityIconsButton.storyName = 'Utility - Icons';
 UtilityIconsButton.args = {
   ...Primary.args
 };
 
-export const UtilityLevelButton: Story = (args) => ({
+export const UtilityLevelButton: Story = args => ({
   props: args,
   template: `
     <button bao-button type="button" displayType="utility" level="primary" style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="secondary" style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary">{{label}}</button>
-  `,
+  `
 });
 UtilityLevelButton.storyName = 'Utility - Level';
 UtilityLevelButton.args = {
   ...Primary.args
 };
 
-export const UtilityDisabledButton: Story = (args) => ({
+export const UtilityDisabledButton: Story = args => ({
   props: args,
   template: `
   <div>
@@ -142,14 +147,14 @@ export const UtilityDisabledButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" size="small" disabled style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary" size="small" disabled>{{label}}</button>
   </div>
-  `,
+  `
 });
 UtilityDisabledButton.storyName = 'Utility - Disabled';
 UtilityDisabledButton.args = {
   ...Primary.args
 };
 
-export const UtilityReversedButton: Story = (args) => ({
+export const UtilityReversedButton: Story = args => ({
   props: args,
   template: `
   <div style="background-color: black; padding: 1rem;">
@@ -157,14 +162,14 @@ export const UtilityReversedButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" [reversed]="true" style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary" [reversed]="true">{{label}}</button>
   </div>
-  `,
+  `
 });
 UtilityReversedButton.storyName = 'Utility - Reversed';
 UtilityReversedButton.args = {
   ...Primary.args
 };
 
-export const UtilityRDButton: Story = (args) => ({
+export const UtilityRDButton: Story = args => ({
   props: args,
   template: `
   <div style="background-color: black; padding: 1rem;">
@@ -172,14 +177,14 @@ export const UtilityRDButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" [reversed]="true" disabled style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary" [reversed]="true" disabled>{{label}}</button>
   </div>
-  `,
+  `
 });
 UtilityRDButton.storyName = 'Utility - Reversed and Disabled';
 UtilityRDButton.args = {
   ...Primary.args
 };
 
-export const UtilityLoadingButton: Story = (args) => ({
+export const UtilityLoadingButton: Story = args => ({
   props: args,
   template: `
   <div>
@@ -207,21 +212,22 @@ export const UtilityLoadingButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" size="small"  [loading]="true" style="margin-right: 1rem;">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary" size="small"  [loading]="true" >{{label}}</button>
   </div>
-  `,
+  `
 });
 UtilityLoadingButton.storyName = 'Utility - Loading';
 UtilityLoadingButton.parameters = {
   docs: {
     description: {
-      story: 'If the input `loading` is set to `true`, the button will be disabled and a loading spinner will appear. The spinner will appear in place of the icon in the button if there is one or to the left of the button\'s text.',
-    },
-  },
-}
+      story:
+        "If the input `loading` is set to `true`, the button will be disabled and a loading spinner will appear. The spinner will appear in place of the icon in the button if there is one or to the left of the button's text."
+    }
+  }
+};
 UtilityLoadingButton.args = {
   ...Primary.args
 };
 
-export const UtilityFullWidthButton: Story = (args) => ({
+export const UtilityFullWidthButton: Story = args => ({
   props: args,
   template: `
     <div>
@@ -229,16 +235,17 @@ export const UtilityFullWidthButton: Story = (args) => ({
     <button bao-button type="button" displayType="utility" level="secondary" [fullWidth]="true">{{label}}</button>
     <button bao-button type="button" displayType="utility" level="tertiary" [fullWidth]="true">{{label}}</button>
   </div>
-  `,
+  `
 });
 UtilityFullWidthButton.storyName = 'Utility - Full width';
 UtilityFullWidthButton.parameters = {
   docs: {
     description: {
-      story: 'If the input `fullWidth` is set to `true`, the button will grow to the width of it\'s container',
-    },
-  },
-}
+      story:
+        "If the input `fullWidth` is set to `true`, the button will grow to the width of it's container"
+    }
+  }
+};
 UtilityFullWidthButton.args = {
   ...Primary.args
 };

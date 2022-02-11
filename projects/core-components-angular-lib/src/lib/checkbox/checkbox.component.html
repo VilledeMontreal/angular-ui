@@ -15,6 +15,10 @@
   role="checkbox"
 />
 <label class="bao-checkbox-content-container" [attr.for]="inputID">
-  <div class="bao-checkbox-label" [id]="ariaLabelledby"><ng-content></ng-content></div>
-  <ng-content select="bao-checkbox-description, [bao-checkbox-description], [baoCheckboxDescription]"></ng-content>
+  <div class="bao-checkbox-label" [id]="ariaLabelledby">
+    <ng-content></ng-content>
+  </div>
+  <ng-content
+    select="bao-checkbox-description, [bao-checkbox-description], [baoCheckboxDescription]"
+  ></ng-content>
 </label>

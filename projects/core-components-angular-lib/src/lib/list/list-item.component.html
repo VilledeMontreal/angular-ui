@@ -1,11 +1,13 @@
 <div class="bao-list-item-header">
-    <ng-content select="baoIconItemType, [baoIconItemType]"></ng-content>
+  <ng-content select="baoIconItemType, [baoIconItemType]"></ng-content>
 </div>
 <div class="bao-list-item-content">
-    <div class="bao-list-item-text">
-        <ng-content></ng-content>
-    </div>
-    <div class="bao-list-item-tag">
-        <ng-content select="bao-tag, [bao-tag], baoIconTag, [baoIconTag]"></ng-content>
-    </div>
+  <div class="bao-list-item-text">
+    <ng-content></ng-content>
+  </div>
+  <div class="bao-list-item-tag">
+    <ng-content
+      select="bao-tag, [bao-tag], baoIconTag, [baoIconTag]"
+    ></ng-content>
+  </div>
 </div>

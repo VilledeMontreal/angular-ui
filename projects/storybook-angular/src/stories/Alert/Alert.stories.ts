@@ -10,7 +10,7 @@ import {
   BaoAlertLink,
   BaoAlertTitle,
   BaoButtonComponent
-} from 'core-components-angular-lib';
+} from 'angular-ui';
 
 const description = `
 Alerts are used to display an important message and optional related **actions**.

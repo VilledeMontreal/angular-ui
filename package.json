@@ -1,23 +1,23 @@
 {
-  "name": "core-components-angular-lib",
+  "name": "angular-ui",
   "version": "0.1.6",
   "scripts": {
     "ng": "ng",
     "start": "npm run storybook",
     "clean": "rimraf dist",
-    "build": "npm run clean && ng build core-components-angular-lib && npm run bundle-styles",
-    "build:watch": "npm run clean && ng build core-components-angular-lib --watch",
+    "build": "npm run clean && ng build angular-ui && npm run bundle-styles",
+    "build:watch": "npm run clean && ng build angular-ui --watch",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test angular-ui",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "storybook:dev": "wait-on dist/core-components-angular-lib/global.scss && npm run storybook",
+    "storybook:dev": "wait-on dist/angular-ui/global.scss && npm run storybook",
     "build-storybook": "npm run build && npm run docs:json && build-storybook",
     "bundle-styles": "scss-bundle -c scss-bundle.config.json",
     "bundle-styles:watch": "scss-bundle --watch -c scss-bundle.config.json",
-    "bundle-styles:watch:dev": "wait-on dist/core-components-angular-lib && scss-bundle -c scss-bundle.config.json && npm run bundle-styles:watch",
-    "lint": "prettier --check . && ng lint core-components-angular-lib && ng lint storybook-angular",
-    "lint-fix": "prettier --write . && ng lint --fix core-components-angular-lib"
+    "bundle-styles:watch:dev": "wait-on dist/angular-ui && scss-bundle -c scss-bundle.config.json && npm run bundle-styles:watch",
+    "lint": "prettier --check . && ng lint angular-ui && ng lint storybook-angular",
+    "lint-fix": "prettier --write . && ng lint --fix angular-ui"
   },
   "private": true,
   "dependencies": {

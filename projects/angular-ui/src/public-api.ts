@@ -1,5 +1,5 @@
 /*
- * Public API Surface of core-components-angular-lib
+ * Public API Surface of angular-ui
  */
 
 export * from './lib/bao.module';

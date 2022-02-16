@@ -33,7 +33,7 @@ libCtx = pipeline.createContext([
                         to: [
                                 // Full email, or prefix of the email address ville.montreal.qc.ca
                                 // ex: "john.doe", "joe.doh@mailinator.com"
-                                "yann.debonnel"
+                                "olivier.albertini"
                         ]
                 ]
         ],
@@ -60,11 +60,11 @@ pipeline.start(libCtx) {
 
        pipeline.publishStage(libCtx) {
             // pipeline.publishLibrary(libCtx)
-            // les libs angular 7 ont un déploiement particulier car isolées dans un sous répertoire (/dist/core-components-angular-lib) au lieu d'être directement dans dist.
+            // les libs angular 7 ont un déploiement particulier car isolées dans un sous répertoire (/dist/angular-ui) au lieu d'être directement dans dist.
             // donc reprise du code de publishLibrary(libCtx) ci-dessous pour faire les ajustements nécessaires
 
             // copie du .npmrc contenant le token dans le répertoire de la lib
-            sh "cp /usr/src/lib/.npmrc /usr/src/lib/dist/core-components-angular-lib"
+            sh "cp /usr/src/lib/.npmrc /usr/src/lib/dist/angular-ui"
             // génération du tag de version
             def pkgFilename = "${libCtx.dockerfileWorkingDir}/package.json";
             def pkgText = sh script: "cat ${pkgFilename}", returnStdout: true
@@ -73,20 +73,20 @@ pipeline.start(libCtx) {
             String tag;
             if (libCtx.target.env == TargetEnv.dev) {
                 version = pkg.version + "-pre.build.${libCtx.script.env.BUILD_NUMBER}";
-                sh "cd ${libCtx.dockerfileWorkingDir}/dist/core-components-angular-lib && npm --no-git-tag-version version ${version}"
+                sh "cd ${libCtx.dockerfileWorkingDir}/dist/angular-ui && npm --no-git-tag-version version ${version}"
                 tag = "next";
             }
             else {
                 tag = "latest";
             }
             def returnStatusCode = 0;
-            returnStatusCode = sh returnStatus: true, script: "cd ${libCtx.dockerfileWorkingDir}/dist/core-components-angular-lib && npm publish --tag ${tag} --unsafe-perm --registry https://nexus.interne.montreal.ca/repository/npm-vdmtl/ --userconfig .npmrc";
+            returnStatusCode = sh returnStatus: true, script: "cd ${libCtx.dockerfileWorkingDir}/dist/angular-ui && npm publish --tag ${tag} --unsafe-perm --registry https://nexus.interne.montreal.ca/repository/npm-vdmtl/ --userconfig .npmrc";
 
             if (returnStatusCode == 0) {
-                libCtx.logger.info("La version ${version} de la librairie core-components-angular-lib à été publiée dans Nexus.");
+                libCtx.logger.info("La version ${version} de la librairie angular-ui à été publiée dans Nexus.");
                 libCtx.chatNotify(Strings.publication.success(libCtx.config.application.name, version), true, Color.GREEN);
             } else {
-                throw new Exception("Une erreur est survenue lors de la publication de core-components-angular-lib")
+                throw new Exception("Une erreur est survenue lors de la publication de angular-ui")
             }
         }
 
@@ -105,7 +105,7 @@ sbCtx = pipeline.createContext([
         framework: "Angular",
         keywords: ["documentation", "Angular", "components", "Storybook"],
         //labels: [key1: "infra", key2: "security"],
-        description: "This is the Storybook documentation for core-components-angular-lib (bao)",
+        description: "This is the Storybook documentation for angular-ui (bao)",
         //icon: "https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-lightbulb.svg"
     ],
     build: [
@@ -196,6 +196,7 @@ sbCtx = pipeline.createContext([
                 // Note that the code U (e.g., udev123) will not work since there
                 // is no email using that id.
                 "tola.sam",
+                "olivier.albertini"
             ]
         ]
     ],

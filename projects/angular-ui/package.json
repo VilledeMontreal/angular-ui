@@ -1,5 +1,5 @@
 {
-  "name": "core-components-angular-lib",
+  "name": "angular-ui",
   "version": "2.0.0",
   "peerDependencies": {
     "@angular/common": ">=8.0.0 <14.0.0",

@@ -6,7 +6,7 @@ import {
   BaoListItem,
   BaoListModule,
   BaoTagModule
-} from 'core-components-angular-lib';
+} from 'angular-ui';
 import { Primary } from './List.stories';
 
 const description = `

@@ -1,7 +1,7 @@
 {
   "bundlerOptions": {
-    "entryFile": "./projects/core-components-angular-lib/global.scss",
-    "rootDir": "./projects/core-components-angular-lib/",
-    "outFile": "./dist/core-components-angular-lib/global.scss"
+    "entryFile": "./projects/angular-ui/global.scss",
+    "rootDir": "./projects/angular-ui/",
+    "outFile": "./dist/angular-ui/global.scss"
   }
 }

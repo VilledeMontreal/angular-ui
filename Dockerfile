@@ -16,4 +16,4 @@ RUN npm i
 RUN npm run build 
 
 # Publish the library
-CMD ["npm", "publish", "dist/core-components-angular-lib", "--tag", "latest", "--unsafe-perm"]
+CMD ["npm", "publish", "dist/angular-ui", "--tag", "latest", "--unsafe-perm"]

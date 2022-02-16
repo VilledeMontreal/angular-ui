@@ -5,8 +5,8 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "projects/core-components-angular-lib/tsconfig.lib.json",
-          "projects/core-components-angular-lib/tsconfig.spec.json"
+          "projects/angular-ui/tsconfig.lib.json",
+          "projects/angular-ui/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },
@@ -18,7 +18,7 @@
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "parserOptions": {
-        "project": ["projects/core-components-angular-lib/tsconfig.lib.json"]
+        "project": ["projects/angular-ui/tsconfig.lib.json"]
       },
       "rules": {}
     }

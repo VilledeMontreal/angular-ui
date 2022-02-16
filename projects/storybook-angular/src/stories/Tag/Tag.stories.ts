@@ -1,7 +1,7 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconComponent, BaoTagComponent } from 'core-components-angular-lib';
+import { BaoIconComponent, BaoTagComponent } from 'angular-ui';
 
 const description = `
 Tags are used to categorize, identify and organize content.

@@ -1,6 +1,6 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconComponent } from 'core-components-angular-lib';
+import { BaoIconComponent } from 'angular-ui';
 
 const description = `
 If a color is provided, it will be used as the icon's color. If no color is provided, the default behaviour is to use the parent's text color.

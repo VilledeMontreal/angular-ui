@@ -17,7 +17,7 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "core-components-angular-lib": ["dist/core-components-angular-lib"],
+      "angular-ui": ["dist/angular-ui"],
       "storybook-angular-examples": ["dist/storybook-angular-examples"]
     }
   },

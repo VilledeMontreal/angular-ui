@@ -8,7 +8,7 @@ import {
   BaoCardTextInterface,
   BaoCardTitle,
   BaoIconModule
-} from 'core-components-angular-lib';
+} from 'angular-ui';
 
 const cardWithIconHeaderDescription = `
 To define a main icon for a card, a \`bao-icon\` component should be used inside a \`bao-card-header\` tag, 

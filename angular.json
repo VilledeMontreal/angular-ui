@@ -20,7 +20,7 @@
             "tsConfig": "tsconfig.json",
             "aot": true,
             "styles": [
-              "projects/core-components-angular-lib/global.scss",
+              "projects/angular-ui/global.scss",
               "node_modules/@villemontreal/boite-outils4-web/dist/css/styles.min.css",
               "projects/storybook-angular/src/styles.css"
             ],
@@ -91,23 +91,23 @@
         }
       }
     },
-    "core-components-angular-lib": {
+    "angular-ui": {
       "projectType": "library",
-      "root": "projects/core-components-angular-lib",
-      "sourceRoot": "projects/core-components-angular-lib/src",
+      "root": "projects/angular-ui",
+      "sourceRoot": "projects/angular-ui/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/core-components-angular-lib/ng-package.json"
+            "project": "projects/angular-ui/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/core-components-angular-lib/tsconfig.lib.prod.json"
+              "tsConfig": "projects/angular-ui/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/core-components-angular-lib/tsconfig.lib.json"
+              "tsConfig": "projects/angular-ui/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -115,17 +115,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/core-components-angular-lib/src/test.ts",
-            "tsConfig": "projects/core-components-angular-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/core-components-angular-lib/karma.conf.js"
+            "main": "projects/angular-ui/src/test.ts",
+            "tsConfig": "projects/angular-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-ui/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/core-components-angular-lib/**/*.ts",
-              "projects/core-components-angular-lib/**/*.html"
+              "projects/angular-ui/**/*.ts",
+              "projects/angular-ui/**/*.html"
             ]
           }
         }

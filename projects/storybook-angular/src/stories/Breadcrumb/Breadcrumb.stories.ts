@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoBreadcrumbComponent } from 'core-components-angular-lib';
+import { BaoBreadcrumbComponent } from 'angular-ui';
 
 const description = `
 The breadcrumb trail component allows users to locate themselves within the depth of a website's pages, while keeping a quick access to previous levels they've already visited.

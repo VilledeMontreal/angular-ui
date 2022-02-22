@@ -13,7 +13,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - run: npm test-ci
+      - run: npm run test-ci
   publish-npm:
     name: Publish npm packages
     needs: build

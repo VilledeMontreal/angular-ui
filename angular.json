@@ -21,7 +21,7 @@
             "aot": true,
             "styles": [
               "projects/angular-ui/global.scss",
-              "node_modules/@villemontreal/boite-outils4-web/dist/css/styles.min.css",
+              "node_modules/@villedemontreal/hochelaga/dist/css/styles.min.css",
               "projects/storybook-angular/src/styles.css"
             ],
             "scripts": []

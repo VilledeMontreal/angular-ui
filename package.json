@@ -38,7 +38,7 @@
     "@ngxs/devtools-plugin": "^3.7.3",
     "@ngxs/logger-plugin": "^3.7.3",
     "@ngxs/store": "^3.7.3",
-    "@villemontreal/boite-outils4-web": "^4.17.0",
+    "@villedemontreal/hochelaga": "^4.21.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

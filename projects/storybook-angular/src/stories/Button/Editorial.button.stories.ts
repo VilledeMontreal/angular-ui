@@ -1,10 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import {
-  BaoButtonComponent,
-  BaoIconComponent
-} from 'core-components-angular-lib';
+import { BaoButtonComponent, BaoIconComponent } from 'angular-ui';
 import { Primary } from './Button.stories';
 export default {
   title: 'Components/Button/Editorial',

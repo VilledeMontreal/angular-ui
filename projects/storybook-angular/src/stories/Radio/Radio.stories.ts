@@ -6,7 +6,7 @@ import {
   BaoRadioModule,
   BaoCommonComponentsModule,
   BaoButtonModule
-} from 'core-components-angular-lib';
+} from 'angular-ui';
 import { BaoRadioExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/form/radio-example.component';
 import { BaoRadioReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/reactiveForm/radio-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

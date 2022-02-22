@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { Component } from "@angular/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Overlay } from '@angular/cdk/overlay';
-import { BaoModule, BaoSimpleSnackBarComponent, BaoSnackBarContainerComponent, BaoSnackBarService } from 'core-components-angular-lib';
+import { BaoModule, BaoSimpleSnackBarComponent, BaoSnackBarContainerComponent, BaoSnackBarService } from 'angular-ui';
 import { SnackBarDemoComponent } from "./snack-bar-demo.component.ts";
 
 <Meta title='Snack-bar' decorators={[

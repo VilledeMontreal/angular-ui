@@ -1,6 +1,6 @@
 import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
-import { BaoBadgeComponent } from 'core-components-angular-lib';
+import { BaoBadgeComponent } from 'angular-ui';
 
 <Meta title='Badges' decorators={[
   moduleMetadata({

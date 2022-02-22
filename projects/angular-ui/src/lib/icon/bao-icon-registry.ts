@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, SecurityContext } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';

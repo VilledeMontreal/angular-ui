@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';

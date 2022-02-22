@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 import { AriaLivePoliteness } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import { InjectionToken, ViewContainerRef } from '@angular/core';

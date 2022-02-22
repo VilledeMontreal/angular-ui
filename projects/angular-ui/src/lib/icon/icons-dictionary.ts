@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 export const ICONS_DCT: { [iconName: string]: string } = {
   'icon-anchor':
     "<path fill-rule='evenodd' clip-rule='evenodd' d='M12 1a4 4 0 011 7.874v12.071A9.004 9.004 0 0020.946 13H19a1 1 0 110-2h3a1 1 0 011 1c0 6.075-4.925 11-11 11a1 1 0 01-1-1V8.874A4.002 4.002 0 0112 1zM5 11a1 1 0 110 2H3.055a9.003 9.003 0 005.372 7.263 1 1 0 01-.795 1.835A11.001 11.001 0 011 12a1 1 0 011-1h3zm7-8a2 2 0 100 4 2 2 0 000-4z'/>",

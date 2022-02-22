@@ -1,6 +1,9 @@
 {
   "name": "angular-ui",
   "version": "0.1.6",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "ng": "ng",
     "start": "npm run storybook",
@@ -20,7 +23,7 @@
     "bundle-styles:watch": "scss-bundle --watch -c scss-bundle.config.json",
     "bundle-styles:watch:dev": "wait-on dist/angular-ui && scss-bundle -c scss-bundle.config.json && npm run bundle-styles:watch",
     "lint": "prettier --check . && ng lint angular-ui && ng lint storybook-angular",
-    "lint-fix": "prettier --write . && ng lint --fix angular-ui"
+    "lint-fix": "prettier --write . && ng lint --fix angular-ui && ng lint --fix storybook-angular"
   },
   "private": true,
   "dependencies": {
@@ -62,6 +65,7 @@
     "@storybook/angular": "^6.5.0-alpha.31",
     "@storybook/builder-webpack5": "^6.5.0-alpha.31",
     "@storybook/manager-webpack5": "^6.5.0-alpha.31",
+    "eslint-plugin-header": "^3.1.1",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.3.0",

@@ -45,3 +45,15 @@ export class TestButtonHostComponent {
     this.ref.rightIcon = this._rightIcon = value;
   }
 }
+
+@Component({
+  template: `
+    <button bao-button [loading]="loading">
+      <bao-icon svgIcon="icon-help"></bao-icon>
+      Click me !
+    </button>
+  `
+})
+export class TestButtonWithIconHostComponent {
+  loading: boolean;
+}

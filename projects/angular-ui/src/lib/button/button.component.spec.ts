@@ -33,11 +33,11 @@ describe('BaoButtonComponent', () => {
       })
     );
 
-    beforeEach(async () => {
+    beforeEach(() => {
       fixture = TestBed.createComponent(TestButtonHostComponent);
       testComponent = fixture.componentInstance;
       fixture.detectChanges();
-      buttonDebugElement = fixture.debugElement.query(By.css('button'))!;
+      buttonDebugElement = fixture.debugElement.query(By.css('button'));
     });
 
     it('should apply default class', () => {
@@ -197,30 +197,30 @@ describe('BaoButtonComponent', () => {
     it('should apply bao-icon based on loading', () => {
       testComponent.loading = false;
       fixture.detectChanges();
-      expect(fixture.debugElement.query(By.css('bao-icon'))!).toBeNull();
+      expect(fixture.debugElement.query(By.css('bao-icon'))).toBeNull();
 
       testComponent.loading = true;
       fixture.detectChanges();
-      const iconDebugElement = fixture.debugElement.query(By.css('bao-icon'))!;
+      const iconDebugElement = fixture.debugElement.query(By.css('bao-icon'));
       expect(iconDebugElement).toBeDefined();
       expect(iconDebugElement.attributes.svgIcon).toBe('icon-spinner');
       expect(iconDebugElement.attributes.class).toContain('loading-spinner');
 
       testComponent.loading = null;
       fixture.detectChanges();
-      expect(fixture.debugElement.query(By.css('bao-icon'))!).toBeNull();
+      expect(fixture.debugElement.query(By.css('bao-icon'))).toBeNull();
     });
 
     it('should apply bao-icon to the right side based on loading and rightIcon', () => {
       testComponent.loading = false;
       testComponent.rightIcon = true;
       fixture.detectChanges();
-      expect(fixture.debugElement.query(By.css('bao-icon'))!).toBeNull();
+      expect(fixture.debugElement.query(By.css('bao-icon'))).toBeNull();
 
       testComponent.loading = true;
       testComponent.rightIcon = true;
       fixture.detectChanges();
-      const iconDebugElement = fixture.debugElement.query(By.css('bao-icon'))!;
+      const iconDebugElement = fixture.debugElement.query(By.css('bao-icon'));
       expect(iconDebugElement.attributes.class).toContain(
         'loading-spinner-right'
       );
@@ -228,7 +228,7 @@ describe('BaoButtonComponent', () => {
       testComponent.loading = null;
       testComponent.rightIcon = true;
       fixture.detectChanges();
-      expect(fixture.debugElement.query(By.css('bao-icon'))!).toBeNull();
+      expect(fixture.debugElement.query(By.css('bao-icon'))).toBeNull();
     });
 
     it('should handle click on the button', () => {
@@ -315,7 +315,7 @@ describe('BaoButtonComponent', () => {
       fixtureWithIcon.detectChanges();
       const iconDebugElements = fixtureWithIcon.debugElement.queryAll(
         By.css('bao-icon')
-      )!;
+      );
       expect(iconDebugElements.length).toBe(2);
 
       const loadingIconDebugElement = iconDebugElements.find(

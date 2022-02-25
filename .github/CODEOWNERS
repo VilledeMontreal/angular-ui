@@ -1,0 +1,4 @@
+# Angular UI components
+
+# UX must review and approve PR before merge
+projects/angular-ui/src/lib/**/*.component.ts                                    @VilledeMontreal/ux-review

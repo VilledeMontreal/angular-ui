@@ -85,7 +85,10 @@ export class BaoButtonComponent implements AfterViewInit {
    */
   public rightIcon = false;
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private elementRef: ElementRef<HTMLElement>,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;

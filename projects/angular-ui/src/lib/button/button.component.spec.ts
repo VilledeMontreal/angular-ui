@@ -29,7 +29,7 @@ describe('BaoButtonComponent', () => {
           ]
         });
 
-        TestBed.compileComponents();
+        return TestBed.compileComponents();
       })
     );
 
@@ -286,11 +286,11 @@ describe('BaoButtonComponent', () => {
           ]
         });
 
-        TestBed.compileComponents();
+        return TestBed.compileComponents();
       })
     );
 
-    beforeEach(async () => {
+    beforeEach(() => {
       fixtureWithIcon = TestBed.createComponent(
         TestButtonWithIconHostComponent
       );
@@ -298,10 +298,10 @@ describe('BaoButtonComponent', () => {
       fixtureWithIcon.detectChanges();
       defaultIconDebugElement = fixtureWithIcon.debugElement.query(
         By.css('bao-icon')
-      )!;
+      );
     });
 
-    it('should display bao-icon "icon-spinner" and hide existing bao-icon based on loading', async () => {
+    it('should display bao-icon "icon-spinner" and hide existing bao-icon based on loading', () => {
       testWithIconComponent.loading = false;
       fixtureWithIcon.detectChanges();
       expect(defaultIconDebugElement.attributes.svgIcon).not.toBe(

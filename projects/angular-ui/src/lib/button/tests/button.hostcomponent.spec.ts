@@ -26,8 +26,6 @@ import { BaoButtonComponent } from 'dist/angular-ui/public-api';
   `
 })
 export class TestButtonHostComponent {
-  private _rightIcon = false;
-
   @ViewChild('ref')
   ref = {} as BaoButtonComponent;
   displayType: string;
@@ -38,6 +36,8 @@ export class TestButtonHostComponent {
   loading: boolean;
   isDisabled = false;
   clickCount = 0;
+  private _rightIcon = false;
+
   get rightIcon() {
     return this._rightIcon;
   }

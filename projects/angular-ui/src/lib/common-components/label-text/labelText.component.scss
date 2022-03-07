@@ -1,8 +1,9 @@
 @import '../../core/colors';
+@import '../../core/typography';
 
-.bao-legend {
+.bao-label {
   color: $ground-reversed !important;
-  font-weight: bold;
+  font-weight: $font-weight-bold;
   line-height: 1.5em;
   font-size: 1rem;
   margin-bottom: 0;

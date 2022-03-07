@@ -1,0 +1,7 @@
+@import '../../core/typography';
+
+.bao-title-text {
+  @include typo-interface-large-bold;
+  margin: 0rem 0rem 0.5rem 0;
+  color: $ground-reversed;
+}

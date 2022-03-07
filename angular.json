@@ -233,6 +233,7 @@
   },
   "defaultProject": "storybook-angular",
   "cli": {
+    "analytics": false,
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

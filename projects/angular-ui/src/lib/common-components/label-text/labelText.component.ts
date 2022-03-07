@@ -6,12 +6,13 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'bao-legend, [bao-legend]',
+  selector: 'bao-label, [bao-label]',
   encapsulation: ViewEncapsulation.None,
   template:
-    '<legend class="bao-legend"><ng-content></ng-content><span *ngIf="required">&nbsp;*</span></legend>',
-  styleUrls: ['./legendText.component.scss']
+    '<div class="bao-label"><ng-content></ng-content><span *ngIf="required">&nbsp;*</span></div>',
+  styleUrls: ['./labelText.component.scss'],
+  host: { class: 'bao-label' }
 })
-export class BaoLegendTextComponent {
+export class BaoLabelTextComponent {
   @Input() public required = false;
 }

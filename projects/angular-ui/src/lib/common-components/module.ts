@@ -8,13 +8,15 @@ import { NgModule } from '@angular/core';
 import {
   BaoErrorTextComponent,
   BaoGuidingTextComponent,
-  BaoLegendTextComponent
+  BaoLabelTextComponent,
+  BaoTitleTextComponent
 } from '.';
 
 const DIRECTIVES = [
   BaoErrorTextComponent,
-  BaoLegendTextComponent,
-  BaoGuidingTextComponent
+  BaoGuidingTextComponent,
+  BaoLabelTextComponent,
+  BaoTitleTextComponent
 ];
 
 @NgModule({

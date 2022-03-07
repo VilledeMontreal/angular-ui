@@ -1,0 +1,65 @@
+@import '../core/colors';
+@import '../core/_grid';
+@import '../core/radius';
+@import '../core/mixins';
+@import '../core/typography';
+
+.bao-summary {
+  .bao-label,
+  .bao-guiding-text {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .bao-summary-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 0.063rem solid $neutral-stroke;
+    box-sizing: border-box;
+    border-radius: $radius-medium;
+    padding: 0.5rem 0.5rem 1rem 1rem;
+
+    .bao-summary-text {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0.5rem 0 0;
+
+      .bao-summary-description {
+        @include typo-interface-medium-normal;
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    button.buttonText {
+      display: none;
+    }
+
+    button.buttonIcon {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &:not(.bao-displaymode-compact) {
+    @include respond-to(sm) {
+      .bao-summary-content {
+        padding: 1.5rem 1.5rem 2rem 2rem;
+
+        button.buttonText {
+          display: block;
+          margin-left: 0.5rem;
+        }
+
+        button.buttonIcon {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .bao-error {
+    margin-top: 0.5rem;
+  }
+}

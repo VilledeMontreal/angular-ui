@@ -19,9 +19,9 @@
   margin-left: auto;
   width: 100%;
 
-  // @include respond-to(sm) {
-  // 	max-width: 576px;
-  // }
+  @include respond-to(sm) {
+    max-width: 576px;
+  }
 
   @include respond-to(md) {
     max-width: 768px;

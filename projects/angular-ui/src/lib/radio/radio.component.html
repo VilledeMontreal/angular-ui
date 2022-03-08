@@ -13,11 +13,18 @@
   (change)="onInputInteraction($event)"
   role="radio"
 />
-<label class="bao-radio-button-content-container" [attr.for]="inputID">
+<label class="bao-radio-button-content-container w-100" [attr.for]="inputID">
   <div class="bao-radio-button-label" [id]="ariaLabelledby">
     <ng-content></ng-content>
   </div>
+  <ng-content select="bao-guiding-text, [bao-guiding-text]"></ng-content>
   <ng-content
     select="bao-radio-button-description, [bao-radio-button-description], [baoRadioButtonDescription]"
   ></ng-content>
+  <ng-content
+    select="bao-list-summary, [bao-list-summary], [baoListSummary]"
+  ></ng-content>
 </label>
+<ng-content
+  select="bao-radio-action-button, [bao-radio-action-button], [baoRadioActionButton]"
+></ng-content>

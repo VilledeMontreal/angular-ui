@@ -9,7 +9,9 @@ import {
   BaoRadioButtonComponent,
   BaoRadioModule,
   BaoCommonComponentsModule,
-  BaoButtonModule
+  BaoButtonModule,
+  BaoListSummary,
+  BaoListSummaryItem
 } from 'angular-ui';
 import { BaoRadioExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/form/radio-example.component';
 import { BaoRadioReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/reactiveForm/radio-example.component';
@@ -20,7 +22,9 @@ export default {
     moduleMetadata({
       declarations: [
         BaoRadioExampleComponent,
-        BaoRadioReactiveFormExampleComponent
+        BaoRadioReactiveFormExampleComponent,
+        BaoListSummary,
+        BaoListSummaryItem
       ],
       imports: [
         BaoRadioModule,
@@ -146,5 +150,149 @@ export const RadioReactiveExample: Story = args => ({
 });
 RadioReactiveExample.storyName = 'Radio button - Reactive form example';
 RadioReactiveExample.args = {
+  ...Primary.args
+};
+
+export const RadioWithDescAndActionButton: Story = args => ({
+  props: args,
+  template: `
+    <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel" >
+      <bao-radio-button id="ID200" name="name200" value="example1" horizontalBorder="true" >
+      <bao-label>Radio button avec action button</bao-label>
+      <bao-radio-action-button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          (click)="onButtonClick($event)"
+          class="bao-radio-btn-icon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit" boa-action-btn-icon></bao-icon>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          (click)="onButtonClick($event)"
+          class="bao-radio-btn-txt"
+        >
+          <span>Modifier</span>
+        </button>
+        </bao-radio-action-button>
+        <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+        </bao-radio-button>
+        <bao-radio-button id="ID201" name="name200" value="example1" horizontalBorder="true" >
+        <bao-label >Radio button avec action button</bao-label>
+        <bao-radio-action-button>
+            <button
+              bao-button
+              size="medium" 
+              level="tertiary" 
+              displayType="utility" 
+              type="button"
+              (click)="onButtonClick($event)"
+              class="bao-radio-btn-icon"
+            >
+              <bao-icon title="Modifier" svgIcon="icon-edit" boa-action-btn-icon></bao-icon>
+            </button>
+            <button
+              bao-button
+              size="medium" 
+              level="tertiary" 
+              displayType="utility" 
+              type="button"
+              (click)="onButtonClick($event)"
+              class="bao-radio-btn-txt"
+            >
+              <span>Modifier</span>
+            </button>
+          </bao-radio-action-button>
+        <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+        </bao-radio-button>
+  </bao-radio-button-group>
+  `
+});
+RadioWithDescAndActionButton.storyName =
+  'Radio button - responsive mode width Action button ';
+RadioWithDescAndActionButton.args = {
+  ...Primary.args
+};
+
+export const RadioWithDescAndActionButtonCompact: Story = args => ({
+  props: args,
+  template: `
+    <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel" >
+      <bao-radio-button id="ID203" name="name203" value="example1" horizontalBorder="true" displayMode="compact" >
+      <bao-label>Radio button avec action button</bao-label>
+      <bao-radio-action-button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          (click)="onButtonClick($event)"
+          class="bao-radio-btn-icon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit" boa-action-btn-icon></bao-icon>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          (click)="onButtonClick($event)"
+          class="bao-radio-btn-txt"
+        >
+          <span>Modifier</span>
+        </button>
+        </bao-radio-action-button>
+        <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+        </bao-radio-button>
+        <bao-radio-button id="ID204" name="name203" value="example1" horizontalBorder="true"  displayMode="compact" >
+        <bao-label >Radio button avec action button</bao-label>
+        <bao-radio-action-button>
+            <button
+              bao-button
+              size="medium" 
+              level="tertiary" 
+              displayType="utility" 
+              type="button"
+              (click)="onButtonClick($event)"
+              class="bao-radio-btn-icon"
+            >
+              <bao-icon title="Modifier" svgIcon="icon-edit" boa-action-btn-icon></bao-icon>
+            </button>
+            <button
+              bao-button
+              size="medium" 
+              level="tertiary" 
+              displayType="utility" 
+              type="button"
+              (click)="onButtonClick($event)"
+              class="bao-radio-btn-txt"
+            >
+              <span>Modifier</span>
+            </button>
+          </bao-radio-action-button>
+        <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
+        <bao-list-summary>
+          <bao-list-summary-item>item 1</bao-list-summary-item>
+          <bao-list-summary-item>item 2</bao-list-summary-item>
+          <bao-list-summary-item>item 3</bao-list-summary-item>
+          <bao-list-summary-item>item 4</bao-list-summary-item>
+       </bao-list-summary>
+        </bao-radio-button>
+  </bao-radio-button-group>
+  `
+});
+RadioWithDescAndActionButtonCompact.storyName =
+  'Radio button - compact mode width Action button ';
+RadioWithDescAndActionButtonCompact.args = {
   ...Primary.args
 };

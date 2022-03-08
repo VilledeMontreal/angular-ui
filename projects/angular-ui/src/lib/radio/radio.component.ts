@@ -25,6 +25,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { EDisplayMode } from '../shared';
 import {
   BAO_RADIO_GROUP,
   BaoRadioButtonGroupComponent
@@ -54,7 +55,9 @@ let radioNextUniqueId = 0;
     '[class.bao-radio-button-checked]': 'checked',
     '[class.bao-radio-button-disabled]': 'disabled',
     '[class.bao-radio-button-card]': 'brandBorder',
-    '[class.bao-radio-button-hidden-label]': 'hiddenLabel'
+    '[class.bao-radio-button-hidden-label]': 'hiddenLabel',
+    '[class.bao-radio-button-label-list]': 'horizontalBorder',
+    '[class.bao-displaymode-compact]': 'displayMode === "compact"'
   }
 })
 export class BaoRadioButtonComponent
@@ -80,6 +83,15 @@ export class BaoRadioButtonComponent
    * Whether the radio button has a border and is considered as a card.
    */
   @Input() public brandBorder = false;
+  /**
+   * horizontal border
+   */
+  @Input() public horizontalBorder = false;
+
+  /**
+   * custom display mode compact, responsive
+   */
+  @Input() public displayMode = EDisplayMode.RESPONSIVE;
 
   /**
    * Whether the radio button is inline.
@@ -343,3 +355,9 @@ export class BaoRadioButtonComponent
   host: { class: 'bao-radio-button-description' }
 })
 export class BaoRadioDescription {}
+
+@Directive({
+  selector:
+    'bao-radio-action-button, [bao-radio-action-button], [baoRadioActionButton]'
+})
+export class BaoRadioActionButton {}

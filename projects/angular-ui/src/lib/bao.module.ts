@@ -15,6 +15,7 @@ import { BaoIconModule } from './icon';
 import { BaoListModule } from './list';
 import { BaoRadioModule } from './radio';
 import { BaoTagModule } from './tag';
+import { BaoSummaryModule } from './summary';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { BaoTagModule } from './tag';
     BaoListModule,
     BaoCommonComponentsModule,
     BaoCheckboxModule,
-    BaoRadioModule
+    BaoRadioModule,
+    BaoSummaryModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
   ]

@@ -2,6 +2,7 @@
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
+$font-weight-medium-bold: 600;
 
 @mixin typo-heading-1 {
   font-weight: 700;
@@ -15,12 +16,6 @@ $font-weight-bold: 700;
   color: $ground-reversed;
   font-size: 2rem;
   line-height: 2.5rem;
-}
-
-@mixin typo-interface-large-bold {
-  font-weight: $font-weight-bold;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 @mixin typo-interface-large-bold {

@@ -1,0 +1,14 @@
+<ng-content select="bao-label"></ng-content>
+<ng-content select="bao-guiding-text, [bao-guiding-text]"></ng-content>
+
+<div class="bao-summary-content">
+  <div class="bao-summary-text">
+    <ng-content select="bao-title-text, [bao-title-text]"></ng-content>
+    <ng-content select="bao-summary-description"></ng-content>
+    <ng-content
+      select="bao-list-summary, [bao-list-summary], [baoListSummary]"
+    ></ng-content>
+  </div>
+  <ng-content select="button[bao-button]"></ng-content>
+</div>
+<ng-content select="bao-error, [bao-error]"></ng-content>

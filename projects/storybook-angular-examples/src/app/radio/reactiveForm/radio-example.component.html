@@ -1,6 +1,6 @@
 <form [formGroup]="cars" (ngSubmit)="onSubmit()">
   <bao-radio-button-group aria-label="Choisir un animal" formControlName="car">
-    <bao-legend required="true">Choisir une voiture</bao-legend>
+    <legend required="true" bao-label>Choisir une voiture</legend>
     <bao-radio-button value="Honda" borderBrand="true">Honda</bao-radio-button>
     <bao-radio-button value="Toyota">Toyota</bao-radio-button>
     <bao-radio-button value="Mercedes">Mercedes</bao-radio-button>

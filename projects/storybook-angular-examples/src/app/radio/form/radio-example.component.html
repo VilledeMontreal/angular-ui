@@ -2,7 +2,7 @@
   aria-labelledby="Choisir un animal"
   [(ngModel)]="animalFavori"
 >
-  <bao-legend required="true">Choisissez votre animal favori</bao-legend>
+  <legend required="true" bao-label>Choisissez votre animal favori</legend>
   <ng-container *ngFor="let animal of animaux; let id = index">
     <bao-radio-button [value]="animal" name="amimaux">
       {{ animal }}

@@ -71,6 +71,10 @@ $space-between-icon-and-text-small: 0.25rem;
     padding-right: 1rem;
     padding-top: calc(0.625rem - 0.0625rem);
     padding-bottom: calc(0.625rem - 0.0625rem);
+    &:disabled.bao-button-secondary,
+    &:disabled.bao-button-tertiary {
+      color: $neutral-tertiary;
+    }
   }
   &.bao-button-primary {
     background-color: $action;
@@ -206,6 +210,10 @@ $space-between-icon-and-text-small: 0.25rem;
     }
     &.bao-button-medium {
       padding: 0.5625rem 2rem;
+    }
+    &:disabled.bao-button-secondary,
+    &:disabled.bao-button-tertiary {
+      color: $neutral-tertiary;
     }
   }
 

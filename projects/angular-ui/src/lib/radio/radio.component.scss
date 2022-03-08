@@ -138,7 +138,8 @@
   /** DISABLED STATE **/
   input:disabled {
     ~ .bao-radio-button-content-container {
-      color: $neutral-secondary;
+      color: $neutral-tertiary;
+      border-color: $underground-2;
       &::before {
         border-color: $neutral-stroke;
         background-color: $neutral-stroke;
@@ -146,7 +147,7 @@
 
       .bao-radio-button-label,
       .bao-radio-button-description {
-        color: $neutral-secondary;
+        color: $neutral-tertiary;
       }
     }
   }

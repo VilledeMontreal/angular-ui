@@ -271,7 +271,7 @@ export class BaoRadioButtonComponent
 
   public ngOnDestroy() {
     this.focusMonitor.stopMonitoring(this.inputElement);
-    this._removeUniqueSelectionListener();
+    this._removeUniqueSelectionListener;
   }
 
   /**

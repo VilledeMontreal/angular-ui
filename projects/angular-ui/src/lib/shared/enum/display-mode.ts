@@ -3,7 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-export enum EDisplayMode {
+export const enum EDisplayMode {
   COMPACT = 'compact',
   RESPONSIVE = 'responsive'
 }

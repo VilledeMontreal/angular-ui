@@ -6,8 +6,7 @@ $size-xx-small: 1rem !default;
 
 bao-icon {
   background-repeat: no-repeat;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   fill: currentColor;
   line-height: normal;
 
@@ -25,7 +24,7 @@ bao-icon {
   &.bao-icon-x-small {
     height: $size-x-small;
     width: $size-x-small;
-    line-height: 1.15rem;
+    line-height: 0.5rem;
   }
 
   &.bao-icon-xx-small {

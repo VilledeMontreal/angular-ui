@@ -73,7 +73,6 @@ $line-height: 1.5rem;
   & > .bao-icon {
     height: $icon-size;
     width: $icon-size;
-    flex-shrink: 0;
     margin-right: $space-between-icon-and-text;
   }
 }

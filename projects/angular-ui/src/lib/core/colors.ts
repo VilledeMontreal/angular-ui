@@ -3,7 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-export enum BaoColors {
+export const enum BaoColors {
   ACTION = 'action',
   PRIMARY = 'primary',
   PRIMARY_REVERSED = 'primary-reversed',

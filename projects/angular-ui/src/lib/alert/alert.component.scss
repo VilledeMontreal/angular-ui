@@ -53,12 +53,7 @@ $alert-colors: (
   a {
     font-weight: $font-weight-bold;
   }
-  // icon display left
-  .bao-alert-icon-container {
-    .bao-icon {
-      display: flex;
-    }
-  }
+
   // icon display right
   &.bao-alert-dismissible {
     .bao-button[data-dismiss='alert'] {

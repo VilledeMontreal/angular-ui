@@ -76,10 +76,6 @@ export default {
       table: {
         disable: true
       }
-    },
-    type: {
-      options: ['success', 'danger', 'warning', 'info', ''],
-      control: { type: 'radio' }
     }
   }
 } as Meta;

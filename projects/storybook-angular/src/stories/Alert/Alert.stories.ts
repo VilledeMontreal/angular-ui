@@ -88,7 +88,7 @@ const Template: Story<BaoAlertComponent & { title: string; content: string }> =
   (args: BaoAlertComponent) => ({
     component: BaoAlertComponent,
     template: `
-  <bao-alert [type]="type" [showIcon]="showIcon" [dismissible]="dismissible">
+  <bao-alert [type]="type" [dismissible]="dismissible">
     <bao-alert-title>{{title}}</bao-alert-title>
     <bao-alert-content [innerHTML]="content">
     </bao-alert-content>
@@ -101,7 +101,6 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   type: 'info',
-  showIcon: true,
   dismissible: false,
   title: "The alert's title",
   content:

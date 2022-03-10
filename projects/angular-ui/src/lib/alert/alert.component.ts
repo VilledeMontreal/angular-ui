@@ -107,7 +107,6 @@ export class BaoAlertComponent implements OnChanges {
    */
   @Input() public type: '' | 'success' | 'danger' | 'warning' | 'info' = '';
   @Input() public dismissible = false;
-  @Input() public showIcon = true;
   @Output() public dismiss = new EventEmitter();
   public iconType = 'icon-info';
   public iconTitle = 'Information';

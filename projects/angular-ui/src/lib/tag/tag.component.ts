@@ -62,7 +62,10 @@ export class BaoTagComponent implements AfterViewInit {
    */
   @Input() public hiddenText = 'Étiquette';
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+  constructor(
+    private renderer: Renderer2,
+    private elementRef: ElementRef<HTMLElement>
+  ) {}
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;

@@ -63,76 +63,10 @@ let checkboxNextUniqueId = 0;
 export class BaoCheckboxComponent
   implements ControlValueAccessor, AfterViewInit, OnInit, OnDestroy
 {
-  private _disabled = false;
-  private _checked = false;
-  private _indeterminate = false;
-  private _uniqueId = `bao-checkbox-${++checkboxNextUniqueId}`;
-
-  /**
-   * Whether the checkbox is checked.  Default value : false
-   */
-  @Input()
-  get checked(): boolean {
-    return this._checked;
-  }
-  set checked(value: boolean) {
-    if (value !== this.checked) {
-      this._checked = value;
-      this.cdr.markForCheck();
-    }
-  }
-
-  /**
-   * Whether the checkbox is disabled. Default value : false
-   */
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-  set disabled(value: boolean) {
-    // In the case the value is string or boolean
-    const newValue = value;
-
-    if (newValue !== this.disabled) {
-      this._disabled = newValue;
-      this.cdr.markForCheck();
-    }
-  }
-
-  /**
-   * Whether the checkbox is required.  Default value : false
-   */
-  @Input()
-  get required(): boolean {
-    return this._required;
-  }
-  set required(value: boolean) {
-    this._required = value;
-  }
-  private _required: boolean;
-
-  /**
-   * Whether the checkbox is indeterminate.  Default value : false
-   */
-  @Input()
-  get indeterminate(): boolean {
-    return this._indeterminate;
-  }
-  set indeterminate(value: boolean) {
-    const newValue = value;
-
-    if (newValue !== this._indeterminate) {
-      this._indeterminate = newValue;
-      this.indeterminateChange.emit(this._indeterminate);
-    }
-    // Update the inderteminate value of the html element object
-    this.syncIndeterminate(this._indeterminate);
-  }
-
   /**
    * The checkbox ID. It is set dynamically with an unique ID by default
    */
-  @Input() public id: string = this._uniqueId;
+  @Input() public id: string;
 
   /**
    * The aria-label for web accessibility
@@ -192,14 +126,88 @@ export class BaoCheckboxComponent
    */
   public inputID: string;
 
+  private _disabled = false;
+  private _checked = false;
+  private _indeterminate = false;
+  private _uniqueId = `bao-checkbox-${++checkboxNextUniqueId}`;
+  private _required: boolean;
+
   constructor(
-    private elementRef: ElementRef,
+    private elementRef: ElementRef<HTMLElement>,
     private cdr: ChangeDetectorRef,
     private focusMonitor: FocusMonitor
-  ) {}
+  ) {
+    if (!this.id) {
+      this.id = this._uniqueId;
+    }
+  }
+
+  /**
+   * Whether the checkbox is checked.  Default value : false
+   */
+  @Input()
+  get checked(): boolean {
+    return this._checked;
+  }
+
+  /**
+   * Whether the checkbox is disabled. Default value : false
+   */
+  @Input()
+  get disabled() {
+    return this._disabled;
+  }
+
+  /**
+   * Whether the checkbox is required.  Default value : false
+   */
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+
+  /**
+   * Whether the checkbox is indeterminate.  Default value : false
+   */
+  @Input()
+  get indeterminate(): boolean {
+    return this._indeterminate;
+  }
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
+  }
+
+  set checked(value: boolean) {
+    if (value !== this.checked) {
+      this._checked = value;
+      this.cdr.markForCheck();
+    }
+  }
+
+  set disabled(value: boolean) {
+    // In the case the value is string or boolean
+    const newValue = value;
+
+    if (newValue !== this.disabled) {
+      this._disabled = newValue;
+      this.cdr.markForCheck();
+    }
+  }
+
+  set required(value: boolean) {
+    this._required = value;
+  }
+
+  set indeterminate(value: boolean) {
+    const newValue = value;
+
+    if (newValue !== this._indeterminate) {
+      this._indeterminate = newValue;
+      this.indeterminateChange.emit(this._indeterminate);
+    }
+    // Update the inderteminate value of the html element object
+    this.syncIndeterminate(this._indeterminate);
   }
 
   public ngOnInit() {

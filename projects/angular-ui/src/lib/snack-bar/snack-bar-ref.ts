@@ -94,19 +94,6 @@ export class BaoSnackBarRef<T> {
     }
   }
 
-  /** Cleans up the DOM after closing. */
-  private finishDismiss(): void {
-    this._overlayRef.dispose();
-
-    if (!this._onAction.closed) {
-      this._onAction.complete();
-    }
-
-    this._afterDismissed.next({ dismissedByAction: this._dismissedByAction });
-    this._afterDismissed.complete();
-    this._dismissedByAction = false;
-  }
-
   /** Gets an observable that is notified when the snack bar is finished closing. */
   public afterDismissed(): Observable<IBaoSnackBarDismiss> {
     return this._afterDismissed;
@@ -120,5 +107,18 @@ export class BaoSnackBarRef<T> {
   /** Gets an observable that is notified when the snack bar action is called. */
   public onAction(): Observable<void> {
     return this._onAction;
+  }
+
+  /** Cleans up the DOM after closing. */
+  private finishDismiss(): void {
+    this._overlayRef.dispose();
+
+    if (!this._onAction.closed) {
+      this._onAction.complete();
+    }
+
+    this._afterDismissed.next({ dismissedByAction: this._dismissedByAction });
+    this._afterDismissed.complete();
+    this._dismissedByAction = false;
   }
 }

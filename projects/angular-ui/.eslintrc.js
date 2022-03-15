@@ -23,6 +23,12 @@ module.exports = {
       rules: {
         'header/header': 0
       }
+    },
+    {
+      files: ['*.spec.ts'],
+      rules: {
+        'max-lines-per-function': 0
+      }
     }
   ]
 };

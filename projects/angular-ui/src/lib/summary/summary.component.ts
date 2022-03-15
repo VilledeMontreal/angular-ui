@@ -36,14 +36,9 @@ export class BaoSummaryComponent implements OnInit, AfterViewInit {
   @Input() public displayMode = EDisplayMode.RESPONSIVE;
 
   /**
-   * Initialize the ID for summary
-   */
-  private _uniqueId = `bao-summary-${++summaryUniqueId}`;
-
-  /**
    * Set value of unique ID for bao-label
    */
-  @Input() public id: string = this._uniqueId;
+  @Input() public id: string;
 
   /**
    * The aria-describebdy-error id for web accessibility
@@ -62,9 +57,18 @@ export class BaoSummaryComponent implements OnInit, AfterViewInit {
    */
   public ariaLabelledby?: string;
 
+  /**
+   * Initialize the ID for summary
+   */
+  private _uniqueId = `bao-summary-${++summaryUniqueId}`;
+
   private attribues: string;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef<HTMLElement>) {
+    if (!this.id) {
+      this.id = this._uniqueId;
+    }
+  }
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;

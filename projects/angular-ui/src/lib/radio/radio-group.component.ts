@@ -53,9 +53,28 @@ let radioGroupNextUniqueId = 0;
 export class BaoRadioButtonGroupComponent
   implements AfterContentInit, ControlValueAccessor, AfterViewInit
 {
+  /**
+   * The checkbox group ID. It is set dynamically with an unique ID by default
+   */
+  @Input() public id: string;
+
+  /**
+   * Emit the value of the selected radio button
+   */
+  @Output() public readonly change: EventEmitter<string> =
+    new EventEmitter<string>();
+
   @ContentChildren(forwardRef(() => BaoRadioButtonComponent), {
     descendants: true
   })
+  @ViewChild('container', { static: false })
+  private staticContainer: ElementRef;
+
+  /**
+   * The aria-describedby for web accessibilty
+   */
+  public ariaDescribedby: string | null = null;
+
   private _radios: QueryList<BaoRadioButtonComponent>;
   private _value: string | null = null;
   private _name: string | null = null;
@@ -66,10 +85,11 @@ export class BaoRadioButtonGroupComponent
 
   private _uniqueId = `bao-checkbox-group-${++radioGroupNextUniqueId}`;
 
-  /**
-   * The checkbox group ID. It is set dynamically with an unique ID by default
-   */
-  @Input() public id: string = this._uniqueId;
+  constructor(private cdr: ChangeDetectorRef) {
+    if (!this.id) {
+      this.id = this._uniqueId;
+    }
+  }
 
   /**
    * Define the name property of all radio buttons. Default : null
@@ -77,10 +97,6 @@ export class BaoRadioButtonGroupComponent
   @Input()
   get name(): string | null {
     return this._name;
-  }
-  set name(value: string | null) {
-    this._name = value;
-    this.updateRadioButtonNames();
   }
 
   /**
@@ -90,13 +106,6 @@ export class BaoRadioButtonGroupComponent
   get value(): string | null {
     return this._value;
   }
-  set value(newValue: string | null) {
-    if (this._value !== newValue) {
-      this._value = newValue;
-      this.updateSelectedRadioFromValue();
-      this.checkSelectedRadioButton();
-    }
-  }
 
   /**
    * Define which radio button is selected. Default : null
@@ -104,11 +113,6 @@ export class BaoRadioButtonGroupComponent
   @Input()
   get selected() {
     return this._selected;
-  }
-  set selected(selected: BaoRadioButtonComponent | null) {
-    this._selected = selected;
-    this.value = selected ? selected.value : null;
-    this.checkSelectedRadioButton();
   }
 
   /**
@@ -118,10 +122,6 @@ export class BaoRadioButtonGroupComponent
   get disabled(): boolean {
     return this._disabled;
   }
-  set disabled(value) {
-    this._disabled = coerceBooleanProperty(value);
-    this.markRadiosForCheck();
-  }
 
   /**
    * Whether the radio button groupd is required. Default : false
@@ -130,26 +130,35 @@ export class BaoRadioButtonGroupComponent
   get required(): boolean {
     return this._required;
   }
+
+  set name(value: string | null) {
+    this._name = value;
+    this.updateRadioButtonNames();
+  }
+
+  set value(newValue: string | null) {
+    if (this._value !== newValue) {
+      this._value = newValue;
+      this.updateSelectedRadioFromValue();
+      this.checkSelectedRadioButton();
+    }
+  }
+
+  set selected(selected: BaoRadioButtonComponent | null) {
+    this._selected = selected;
+    this.value = selected ? selected.value : null;
+    this.checkSelectedRadioButton();
+  }
+
+  set disabled(value) {
+    this._disabled = coerceBooleanProperty(value);
+    this.markRadiosForCheck();
+  }
+
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value);
     this.markRadiosForCheck();
   }
-
-  /**
-   * Emit the value of the selected radio button
-   */
-  @Output() public readonly change: EventEmitter<string> =
-    new EventEmitter<string>();
-
-  /**
-   * The aria-describedby for web accessibilty
-   */
-  public ariaDescribedby: string | null = null;
-
-  @ViewChild('container', { static: false })
-  private staticContainer: ElementRef;
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   public ngAfterContentInit() {
     this._isInitialized = true;

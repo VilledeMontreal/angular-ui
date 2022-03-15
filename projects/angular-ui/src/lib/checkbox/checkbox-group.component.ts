@@ -25,22 +25,26 @@ let checkboxGroupNextUniqueId = 0;
   encapsulation: ViewEncapsulation.None
 })
 export class BaoCheckboxGroupComponent implements AfterViewInit {
-  private _uniqueId = `bao-checkbox-group-${++checkboxGroupNextUniqueId}`;
-
   /**
    * The checkbox group ID. It is set dynamically with an unique ID by default
    */
-  @Input() public id: string = this._uniqueId;
+  @Input() public id: string;
+
+  @ViewChild('container', { static: false })
+  private staticContainer: ElementRef;
 
   /**
    * The aria-describedby id for web accessibilty
    */
   public ariaDescribedby?: string = undefined;
 
-  @ViewChild('container', { static: false })
-  private staticContainer: ElementRef;
+  private _uniqueId = `bao-checkbox-group-${++checkboxGroupNextUniqueId}`;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {
+    if (!this.id) {
+      this.id = this._uniqueId;
+    }
+  }
 
   public ngAfterViewInit() {
     this.setAriaDescribedByToDescription();

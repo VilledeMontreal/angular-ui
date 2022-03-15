@@ -53,13 +53,6 @@ export const MAT_SNACK_BAR_DEFAULT_OPTIONS =
  */
 @Injectable({ providedIn: 'root' })
 export class BaoSnackBarService implements OnDestroy {
-  /**
-   * Reference to the current snack bar in the view *at this level* (in the Angular injector tree).
-   * If there is a parent snack-bar service, all operations should delegate to that parent
-   * via `_openedSnackBarRef`.
-   */
-  private _snackBarRefAtThisLevel: BaoSnackBarRef<any> | null = null;
-
   /** The component that should be rendered as the snack bar's simple component. */
   protected simpleSnackBarComponent: Type<ITextOnlySnackBar> =
     BaoSimpleSnackBarComponent;
@@ -70,6 +63,23 @@ export class BaoSnackBarService implements OnDestroy {
 
   /** The CSS class to applie for handset mode. */
   protected handsetCssClass = 'mat-snack-bar-handset';
+
+  /**
+   * Reference to the current snack bar in the view *at this level* (in the Angular injector tree).
+   * If there is a parent snack-bar service, all operations should delegate to that parent
+   * via `_openedSnackBarRef`.
+   */
+  private _snackBarRefAtThisLevel: BaoSnackBarRef<any> | null = null;
+
+  constructor(
+    private _overlay: Overlay,
+    private _live: LiveAnnouncer,
+    private _injector: Injector,
+    private _breakpointObserver: BreakpointObserver,
+    @Optional() @SkipSelf() private _parentSnackBar: BaoSnackBarService,
+    @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS)
+    private _defaultConfig: BaoSnackBarConfig
+  ) {}
 
   /** Reference to the currently opened snackbar at *any* level. */
   get _openedSnackBarRef(): BaoSnackBarRef<any> | null {
@@ -84,16 +94,6 @@ export class BaoSnackBarService implements OnDestroy {
       this._snackBarRefAtThisLevel = value;
     }
   }
-
-  constructor(
-    private _overlay: Overlay,
-    private _live: LiveAnnouncer,
-    private _injector: Injector,
-    private _breakpointObserver: BreakpointObserver,
-    @Optional() @SkipSelf() private _parentSnackBar: BaoSnackBarService,
-    @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS)
-    private _defaultConfig: BaoSnackBarConfig
-  ) {}
 
   /**
    * Creates and dispatches a snack bar with a custom component for the content, removing any
@@ -120,6 +120,7 @@ export class BaoSnackBarService implements OnDestroy {
     template: TemplateRef<any>,
     config?: BaoSnackBarConfig
   ): BaoSnackBarRef<EmbeddedViewRef<any>> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.attach(template, config);
   }
 
@@ -209,6 +210,7 @@ export class BaoSnackBarService implements OnDestroy {
     );
 
     if (content instanceof TemplateRef) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const portal = new TemplatePortal(content, null!, {
         $implicit: config.data,
         snackBarRef
@@ -239,6 +241,7 @@ export class BaoSnackBarService implements OnDestroy {
 
     this.animateSnackBar(snackBarRef, config);
     this._openedSnackBarRef = snackBarRef;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this._openedSnackBarRef;
   }
 

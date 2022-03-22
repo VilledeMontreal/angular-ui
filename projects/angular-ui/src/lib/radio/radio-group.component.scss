@@ -2,12 +2,16 @@
 @import '../core/grid';
 
 .bao-radio-button-group {
-  .bao-label {
+  legend.bao-label {
     margin-bottom: 0.5rem;
   }
-  .bao-error,
-  .bao-guiding-text {
+  
+  .bao-error{
     margin-top: 0.5rem;
+  }
+
+  .bao-guiding-text {
+    margin-bottom: 0.5rem;
   }
 
   .bao-radio-button-label-list {

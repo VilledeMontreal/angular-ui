@@ -56,7 +56,7 @@ let radioNextUniqueId = 0;
     '[class.bao-radio-button-disabled]': 'disabled',
     '[class.bao-radio-button-card]': 'brandBorder',
     '[class.bao-radio-button-hidden-label]': 'hiddenLabel',
-    '[class.bao-radio-button-label-list]': 'horizontalBorder',
+    '[class.bao-radio-button-label-list]': 'horizontalStyle',
     '[class.bao-displaymode-compact]': 'displayMode === "compact"'
   }
 })
@@ -86,7 +86,7 @@ export class BaoRadioButtonComponent
   /**
    * horizontal border
    */
-  @Input() public horizontalBorder = false;
+  @Input() public horizontalStyle = false;
 
   /**
    * custom display mode compact, responsive

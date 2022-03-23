@@ -3,7 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BaoBadgeComponent } from './badge.component';
 
@@ -11,11 +11,11 @@ describe('BadgeComponent', () => {
   let component: BaoBadgeComponent;
   let fixture: ComponentFixture<BaoBadgeComponent>;
 
-  beforeEach(async(async () => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BaoBadgeComponent]
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BaoBadgeComponent);
@@ -23,7 +23,7 @@ describe('BadgeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', async () => {
-    await expect(component).toBeTruthy();
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });

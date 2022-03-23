@@ -69,15 +69,6 @@ export class BaoSnackBarContainerComponent
   extends BasePortalOutlet
   implements OnDestroy, IBaoSnackBarContainer
 {
-  /** The number of milliseconds to wait before announcing the snack bar's content. */
-  private readonly _announceDelay: number = 150;
-
-  /** The timeout for announcing the snack bar's content. */
-  private _announceTimeoutId: number;
-
-  /** Whether the component has been destroyed. */
-  private _destroyed = false;
-
   /** The portal outlet inside of this container into which the snack bar content will be loaded. */
   @ViewChild(CdkPortalOutlet, { static: true })
   public _portalOutlet: CdkPortalOutlet;
@@ -96,6 +87,15 @@ export class BaoSnackBarContainerComponent
 
   /** aria-live value for the live region. */
   public _live: AriaLivePoliteness;
+
+  /** The number of milliseconds to wait before announcing the snack bar's content. */
+  private readonly _announceDelay: number = 150;
+
+  /** The timeout for announcing the snack bar's content. */
+  private _announceTimeoutId: number;
+
+  /** Whether the component has been destroyed. */
+  private _destroyed = false;
 
   constructor(
     private _ngZone: NgZone,

@@ -47,13 +47,13 @@ export class BaoSimpleSnackBarComponent implements ITextOnlySnackBar {
     this.data = data;
   }
 
-  /** Performs the action on the snack bar. */
-  public action(): void {
-    this.snackBarRef.dismissWithAction();
-  }
-
   /** If the action button should be shown. */
   get hasAction(): boolean {
     return !!this.data.action;
+  }
+
+  /** Performs the action on the snack bar. */
+  public action(): void {
+    this.snackBarRef.dismissWithAction();
   }
 }

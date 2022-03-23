@@ -60,16 +60,10 @@ let radioNextUniqueId = 0;
 export class BaoRadioButtonComponent
   implements AfterViewInit, OnInit, OnDestroy
 {
-  private _checked = false;
-  private _disabled = false;
-  private _required = false;
-  private _value: string | null = null;
-  private _uniqueId = `bao-radio-button-${++radioNextUniqueId}`;
-
   /**
    * The radio button ID. It is set dynamically with an unique ID by default
    */
-  @Input() public id: string = this._uniqueId;
+  @Input() public id: string;
 
   /**
    * The aria-label for web accessibility
@@ -90,81 +84,6 @@ export class BaoRadioButtonComponent
    * The name property of the radio button
    */
   @Input() public name: string | null = null;
-
-  /**
-   * Whether the radio button is checked. Default : false
-   */
-  @Input()
-  get checked(): boolean {
-    return this._checked;
-  }
-  set checked(value: boolean) {
-    const newCheckedState = coerceBooleanProperty(value);
-    if (this._checked !== newCheckedState) {
-      this._checked = newCheckedState;
-      if (
-        newCheckedState &&
-        this.radioGroup &&
-        this.radioGroup.value !== this.value
-      ) {
-        this.radioGroup.selected = this;
-      } else if (
-        !newCheckedState &&
-        this.radioGroup &&
-        this.radioGroup.value === this.value
-      ) {
-        this.radioGroup.selected = null;
-      }
-
-      if (newCheckedState) {
-        this.radioDispatcher.notify(this.id, this.name);
-      }
-      this.cdr.markForCheck();
-    }
-  }
-
-  /**
-   * Define the radio button value. Default : null
-   */
-  @Input()
-  get value(): string {
-    return this._value;
-  }
-  set value(value: string) {
-    if (value !== this._value) {
-      this._value = value;
-      if (this.radioGroup) {
-        if (!this.checked) {
-          this.checked = this.radioGroup.value === value;
-        }
-        if (this.checked) {
-          this.radioGroup.selected = this;
-        }
-      }
-    }
-  }
-
-  /**
-   * Whether the radio button is disabled. Default : false
-   */
-  @Input()
-  get disabled(): boolean {
-    return this._disabled || (this.radioGroup && this.radioGroup.disabled);
-  }
-  set disabled(value: boolean) {
-    this.setDisabled(coerceBooleanProperty(value));
-  }
-
-  /**
-   * Whether the radio button is required. Default : false
-   */
-  @Input()
-  get required(): boolean {
-    return this._required || (this.radioGroup && this.radioGroup.required);
-  }
-  set required(value: boolean) {
-    this._required = coerceBooleanProperty(value);
-  }
 
   /**
    * The visible state of the label
@@ -203,11 +122,17 @@ export class BaoRadioButtonComponent
    */
   public inputID: string;
 
+  private _checked = false;
+  private _disabled = false;
+  private _required = false;
+  private _value: string | null = null;
+  private _uniqueId = `bao-radio-button-${++radioNextUniqueId}`;
+
   constructor(
     @Optional()
     @Inject(BAO_RADIO_GROUP)
     radioGroup: BaoRadioButtonGroupComponent,
-    private elementRef: ElementRef,
+    private elementRef: ElementRef<HTMLElement>,
     private cdr: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
     private radioDispatcher: UniqueSelectionDispatcher
@@ -220,10 +145,92 @@ export class BaoRadioButtonComponent
         }
       }
     );
+    if (!this.id) {
+      this.id = this._uniqueId;
+    }
+  }
+
+  /**
+   * Whether the radio button is checked. Default : false
+   */
+  @Input()
+  get checked(): boolean {
+    return this._checked;
+  }
+
+  /**
+   * Define the radio button value. Default : null
+   */
+  @Input()
+  get value(): string {
+    return this._value;
+  }
+
+  /**
+   * Whether the radio button is disabled. Default : false
+   */
+  @Input()
+  get disabled(): boolean {
+    return this._disabled || (this.radioGroup && this.radioGroup.disabled);
+  }
+
+  /**
+   * Whether the radio button is required. Default : false
+   */
+  @Input()
+  get required(): boolean {
+    return this._required || (this.radioGroup && this.radioGroup.required);
   }
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
+  }
+
+  set checked(value: boolean) {
+    const newCheckedState = coerceBooleanProperty(value);
+    if (this._checked !== newCheckedState) {
+      this._checked = newCheckedState;
+      if (
+        newCheckedState &&
+        this.radioGroup &&
+        this.radioGroup.value !== this.value
+      ) {
+        this.radioGroup.selected = this;
+      } else if (
+        !newCheckedState &&
+        this.radioGroup &&
+        this.radioGroup.value === this.value
+      ) {
+        this.radioGroup.selected = null;
+      }
+
+      if (newCheckedState) {
+        this.radioDispatcher.notify(this.id, this.name);
+      }
+      this.cdr.markForCheck();
+    }
+  }
+
+  set value(value: string) {
+    if (value !== this._value) {
+      this._value = value;
+      if (this.radioGroup) {
+        if (!this.checked) {
+          this.checked = this.radioGroup.value === value;
+        }
+        if (this.checked) {
+          this.radioGroup.selected = this;
+        }
+      }
+    }
+  }
+
+  set disabled(value: boolean) {
+    this.setDisabled(coerceBooleanProperty(value));
+  }
+
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
   }
 
   public focus(options?: FocusOptions, origin?: FocusOrigin): void {

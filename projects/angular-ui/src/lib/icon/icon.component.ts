@@ -49,50 +49,8 @@ const TITLE = 'title';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BaoIconComponent implements OnDestroy {
-  /** Name of the icon in the SVG icon set. */
-  @Input()
-  get svgIcon(): string {
-    return this._svgIcon;
-  }
-  set svgIcon(value: string) {
-    if (value !== this._svgIcon) {
-      if (value) {
-        this.updateSvgIcon(value, this.title);
-      } else if (this._svgIcon) {
-        this.clearSvgElement();
-      }
-      this._svgIcon = value;
-      this.renderer.addClass(
-        this.elementRef.nativeElement,
-        `bao-${this._svgIcon}`
-      );
-    }
-  }
-
   /** The color of the icon, if not specified the icon's parent current text color will be used */
   @Input() public color: BaoColors;
-
-  get hexColor(): string | void {
-    if (this.color) {
-      return baoColorToHex(this.color);
-    }
-  }
-
-  /** Title that will be used as an aria-label for the icon */
-  @Input()
-  get title(): string {
-    return this._title;
-  }
-  set title(value: string) {
-    if (value !== this._title) {
-      this._title = value;
-      this._titleId = this.generateUniqueTitleId();
-      this.updateSvgIcon(this.svgIcon, value);
-    }
-  }
-  get titleId(): string {
-    return this._titleId;
-  }
 
   /**
    * The size of the icon
@@ -123,6 +81,51 @@ export class BaoIconComponent implements OnDestroy {
     this._titleId = '';
     this._title = '';
     this._svgIcon = '';
+  }
+
+  /** Name of the icon in the SVG icon set. */
+  @Input()
+  get svgIcon(): string {
+    return this._svgIcon;
+  }
+
+  /** Title that will be used as an aria-label for the icon */
+  @Input()
+  get title(): string {
+    return this._title;
+  }
+
+  get hexColor(): string | void {
+    if (this.color) {
+      return baoColorToHex(this.color);
+    }
+  }
+
+  get titleId(): string {
+    return this._titleId;
+  }
+
+  set svgIcon(value: string) {
+    if (value !== this._svgIcon) {
+      if (value) {
+        this.updateSvgIcon(value, this.title);
+      } else if (this._svgIcon) {
+        this.clearSvgElement();
+      }
+      this._svgIcon = value;
+      this.renderer.addClass(
+        this.elementRef.nativeElement,
+        `bao-${this._svgIcon}`
+      );
+    }
+  }
+
+  set title(value: string) {
+    if (value !== this._title) {
+      this._title = value;
+      this._titleId = this.generateUniqueTitleId();
+      this.updateSvgIcon(this.svgIcon, value);
+    }
   }
 
   public ngOnDestroy() {

@@ -29,6 +29,14 @@ export class BaoBreadcrumbComponent implements AfterViewInit {
 
   constructor(private renderer: Renderer2) {}
 
+  public ngAfterViewInit() {
+    this.setLastLinkAttribute();
+  }
+
+  public onContentChange() {
+    this.setLastLinkAttribute();
+  }
+
   private setLastLinkAttribute() {
     const children = Array.from(this.staticContainer.nativeElement.children);
     this.renderer.setAttribute(
@@ -36,13 +44,5 @@ export class BaoBreadcrumbComponent implements AfterViewInit {
       Object.keys(LAST_NODE_ATTRIBUTE)[0],
       Object.values(LAST_NODE_ATTRIBUTE)[0]
     );
-  }
-
-  public ngAfterViewInit() {
-    this.setLastLinkAttribute();
-  }
-
-  public onContentChange() {
-    this.setLastLinkAttribute();
   }
 }

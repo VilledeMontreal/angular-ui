@@ -1,18 +1,12 @@
-<fieldset
-  role="radiogroup"
-  class="bao-radio-button-group"
-  [id]="id"
-  [attr.aria-describedby]="ariaDescribedby"
->
+<fieldset role="radiogroup" class="bao-radio-button-group" [id]="id">
+  <ng-content select="bao-label, [bao-label]"></ng-content>
+  <ng-content select="bao-guiding-text, [bao-guiding-text]"></ng-content>
+
   <ng-content></ng-content>
   <div
     class="bao-radio-button-group-description"
-    [attr.id]="ariaDescribedby"
-    #container
     (cdkObserveContent)="onContentChange()"
   >
-    <ng-content
-      select="bao-error, [bao-error], bao-guiding-text, [bao-guiding-text]"
-    ></ng-content>
+    <ng-content select="bao-error, [bao-error]"></ng-content>
   </div>
 </fieldset>

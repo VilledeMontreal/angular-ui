@@ -15,9 +15,9 @@ import {
   forwardRef,
   InjectionToken,
   Input,
+  OnInit,
   Output,
   QueryList,
-  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -51,7 +51,7 @@ let radioGroupNextUniqueId = 0;
   ]
 })
 export class BaoRadioButtonGroupComponent
-  implements AfterContentInit, ControlValueAccessor, AfterViewInit
+  implements AfterContentInit, ControlValueAccessor, AfterViewInit, OnInit
 {
   @ContentChildren(forwardRef(() => BaoRadioButtonComponent), {
     descendants: true
@@ -70,6 +70,23 @@ export class BaoRadioButtonGroupComponent
    * The checkbox group ID. It is set dynamically with an unique ID by default
    */
   @Input() public id: string = this._uniqueId;
+
+  /**
+   * The aria-describebdy-text id for web accessibility
+   * only when we have de guidance text
+   */
+  public ariaDescribedbyGuidingText?: string;
+
+  /**
+   * The aria-labelledby id for web accessibility
+   */
+  public ariaLabelledby?: string;
+
+  /**
+   * The aria-describebdy-error id for web accessibility
+   * only when error section appears
+   */
+  public ariaDescribedbyError?: string;
 
   /**
    * Define the name property of all radio buttons. Default : null
@@ -146,10 +163,17 @@ export class BaoRadioButtonGroupComponent
    */
   public ariaDescribedby: string | null = null;
 
-  @ViewChild('container', { static: false })
-  private staticContainer: ElementRef;
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  ngOnInit(): void {
+    this.ariaDescribedbyError = `${this.id}-ariadescribedby-error`;
+    this.ariaDescribedbyGuidingText = `${this.id}-ariadescribedby-guiding-text`;
+    this.ariaLabelledby = `${this.id}-arialabelledby`;
+  }
+
+  get nativeElement(): HTMLElement {
+    return this.elementRef.nativeElement;
+  }
 
   public ngAfterContentInit() {
     this._isInitialized = true;
@@ -157,6 +181,7 @@ export class BaoRadioButtonGroupComponent
 
   public ngAfterViewInit() {
     this.setAriaDescribedByToDescription();
+    this.setAriaDescribedLgendsGuidingText();
     this.cdr.detectChanges();
   }
 
@@ -264,20 +289,67 @@ export class BaoRadioButtonGroupComponent
   public onModelChange: (value: any) => void = () => undefined;
 
   /**
-   * Set the aria-describedby property to bao-guiding-text if available
+   * Set the aria-describedby property to bao-errors if available
    */
   private setAriaDescribedByToDescription() {
-    const children = Array.from(this.staticContainer.nativeElement.children);
-    if (children.length === 0) {
-      this.showAriaDescribedBy(false);
-      return;
-    }
+    const fieldSet = this.elementNode('FIELDSET');
 
-    this.showAriaDescribedBy(true);
+    if (fieldSet) {
+      const baoError = this.elementNode('DIV', fieldSet);
+      this.setAriaAttribute(
+        baoError,
+        this.ariaDescribedbyError,
+        fieldSet,
+        'aria-describedby'
+      );
+    }
   }
 
-  private showAriaDescribedBy(value: boolean) {
-    this.ariaDescribedby = value ? `${this.id}-ariadescribedby` : null;
+  /**
+   * Set the aria-describedby property to bao-guiding-text and legend if available
+   */
+  private setAriaDescribedLgendsGuidingText() {
+    const fieldSet = this.elementNode('FIELDSET');
+
+    if (fieldSet) {
+      const baoLabel = this.elementNode('LEGEND', fieldSet);
+      const baoGuidingText = this.elementNode('BAO-GUIDING-TEXT', fieldSet);
+
+      this.setAriaAttribute(
+        baoLabel,
+        this.ariaLabelledby,
+        fieldSet,
+        'aria-labelledby'
+      );
+      this.setAriaAttribute(
+        baoGuidingText,
+        this.ariaDescribedbyGuidingText,
+        fieldSet,
+        'aria-describedby'
+      );
+    }
+  }
+
+  private setAriaAttribute(
+    nodeElement: Node,
+    id: string,
+    ariaElment: Node,
+    ariaType: string
+  ): void {
+    if (nodeElement) {
+      (nodeElement as HTMLElement).setAttribute('id', id);
+      (ariaElment as HTMLElement).setAttribute(ariaType, id);
+    }
+  }
+
+  private elementNode(name: string, nativeElt?: Node): Node {
+    const childNodes = nativeElt
+      ? Array.from(nativeElt.childNodes)
+      : Array.from(this.nativeElement.childNodes);
+    const element = childNodes.find(x => x.nodeName === name);
+    console.log(name);
+    console.log(childNodes);
+    return element;
   }
 
   private onTouch: () => any = () => undefined;

@@ -157,7 +157,7 @@ export const RadioWithDescAndActionButton: Story = args => ({
   props: args,
   template: `
     <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel" >
-      <bao-radio-button id="ID200" name="name200" value="example1" horizontalBorder="true" >
+      <bao-radio-button id="ID200" name="name200" value="example1" horizontalStyle="true" >
       <bao-label>Radio button avec action button</bao-label>
       <bao-radio-action-button>
         <button
@@ -185,7 +185,7 @@ export const RadioWithDescAndActionButton: Story = args => ({
         </bao-radio-action-button>
         <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
         </bao-radio-button>
-        <bao-radio-button id="ID201" name="name200" value="example1" horizontalBorder="true" >
+        <bao-radio-button id="ID201" name="name200" value="example1" horizontalStyle="true" >
         <bao-label >Radio button avec action button</bao-label>
         <bao-radio-action-button>
             <button
@@ -226,7 +226,7 @@ export const RadioWithDescAndActionButtonCompact: Story = args => ({
   props: args,
   template: `
     <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel" >
-      <bao-radio-button id="ID203" name="name203" value="example1" horizontalBorder="true" displayMode="compact" >
+      <bao-radio-button id="ID203" name="name203" value="example1" horizontalStyle="true" displayMode="compact" >
       <bao-label>Radio button avec action button</bao-label>
       <bao-radio-action-button>
         <button
@@ -254,7 +254,7 @@ export const RadioWithDescAndActionButtonCompact: Story = args => ({
         </bao-radio-action-button>
         <bao-radio-button-description>Est est et dolores dolore sed justo ipsum et sit.</bao-radio-button-description>
         </bao-radio-button>
-        <bao-radio-button id="ID204" name="name203" value="example1" horizontalBorder="true"  displayMode="compact" >
+        <bao-radio-button id="ID204" name="name203" value="example1" horizontalStyle="true"  displayMode="compact" >
         <bao-label >Radio button avec action button</bao-label>
         <bao-radio-action-button>
             <button

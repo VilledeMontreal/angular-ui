@@ -19,3 +19,4 @@ export * from './lib/radio/index';
 export * from './lib/common-components/index';
 export * from './lib/summary/index';
 export * from './lib/shared';
+export * from './lib/avatar';

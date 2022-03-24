@@ -1,0 +1,45 @@
+@import '../core/typography';
+
+$avatar-size: 1.5rem;
+$avatar-radius: 2rem;
+$avatar-border: 0.0625rem;
+
+$avatar-colors: (
+  color-1: #0380a9,
+  color-2: #bd4f00,
+  color-3: #448600,
+  color-4: #dc00ac,
+  color-5: #01866e,
+  color-6: #ee0000,
+  color-7: #980bad,
+  color-8: #0057ff,
+  color-9: #a36b00,
+  color-10: #e0007c
+);
+
+@each $color-number, $color in $avatar-colors {
+  .bao-avatar-#{$color-number}.display-color {
+    background-color: $color;
+  }
+}
+
+.bao-avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: $avatar-border solid transparent;
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: $avatar-radius;
+
+  & > span.bao-avatar-content {
+    @include typo-interface-small-bold;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  & > img.bao-avatar-content {
+    border-radius: $avatar-radius;
+    max-width: 100%;
+  }
+}

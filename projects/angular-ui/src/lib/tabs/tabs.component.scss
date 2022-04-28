@@ -1,0 +1,62 @@
+@import '../core/typography';
+@import '../core/colors';
+@import '../core/shadows';
+
+$padding-small: 0.5rem;
+$padding-medium: 0.625rem;
+$padding-large: 1rem;
+
+$shadow-active: -0.125rem;
+$shadow-focus: 0.1875rem;
+
+.bao-tablist {
+  color: $neutral-secondary;
+  display: block;
+  overflow: auto;
+  white-space: nowrap;
+  @include box-shadow-opacity(inset, 0, $shadow-active, 0, $neutral-stroke);
+
+  &.bao-tablist-small {
+    @include typo-interface-xsmall-bold;
+    > .bao-tab-header {
+      padding: $padding-small;
+    }
+  }
+
+  &.bao-tablist-medium {
+    @include typo-interface-small-bold;
+    > .bao-tab-header {
+      padding: $padding-medium $padding-large;
+    }
+  }
+
+  &.bao-tablist-large {
+    @include typo-interface-medium-bold;
+    > .bao-tab-header {
+      padding: $padding-large;
+    }
+  }
+
+  & button {
+    all: unset;
+  }
+
+  & > .bao-tab-header {
+    &:hover:not(:disabled) {
+      color: $action;
+      cursor: pointer;
+      @include box-shadow-opacity(inset, 0, $shadow-active, 0, $action);
+    }
+    &.active {
+      color: $action;
+      @include box-shadow-opacity(inset, 0, $shadow-active, 0, $action);
+    }
+    &:focus.focus-visible {
+      box-shadow: inset 0 0 0 $shadow-focus $highlight-focus;
+      color: $neutral-secondary;
+    }
+    &:disabled {
+      color: $neutral-tertiary;
+    }
+  }
+}

@@ -96,7 +96,7 @@ const Template: Story<BaoAlertComponent & { title: string; content: string }> =
 export const Primary = Template.bind({});
 
 Primary.args = {
-  type: "info",
+  type: 'info',
   dismissible: false,
   title: "The alert's title",
   content:

@@ -106,7 +106,7 @@ export class BaoAlertComponent implements OnChanges {
   /**
    * Alert type
    */
-  @Input() public type: 'success' | 'danger' | 'warning' | 'emergency'| 'info';
+  @Input() public type: 'success' | 'danger' | 'warning' | 'emergency' | 'info';
   @Input() public dismissible = false;
   @Output() public dismiss = new EventEmitter();
   public iconType: string;
@@ -135,7 +135,7 @@ export class BaoAlertComponent implements OnChanges {
       danger: 'Erreur',
       warning: 'Attention',
       emergency: 'Urgence',
-      default: 'Information',
+      default: 'Information'
     };
     return (titleIcon as any)[value] || titleIcon.default;
   }

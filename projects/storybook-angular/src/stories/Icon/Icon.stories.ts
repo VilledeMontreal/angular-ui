@@ -194,6 +194,7 @@ const Template: Story<BaoIconComponent & { title: string; content: string }> = (
   <bao-icon [color]="color" [size]="size" title="x-circle" svgIcon="icon-x-circle"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="x" svgIcon="icon-x"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="spinner" svgIcon="icon-spinner"></bao-icon>
+  <bao-icon [color]="color" [size]="size" title="emergency" svgIcon="icon-emergency"></bao-icon>
 </div>
  `,
   props: args

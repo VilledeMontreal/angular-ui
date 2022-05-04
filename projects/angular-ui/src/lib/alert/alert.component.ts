@@ -98,6 +98,7 @@ export class BaoAlertLink {}
     '[class.bao-alert-danger]': 'type === "danger"',
     '[class.bao-alert-warning]': 'type === "warning"',
     '[class.bao-alert-info]': 'type === "info"',
+    '[class.bao-alert-emergency]': 'type === "emergency"',
     role: 'alert'
   }
 })
@@ -105,11 +106,11 @@ export class BaoAlertComponent implements OnChanges {
   /**
    * Alert type
    */
-  @Input() public type: 'success' | 'danger' | 'warning' | 'info' = 'info';
+  @Input() public type: 'success' | 'danger' | 'warning' | 'emergency'| 'info';
   @Input() public dismissible = false;
   @Output() public dismiss = new EventEmitter();
-  public iconType = 'icon-info';
-  public iconTitle = 'Information';
+  public iconType: string;
+  public iconTitle: string;
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['type']) {
@@ -123,6 +124,7 @@ export class BaoAlertComponent implements OnChanges {
       success: 'icon-check-circle',
       danger: 'icon-error',
       warning: 'icon-warning',
+      emergency: 'icon-emergency',
       default: 'icon-info'
     };
     return (typesAlertIcon as any)[value] || typesAlertIcon.default;
@@ -132,7 +134,8 @@ export class BaoAlertComponent implements OnChanges {
       success: 'Succès',
       danger: 'Erreur',
       warning: 'Attention',
-      default: 'Information'
+      emergency: 'Urgence',
+      default: 'Information',
     };
     return (titleIcon as any)[value] || titleIcon.default;
   }

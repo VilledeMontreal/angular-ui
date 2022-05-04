@@ -32,6 +32,11 @@ $alert-colors: (
     base: $negative-reversed,
     dark: $negative,
     light: $negative-light
+  ),
+  emergency: (
+    base: $negative-reversed,
+    dark: $negative,
+    light: $negative-light
   )
 );
 // General rules

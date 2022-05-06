@@ -26,6 +26,7 @@ To modify the color (and icon) of an alert, the \`type\` input property must be 
 * \`danger\` for a negative alert
 * \`warning\` for a warning alert
 * \`info\` for an informational alert
+* \`emergency\` for emergency alert
 
 `;
 
@@ -86,8 +87,7 @@ const Template: Story<BaoAlertComponent & { title: string; content: string }> =
     template: `
   <bao-alert [type]="type" [dismissible]="dismissible">
     <bao-alert-title>{{title}}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content">
-    </bao-alert-content>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
  `,
     props: args
@@ -119,6 +119,10 @@ export const DismissableAlert: Story = args => ({
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
   <bao-alert type="info" [dismissible]="dismissible">
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  <bao-alert type="emergency" [dismissible]="dismissible">
     <bao-alert-title>{{ title }}</bao-alert-title>
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
@@ -180,7 +184,16 @@ export const DismissableWithActionsAlert: Story = args => ({
     <button bao-button role="button" type="utility" level="secondary">Label</button>
     <button bao-button role="button" type="utility" level="tertiary">Label</button>
   </bao-alert-actions>
-</bao-alert>
+  </bao-alert>
+  <bao-alert type="emergency" [dismissible]="dismissible">
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    <bao-alert-actions>
+    <button bao-button role="button" type="utility" level="primary">Label</button>
+    <button bao-button role="button" type="utility" level="secondary">Label</button>
+    <button bao-button role="button" type="utility" level="tertiary">Label</button>
+  </bao-alert-actions>
+  </bao-alert>
   `
 });
 
@@ -204,6 +217,9 @@ export const DismissableWithoutTitleAlert: Story = args => ({
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
   <bao-alert type="info" [dismissible]="dismissible">
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  <bao-alert type="emergency" [dismissible]="dismissible">
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
   `

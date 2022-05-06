@@ -3,7 +3,6 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-
 export * from './lib/bao.module';
 export * from './lib/button/index';
 export * from './lib/icon/index';
@@ -21,3 +20,4 @@ export * from './lib/summary/index';
 export * from './lib/shared';
 export * from './lib/avatar';
 export * from './lib/tabs';
+export * from './lib/modal';

@@ -4,7 +4,6 @@
  * See LICENSE file in the project root for full license information.
  */
 import {
-  Attribute,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -41,8 +40,6 @@ const TITLE = 'title';
     '[class.bao-icon-x-small]': 'size === "x-small"',
     '[class.bao-icon-xx-small]': 'size === "xx-small"',
     '[attr.data-bao-icon-type]': '"svg"',
-    '[attr.aria-labelledby]': 'titleId',
-    '[attr.aria-hidden]': '!title',
     '[style.color]': 'hexColor'
   },
   encapsulation: ViewEncapsulation.None,
@@ -70,14 +67,8 @@ export class BaoIconComponent implements OnDestroy {
   constructor(
     private elementRef: ElementRef<HTMLElement>,
     private iconRegistry: BaoIconRegistry,
-    private renderer: Renderer2,
-    @Attribute('aria-hidden') ariaHidden: string
+    private renderer: Renderer2
   ) {
-    // If the user has not explicitly set aria-hidden, mark the icon as hidden, as this is
-    // the right thing to do for the majority of icon use-cases.
-    if (!ariaHidden) {
-      this.elementRef.nativeElement.setAttribute('aria-hidden', 'true');
-    }
     this._titleId = '';
     this._title = '';
     this._svgIcon = '';
@@ -178,6 +169,11 @@ export class BaoIconComponent implements OnDestroy {
       if (title) {
         svg = this.addTitleToSVG(svg, title);
       }
+
+      if (!title) {
+        svg.setAttribute('aria-hidden', 'true');
+      }
+
       this.setSvgElement(svg);
     }
   }
@@ -188,12 +184,17 @@ export class BaoIconComponent implements OnDestroy {
     const titleText = this.renderer.createText(title);
     this.renderer.appendChild(titleNode, titleText);
     this.renderer.appendChild(svg, titleNode);
+    svg.setAttribute('aria-labelledby', this._titleId);
     return svg;
   }
 
   private generateUniqueTitleId(): string {
     return this.title
-      ? `${this.title}-${Math.random() * 10000000000000000}`
+      ? `${this.title
+          .replace(/[^A-Z0-9]+/gi, '')
+          .toLocaleLowerCase()}-${Math.floor(
+          Math.random() * 10000000000000000
+        )}`
       : '';
   }
 }

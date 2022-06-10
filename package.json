@@ -1,6 +1,6 @@
 {
   "name": "angular-ui",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "engines": {
     "node": ">=16"
   },

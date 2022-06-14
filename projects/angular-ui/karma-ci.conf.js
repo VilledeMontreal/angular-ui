@@ -4,13 +4,14 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular', 'viewport'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-viewport')
     ],
     client: {
       jasmine: {
@@ -42,6 +43,38 @@ module.exports = function (config) {
       }
     },
     singleRun: true,
-    browserNoActivityTimeout: 40000
+    browserNoActivityTimeout: 40000,
+    viewport: {
+      breakpoints: [
+        {
+          name: 'sm',
+          size: {
+            width: 576,
+            height: 1024
+          }
+        },
+        {
+          name: 'md',
+          size: {
+            width: 768,
+            height: 1024
+          }
+        },
+        {
+          name: 'lg',
+          size: {
+            width: 992,
+            height: 1024
+          }
+        },
+        {
+          name: 'xl',
+          size: {
+            width: 1200,
+            height: 1024
+          }
+        }
+      ]
+    }
   });
 };

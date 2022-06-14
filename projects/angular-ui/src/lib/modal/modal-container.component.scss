@@ -1,0 +1,117 @@
+@import './modal-overlay.component.scss';
+@import '../core/colors';
+
+@include overlay();
+
+.bao-modal-container {
+  display: block;
+  overflow: auto;
+
+  // The dialog container should completely fill its parent overlay element.
+  width: 100%;
+  height: 100%;
+
+  // Since the dialog won't stretch to fit the parent, if the height
+  // isn't set, we have to inherit the min and max values explicitly.
+  min-height: inherit;
+  max-height: inherit;
+
+  background-color: $white;
+  background-clip: padding-box;
+  border: 0 solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  outline: 0;
+}
+
+.bao-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bao-modal-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid $neutral-stroke;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+
+  .bao-modal-title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1rem 0 1rem 1rem;
+  }
+
+  button {
+    margin: 0.5rem;
+  }
+}
+
+.bao-modal-body {
+  display: block;
+  padding: 1rem;
+  overflow: auto;
+  flex-grow: 1;
+
+  @include respond-to(md) {
+    padding: 2rem;
+  }
+}
+
+.bao-modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border-top: 1px solid $neutral-stroke;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+
+  &.bao-modal-footer-order {
+    justify-content: unset;
+    flex-direction: column-reverse;
+  }
+
+  button {
+    text-align: center;
+  }
+
+  .bao-button-primary,
+  .bao-button-secondary {
+    width: 100%;
+    display: block;
+  }
+
+  .bao-button-secondary {
+    margin-bottom: 0.5rem;
+  }
+
+  .bao-button-tertiary {
+    display: none;
+  }
+
+  @include respond-to(md) {
+    justify-content: flex-end;
+    &.bao-modal-footer-order {
+      flex-direction: row-reverse;
+    }
+
+    .bao-button-primary {
+      margin-left: 1rem;
+    }
+
+    .bao-button-secondary {
+      margin-bottom: 0;
+    }
+
+    .bao-button-primary,
+    .bao-button-secondary {
+      width: auto;
+    }
+
+    .bao-button-tertiary {
+      display: block;
+    }
+  }
+}

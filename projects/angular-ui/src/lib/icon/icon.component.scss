@@ -10,6 +10,11 @@ bao-icon {
   fill: currentColor;
   line-height: normal;
 
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
   &.bao-icon-medium {
     height: $size-medium;
     width: $size-medium;

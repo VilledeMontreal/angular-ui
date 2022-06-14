@@ -131,7 +131,7 @@ pipeline.start(sbCtx) {
         pipeline.buildStage(sbCtx) {
             // first, regen the static web assets used by the Hugo site
             container("nodejs") {
-                sh "npm i"
+                sh "npm ci"
                 sh "npm run build-storybook"
             }
             // finally, build the image

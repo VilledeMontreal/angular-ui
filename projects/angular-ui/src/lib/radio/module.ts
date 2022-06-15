@@ -12,13 +12,15 @@ import { BaoCommonComponentsModule } from '../common-components/module';
 import { BaoRadioButtonGroupComponent } from './radio-group.component';
 import {
   BaoRadioButtonComponent,
-  BaoRadioDescription
+  BaoRadioDescription,
+  BaoRadioActionButton
 } from './radio.component';
 
 const RADIO_DIRECTIVES = [
   BaoRadioButtonComponent,
   BaoRadioDescription,
-  BaoRadioButtonGroupComponent
+  BaoRadioButtonGroupComponent,
+  BaoRadioActionButton
 ];
 
 @NgModule({

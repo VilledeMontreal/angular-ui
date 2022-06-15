@@ -1,9 +1,75 @@
+@import '../core/colors';
+@import '../core/grid';
+
 .bao-radio-button-group {
-  .bao-legend {
+  .bao-label {
     margin-bottom: 0.5rem;
   }
   .bao-error,
   .bao-guiding-text {
     margin-top: 0.5rem;
+  }
+
+  .bao-radio-button-label-list {
+    border-top: 1px solid $neutral-stroke;
+    padding: 0.5rem 1em 1rem 3.5rem;
+    display: flex;
+
+    .bao-list-summary {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      padding-right: 1rem;
+    }
+
+    .bao-label {
+      padding-top: 0.5rem;
+      margin-bottom: 0rem;
+    }
+
+    .bao-radio-button-content-container:before {
+      top: 0.5rem;
+      left: -2.688rem;
+    }
+
+    .bao-radio-button-content-container:after {
+      top: 0.5rem;
+      left: -2.688rem;
+    }
+
+    .bao-radio-button-description {
+      margin-top: 0rem !important;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      list-style-type: none;
+    }
+
+    @include respond-to(sm) {
+      label {
+        padding-right: 2rem;
+      }
+    }
+  }
+
+  [class~='bao-radio-button-label-list']:last-of-type {
+    border-bottom: 1px solid $neutral-stroke;
+  }
+
+  .bao-radio-btn-txt {
+    display: none;
+  }
+
+  & > :not(.bao-displaymode-compact) {
+    @include respond-to(sm) {
+      .bao-radio-btn-icon {
+        display: none;
+      }
+      .bao-radio-btn-txt {
+        display: block;
+      }
+    }
   }
 }

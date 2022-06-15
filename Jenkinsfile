@@ -35,7 +35,7 @@ sbCtx = pipeline.createContext([
             // ],
             [
                 name: "nodejs",
-                image: "node:16-alpine",
+                image: "node:16.13.2-alpine",
                 ttyEnabled: true,
                 command: "cat",
             ],

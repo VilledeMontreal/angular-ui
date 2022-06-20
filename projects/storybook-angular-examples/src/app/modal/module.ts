@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   BaoButtonModule,
   BaoModalModule
@@ -39,7 +40,7 @@ const MODAL_DIRECTIVES = [
 ];
 
 @NgModule({
-  imports: [BaoModalModule, BaoButtonModule, FormsModule],
+  imports: [BaoModalModule, BaoButtonModule, FormsModule, NoopAnimationsModule],
   declarations: MODAL_DIRECTIVES,
   exports: MODAL_DIRECTIVES,
   providers: []

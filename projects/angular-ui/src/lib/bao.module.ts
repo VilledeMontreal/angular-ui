@@ -27,7 +27,8 @@ import { BaoHyperlinkModule } from './hyperlink';
     BaoButtonModule,
     BaoAlertModule,
     BaoCardModule,
-    BaoBreadcrumbModule
+    BaoBreadcrumbModule,
+    BaoModalModule
   ],
   exports: [
     BaoIconModule,

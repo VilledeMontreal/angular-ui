@@ -28,6 +28,7 @@ import {
   eModalDesktopWidthSize,
   eModalMobileWidthSize
 } from '..';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 declare const viewport;
 
@@ -78,7 +79,7 @@ describe('BaoModalComponent', () => {
 
     beforeEach(fakeAsync(() => {
       TestBed.configureTestingModule({
-        imports: [BaoModalModule],
+        imports: [BaoModalModule, NoopAnimationsModule],
         declarations: [
           ComponentWithChildViewContainer,
           DirectiveWithViewContainer

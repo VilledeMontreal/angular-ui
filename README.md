@@ -31,7 +31,7 @@ L'objectif de cette librairie est de faciliter la création de SPA angular visue
 ...
 ```
 
-5. Importer `BaoModule` dans votre module principal
+5. Importer `BaoModule` et `NoopAnimationsModule` dans votre module principal. La raison de l'importation du module `NoopAnimationsModule`, pour l'animation de la modale, est dû au fait que ce module importe BrowserModule lors du lazy loading et engendre une erreur si importer deux fois.
 
 ```
 ...
@@ -40,6 +40,7 @@ import { BaoModule } from '@villedemontreal/angular-ui';
 imports: [
     ...
     BaoModule,
+    NoopAnimationsModule
     ...
   ],
 ...

@@ -26,7 +26,8 @@ import { BaoModalModule } from './modal/module';
     BaoButtonModule,
     BaoAlertModule,
     BaoCardModule,
-    BaoBreadcrumbModule
+    BaoBreadcrumbModule,
+    BaoModalModule
   ],
   exports: [
     BaoIconModule,

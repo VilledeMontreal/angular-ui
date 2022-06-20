@@ -7,7 +7,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return*/
 import {
   Directive,
-  Inject,
   Injectable,
   InjectionToken,
   Injector,
@@ -35,7 +34,6 @@ import {
   OverlayRef
 } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 
 /** Injection token that can be used to access the data that was passed in to a modal. */
 export const BAO_MODAL_DATA = new InjectionToken<unknown>('BaoModalData');
@@ -67,8 +65,7 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
     private _overlayContainer: OverlayContainer,
     private _modalRefConstructor: Type<BaoModalRef<unknown>>,
     private _modalContainerType: Type<C>,
-    private _modalDataToken: InjectionToken<unknown>,
-    private _animationMode?: 'NoopAnimations' | 'BrowserAnimations'
+    private _modalDataToken: InjectionToken<unknown>
   ) {}
 
   /** Keeps track of the currently-open modals. */
@@ -109,22 +106,6 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
 
     const overlayRef = this._createOverlay(conf);
     const modalContainer = this._attachModalContainer(overlayRef, conf);
-    if (this._animationMode !== 'NoopAnimations') {
-      const animationStateSubscription =
-        modalContainer._animationStateChanged.subscribe(modalAnimationEvent => {
-          if (modalAnimationEvent.state === 'opening') {
-            this._modalAnimatingOpen = true;
-          }
-          if (modalAnimationEvent.state === 'opened') {
-            this._modalAnimatingOpen = false;
-            animationStateSubscription.unsubscribe();
-          }
-        });
-      if (!this._animationStateSubscriptions) {
-        this._animationStateSubscriptions = new Subscription();
-      }
-      this._animationStateSubscriptions.add(animationStateSubscription);
-    }
 
     const modalRef = this._attachModalContent<T>(
       componentOrTemplateRef,
@@ -222,6 +203,7 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
       injector
     );
     const containerRef = overlay.attach<C>(containerPortal);
+    containerRef.instance._startOpenAnimation();
 
     return containerRef.instance;
   }
@@ -392,10 +374,7 @@ export class BaoModal extends BaoModalBase<BaoModalContainer> {
     overlay: Overlay,
     injector: Injector,
     @Optional() @SkipSelf() parentModal: BaoModal,
-    overlayContainer: OverlayContainer,
-    @Optional()
-    @Inject(ANIMATION_MODULE_TYPE)
-    animationMode?: 'NoopAnimations' | 'BrowserAnimations'
+    overlayContainer: OverlayContainer
   ) {
     super(
       overlay,
@@ -404,8 +383,7 @@ export class BaoModal extends BaoModalBase<BaoModalContainer> {
       overlayContainer,
       BaoModalRef,
       BaoModalContainer,
-      BAO_MODAL_DATA,
-      animationMode
+      BAO_MODAL_DATA
     );
   }
 }

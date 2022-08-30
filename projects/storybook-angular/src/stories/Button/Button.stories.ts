@@ -26,7 +26,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'description'
+        component: description
       }
     }
   },

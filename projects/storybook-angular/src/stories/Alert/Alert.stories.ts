@@ -19,6 +19,9 @@ import {
 const description = `
 Alerts are used to display an important message and optional related **actions**.
 
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Message ciblé](https://zeroheight.com/575tugn0n/p/929c63)".
+
 ## Colors and icons
 To modify the color (and icon) of an alert, the \`type\` input property must be used.
 

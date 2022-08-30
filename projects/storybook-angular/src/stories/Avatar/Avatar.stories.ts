@@ -9,7 +9,11 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { BaoAvatarComponent, BaoAvatarContent } from 'angular-ui';
 
 const description = `
-Avatar are used to display a representation of a user's profile. `;
+Avatar are used to display a representation of a user's profile. 
+
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Avatar](https://zeroheight.com/575tugn0n/p/34e9ae)".
+`;
 
 export default {
   title: 'Components/Avatar',

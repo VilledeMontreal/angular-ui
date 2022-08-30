@@ -13,6 +13,12 @@ import {
 import { BaoCheckboxExampleComponent } from 'projects/storybook-angular-examples/src/app/checkbox/form/checkbox-example.component';
 import { BaoCheckboxReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/checkbox/reactiveForm/checkbox-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+const description = `
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Case à cocher](https://zeroheight.com/575tugn0n/p/99cd94)".
+`;
+
 export default {
   title: 'Components/Checkbox',
   decorators: [
@@ -29,6 +35,13 @@ export default {
       ]
     })
   ],
+  parameters: {
+    docs: {
+      description: {
+        component: description
+      }
+    }
+  },
   component: BaoCheckboxComponent,
   argTypes: {}
 } as Meta;

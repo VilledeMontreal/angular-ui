@@ -14,6 +14,13 @@ import {
 import { BaoRadioExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/form/radio-example.component';
 import { BaoRadioReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/reactiveForm/radio-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+const description = `
+Radio buttons allow the user to make an individual choice among multiple prensented options.
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Bouton radio](https://zeroheight.com/575tugn0n/p/58d6b9)".
+`;
+
 export default {
   title: 'Components/Radio',
   decorators: [
@@ -32,6 +39,13 @@ export default {
     })
   ],
   component: BaoRadioButtonComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: description
+      }
+    }
+  },
   argTypes: {}
 } as Meta;
 

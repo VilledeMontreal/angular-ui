@@ -14,6 +14,8 @@ import {
 
 const description = `
 A list of utility items is a list composed of complex objects intended for an application or a tool.
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Listes d'objets utilitaires](https://zeroheight.com/575tugn0n/p/658ba3)".
 `;
 
 export default {

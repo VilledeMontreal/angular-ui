@@ -13,6 +13,9 @@ import {
 
 const description = `
 Header info is used to present the title of a page and must contain an h1 tag.
+
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[En-tête informationnelle](https://zeroheight.com/575tugn0n/p/72c668)".
 `;
 
 export default {

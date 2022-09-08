@@ -88,9 +88,9 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
 
   public getAfterAllClosed(): Subject<void> {
     const parent = this._parentModal;
-    return (
-      parent ? parent.getAfterAllClosed() : this._afterAllClosedAtThisLevel
-    ) as Subject<void>;
+    return parent
+      ? parent.getAfterAllClosed()
+      : this._afterAllClosedAtThisLevel;
   }
 
   /**

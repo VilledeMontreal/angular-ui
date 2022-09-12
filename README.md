@@ -18,7 +18,7 @@ L'objectif de cette librairie est de faciliter la création de SPA angular visue
 
 3. Installer la peerDependency `@angular/cdk` (attention il faut installer la même MAJOR que votre `@angular/cli`)
 
-   `npm i @angular/cdk@^13.0.0`
+   `npm i @angular/cdk@^14.0.0`
 
 4. Ajouter la feuille de style `globabl.scss` (contient la définition des fonts à utiliser) dans le fichier `angular.json`
 

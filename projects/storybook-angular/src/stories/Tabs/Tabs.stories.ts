@@ -14,7 +14,10 @@ import {
 } from 'angular-ui';
 
 const description = `
-The Tabs component allows to navigate quickly between different views from a same object. `;
+The Tabs component allows to navigate quickly between different views from a same object. 
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Onglet](https://zeroheight.com/575tugn0n/p/86c083)".
+`;
 
 export default {
   title: 'Components/Tabs',

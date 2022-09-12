@@ -9,6 +9,9 @@ import { BaoBreadcrumbComponent } from 'angular-ui';
 const description = `
 The breadcrumb trail component allows users to locate themselves within the depth of a website's pages, while keeping a quick access to previous levels they've already visited.
 
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Fil d'Ariane](https://zeroheight.com/575tugn0n/p/180577)".
+
 ## Properties
 The breadcrumb component has no properties.
 

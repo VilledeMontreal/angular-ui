@@ -8,6 +8,8 @@ import { BaoIconComponent } from 'angular-ui';
 
 const description = `
 If a color is provided, it will be used as the icon's color. If no color is provided, the default behaviour is to use the parent's text color.
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Icônes utilitaires](https://zeroheight.com/575tugn0n/p/439e2a)".
 `;
 
 export default {

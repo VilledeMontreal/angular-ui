@@ -12,9 +12,22 @@ import { ModalContentSmallExample } from 'projects/storybook-angular-examples/sr
 import { ModalContentWithoutFooterExample } from 'projects/storybook-angular-examples/src/app/modal/modal-without-footer/modal-content-without-footer-example.component';
 import { BaoModalModuleTest } from 'projects/storybook-angular-examples/src/app/modal/module';
 
+const description = `
+The modal is used to make the user focus on a specific message or process.
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Modale](https://zeroheight.com/575tugn0n/p/905970)".
+`;
+
 export default {
   title: 'Components/Modal',
   component: ModalContentSmallExample,
+  parameters: {
+    docs: {
+      description: {
+        component: description
+      }
+    }
+  },
   decorators: [
     moduleMetadata({
       declarations: [],

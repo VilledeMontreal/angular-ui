@@ -16,7 +16,9 @@ import {
 } from 'angular-ui';
 
 const description = `
-Summary
+This component displays the sumamry of an object that can be edited, such as an address or a profile.
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Résumé d'objet](https://zeroheight.com/575tugn0n/p/627489)".
 `;
 
 export default {

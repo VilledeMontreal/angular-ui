@@ -17,6 +17,10 @@ import {
 const cardWithIconHeaderDescription = `
 To define a main icon for a card, a \`bao-icon\` component should be used inside a \`bao-card-header\` tag, 
 also to adhere to the design guide, in this case the \`padding\` input should be set to \`'large'\`.
+
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Tuile](https://zeroheight.com/575tugn0n/p/41a425)".
+
 `;
 
 export default {

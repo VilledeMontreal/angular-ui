@@ -9,6 +9,8 @@ import { BaoIconComponent, BaoTagComponent } from 'angular-ui';
 
 const description = `
 Tags are used to categorize, identify and organize content.
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Étiquette](https://zeroheight.com/575tugn0n/p/8594a9)".
 `;
 
 export default {

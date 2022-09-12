@@ -7,6 +7,13 @@ import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { BaoButtonComponent, BaoIconComponent } from 'angular-ui';
+
+const description = `
+Primary UI component for user interaction
+## Documentation
+The full documentation of this component is available in the Hochelaga design system documentation under "[Bouton](https://zeroheight.com/575tugn0n/p/466f23)".
+`;
+
 export default {
   title: 'Components/Button',
   decorators: [
@@ -19,7 +26,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Primary UI component for user interaction'
+        component: description
       }
     }
   },

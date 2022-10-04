@@ -20,4 +20,4 @@ export * from './lib/summary/index';
 export * from './lib/shared';
 export * from './lib/avatar';
 export * from './lib/tabs';
-export * from './lib/modal';
+export * from './lib/dialog';

@@ -8,14 +8,14 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AppComponent } from './app.component';
 import { InboxScreenComponent } from './taskbox/task-list/inbox-screen.component';
 import { PureInboxScreenComponent } from './taskbox/task-list/pure-inbox-screen.component';
-import { BaoModalModuleTest } from './modal/module';
+import { BaoDialogModuleTest } from './dialog/module';
 
 @NgModule({
   declarations: [AppComponent, InboxScreenComponent, PureInboxScreenComponent],
   imports: [
     BrowserModule,
     TaskModule,
-    BaoModalModuleTest,
+    BaoDialogModuleTest,
     NgxsModule.forRoot([]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot()

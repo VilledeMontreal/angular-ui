@@ -1,0 +1,58 @@
+<div class="bao-dialog-content">
+  <div class="bao-dialog-header">
+    <h1 id="bao-dialog-unique-title-4" class="bao-dialog-title">Adresse</h1>
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      data-dismiss="dialog"
+      level="tertiary"
+      no-text="true"
+      (click)="onNoClick()"
+    >
+      <bao-icon
+        color="action"
+        svgIcon="icon-x"
+        size="x-small"
+        title="Fermer la fenêtre dialoge"
+      ></bao-icon>
+    </button>
+  </div>
+  <div class="bao-dialog-body">
+    <div class="form-group">
+      <label for="numeroCivique">Numéro civique</label>
+      <input
+        type="text"
+        class="form-control"
+        id="numeroCivique"
+        [(ngModel)]="data.numeroCivique"
+      />
+    </div>
+    <div class="form-group">
+      <label for="rue">Rue</label>
+      <input type="text" class="form-control" id="rue" [(ngModel)]="data.rue" />
+    </div>
+  </div>
+  <div class="bao-dialog-footer">
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      level="tertiary"
+      size="medium"
+      (click)="onNoClick()"
+    >
+      Annuler
+    </button>
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      level="primary"
+      size="medium"
+      [bao-dialog-close]="data"
+    >
+      Action
+    </button>
+  </div>
+</div>

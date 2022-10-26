@@ -19,6 +19,7 @@ import { BaoSummaryModule } from './summary';
 import { BaoAvatarModule } from './avatar';
 import { BaoTabsModule } from './tabs';
 import { BaoModalModule } from './modal/module';
+import { BaoHyperlinkModule } from './hyperlink';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { BaoModalModule } from './modal/module';
     BaoSummaryModule,
     BaoAvatarModule,
     BaoTabsModule,
-    BaoModalModule
+    BaoModalModule,
+    BaoHyperlinkModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
     // TODO: reactivate once component does not depend on global css BaoSnackBarModule,
   ]

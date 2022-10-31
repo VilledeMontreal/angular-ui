@@ -1,0 +1,78 @@
+@import '../core/colors';
+@import '../core/typography';
+
+$icon-margin-left: 0.5rem;
+$icon-margin-right: 0.25rem;
+$icon-size-xsmall: 1rem;
+$icon-size-small: 1.25rem;
+$icon-size-medium: 1.5rem;
+
+.bao-hyperlink:not(li) {
+  display: inline-flex;
+  font-size: inherit;
+  line-height: inherit;
+  > a {
+    box-shadow: inset 0 -1px 0 $action;
+    text-decoration: none;
+    border-bottom: none;
+    font-size: inherit;
+  }
+}
+li.bao-hyperlink {
+  display: flex;
+  > a {
+    text-decoration: none;
+    border-bottom: none;
+  }
+  > a:hover {
+    box-shadow: inset 0 -1px 0 $action;
+  }
+  &.bao-hyperlink-extra-small {
+    a {
+      @include typo-interface-xsmall-bold;
+    }
+    .bao-icon {
+      height: $icon-size-xsmall;
+      width: $icon-size-xsmall;
+    }
+  }
+  &.bao-hyperlink-small {
+    a {
+      @include typo-interface-small-bold;
+    }
+    .bao-icon {
+      height: $icon-size-small;
+      width: $icon-size-small;
+    }
+  }
+  &.bao-hyperlink-medium {
+    a {
+      @include typo-interface-medium-bold;
+    }
+    .bao-icon {
+      height: $icon-size-medium;
+      width: $icon-size-medium;
+    }
+  }
+}
+.bao-hyperlink {
+  align-items: center;
+  & > .bao-icon {
+    color: $action;
+    flex-shrink: 0;
+  }
+  &.has-right-icon {
+    & > .bao-icon {
+      margin-left: $icon-margin-right;
+    }
+  }
+  &.has-left-icon {
+    & > .bao-icon {
+      margin-right: $icon-margin-left;
+    }
+  }
+}
+
+ul.bao-hyperlink-list-parent {
+  list-style-type: none;
+}

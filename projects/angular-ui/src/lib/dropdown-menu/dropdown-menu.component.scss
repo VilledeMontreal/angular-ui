@@ -1,0 +1,99 @@
+@import '../core/colors';
+@import '../core/typography';
+@import '../core/radius';
+@import '../core/shadows';
+
+$overlay-min-width: 16rem !default;
+$overlay-max-width: 32rem !default;
+
+.bao-dropdown-menu {
+  min-width: $overlay-min-width;
+  max-width: $overlay-max-width;
+  overflow-y: auto;
+  background: $white;
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  &.bao-dropdown-menu-closed {
+    display: none;
+  }
+  .bao-overlay-transparent-backdrop {
+    background-color: $transparent;
+    display: none;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  h5 {
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin: 0;
+  }
+  .bao-dropdown-menu-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-bottom: none;
+    cursor: default;
+    &:hover {
+      background-color: $neutral-underground;
+    }
+    &:active {
+      background-color: $highlight-light;
+    }
+    &:focus {
+      box-shadow: inset 0 0 0 0.25rem $highlight-focus;
+    }
+    &.active-link {
+      background-color: $highlight-light;
+    }
+    &.has-element-right {
+      padding-right: 1.5rem;
+    }
+    &.has-element-left {
+      padding-left: 1rem;
+    }
+    &.bao-dropdown-menu-item-disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      &:hover {
+        background: $white;
+      }
+      &:active {
+        background: $white;
+      }
+      .bao-dropdown-menu-item-content {
+        & .bao-dropdown-menu-item-label {
+          color: $neutral-tertiary;
+        }
+        & .bao-dropdown-menu-item-description {
+          color: $neutral-tertiary;
+        }
+      }
+    }
+    > .bao-dropdown-menu-item-content {
+      display: flex;
+      flex-direction: column;
+      margin: 0.5rem 1rem 0.5rem 1rem;
+      background-color: inherit;
+      .bao-dropdown-menu-item-label {
+        @include typo-interface-medium-normal;
+        color: $ground-reversed;
+      }
+      .bao-dropdown-menu-item-description {
+        @include typo-interface-small;
+        color: $neutral-secondary;
+      }
+    }
+    > .bao-icon {
+      color: $neutral-tertiary;
+      flex-shrink: 0;
+    }
+  }
+  .bao-dropdown-menu-divider hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}

@@ -22,3 +22,4 @@ export * from './lib/avatar';
 export * from './lib/tabs';
 export * from './lib/modal';
 export * from './lib/hyperlink';
+export * from './lib/dropdown-menu';

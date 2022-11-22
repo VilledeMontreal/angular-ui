@@ -10,7 +10,8 @@ import { By } from '@angular/platform-browser';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
   TestButtonMenuHostComponent,
-  TestDropdownMenuHostComponent
+  TestDropdownMenuHostComponent,
+  TestDropdownWithInputsHostComponent
 } from './tests/dropdown-menu.hostcomponent.spec';
 import {
   BaoDropdownMenuComponent,
@@ -18,7 +19,11 @@ import {
   BaoDropdownMenuTrigger,
   BaoDropdownMenuItemLabel
 } from './dropdown-menu.component';
-import { BaoIconComponent } from 'angular-ui';
+import {
+  BaoIconComponent,
+  BaoCheckboxComponent,
+  BaoRadioButtonComponent
+} from 'angular-ui';
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 describe('BaoDropdownMenuComponent', () => {
@@ -126,6 +131,96 @@ describe('BaoDropdownMenuComponent', () => {
       expect(
         buttonDebugElement.nativeNode.attributes['aria-controls'].value
       ).toBe(dropdownMenuDebugElement.nativeNode.id);
+    });
+  });
+  describe('Dropdown menu items with inputs', () => {
+    let fixture: ComponentFixture<TestDropdownWithInputsHostComponent>;
+    let menuItemsDebugElement: DebugElement[];
+    let checkboxDebugElement: DebugElement;
+    let radioDebugElement: DebugElement;
+
+    beforeEach(
+      waitForAsync(() => {
+        TestBed.configureTestingModule({
+          declarations: [
+            BaoDropdownMenuComponent,
+            BaoDropdownMenuTrigger,
+            BaoDropdownMenuItem,
+            BaoDropdownMenuItemLabel,
+            TestDropdownWithInputsHostComponent,
+            BaoCheckboxComponent,
+            BaoRadioButtonComponent
+          ],
+          imports: [OverlayModule]
+        });
+        return TestBed.compileComponents();
+      })
+    );
+    beforeEach(() => {
+      fixture = TestBed.createComponent(TestDropdownWithInputsHostComponent);
+      fixture.detectChanges();
+      menuItemsDebugElement = fixture.debugElement.queryAll(
+        By.css('.bao-dropdown-menu-item')
+      );
+      checkboxDebugElement = fixture.debugElement.query(
+        By.css('.bao-checkbox')
+      );
+      radioDebugElement = fixture.debugElement.query(
+        By.css('.bao-radio-button')
+      );
+    });
+
+    it('click on checkbox or associated menu item should change its state', () => {
+      expect(
+        checkboxDebugElement.nativeNode.classList.contains(
+          'bao-checkbox-checked'
+        )
+      ).toBe(false);
+      checkboxDebugElement.nativeNode.firstElementChild.click();
+      fixture.detectChanges();
+      expect(
+        checkboxDebugElement.nativeNode.classList.contains(
+          'bao-checkbox-checked'
+        )
+      ).toBe(true);
+      expect(
+        checkboxDebugElement.nativeNode.firstElementChild.attributes[
+          'aria-checked'
+        ].value
+      ).toBe('true');
+      menuItemsDebugElement[0].nativeElement.click();
+      fixture.detectChanges();
+      expect(
+        checkboxDebugElement.nativeNode.classList.contains(
+          'bao-checkbox-checked'
+        )
+      ).toBe(false);
+      expect(
+        checkboxDebugElement.nativeNode.firstElementChild.attributes[
+          'aria-checked'
+        ].value
+      ).toBe('false');
+    });
+    it('click on radio button or associated menu item should change its state', () => {
+      expect(
+        radioDebugElement.nativeNode.classList.contains(
+          'bao-radio-button-checked'
+        )
+      ).toBe(false);
+      radioDebugElement.nativeNode.firstElementChild.click();
+      fixture.detectChanges();
+      expect(
+        radioDebugElement.nativeNode.classList.contains(
+          'bao-radio-button-checked'
+        )
+      ).toBe(true);
+      menuItemsDebugElement[1].nativeElement.click();
+      fixture.detectChanges();
+      expect(
+        radioDebugElement.nativeNode.classList.contains(
+          'bao-radio-button-checked'
+        )
+      ).toBe(true);
     });
   });
 });

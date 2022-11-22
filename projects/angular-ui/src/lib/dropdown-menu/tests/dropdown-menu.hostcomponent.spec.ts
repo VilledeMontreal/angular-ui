@@ -30,3 +30,18 @@ export class TestButtonMenuHostComponent {}
 export class TestDropdownMenuHostComponent {
   disabled: boolean;
 }
+@Component({
+  template: `
+    <bao-dropdown-menu>
+      <a bao-dropdown-menu-item>
+        <bao-checkbox></bao-checkbox>
+        <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
+      </a>
+      <a bao-dropdown-menu-item>
+        <bao-radio-button></bao-radio-button>
+        <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
+      </a>
+    </bao-dropdown-menu>
+  `
+})
+export class TestDropdownWithInputsHostComponent {}

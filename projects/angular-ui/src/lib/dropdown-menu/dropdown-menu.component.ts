@@ -67,12 +67,15 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
     }
   }
 
-  @HostListener('click')
-  onClick() {
+  @HostListener('click', ['$event.target'])
+  onClick(el: HTMLElement) {
     if (this.nativeElement.attributes['href']) {
       this._parent.setNavigationAttribute(this.nativeElement);
     }
-    this.propagateClick();
+    // Prevent double-click on checkbox input that undoes the toggle
+    if (!el.classList.contains('bao-checkbox-content-container')) {
+      this.propagateClick();
+    }
   }
 
   @HostListener('window:keydown.enter')

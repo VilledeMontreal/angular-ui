@@ -1,0 +1,46 @@
+<label bao-label [required]="required" [for]="inputId">{{ label }}</label>
+<ng-content select="bao-guiding-text"></ng-content>
+<div
+  baoFileDrop
+  class="file-drop-zone"
+  (fileDrop)="uploadFile($event)"
+  #dropzone
+>
+  <button
+    bao-button
+    type="button"
+    displayType="utility"
+    level="secondary"
+    [disabled]="disabled"
+    (click)="uploader.click()"
+    aria-hidden="true"
+    tabIndex="-1"
+  >
+    {{ intl.dropzoneButtonLabel }}
+  </button>
+  <input
+    [id]="inputId"
+    type="file"
+    class="sr-only"
+    [disabled]="disabled"
+    (change)="uploadFile($event.target.files[0])"
+    #uploader
+  />
+  <ng-container
+    ><div #ref>
+      <ng-content select="bao-file-dropzone-instructions"></ng-content></div
+  ></ng-container>
+  <ng-container *ngIf="ref.childNodes.length === 0"
+    ><bao-file-dropzone-instructions>{{
+      intl.defaultDropzoneInstructions
+    }}</bao-file-dropzone-instructions></ng-container
+  >
+</div>
+<bao-error *ngIf="isFileTooBig">
+  {{ intl.fileTooBigErrorMessage }}
+</bao-error>
+<bao-error *ngIf="isFileTypeInvalid">
+  {{ intl.invalidFileTypeErrorMessage }}
+</bao-error>
+<ng-content select="bao-error"></ng-content>
+<ng-content></ng-content>

@@ -1,0 +1,72 @@
+@import '../core/colors';
+@import '../core/typography';
+@import '../core/shadows';
+
+bao-file-input {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  > ul {
+    padding: 0;
+    margin: 0;
+  }
+  & .bao-label {
+    > span {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+  }
+  &.bao-file-label-small {
+    label {
+      @include typo-interface-small-bold;
+    }
+  }
+  &.bao-file-label-medium {
+    label {
+      @include typo-interface-medium-bold;
+    }
+  }
+  .bao-guiding-text {
+    margin-bottom: 0.5rem;
+  }
+  .file-drop-zone {
+    padding: 0.5rem;
+    background-color: $neutral-ground;
+    border-radius: 0.25rem;
+    border-style: dashed;
+    border-color: $neutral-stroke;
+    border-width: 1px;
+    display: inline-flex;
+    align-items: center;
+    &:focus-within.dropzone-focus {
+      box-shadow: 0 0 0 0.1875rem $highlight-focus;
+      background-color: $highlight-light;
+    }
+    > .bao-button {
+      margin-right: 0.5rem;
+    }
+    &.drag-over {
+      background-color: $highlight-light;
+      border-color: $action;
+      cursor: drag;
+      > .bao-button {
+        background-color: $highlight-light;
+      }
+    }
+  }
+  &.bao-file-input-disabled {
+    .file-drop-zone {
+      background-color: $neutral-underground;
+      border-color: $neutral-stroke;
+      .bao-button {
+        background-color: $neutral-underground;
+        &:hover {
+          background-color: $neutral-underground;
+        }
+      }
+    }
+  }
+  .bao-error {
+    margin-top: 0.5rem;
+  }
+}

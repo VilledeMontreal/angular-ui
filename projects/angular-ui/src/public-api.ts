@@ -23,3 +23,4 @@ export * from './lib/tabs';
 export * from './lib/modal';
 export * from './lib/hyperlink';
 export * from './lib/dropdown-menu';
+export * from './lib/file';

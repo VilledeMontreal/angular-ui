@@ -56,7 +56,7 @@ describe('BaoDropdownMenuComponent', () => {
       testMenuComponent = fixtureMenu.componentInstance;
       fixtureMenu.detectChanges();
       dropdownMenuDebugElement = fixtureMenu.debugElement.query(
-        By.css('.bao-dropdown-menu')
+        By.css('.bao-dropdown-menu-container')
       );
       listItemDebugElement =
         dropdownMenuDebugElement.nativeNode.children[0].children;
@@ -64,7 +64,7 @@ describe('BaoDropdownMenuComponent', () => {
     it('should apply appropriate css class when menu is initially closed ', () => {
       expect(
         dropdownMenuDebugElement.nativeNode.classList.contains(
-          'bao-dropdown-menu'
+          'bao-dropdown-menu-container'
         )
       ).toBe(true);
       expect(
@@ -117,7 +117,7 @@ describe('BaoDropdownMenuComponent', () => {
       fixtureButton.detectChanges();
       buttonDebugElement = fixtureButton.debugElement.query(By.css('button'));
       dropdownMenuDebugElement = fixtureButton.debugElement.query(
-        By.css('.bao-dropdown-menu')
+        By.css('.bao-dropdown-menu-container')
       );
     });
 

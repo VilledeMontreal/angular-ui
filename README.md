@@ -1,4 +1,4 @@
-# ✨ angular-ui ✨
+# ✨ Angular UI ✨
 
 Une librairie de composantes Angular aux couleurs de la ville!
 
@@ -18,7 +18,7 @@ L'objectif de cette librairie est de faciliter la création de SPA angular visue
 
 3. Installer la peerDependency `@angular/cdk` (attention il faut installer la même MAJOR que votre `@angular/cli`)
 
-   `npm i @angular/cdk@^14.0.0`
+   `npm i @angular/cdk@^13.0.0`
 
 4. Ajouter la feuille de style `globabl.scss` (contient la définition des fonts à utiliser) dans le fichier `angular.json`
 
@@ -49,6 +49,12 @@ imports: [
 
 - Une documentation sur l'utilisation des composantes de la librairie avec des exemples de code est disponible [ici](https://services.interne.montreal.ca/bao-storybook). Le site de documentation est construit avec l'outil [Storybook](https://storybook.js.org/)
 - La documentation du _Ville de Montréal Design System_ est disponible [ici](https://zeroheight.com/575tugn0n/p/139208-ville-de-montral-design-system). Celle-ci explique quelles composantes utiliser selon le contexte.
+
+## Versionning
+
+| Angular UI Version | @villedemontreal/angular-ui@^13.0.0         | @villedemontreal/angular-ui@^14.0.0 |
+| ------------------ | ------------------------------------------- | ----------------------------------- |
+| -->                | Pour Angular 13. Compatible avec Angular 12 | Pour Angular 14                     |
 
 ## Philosophie de design
 

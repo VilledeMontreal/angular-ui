@@ -177,7 +177,7 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'bao-dropdown-menu',
+    class: 'bao-dropdown-menu-container',
     '[class.bao-overlay-transparent-backdrop]': 'isOpen===false',
     '[class.bao-dropdown-menu-closed]': 'isOpen===false',
     '[attr.aria-expanded]': 'isOpen'

@@ -6,6 +6,10 @@
 $overlay-min-width: 16rem !default;
 $overlay-max-width: 32rem !default;
 
+.bao-dropdown-menu-container.bao-dropdown-menu-closed {
+  display: none;
+}
+
 .bao-dropdown-menu {
   min-width: $overlay-min-width;
   max-width: $overlay-max-width;
@@ -15,9 +19,6 @@ $overlay-max-width: 32rem !default;
   border-radius: 0.25rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  &.bao-dropdown-menu-closed {
-    display: none;
-  }
   .bao-overlay-transparent-backdrop {
     background-color: $transparent;
     display: none;

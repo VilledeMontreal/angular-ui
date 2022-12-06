@@ -12,7 +12,7 @@ Run:
 
 ```batch
 npm version --no-git-tag-version x.y.z
-cd projets/angular-ui
+cd projects/angular-ui
 npm version x.y.z
 git tag vx.y.z
 ```
@@ -20,7 +20,7 @@ git tag vx.y.z
 Next,
 
 ```batch
-git commit -am "ci(release): vx.y.z"
+git commit -s -am "ci(release): vx.y.z"
 git push --tags or git push origin vx.y.z
 ```
 

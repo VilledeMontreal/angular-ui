@@ -94,6 +94,7 @@ const Template: Story<BaoIconComponent & { title: string; content: string }> = (
   <bao-icon [color]="color" [size]="size" title="book" svgIcon="icon-book"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="briefcase" svgIcon="icon-briefcase"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="calendar" svgIcon="icon-calendar"></bao-icon>
+  <bao-icon [color]="color" [size]="size" title="cell-phone" svgIcon="icon-cell-phone"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="check-circle-full" svgIcon="icon-check-circle-full"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="check-circle" svgIcon="icon-check-circle"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="check" svgIcon="icon-check"></bao-icon>

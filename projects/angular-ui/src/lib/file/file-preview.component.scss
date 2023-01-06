@@ -1,0 +1,46 @@
+@import '../core/colors';
+@import '../core/typography';
+
+.bao-file-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  list-style-type: none;
+  &:first-child {
+    margin-top: 1rem;
+  }
+  > .bao-file-info {
+    display: flex;
+    align-items: center;
+    > .bao-icon {
+      color: $neutral-tertiary;
+      flex-shrink: 0;
+    }
+    > .bao-file-media {
+      margin-right: 1rem;
+    }
+    > .bao-file-text {
+      display: inline-flex;
+      flex-direction: column;
+      margin-right: 1rem;
+      > .bao-file-name {
+        overflow: hidden;
+        @include typo-interface-small-bold;
+        color: $ground-reversed;
+      }
+      > .bao-file-size {
+        @include typo-interface-xsmall;
+        color: $neutral-secondary;
+      }
+    }
+  }
+  .loading-spinner {
+    color: $action;
+  }
+  .bao-dropdown-menu-container {
+    position: absolute;
+    margin-left: auto;
+  }
+}

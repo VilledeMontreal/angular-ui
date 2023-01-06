@@ -59,6 +59,12 @@ $font-weight-medium-bold: 600;
   line-height: 1rem;
 }
 
+@mixin typo-interface-xsmall {
+  font-weight: $font-weight-normal;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 @mixin typo-paragraph-large {
   font-weight: $font-weight-normal;
   font-size: 1.25rem;

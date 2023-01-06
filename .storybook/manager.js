@@ -7,5 +7,5 @@ addons.setConfig({
     base: "light",
     brandTitle: 'VilledeMontreal - Storybook',
     brandImage: logo,
-  }),
+  })
 });

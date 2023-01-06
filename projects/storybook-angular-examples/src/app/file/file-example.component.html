@@ -1,0 +1,54 @@
+<div style="max-width: 22rem">
+  <form [formGroup]="fileInputForm">
+    <bao-file-input
+      formControlName="fileList"
+      label="Formulaire de déclaration"
+      required="true"
+      (uploadedFile)="onUploadedFile($event)"
+    >
+      <bao-guiding-text
+        >Les documents .pdf, .docx, .png sont acceptés</bao-guiding-text
+      >
+      <ul *ngIf="fileList.value.length">
+        <ng-container
+          *ngFor="let uploadedFile of fileList.value; let i = index"
+        >
+          <li bao-file-preview [file]="uploadedFile">
+            <button
+              bao-button
+              type="editorial"
+              level="tertiary"
+              size="medium"
+              (click)="onDelete(i)"
+            >
+              <bao-icon svgIcon="icon-trash"></bao-icon>
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+      <bao-error *ngIf="fileList.dirty && fileList.errors?.['required']">
+        Un formulaire doit être sélectionné
+      </bao-error>
+    </bao-file-input>
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      level="primary"
+      [disabled]="!fileInputForm.valid"
+      style="margin-top: 1.5rem"
+      (click)="onSubmitButtonClick()"
+    >
+      Soumettre
+    </button>
+  </form>
+  <div *ngIf="lastUploadedFiles" style="margin-top: 1rem">
+    Derniers fichiers téléversés :
+    <p
+      *ngFor="let file of lastUploadedFiles"
+      style="font-weight: bold; margin-bottom: 0"
+    >
+      {{ file }}
+    </p>
+  </div>
+</div>

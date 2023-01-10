@@ -1,0 +1,31 @@
+<div class="bao-file-info">
+  <ng-content select="bao-icon"></ng-content>
+  <bao-icon
+    *ngIf="insertGenericIcon && !thumbnailURL"
+    class="bao-file-media"
+    svgIcon="icon-file"
+  >
+  </bao-icon>
+  <ng-container *ngIf="thumbnailURL && !isLoading">
+    <img
+      class="bao-file-media"
+      [src]="thumbnailURL"
+      width="40px"
+      height="40px"
+    />
+  </ng-container>
+  <div class="bao-file-text">
+    <div class="bao-file-name">{{ file.name }}</div>
+    <div class="bao-file-size">{{ fileSize }}</div>
+  </div>
+</div>
+<ng-container *ngIf="!isLoading">
+  <ng-content select="button[bao-button]"></ng-content>
+  <ng-content select="baoDropdownTriggerFor"></ng-content>
+</ng-container>
+<bao-icon
+  *ngIf="isLoading"
+  class="loading-spinner"
+  svgIcon="icon-spinner"
+  title="chargement"
+></bao-icon>

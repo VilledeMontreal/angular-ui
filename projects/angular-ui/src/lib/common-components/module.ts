@@ -5,12 +5,10 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-  BaoErrorTextComponent,
-  BaoGuidingTextComponent,
-  BaoLabelTextComponent,
-  BaoTitleTextComponent
-} from '.';
+import { BaoErrorTextComponent } from './error-text/errorText.component';
+import { BaoGuidingTextComponent } from './guiding-text/guidingText.component';
+import { BaoLabelTextComponent } from './label-text/labelText.component';
+import { BaoTitleTextComponent } from './title-text/titleText.component';
 
 const DIRECTIVES = [
   BaoErrorTextComponent,

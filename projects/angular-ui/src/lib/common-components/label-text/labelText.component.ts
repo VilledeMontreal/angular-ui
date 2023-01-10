@@ -8,8 +8,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'bao-label, [bao-label]',
   encapsulation: ViewEncapsulation.None,
-  template:
-    '<div class="bao-label"><ng-content></ng-content><span *ngIf="required">&nbsp;*</span></div>',
+  template: '<ng-content></ng-content><span *ngIf="required">&nbsp;*</span>',
   styleUrls: ['./labelText.component.scss'],
   host: { class: 'bao-label' }
 })

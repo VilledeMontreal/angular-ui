@@ -273,10 +273,14 @@ export class BaoFileInputComponent
   private setDescribedByAttribute(): void {
     const helperText = Array.from(this.nativeElement.children).find(
       (el: HTMLElement) => el.localName === 'bao-guiding-text'
-    ).firstElementChild;
+    );
     if (helperText) {
       this._helperTextId = `bao-guiding-text-${fileTextUniqueId++}`;
-      this.renderer.setAttribute(helperText, 'id', this._helperTextId);
+      this.renderer.setAttribute(
+        helperText.firstElementChild,
+        'id',
+        this._helperTextId
+      );
       const inputElement = Array.from(this.nativeElement.children)
         .find((el: HTMLElement) => el.className == 'file-drop-zone')
         .children.item(1);

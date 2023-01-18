@@ -66,6 +66,11 @@ bao-file-input {
       }
     }
   }
+  .bao-file-preview {
+    &:first-child {
+      margin-top: 1rem;
+    }
+  }
   .bao-error {
     margin-top: 0.5rem;
   }

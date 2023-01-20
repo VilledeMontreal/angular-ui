@@ -3,7 +3,6 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { AnimationEvent } from '@angular/animations';
 import {
   FocusMonitor,
   FocusOrigin,
@@ -34,7 +33,6 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { baoModalAnimations } from './modal-animations';
 import { BaoModalInitialConfig } from './modal-config';
 
 /** Event that captures the state of modal container animations. */
@@ -278,6 +276,7 @@ export abstract class _BaoModalContainerBase extends BasePortalOutlet {
 
   /** Starts the modal exit animation. */
   abstract _startExitAnimation(): void;
+  abstract _startOpenAnimation(): void;
 }
 
 @Component({
@@ -286,7 +285,6 @@ export abstract class _BaoModalContainerBase extends BasePortalOutlet {
   styleUrls: ['modal-container.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.Default,
-  animations: [baoModalAnimations.modalContainer],
   host: {
     class: 'bao-modal-container',
     tabindex: '-1',
@@ -295,42 +293,31 @@ export abstract class _BaoModalContainerBase extends BasePortalOutlet {
     '[attr.role]': '_config.role',
     '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
     '[attr.aria-label]': '_config.ariaLabel',
-    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
-    '[@modalContainer]': '_state',
-    '(@modalContainer.start)': '_onAnimationStart($event)',
-    '(@modalContainer.done)': '_onAnimationDone($event)'
+    '[attr.aria-describedby]': '_config.ariaDescribedBy || null'
   }
 })
 export class BaoModalContainer extends _BaoModalContainerBase {
   /** State of the modal animation. */
   _state: 'void' | 'enter' | 'exit' = 'enter';
 
-  /** Callback, invoked whenever an animation on the host completes. */
-  public async _onAnimationDone({ toState, totalTime }: AnimationEvent) {
-    if (toState === 'enter') {
-      await this._trapFocus();
-      this._animationStateChanged.next({ state: 'opened', totalTime });
-    } else if (toState === 'exit') {
-      this._restoreFocus();
-      this._animationStateChanged.next({ state: 'closed', totalTime });
-    }
-  }
-
-  /** Callback, invoked when an animation on the host starts. */
-  public _onAnimationStart({ toState, totalTime }: AnimationEvent) {
-    if (toState === 'enter') {
-      this._animationStateChanged.next({ state: 'opening', totalTime });
-    } else if (toState === 'exit' || toState === 'void') {
-      this._animationStateChanged.next({ state: 'closing', totalTime });
-    }
+  public _startOpenAnimation() {
+    this._animationStateChanged.emit({ state: 'opening', totalTime: 20 });
+    void Promise.resolve().then(() => this._finishDialogOpen());
   }
 
   /** Starts the modal exit animation. */
   public _startExitAnimation(): void {
-    this._state = 'exit';
+    this._animationStateChanged.emit({ state: 'closed', totalTime: 20 });
+  }
 
-    // Mark the container for check so it can react if the
-    // view container is using OnPush change detection.
-    this._changeDetectorRef.markForCheck();
+  private _finishDialogOpen() {
+    this._openAnimationDone(20);
+  }
+
+  private _openAnimationDone(totalTime: number) {
+    if (this._config.delayFocusTrap) {
+      void this._trapFocus();
+    }
+    this._animationStateChanged.next({ state: 'opened', totalTime });
   }
 }

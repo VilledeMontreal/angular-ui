@@ -146,6 +146,10 @@ export class BaoModalRef<T, R = unknown> {
     this._containerInstance._startExitAnimation();
   }
 
+  public startOpenAnimation(): void {
+    this._containerInstance._startOpenAnimation();
+  }
+
   /**
    * Gets an observable that is notified when the modal is finished opening.
    */

@@ -152,6 +152,11 @@ export default {
       table: {
         disable: true
       }
+    },
+    ngAfterContentInit: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;

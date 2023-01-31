@@ -19,7 +19,15 @@ export class TestButtonMenuHostComponent {}
 
 @Component({
   template: `
-    <bao-dropdown-menu>
+    <button [baoDropdownMenuTriggerFor]="testMenu">
+      <span>Actions</span>
+      <bao-icon svgIcon="icon-chevron-down"></bao-icon>
+    </button>
+    <bao-dropdown-menu
+      (isClosedByKeyEvent)="onClosedByKeyEvent()"
+      (isOpenChange)="onIsOpenChange($event)"
+      #testMenu
+    >
       <a bao-dropdown-menu-item [disabled]="disabled">
         <bao-icon svgIcon="icon-chevron-down"></bao-icon>
         <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
@@ -29,6 +37,16 @@ export class TestButtonMenuHostComponent {}
 })
 export class TestDropdownMenuHostComponent {
   disabled: boolean;
+  hasEmitClosingEvent = false;
+  isMenuOpen = false;
+
+  public onClosedByKeyEvent(): void {
+    this.hasEmitClosingEvent = true;
+  }
+
+  public onIsOpenChange(isOpen: boolean): void {
+    this.isMenuOpen = isOpen;
+  }
 }
 @Component({
   template: `

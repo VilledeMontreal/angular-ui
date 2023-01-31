@@ -32,6 +32,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 /**
  * Unique ID for each dropdown menu
@@ -49,6 +50,11 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
    * Is the list item disabled
    */
   @Input() public disabled = false;
+
+  /**
+   * Emits when menu item is clicked
+   */
+  @Output() public itemClicked = new EventEmitter();
 
   constructor(
     private renderer: Renderer2,
@@ -78,7 +84,7 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
     }
   }
 
-  @HostListener('window:keydown.enter')
+  @HostListener('window:keyup.enter')
   enterKeyEvent() {
     if (document.activeElement == this.nativeElement) {
       if (this.nativeElement.attributes['href']) {
@@ -155,9 +161,11 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
   }
 
   /**
-   * This method propagates a click event to menu item children with inputs (checkbox, radio button)
+   * This method propagates a click event to menu item children with inputs (checkbox, radio button).
+   * It emits event to close menu if item does not contain an input.
    */
   private propagateClick(): void {
+    let closeMenu = true;
     for (let i = 0; i < this.nativeElement.children.length; i++) {
       if (
         this.nativeElement.children.item(i).firstElementChild.localName ==
@@ -166,7 +174,11 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
         (
           this.nativeElement.children.item(i).firstElementChild as HTMLElement
         ).click();
+        closeMenu = false;
       }
+    }
+    if (closeMenu) {
+      this.itemClicked.emit();
     }
   }
 }
@@ -183,7 +195,9 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
     '[attr.aria-expanded]': 'isOpen'
   }
 })
-export class BaoDropdownMenuComponent implements AfterViewInit {
+export class BaoDropdownMenuComponent
+  implements AfterContentInit, AfterViewInit
+{
   /**
    * Fired when the dropdown-menu changes its 'isOpen' value
    */
@@ -293,6 +307,13 @@ export class BaoDropdownMenuComponent implements AfterViewInit {
   public ngAfterViewInit(): void {
     this.renderer.setAttribute(this.nativeElement, 'id', this.menuId);
     this._menuPortal = new DomPortal(this._menuContent);
+  }
+
+  public ngAfterContentInit(): void {
+    this._listItems.forEach(
+      (item: BaoDropdownMenuItem): Subscription =>
+        item.itemClicked.subscribe(() => this.isClosedByKeyEvent.emit())
+    );
   }
 
   public focusFirstItem(): void {
@@ -412,9 +433,10 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
 
   /** Enter key event triggers click event which opens menu,
    *  then focus is put on first item in the menu */
-  @HostListener('window:keyup.enter')
-  enterKeyEvent() {
+  @HostListener('window:keyup.enter', ['$event'])
+  enterKeyEvent(event: KeyboardEvent) {
     if (this._isMenuOpen && document.activeElement === this.nativeElement) {
+      event.stopImmediatePropagation();
       this.menu.focusFirstItem();
     }
   }

@@ -32,6 +32,7 @@ describe('BaoDropdownMenuComponent', () => {
     let fixtureMenu: ComponentFixture<TestDropdownMenuHostComponent>;
     let dropdownMenuDebugElement: DebugElement;
     let listItemDebugElement: HTMLElement[];
+    let triggerDebugElement: DebugElement;
 
     beforeEach(
       waitForAsync(() => {
@@ -41,7 +42,6 @@ describe('BaoDropdownMenuComponent', () => {
             BaoDropdownMenuItem,
             BaoDropdownMenuTrigger,
             BaoDropdownMenuItemLabel,
-            TestButtonMenuHostComponent,
             TestDropdownMenuHostComponent,
             BaoIconComponent
           ],
@@ -60,6 +60,9 @@ describe('BaoDropdownMenuComponent', () => {
       );
       listItemDebugElement =
         dropdownMenuDebugElement.nativeNode.children[0].children;
+      triggerDebugElement = fixtureMenu.debugElement.query(
+        By.css('.bao-dropdown-menu-trigger')
+      );
     });
     it('should apply appropriate css class when menu is initially closed ', () => {
       expect(
@@ -90,6 +93,29 @@ describe('BaoDropdownMenuComponent', () => {
       expect(
         listItemDebugElement[0].classList.contains('has-element-left')
       ).toBe(true);
+    });
+    it('should change isOpen menu status when trigger button is clicked', () => {
+      expect(testMenuComponent.isMenuOpen).toBe(false);
+      triggerDebugElement.nativeElement.click();
+      fixtureMenu.detectChanges();
+      expect(testMenuComponent.isMenuOpen).toBe(true);
+      expect(
+        dropdownMenuDebugElement.nativeElement.attributes['aria-expanded'].value
+      ).toBe('true');
+    });
+    it('should close menu when it is opened and one item is clicked', () => {
+      expect(testMenuComponent.isMenuOpen).toBe(false);
+      triggerDebugElement.nativeElement.click();
+      fixtureMenu.detectChanges();
+      expect(testMenuComponent.isMenuOpen).toBe(true);
+      expect(testMenuComponent.hasEmitClosingEvent).toBe(false);
+      listItemDebugElement[0].click();
+      fixtureMenu.detectChanges();
+      expect(testMenuComponent.hasEmitClosingEvent).toBe(true);
+      expect(testMenuComponent.isMenuOpen).toBe(false);
+      expect(
+        dropdownMenuDebugElement.nativeElement.attributes['aria-expanded'].value
+      ).toBe('false');
     });
   });
 

@@ -52,11 +52,11 @@ imports: [
 
 ## Versionning
 
-| Angular UI Version                     | Version d'Angular                                         | 
-| -------------------------------------- | --------------------------------------------------------  |
-| @villedemontreal/angular-ui@^13.0.0    | Angular 13. Compatible avec Angular 12                    |
-| @villedemontreal/angular-ui@^14.0.0    | Angular 14                                                |  
-| @villedemontreal/angular-ui@^15.0.0    | Angular 15                                                |   
+| Angular UI Version                  | Version d'Angular                      |
+| ----------------------------------- | -------------------------------------- |
+| @villedemontreal/angular-ui@^13.0.0 | Angular 13. Compatible avec Angular 12 |
+| @villedemontreal/angular-ui@^14.0.0 | Angular 14                             |
+| @villedemontreal/angular-ui@^15.0.0 | Angular 15                             |
 
 ## Philosophie de design
 

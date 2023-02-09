@@ -118,9 +118,7 @@
             "main": "projects/angular-ui/src/test.ts",
             "tsConfig": "projects/angular-ui/tsconfig.spec.json",
             "karmaConfig": "projects/angular-ui/karma.conf.js",
-            "include": [
-              "**/*.spec.ts"
-            ]
+            "include": ["**/*.spec.ts"]
           }
         },
         "lint": {

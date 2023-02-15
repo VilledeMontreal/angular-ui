@@ -117,7 +117,8 @@
           "options": {
             "main": "projects/angular-ui/src/test.ts",
             "tsConfig": "projects/angular-ui/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-ui/karma.conf.js"
+            "karmaConfig": "projects/angular-ui/karma.conf.js",
+            "include": ["**/*.spec.ts"]
           }
         },
         "lint": {
@@ -235,5 +236,13 @@
   "cli": {
     "analytics": false,
     "defaultCollection": "@angular-eslint/schematics"
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

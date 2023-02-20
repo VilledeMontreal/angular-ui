@@ -156,7 +156,7 @@ export const CheckboxDescriptionHiddenLabel: Story = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
-    <legend required="true" bao-label>Liste d'options avec l'étiquette invisble</legend>
+    <legend required="true" bao-label>Liste d'options avec l'étiquette invisible</legend>
     <bao-checkbox id="ID11" name="name1" brandBorder="true" hiddenLabel="true">
       Label
       <bao-checkbox-description>Est est et dolores dolore sed justo ipsum et sit.</bao-checkbox-description>

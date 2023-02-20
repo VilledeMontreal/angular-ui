@@ -1,0 +1,11 @@
+<div class="bao-toggle">
+  <button class="bao-toggle-button" [id]="buttonID" type="button" role="switch" [disabled]="disabled" [attr.name]="name"
+    [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledby" [attr.aria-describedby]="ariaDescribedby"
+    [attr.aria-checked]="getAriaState()" (change)="onInteractionEvent($event)" (click)="onButtonClick($event)"></button>
+  <div class="bao-toggle-label" [id]="ariaLabelledby" [attr.for]="buttonID"
+    [ngClass]="{'bao-toggle-label-checked': checked, 'bao-toggle-label-disabled': disabled}">
+    <span [ngClass]="{'bao-toggle-label-hidden': hiddenLabel}" id="ariaLabelledby">
+      <ng-content></ng-content>
+    </span>
+  </div>
+</div>

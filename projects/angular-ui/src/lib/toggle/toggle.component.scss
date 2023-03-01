@@ -1,14 +1,28 @@
-@import '../core/colors';
+@import "../core/colors";
 
 .bao-toggle {
   padding-left: 0;
   display: block;
   font-size: 1rem;
+  line-height: 1.5rem;
+  min-height: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   position: relative;
   z-index: 1;
 
-  .bao-toggle-label {
-    width: 100%;
+  button {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  }
+
+  .bao-toggle-switch {
     padding-right: 3.25rem;
     color: $ground-reversed;
     font-weight: 400;
@@ -38,7 +52,7 @@
       position: absolute;
       box-sizing: border-box;
       content: "";
-      top: calc(50% - 0.625rem);
+      top: calc(50% - 0.6rem);
       right: 1.25rem;
       left: auto;
       width: 1.25rem;
@@ -48,41 +62,75 @@
       border: $neutral-stroke 1px solid;
       border-radius: 50%;
       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform .15s ease-in-out;
+      transition: transform 0.15s ease-in-out;
     }
   }
 
-  .bao-toggle-button {
-    display: none;
+  .bao-toggle-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .bao-toggle-label-checked {
-    &::before {
-      background-color: $highlight-dark;
-    }
-    &::after {
-      background-color: $action;
-      border-color: $action;
-      transition: transform .15s ease-in-out;
-      transform: translateX(1.2rem);
+  &.bao-toggle-switch-checked {
+    .bao-toggle-switch {
+      &::before {
+        background-color: $highlight-dark;
+      }
+      &::after {
+        background-color: $action;
+        border-color: $action;
+        transition: transform 0.15s ease-in-out;
+        transform: translateX(1.2rem);
+      }
     }
   }
 
-  .bao-toggle-label-disabled {
-    &::before {
-      background-color: $neutral-stroke;
-      border-color: $neutral-stroke;
+  &.bao-toggle-switch-disabled {
+    .bao-toggle-switch {
+      &::before {
+        background-color: $neutral-stroke;
+        border-color: $neutral-stroke;
+        cursor: not-allowed;
+      }
+      &::after {
+        background-color: $underground-2;
+        border-color: $underground-2;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.bao-toggle-switch-hidden-label {
+    .bao-toggle-switch {
+      &::before {
+        top: calc(50% + (#{0.65rem}/ 2));
+      }
+      &::after {
+        top: calc(50% + 0.075rem);
+      }
+    }
+  }
+
+  &.bao-toggle-switch-focus {
+    .bao-toggle-switch {
+      &::after {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #0079C4;
+      }
+    }
+  }
+
+  &.bao-toggle-label-disabled {
+    .bao-toggle-label {
+      color: $underground-2;
       cursor: not-allowed;
     }
-    &::after {
-      background-color: $underground-2;
-      border-color: $underground-2;
-      cursor: not-allowed;
-    }
   }
 
-  .bao-toggle-label-hidden {
-    // .bao-toggle-label {
+  &.bao-toggle-label-hidden {
+    .bao-toggle-label {
       clip: rect(1px, 1px, 1px, 1px);
       clip-path: inset(50%);
       height: 1px;
@@ -91,6 +139,6 @@
       overflow: hidden;
       padding: 0;
       position: absolute;
-    // }
+    }
   }
 }

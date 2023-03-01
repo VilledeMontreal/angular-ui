@@ -3,7 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -11,23 +11,13 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  forwardRef,
   Input,
   OnDestroy,
   OnInit,
   Output,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-/**
- * Toggle state for aria-checked property
- */
-export const enum eToggleAriaState {
-  ON = 'on',
-  OFF = 'off'
-}
 
 /**
  * Unique ID for each toggle counter
@@ -38,23 +28,25 @@ let toggleNextUniqueId = 0;
   selector: 'bao-toggle, [bao-toggle]',
   templateUrl: 'toggle.component.html',
   styleUrls: ['./toggle.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,   // TODO JFG No form control ?????
-      useExisting: forwardRef(() => BaoToggleComponent),
-      multi: true
-    }
-  ],
+  providers: [],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'bao-toggle',
+    '[class.bao-toggle-label-hidden]': 'hiddenLabel',
+    '[class.bao-toggle-switch-hidden-label]': 'hiddenLabel',
+    '[class.bao-toggle-switch-checked]': 'checked',
+    '[class.bao-toggle-switch-disabled]': 'disabled',
+    '[class.bao-toggle-label-disabled]': 'disabled',
+    '[class.bao-toggle-switch-focus]': 'isFocus',
+  },
 })
-export class BaoToggleComponent
-  implements ControlValueAccessor, AfterViewInit, OnInit, OnDestroy
-{
+export class BaoToggleComponent implements AfterViewInit, OnInit, OnDestroy {
   /**
    * The toggle ID. It is set dynamically with an unique ID by default
    */
-  @Input() public id: string;
+  @Input()
+  public id!: string;
 
   /**
    * The name property of the toggle
@@ -66,10 +58,10 @@ export class BaoToggleComponent
    */
   @Input('aria-label') public ariaLabel?: string;
 
-  // // // /**
-  // // //  * The visible state of the label
-  // // //  */
-  // // // @Input() public hiddenLabel = false;
+  /**
+   * The tooltip to show if disabled
+   */
+  @Input() public toolTip?: string;
 
   /**
    * Emitted object on change event
@@ -77,22 +69,11 @@ export class BaoToggleComponent
   @Output() public readonly change: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 
-  // // // /**
-  // // //  * Inderminate value of the toggle whenever
-  // // //  */
-  // // // @Output() public readonly indeterminateChange: EventEmitter<boolean> =
-  // // //   new EventEmitter<boolean>();
-
   /**
    * Reference to the button html element
    */
   @ViewChild('button', { static: false })
-  private buttonElement: ElementRef<HTMLButtonElement>;
-
-  /**
-   * The aria-describedby id for web accessibilty
-   */
-  public ariaDescribedby?: string;
+  private buttonElement!: ElementRef<HTMLButtonElement>;
 
   /**
    * The aria-labeledby id for web accessibilty
@@ -102,16 +83,19 @@ export class BaoToggleComponent
   /**
    * The ID of the button html element
    */
-  public buttonID: string;
+  public buttonId!: string;
+
+  /**
+   * The focus status of the button html element
+   */
+  public isFocus: boolean = false;
 
   private _disabled = false;
   private _checked = false;
   private _hiddenLabel = false;
   private _uniqueId = `bao-toggle-${++toggleNextUniqueId}`;
-  // // // private _required: boolean;
 
   constructor(
-    private elementRef: ElementRef<HTMLElement>,
     private cdr: ChangeDetectorRef,
     private focusMonitor: FocusMonitor
   ) {
@@ -125,7 +109,6 @@ export class BaoToggleComponent
    */
   @Input()
   get checked(): boolean {
-    console.log('checked GET - this._checked ===', this._checked);
     return this._checked;
   }
 
@@ -134,7 +117,6 @@ export class BaoToggleComponent
    */
   @Input()
   get disabled() {
-    console.log('disabled GET - this._disabled ===', this._disabled);
     return this._disabled;
   }
 
@@ -143,118 +125,49 @@ export class BaoToggleComponent
    */
   @Input()
   get hiddenLabel() {
-    console.log('hiddenLabel GET - this._hiddenLabel ===', this._hiddenLabel);
     return this._hiddenLabel;
   }
 
-  // // // /**
-  // // //  * Whether the toggle is required.  Default value : false
-  // // //  */
-  // // // @Input()
-  // // // get required(): boolean {
-  // // //   return this._required;
-  // // // }
-
-  get nativeElement(): HTMLElement {
-    return this.elementRef.nativeElement;
-  }
-
   set checked(value: boolean) {
-    console.log('checked SET - value ===', value);
     if (value !== this.checked) {
-      console.log('checked SET change - value ===', value);
       this._checked = value;
       this.cdr.markForCheck();
     }
   }
 
   set disabled(value: boolean) {
-    console.log('disabled SET - value ===', value);
     if (value !== this.disabled) {
-      console.log('disabled SET change - value ===', value);
       this._disabled = value;
       this.cdr.markForCheck();
     }
   }
 
   set hiddenLabel(value: boolean) {
-    console.log('hiddenLabel SET - value ===', value);
     if (value !== this.hiddenLabel) {
-      console.log('hiddenLabel SET change - value ===', value);
       this._hiddenLabel = value;
       this.cdr.markForCheck();
     }
   }
 
-  // // // set required(value: boolean) {
-  // // //   this._required = value;
-  // // // }
-
   public ngOnInit() {
     // Set all unique ids for the html elements
-    this.buttonID = `${this.id}-button`;
+    this.buttonId = `${this.id}-button`;
     this.ariaLabelledby = `${this.id}-arialabelledby`;
   }
 
   public ngAfterViewInit() {
-    this.focusMonitor.monitor(this.elementRef, true).subscribe(focusOrigin => {
-      if (!focusOrigin) {
-        // When a focused element becomes disabled, the browser *immediately* fires a blur event.
-        // Angular does not expect events to be raised during change detection, so any state change
-        // (such as a form control's 'ng-touched') will cause a changed-after-checked error.
-        // See https://github.com/angular/angular/issues/17793. To work around this, we defer
-        // telling the form control it has been touched until the next tick.
-        Promise.resolve()
-          .then(() => {
-            this.onTouch();
-            this.cdr.markForCheck();
-          })
-          .catch(() => undefined);
-      }
-    });
-
-    // // // this.setAriaDescribedByToDescription();
-    // this.syncIndeterminate(this.indeterminate); // TODO JFG ??? See function
+    this.focusMonitor
+      .monitor(this.buttonElement, false)
+      .subscribe((focusOrigin) => {
+        if (!this.disabled) {
+          this.isFocus = !this.isFocus;
+          this.cdr.markForCheck();
+        }
+      });
   }
 
   public ngOnDestroy() {
-    this.focusMonitor.stopMonitoring(this.elementRef);
-  }
-
-  /**
-   * Implement ControlValueAccessor
-   */
-  public writeValue(value: any) {   // TODO JFG No form control ?????
-    this.checked = !!value;
-  }
-
-  /**
-   * Implement ControlValueAccessor
-   */
-  public registerOnChange(fn: (value: any) => void) {   // TODO JFG No form control ?????
-    this.onModelChange = fn;
-  }
-
-  /**
-   * Implement ControlValueAccessor
-   */
-  public registerOnTouched(fn: any) {   // TODO JFG No form control ?????
-    this.onTouch = fn;
-  }
-
-  /**
-   * Implement ControlValueAccessor
-   */
-  public setDisabledState(isDisabled: boolean) {   // TODO JFG No form control ?????
-    this.disabled = isDisabled;
-  }
-
-  public focus(origin?: FocusOrigin, options?: FocusOptions): void {
-    if (origin) {
-      this.focusMonitor.focusVia(this.buttonElement, origin, options);
-    } else {
-      this.buttonElement.nativeElement.focus(options);
-    }
+    this.focusMonitor.stopMonitoring(this.buttonElement);
   }
 
   /**
@@ -277,84 +190,18 @@ export class BaoToggleComponent
   }
 
   /**
-   * Get the value for the aria-checked property (web accessibility)
-   */
-  public getAriaState(): eToggleAriaState {
-    if (this.checked) {
-      return eToggleAriaState.ON;
-    }
-    return eToggleAriaState.OFF;
-  }
-
-  /**
    * Emit new values whenever the toggle object has change.
    */
   private emitChangeEvent() {
-    this.onModelChange(this.checked);
-    this.change.emit(this.checked);
-    // this.syncChecked(this.checked); // TODO JFG ??? See function
+    if (!this.disabled) {
+      this.change.emit(this.checked);
+    }
   }
-
-  // /**
-  //  * Set the checked property on the button html element
-  //  */
-  // private syncChecked(value: boolean) {  // TODO JFG ??? checked does not exist on button element
-  //   if (this.buttonElement) {
-  //     this.buttonElement.nativeElement.checked = value;
-  //   }
-  // }
-
-  // /**
-  //  * Set the indeterminate property on the button html element
-  //  */
-  // private syncIndeterminate(value: boolean) {  // TODO JFG ??? indeterminate does not exist on button element
-  //   if (this.buttonElement) {
-  //     this.buttonElement.nativeElement.indeterminate = value;
-  //   }
-  // }
-
-  // // // /**
-  // // //  * Set the aria-describedby property to bao-toggle-description
-  // // //  */
-  // // // private setAriaDescribedByToDescription() {
-  // // //   const childNodes = Array.from(this.nativeElement.childNodes);
-  // // //   const labelNode = childNodes.find(x => {
-  // // //     return x.nodeName === 'LABEL';
-  // // //   });
-  // // //   if (labelNode) {
-  // // //     const labelChildNodes = Array.from(labelNode.childNodes);
-  // // //     const descriptionNode = labelChildNodes.find(x => {
-  // // //       return x.nodeName === 'BAO-TOGGLE-DESCRIPTION';
-  // // //     });
-
-  // // //     if (descriptionNode) {
-  // // //       this.ariaDescribedby = `${this.id}-ariadescribedby`;
-  // // //       (descriptionNode as HTMLElement).setAttribute(
-  // // //         'id',
-  // // //         this.ariaDescribedby
-  // // //       );
-  // // //     } else {
-  // // //       this.ariaDescribedby = undefined;
-  // // //     }
-
-  // // //     this.cdr.detectChanges();
-  // // //   }
-  // // // }
 
   /**
    * Set checked value
    */
   private toggle() {
-    this.checked = !this.checked;
+    if (!this.disabled) this.checked = !this.checked;
   }
-
-  private onModelChange: (value: any) => void = () => undefined;
-  private onTouch: () => void = () => undefined;
 }
-
-// // // @Directive({
-// // //   selector:
-// // //     'bao-toggle-description, [bao-toggle-description],  [baoToggleDescription]',
-// // //   host: { class: 'bao-toggle-description' }
-// // // })
-// // // export class BaoToggleDescription {}

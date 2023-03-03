@@ -1,43 +1,21 @@
-@import '~@angular/cdk/_a11y.scss';
-@import '~@angular/cdk/_overlay';
+@import './snack-bar-overlay.component.scss';
+@import '../core/colors';
 
-@include cdk-a11y();
-@include cdk-overlay();
+@include overlay();
 
-$mat-snack-bar-padding: 0.875rem 1rem !default;
-$mat-snack-bar-min-height: 3rem !default;
-$mat-snack-bar-min-width: 21.5rem !default;
-$mat-snack-bar-max-width: 33vw !default;
-$mat-snack-bar-spacing-margin: 1.5rem !default;
-$mat-snack-bar-spacing-margin-handset: 0.5rem !default;
+$bao-snack-bar-min-height: 3rem !default;
+$bao-snack-bar-min-width: 15rem !default;
+$bao-snack-bar-max-width: 100vw !default;
+$bao-snack-bar-spacing-margin: 1rem !default;
 
-.mat-snack-bar-container {
+.bao-snack-bar-container {
   border-radius: 0.25rem;
   box-sizing: border-box;
   display: block;
-  margin: $mat-snack-bar-spacing-margin;
-  max-width: $mat-snack-bar-max-width;
-  min-width: $mat-snack-bar-min-width;
-  padding: $mat-snack-bar-padding;
-  min-height: $mat-snack-bar-min-height;
+  margin: $bao-snack-bar-spacing-margin;
+  max-width: $bao-snack-bar-max-width;
+  min-width: $bao-snack-bar-min-width;
+  min-height: $bao-snack-bar-min-height;
   transform-origin: center;
-
-  //  @include cdk-high-contrast(active, off) {
-  //    border: solid 0.0625rem;
-  //  }
-}
-
-/**
- * The mat-snack-bar-handset class will be applied to the overlay
- * element causing styling to both it and the snack bar container.
- */
-.mat-snack-bar-handset {
   width: 100%;
-
-  .mat-snack-bar-container {
-    margin: $mat-snack-bar-spacing-margin-handset;
-    max-width: 100%;
-    min-width: 0;
-    width: 100%;
-  }
 }

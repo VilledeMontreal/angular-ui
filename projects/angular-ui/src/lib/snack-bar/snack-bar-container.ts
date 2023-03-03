@@ -10,8 +10,10 @@ import {
   BasePortalOutlet,
   CdkPortalOutlet,
   ComponentPortal,
+  DomPortal,
   TemplatePortal
 } from '@angular/cdk/portal';
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -19,6 +21,7 @@ import {
   ComponentRef,
   ElementRef,
   EmbeddedViewRef,
+  inject,
   NgZone,
   OnDestroy,
   ViewChild,
@@ -28,6 +31,8 @@ import { Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { matSnackBarAnimations } from './snack-bar-animations';
 import { BaoSnackBarConfig } from './snack-bar-config';
+
+let uniqueId = 0;
 
 /**
  * Internal interface for a snack bar container.
@@ -60,7 +65,7 @@ export interface IBaoSnackBarContainer {
   encapsulation: ViewEncapsulation.None,
   animations: [matSnackBarAnimations.snackBarState],
   host: {
-    class: 'mat-snack-bar-container',
+    class: 'bao-snack-bar-container',
     '[@state]': '_animationState',
     '(@state.done)': 'onAnimationEnd($event)'
   }
@@ -70,8 +75,10 @@ export class BaoSnackBarContainerComponent
   implements OnDestroy, IBaoSnackBarContainer
 {
   /** The portal outlet inside of this container into which the snack bar content will be loaded. */
-  @ViewChild(CdkPortalOutlet, { static: true })
-  public _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
+
+  private _document = inject(DOCUMENT);
+  private _trackedModals = new Set<Element>();
 
   /** Subject for notifying that the snack bar has announced to screen readers. */
   public readonly _onAnnounce: Subject<void> = new Subject();
@@ -97,6 +104,15 @@ export class BaoSnackBarContainerComponent
   /** Whether the component has been destroyed. */
   private _destroyed = false;
 
+  /**
+   * Role of the live region. This is only for Firefox as there is a known issue where Firefox +
+   * JAWS does not read out aria-live message.
+   */
+  _role?: 'status' | 'alert';
+
+  /** Unique ID of the aria-live element. */
+  readonly _liveElementId = `bao-snack-bar-container-live-${uniqueId++}`;
+
   constructor(
     private _ngZone: NgZone,
     private _elementRef: ElementRef<HTMLElement>,
@@ -119,13 +135,25 @@ export class BaoSnackBarContainerComponent
     } else {
       this._live = 'polite';
     }
+    // Only set role for Firefox. Set role based on aria-live because setting role="alert" implies
+    // aria-live="assertive" which may cause issues if aria-live is set to "polite" above.
+    if (this._platform.FIREFOX) {
+      if (this._live === 'polite') {
+        this._role = 'status';
+      }
+      if (this._live === 'assertive') {
+        this._role = 'alert';
+      }
+    }
   }
 
   /** Attach a component portal as content to this snack bar container. */
   public attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
     this.assertNotAttached();
     this.applySnackBarClasses();
-    return this._portalOutlet.attachComponentPortal(portal);
+    const result = this._portalOutlet.attachComponentPortal(portal);
+    this._afterPortalAttached();
+    return result;
   }
 
   /** Attach a template portal as content to this snack bar container. */
@@ -134,8 +162,22 @@ export class BaoSnackBarContainerComponent
   ): EmbeddedViewRef<C> {
     this.assertNotAttached();
     this.applySnackBarClasses();
-    return this._portalOutlet.attachTemplatePortal(portal);
+    const result = this._portalOutlet.attachTemplatePortal(portal);
+    this._afterPortalAttached();
+    return result;
   }
+
+  /**
+   * Attaches a DOM portal to the snack bar container.
+   * @deprecated To be turned into a method.
+   * @breaking-change 10.0.0
+   */
+  public attachDomPortal = (portal: DomPortal) => {
+    this.assertNotAttached();
+    const result = this._portalOutlet.attachDomPortal(portal);
+    this._afterPortalAttached();
+    return result;
+  };
 
   /** Handle end of animations, updating the state of the snackbar. */
   public onAnimationEnd(event: AnimationEvent) {
@@ -217,12 +259,78 @@ export class BaoSnackBarContainerComponent
     }
 
     if (this.snackBarConfig.horizontalPosition === 'center') {
-      element.classList.add('mat-snack-bar-center');
+      element.classList.add('bao-snack-bar-center');
     }
 
     if (this.snackBarConfig.verticalPosition === 'top') {
-      element.classList.add('mat-snack-bar-top');
+      element.classList.add('bao-snack-bar-top');
     }
+  }
+
+  /**
+   * Called after the portal contents have been attached. Can be
+   * used to modify the DOM once it's guaranteed to be in place.
+   */
+  protected _afterPortalAttached() {
+    const element: HTMLElement = this._elementRef.nativeElement;
+    const panelClasses = this.snackBarConfig.panelClass;
+
+    if (panelClasses) {
+      if (Array.isArray(panelClasses)) {
+        // Note that we can't use a spread here, because IE doesn't support multiple arguments.
+        panelClasses.forEach(cssClass => element.classList.add(cssClass));
+      } else {
+        element.classList.add(panelClasses);
+      }
+    }
+
+    this._exposeToModals();
+  }
+
+  /**
+   * Some browsers won't expose the accessibility node of the live element if there is an
+   * `aria-modal` and the live element is outside of it. This method works around the issue by
+   * pointing the `aria-owns` of all modals to the live element.
+   */
+  private _exposeToModals() {
+    // TODO(crisbeto): consider de-duplicating this with the `LiveAnnouncer`.
+    // Note that the selector here is limited to CDK overlays at the moment in order to reduce the
+    // section of the DOM we need to look through. This should cover all the cases we support, but
+    // the selector can be expanded if it turns out to be too narrow.
+    const id = this._liveElementId;
+    const modals = this._document.querySelectorAll(
+      'body > .cdk-overlay-container [aria-modal="true"]'
+    );
+
+    for (let i = 0; i < modals.length; i++) {
+      const modal = modals[i];
+      const ariaOwns = modal.getAttribute('aria-owns');
+      this._trackedModals.add(modal);
+
+      if (!ariaOwns) {
+        modal.setAttribute('aria-owns', id);
+      } else if (ariaOwns.indexOf(id) === -1) {
+        modal.setAttribute('aria-owns', ariaOwns + ' ' + id);
+      }
+    }
+  }
+
+  /** Clears the references to the live element from any modals it was added to. */
+  private _clearFromModals() {
+    this._trackedModals.forEach(modal => {
+      const ariaOwns = modal.getAttribute('aria-owns');
+
+      if (ariaOwns) {
+        const newValue = ariaOwns.replace(this._liveElementId, '').trim();
+
+        if (newValue.length > 0) {
+          modal.setAttribute('aria-owns', newValue);
+        } else {
+          modal.removeAttribute('aria-owns');
+        }
+      }
+    });
+    this._trackedModals.clear();
   }
 
   /** Asserts that no content is already attached to the container. */
@@ -246,6 +354,7 @@ export class BaoSnackBarContainerComponent
             this._elementRef.nativeElement.querySelector('[aria-hidden]');
           const liveElement =
             this._elementRef.nativeElement.querySelector('[aria-live]');
+
           if (inertElement && liveElement) {
             // If an element in the snack bar content is focused before being moved
             // track it and restore focus after moving to the live region.
@@ -257,11 +366,11 @@ export class BaoSnackBarContainerComponent
             ) {
               focusedElement = document.activeElement;
             }
+
             inertElement.removeAttribute('aria-hidden');
             liveElement.appendChild(inertElement);
-            if (focusedElement) {
-              focusedElement.focus();
-            }
+            focusedElement?.focus();
+
             this._onAnnounce.next();
             this._onAnnounce.complete();
           }

@@ -1,13 +1,48 @@
-<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-icon">
-    <span class="icon icon-check-circle" aria-hidden="true"></span>
+<div
+  class="snackbar show"
+  [ngClass]="toastType"
+  [attr.aria-live]="politeness"
+  aria-atomic="true"
+>
+  <div class="snackbar-icon">
+    <bao-icon [svgIcon]="toastIcon" [title]="toastIconTitle"></bao-icon>
   </div>
-  <div class="toast-body">
+  <div class="snackbar-body">
     {{ data.message }}
   </div>
-  <div *ngIf="hasAction" class="toast-action">
-    <button (click)="action()" class="btn btn-tertiary btn-reversed">
-      {{ data.action }}
-    </button>
+  <div class="snackbar-action">
+    <div *ngIf="hasAction">
+      <button
+        bao-button
+        role="button"
+        type="utility"
+        level="tertiary"
+        [reversed]="true"
+        [title]="data.actionLabelOrIcon"
+        (click)="action()"
+      >
+        <bao-icon
+          *ngIf="isActionIcon; else isActionText"
+          [svgIcon]="data.actionLabelOrIcon"
+          [title]="data.actionLabelOrIcon"
+        ></bao-icon>
+        <ng-template #isActionText
+          ><span>{{ data.actionLabelOrIcon }}</span></ng-template
+        >
+      </button>
+    </div>
+    <div *ngIf="data.showClose">
+      <button
+        bao-button
+        role="button"
+        type="utility"
+        level="tertiary"
+        [reversed]="true"
+        title="{{ showCloseTitle }}"
+        (click)="close()"
+      >
+        <bao-icon svgIcon="icon-x" title="{{ showCloseTitle }}"></bao-icon>
+      </button>
+    </div>
   </div>
 </div>

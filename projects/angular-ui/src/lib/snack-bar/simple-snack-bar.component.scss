@@ -16,12 +16,12 @@ $snackbar-colors: (
   danger: $negative
 );
 
-@mixin snackbar-variant($background, $color) {
+@mixin bao-snackbar-variant($background, $color) {
   color: $color;
   background-color: $background;
 }
 
-.snackbar {
+.bao-snackbar {
   overflow: hidden; // cheap rounded corners on nested items
   font-size: $snackbar-font-size;
   line-height: $snackbar-line-height;
@@ -57,20 +57,19 @@ $snackbar-colors: (
     width: auto;
   }
 }
-
-.snackbar-icon {
+.bao-snackbar-icon {
   display: inline-flex;
   align-items: center;
   flex-grow: 0;
   margin: 1rem 0 1rem 1rem;
 }
-.snackbar-body {
+.bao-snackbar-body {
   display: flex;
   align-items: center;
   padding: $snackbar-padding; // apply to both vertical and horizontal
   margin: 0;
 }
-.snackbar-action {
+.bao-snackbar-action {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -81,7 +80,7 @@ $snackbar-colors: (
 }
 
 @each $color, $value in $snackbar-colors {
-  .snackbar-#{$color} {
-    @include snackbar-variant($value, $white);
+  .bao-snackbar-#{$color} {
+    @include bao-snackbar-variant($value, $white);
   }
 }

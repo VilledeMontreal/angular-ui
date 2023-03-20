@@ -1,16 +1,16 @@
 <div
-  class="snackbar show"
-  [ngClass]="toastType"
+  class="bao-snackbar show"
+  [ngClass]="toastClass"
   [attr.aria-live]="politeness"
   aria-atomic="true"
 >
-  <div class="snackbar-icon">
+  <div class="bao-snackbar-icon">
     <bao-icon [svgIcon]="toastIcon" [title]="toastIconTitle"></bao-icon>
   </div>
-  <div class="snackbar-body">
+  <div class="bao-snackbar-body">
     {{ data.message }}
   </div>
-  <div class="snackbar-action">
+  <div class="bao-snackbar-action">
     <div *ngIf="hasAction">
       <button
         bao-button

@@ -4,10 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { Component } from '@angular/core';
-import {
-  BaoSnackBarService,
-  BaoSnackBarToastTypeEnum
-} from 'projects/angular-ui/src/public-api';
+import { BaoSnackBarService } from 'projects/angular-ui/src/public-api';
 
 /**
  * @title Opens a snackbar with a message and an action. The action dismisses the snackbar.

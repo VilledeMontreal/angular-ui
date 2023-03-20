@@ -11,6 +11,7 @@ import { BaoButtonModule } from '../button/module';
 import { BaoIconModule } from '../icon/module';
 import { BaoSimpleSnackBarComponent } from './simple-snack-bar.component';
 import { BaoSnackBarService } from './snack-bar';
+import { BaoSnackBarConfig } from './snack-bar-config';
 import { BaoSnackBarContainerComponent } from './snack-bar-container';
 
 const SNACKBAR_DIRECTIVES = [
@@ -26,7 +27,7 @@ const SNACKBAR_DIRECTIVES = [
     BaoButtonModule,
     BaoIconModule
   ],
-  providers: [BaoSnackBarService],
+  providers: [BaoSnackBarService, BaoSnackBarConfig],
   declarations: SNACKBAR_DIRECTIVES,
   exports: SNACKBAR_DIRECTIVES,
   entryComponents: [SNACKBAR_DIRECTIVES]

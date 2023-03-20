@@ -22,11 +22,7 @@ export type BaoSnackBarHorizontalPosition =
 export type BaoSnackBarVerticalPosition = 'top' | 'bottom';
 
 /** Possible types of toast to display the snack bar */
-export enum BaoSnackBarToastTypeEnum {
-  Info = 'info',
-  Success = 'success',
-  Danger = 'danger'
-}
+export type BaoSnackBarToastType = 'info' | 'success' | 'danger';
 
 /**
  * Configuration used when opening a snack-bar.
@@ -36,7 +32,7 @@ export class BaoSnackBarConfig<D = any> {
   public message = 'No message';
 
   /** The type of snackbar template to display. */
-  public toastType?: BaoSnackBarToastTypeEnum = BaoSnackBarToastTypeEnum.Info;
+  public toastType?: BaoSnackBarToastType = 'info';
 
   /**
    * The attached action to the snack bar. If the name of the action matches an icon provided as part of

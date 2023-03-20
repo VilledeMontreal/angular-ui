@@ -10,27 +10,24 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { ICONS_DCT } from '../icon/icons-dictionary';
-import {
-  BaoSnackBarToastTypeEnum,
-  BAO_SNACK_BAR_DATA
-} from './snack-bar-config';
+import { BaoSnackBarToastType, BAO_SNACK_BAR_DATA } from './snack-bar-config';
 import { BaoSnackBarRef } from './snack-bar-ref';
 
 const toastTypeToAttributes = {
   info: {
-    toast: 'snackbar-info',
+    toastClass: 'bao-snackbar-info',
     icon: 'icon-info',
     iconTitle: 'Information',
     politeness: 'assertive'
   },
   success: {
-    toast: 'snackbar-success',
+    toastClass: 'bao-snackbar-success',
     icon: 'icon-check-circle',
     iconTitle: 'Succès',
     politeness: 'polite'
   },
   danger: {
-    toast: 'snackbar-danger',
+    toastClass: 'bao-snackbar-danger',
     icon: 'icon-error',
     iconTitle: 'Erreur',
     politeness: 'assertive'
@@ -43,7 +40,7 @@ const toastTypeToAttributes = {
 export interface ITextOnlySnackBar {
   data: {
     message: string;
-    toastType: BaoSnackBarToastTypeEnum;
+    toastType: BaoSnackBarToastType;
     actionLabelOrIcon: string;
     showClose: boolean;
   };
@@ -63,7 +60,7 @@ export interface ITextOnlySnackBar {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'mat-simple-snackbar'
+    class: 'bao-simple-snackbar'
   }
 })
 export class BaoSimpleSnackBarComponent implements ITextOnlySnackBar {
@@ -72,7 +69,7 @@ export class BaoSimpleSnackBarComponent implements ITextOnlySnackBar {
   /** Data that was injected into the snack bar. */
   public data: {
     message: string;
-    toastType: BaoSnackBarToastTypeEnum;
+    toastType: BaoSnackBarToastType;
     actionLabelOrIcon: string;
     showClose: boolean;
   };
@@ -93,10 +90,10 @@ export class BaoSimpleSnackBarComponent implements ITextOnlySnackBar {
   }
 
   /** Returns the toast class */
-  get toastType(): string {
+  get toastClass(): string {
     return (
-      toastTypeToAttributes[this.data.toastType]?.toast ||
-      toastTypeToAttributes['info'].toast
+      toastTypeToAttributes[this.data.toastType]?.toastClass ||
+      toastTypeToAttributes['info'].toastClass
     );
   }
 

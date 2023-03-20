@@ -4,10 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { Component } from '@angular/core';
-import {
-  BaoSnackBarService,
-  BaoSnackBarToastTypeEnum
-} from 'projects/angular-ui/src/public-api';
+import { BaoSnackBarService } from 'projects/angular-ui/src/public-api';
 
 /**
  * @title Opens a snackbar with a message that expires after 5s.
@@ -28,14 +25,14 @@ export class SnackBarSimpleExample {
   public openSuccess() {
     this.snackBarService.open({
       message: 'This snack bar will disappear in 5s.',
-      toastType: BaoSnackBarToastTypeEnum.Success
+      toastType: 'success'
     });
   }
 
   public openDanger() {
     this.snackBarService.open({
       message: 'This snack bar will disappear in 5s.',
-      toastType: BaoSnackBarToastTypeEnum.Danger
+      toastType: 'danger'
     });
   }
 }

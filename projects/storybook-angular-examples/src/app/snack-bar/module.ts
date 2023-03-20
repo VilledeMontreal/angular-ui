@@ -11,13 +11,13 @@ import {
   BaoIconModule,
   BaoSnackBarModule
 } from 'projects/angular-ui/src/public-api';
-import { SnackBarDemoExample } from './snack-bar-demo/snack-bar-demo-example.component';
+import { SnackBarPreview } from './snack-bar-preview/snack-bar-preview.component';
 import { SnackBarSimpleWithActionExample } from './snack-bar-simple-with-action/snack-bar-simple-with-action-example.component';
 import { SnackBarSimpleWithConfigExample } from './snack-bar-simple-with-config/snack-bar-simple-with-config-example.component';
 import { SnackBarSimpleExample } from './snack-bar-simple/snack-bar-simple-example.component';
 
 const SNACK_BAR_DIRECTIVES = [
-  SnackBarDemoExample,
+  SnackBarPreview,
   SnackBarSimpleExample,
   SnackBarSimpleWithActionExample,
   SnackBarSimpleWithConfigExample

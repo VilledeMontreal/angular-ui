@@ -7,11 +7,10 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import {
   BaoSnackBarConfig,
-  BaoSnackBarRef,
-  BaoSnackBarToastTypeEnum
+  BaoSnackBarRef
 } from 'projects/angular-ui/src/public-api';
 import { BaoSnackBarModuleTest } from 'projects/storybook-angular-examples/src/app/snack-bar/module';
-import { SnackBarDemoExample } from 'projects/storybook-angular-examples/src/app/snack-bar/snack-bar-demo/snack-bar-demo-example.component';
+import { SnackBarPreview } from 'projects/storybook-angular-examples/src/app/snack-bar/snack-bar-preview/snack-bar-preview.component';
 import { SnackBarSimpleWithActionExample } from 'projects/storybook-angular-examples/src/app/snack-bar/snack-bar-simple-with-action/snack-bar-simple-with-action-example.component';
 import { SnackBarSimpleWithConfigExample } from 'projects/storybook-angular-examples/src/app/snack-bar/snack-bar-simple-with-config/snack-bar-simple-with-config-example.component';
 import { SnackBarSimpleExample } from 'projects/storybook-angular-examples/src/app/snack-bar/snack-bar-simple/snack-bar-simple-example.component';
@@ -24,7 +23,7 @@ The full documentation of this component is available in the Hochelaga design sy
 
 export default {
   title: 'Components/SnackBar',
-  component: SnackBarDemoExample,
+  component: SnackBarPreview,
   parameters: {
     docs: {
       description: {
@@ -39,14 +38,14 @@ export default {
     })
   ],
   template: `
-  <snack-bar-demo-example id="sb1" name="name"
+  <snack-bar-preview id="sb1" name="name"
   [toastType]="toastType"
   [message]="message"
   [actionLabelOrIcon]="actionLabelOrIcon"
   [showClose]="showClose"
   [config]="config"
   >
-  </snack-bar-demo-example>
+  </snack-bar-preview>
  `,
   subcomponents: { BaoSnackBarConfig, BaoSnackBarRef }
 } as Meta;
@@ -57,8 +56,8 @@ const Template: Story = args => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  toastType: BaoSnackBarToastTypeEnum.Success,
-  message: 'This is a demo component',
+  toastType: 'success',
+  message: 'This is a preview component',
   actionLabelOrIcon: 'icon-refresh',
   showClose: false
 };

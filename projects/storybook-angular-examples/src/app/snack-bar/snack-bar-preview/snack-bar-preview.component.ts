@@ -7,21 +7,21 @@ import { Component, Input } from '@angular/core';
 import { ICONS_DCT } from 'projects/angular-ui/src/lib/icon/icons-dictionary';
 import {
   BaoSnackBarConfig,
-  BaoSnackBarToastTypeEnum
+  BaoSnackBarToastType
 } from 'projects/angular-ui/src/public-api';
 
 /**
- * @title Shows the demo snackbar
+ * @title Shows the preview snackbar
  */
 @Component({
-  selector: 'snack-bar-demo-example',
-  templateUrl: 'snack-bar-demo-example.html'
+  selector: 'snack-bar-preview',
+  templateUrl: 'snack-bar-preview.html'
 })
-export class SnackBarDemoExample {
+export class SnackBarPreview {
   /**
    * The type of toast to display
    */
-  @Input() public toastType: BaoSnackBarToastTypeEnum;
+  @Input() public toastType: BaoSnackBarToastType;
 
   /**
    * The message to display
@@ -46,9 +46,9 @@ export class SnackBarDemoExample {
   /** If the action button should be shown. */
   get toastIcon(): string {
     switch (this.toastType) {
-      case BaoSnackBarToastTypeEnum.Success:
+      case 'success':
         return 'icon-check-circle';
-      case BaoSnackBarToastTypeEnum.Danger:
+      case 'danger':
         return 'icon-error';
     }
     return 'icon-info';

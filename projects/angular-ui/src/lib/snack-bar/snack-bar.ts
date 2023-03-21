@@ -4,7 +4,6 @@
  * See LICENSE file in the project root for full license information.
  */
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import {
   ComponentPortal,
@@ -25,7 +24,6 @@ import {
   TemplateRef,
   Type
 } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
 import {
   BaoSimpleSnackBarComponent,
   ITextOnlySnackBar
@@ -42,8 +40,8 @@ export function baoFactory() {
 }
 
 /** Injection token that can be used to specify default snack bar. */
-export const MAT_SNACK_BAR_DEFAULT_OPTIONS =
-  new InjectionToken<BaoSnackBarConfig>('mat-snack-bar-default-options', {
+export const BAO_SNACK_BAR_DEFAULT_OPTIONS =
+  new InjectionToken<BaoSnackBarConfig>('bao-snack-bar-default-options', {
     providedIn: 'root',
     factory: baoFactory
   });
@@ -61,9 +59,6 @@ export class BaoSnackBarService implements OnDestroy {
   protected snackBarContainerComponent: Type<IBaoSnackBarContainer> =
     BaoSnackBarContainerComponent;
 
-  /** The CSS class to applie for handset mode. */
-  protected handsetCssClass = 'mat-snack-bar-handset';
-
   /**
    * Reference to the current snack bar in the view *at this level* (in the Angular injector tree).
    * If there is a parent snack-bar service, all operations should delegate to that parent
@@ -75,9 +70,8 @@ export class BaoSnackBarService implements OnDestroy {
     private _overlay: Overlay,
     private _live: LiveAnnouncer,
     private _injector: Injector,
-    private _breakpointObserver: BreakpointObserver,
     @Optional() @SkipSelf() private _parentSnackBar: BaoSnackBarService,
-    @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS)
+    @Inject(BAO_SNACK_BAR_DEFAULT_OPTIONS)
     private _defaultConfig: BaoSnackBarConfig
   ) {}
 
@@ -127,23 +121,27 @@ export class BaoSnackBarService implements OnDestroy {
   /**
    * Opens a snackbar with a message and an optional action.
    * @param message The message to show in the snackbar.
-   * @param action The label for the snackbar action.
+   * @param toastType The type of of toast to display the snackbar.
+   * @param actionLabelOrIcon The label or icon for the snackbar action.
+   * @param showClose If true, the snackbar will require user interaction to close.
    * @param config Additional configuration options for the snackbar.
    */
-  public open(
-    message: string,
-    action = '',
-    type = '',
-    config?: BaoSnackBarConfig
-  ): BaoSnackBarRef<ITextOnlySnackBar> {
+  public open(config: BaoSnackBarConfig): BaoSnackBarRef<ITextOnlySnackBar> {
     const _config = { ...this._defaultConfig, ...config };
 
     // Since the user doesn't have access to the component, we can
     // override the data to pass in our own message, action and type.
-    _config.data = { message, action, type };
+    _config.data = {
+      message: _config.message,
+      toastType: _config.toastType,
+      actionLabelOrIcon: _config.actionLabelOrIcon,
+      showClose: _config.showClose
+    };
+
+    if (_config.showClose) _config.duration = 0;
 
     if (!_config.announcementMessage) {
-      _config.announcementMessage = message;
+      _config.announcementMessage = _config.message;
     }
 
     return this.openFromComponent(this.simpleSnackBarComponent, _config);
@@ -225,19 +223,6 @@ export class BaoSnackBarService implements OnDestroy {
       // We can't pass this via the injector, because the injector is created earlier.
       snackBarRef.instance = contentRef.instance;
     }
-
-    // Subscribe to the breakpoint observer and attach the mat-snack-bar-handset class as
-    // appropriate. This class is applied to the overlay element because the overlay must expand to
-    // fill the width of the screen for full width snackbars.
-    this._breakpointObserver
-      .observe(Breakpoints.HandsetPortrait)
-      .pipe(takeUntil(overlayRef.detachments()))
-      .subscribe(state => {
-        const classList = overlayRef.overlayElement.classList;
-        state.matches
-          ? classList.add(this.handsetCssClass)
-          : classList.remove(this.handsetCssClass);
-      });
 
     this.animateSnackBar(snackBarRef, config);
     this._openedSnackBarRef = snackBarRef;

@@ -1,0 +1,43 @@
+<h5>This is a preview component. See stories below for actual usage.</h5>
+<div
+  class="toast show"
+  [ngClass]="'toast-' + toastType"
+  aria-live="polite"
+  aria-atomic="true"
+>
+  <div class="toast-icon">
+    <span class="icon" [ngClass]="toastIcon" aria-hidden="true"></span>
+  </div>
+  <div class="toast-body">{{ message }}</div>
+  <div class="toast-action">
+    <div *ngIf="hasAction">
+      <button
+        bao-button
+        role="button"
+        type="utility"
+        level="tertiary"
+        [reversed]="true"
+      >
+        <bao-icon
+          *ngIf="isActionIcon; else isActionText"
+          [svgIcon]="actionLabelOrIcon"
+          [title]="actionLabelOrIcon"
+        ></bao-icon>
+        <ng-template #isActionText
+          ><span>{{ actionLabelOrIcon }}</span></ng-template
+        >
+      </button>
+    </div>
+    <div *ngIf="showClose">
+      <button
+        bao-button
+        role="button"
+        type="utility"
+        level="tertiary"
+        [reversed]="true"
+      >
+        <bao-icon svgIcon="icon-x" title="Fermer le message"></bao-icon>
+      </button>
+    </div>
+  </div>
+</div>

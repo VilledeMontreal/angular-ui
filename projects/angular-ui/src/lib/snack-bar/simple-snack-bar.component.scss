@@ -1,0 +1,86 @@
+@import '../core/colors';
+@import '../core/grid';
+
+$snackbar-padding: 1rem !default;
+$snackbar-margin: 1rem !default;
+$snackbar-font-size: 0.875rem !default;
+$snackbar-line-height: 1.25rem !default;
+$snackbar-color: $white !default;
+$snackbar-background-color: #004b7b !default;
+$snackbar-border-radius: 0.25rem !default;
+$snackbar-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1) !default;
+
+$snackbar-colors: (
+  info: $informative,
+  success: $positive,
+  danger: $negative
+);
+
+@mixin bao-snackbar-variant($background, $color) {
+  color: $color;
+  background-color: $background;
+}
+
+.bao-snackbar {
+  overflow: hidden; // cheap rounded corners on nested items
+  font-size: $snackbar-font-size;
+  line-height: $snackbar-line-height;
+  color: $snackbar-color;
+  background-color: $snackbar-background-color;
+  background-clip: padding-box;
+  box-shadow: $snackbar-box-shadow;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  border-radius: $snackbar-border-radius;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: $snackbar-padding;
+  }
+
+  &.showing {
+    opacity: 1;
+  }
+
+  &.show {
+    display: inline-flex;
+    opacity: 1;
+  }
+
+  &.hide {
+    display: none;
+  }
+
+  //From md to full
+  @include respond-to(md) {
+    margin: $snackbar-margin;
+    width: auto;
+  }
+}
+.bao-snackbar-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-grow: 0;
+  margin: 1rem 0 1rem 1rem;
+}
+.bao-snackbar-body {
+  display: flex;
+  align-items: center;
+  padding: $snackbar-padding; // apply to both vertical and horizontal
+  margin: 0;
+}
+.bao-snackbar-action {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  &:last-child {
+    margin-right: 0.5rem;
+  }
+}
+
+@each $color, $value in $snackbar-colors {
+  .bao-snackbar-#{$color} {
+    @include bao-snackbar-variant($value, $white);
+  }
+}

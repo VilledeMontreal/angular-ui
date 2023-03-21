@@ -21,10 +21,31 @@ export type BaoSnackBarHorizontalPosition =
 /** Possible values for verticalPosition on MatSnackBarConfig. */
 export type BaoSnackBarVerticalPosition = 'top' | 'bottom';
 
+/** Possible types of toast to display the snack bar */
+export type BaoSnackBarToastType = 'info' | 'success' | 'danger';
+
 /**
  * Configuration used when opening a snack-bar.
  */
 export class BaoSnackBarConfig<D = any> {
+  /** The message to display in the snackbar. */
+  public message = 'No message';
+
+  /** The type of snackbar template to display. */
+  public toastType?: BaoSnackBarToastType = 'info';
+
+  /**
+   * The attached action to the snack bar. If the name of the action matches an icon provided as part of
+   * angular-ui icon dictionnary an icon will be displayed instead of text.
+   * */
+  public actionLabelOrIcon?: string = '';
+
+  /** Displays the close button when set to true */
+  public showClose?: boolean = false;
+
+  /** The length of time in milliseconds to wait before automatically dismissing the snack bar. */
+  public duration?: number = 5000;
+
   /** The politeness level for the MatAriaLiveAnnouncer announcement. */
   public politeness?: AriaLivePoliteness = 'assertive';
 
@@ -40,9 +61,6 @@ export class BaoSnackBarConfig<D = any> {
    */
   public viewContainerRef?: ViewContainerRef;
 
-  /** The length of time in milliseconds to wait before automatically dismissing the snack bar. */
-  public duration?: number = 0;
-
   /** Extra CSS classes to be added to the snack bar container. */
   public panelClass?: string | string[];
 
@@ -53,7 +71,7 @@ export class BaoSnackBarConfig<D = any> {
   public data?: D | null = null;
 
   /** The horizontal position to place the snack bar. */
-  public horizontalPosition?: BaoSnackBarHorizontalPosition = 'center';
+  public horizontalPosition?: BaoSnackBarHorizontalPosition = 'left';
 
   /** The vertical position to place the snack bar. */
   public verticalPosition?: BaoSnackBarVerticalPosition = 'bottom';

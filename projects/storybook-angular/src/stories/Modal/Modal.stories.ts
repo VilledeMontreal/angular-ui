@@ -5,6 +5,7 @@
  */
 
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { BaoModalClose, BaoModalInitialConfig, BaoModalRef } from 'angular-ui';
 import { ModalFormExample } from 'projects/storybook-angular-examples/src/app/modal/modal-form/modal-form-example.component';
 import { ModalContentMediumExample } from 'projects/storybook-angular-examples/src/app/modal/modal-medium/modal-content-medium-example.component';
 import { ModalContentScrollableExample } from 'projects/storybook-angular-examples/src/app/modal/modal-scrollable/modal-content-scrollable-example.component';
@@ -33,7 +34,8 @@ export default {
       declarations: [],
       imports: [BaoModalModuleTest]
     })
-  ]
+  ],
+  subcomponents: { BaoModalInitialConfig, BaoModalRef, BaoModalClose }
 } as Meta;
 
 const Template: Story = args => ({

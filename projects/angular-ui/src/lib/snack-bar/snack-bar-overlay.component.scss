@@ -1,0 +1,11 @@
+@import '../core/grid';
+
+// Complement the overlay pane.
+.cdk-overlay-pane {
+  width: 100%;
+  //From md to full
+  @include respond-to(md) {
+    margin: 0;
+    width: auto;
+  }
+}

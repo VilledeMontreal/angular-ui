@@ -38,6 +38,7 @@
     "@ngxs/devtools-plugin": "^3.7.6",
     "@ngxs/logger-plugin": "^3.7.6",
     "@ngxs/store": "^3.7.6",
+    "@popperjs/core": "^2.11.6",
     "@villedemontreal/hochelaga": "^4.23.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

@@ -1,0 +1,20 @@
+.bao-tooltip {
+  position: absolute;
+  max-width: 200px;
+  font-size: 14px;
+  color: #f8f8f2;
+  padding: 3px 8px;
+  background: #282a36;
+  border-radius: 4px;
+  z-index: 1000;
+  opacity: 1;
+}
+.bao-tooltip-center {
+  text-align: center;
+}
+.bao-tooltip-left {
+  text-align: left;
+}
+.bao-tooltip-right {
+  text-align: right;
+}

@@ -1,0 +1,54 @@
+<h5>
+  Opens a snackbar with a message and an action. The action logs to the console
+  and dismisses the snackbar.
+</h5>
+<div class="container">
+  <button
+    bao-button
+    type="button"
+    displayType="utility"
+    level="primary"
+    size="medium"
+    style="margin-right: 1rem"
+    aria-haspopup="dialog"
+    (click)="openActionText()"
+  >
+    Action with Text
+  </button>
+  <button
+    bao-button
+    type="button"
+    displayType="utility"
+    level="primary"
+    size="medium"
+    style="margin-right: 1rem"
+    aria-haspopup="dialog"
+    (click)="openActionIcon()"
+  >
+    Action with Icon
+  </button>
+  <button
+    bao-button
+    type="button"
+    displayType="utility"
+    level="primary"
+    size="medium"
+    style="margin-right: 1rem"
+    aria-haspopup="dialog"
+    (click)="openActionAndClose()"
+  >
+    Action and close
+  </button>
+  <button
+    bao-button
+    type="button"
+    displayType="utility"
+    level="primary"
+    size="medium"
+    style="margin-right: 1rem"
+    aria-haspopup="dialog"
+    (click)="openNoActionButClose()"
+  >
+    No action but close
+  </button>
+</div>

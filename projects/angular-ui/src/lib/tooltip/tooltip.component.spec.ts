@@ -19,7 +19,7 @@ describe('TooltipPopperComponent', () => {
     fixture = TestBed.createComponent(BaoTooltipComponent);
     component = fixture.componentInstance;
     component.content = 'test content';
-    component.elementRef = new ElementRef(document.createElement('button'));
+    component.parentRef = new ElementRef(document.createElement('button'));
     fixture.detectChanges();
   });
 

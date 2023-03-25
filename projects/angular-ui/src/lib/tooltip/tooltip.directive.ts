@@ -4,10 +4,13 @@
  * See LICENSE file in the project root for full license information.
  */
 import {
+  ComponentRef,
   Directive,
   ElementRef,
   HostListener,
   Input,
+  OnDestroy,
+  OnInit,
   ViewContainerRef
 } from '@angular/core';
 import { BaoTooltipComponent } from './tooltip.component';
@@ -16,7 +19,7 @@ import { BaoTooltipPlacement, BaoTooltipTextAlign } from './tooltip.model';
 @Directive({
   selector: '[bao-tooltip]'
 })
-export class BaoTooltipDirective {
+export class BaoTooltipDirective implements OnInit, OnDestroy {
   /**
    * The tooltip selector `bao-tooltip` is bind with the directive input `content`.
    */
@@ -33,40 +36,48 @@ export class BaoTooltipDirective {
   @Input()
   textAlign: BaoTooltipTextAlign = 'center';
 
+  componentRef!: ComponentRef<BaoTooltipComponent>;
+
   constructor(
     private viewContainerRef: ViewContainerRef,
     private elementRef: ElementRef
   ) {}
 
-  @HostListener('mouseenter') private onMouseEnter() {
+  ngOnInit(): void {
     this.createComponent();
   }
 
-  @HostListener('mouseleave') private onMouseLeave() {
-    this.clearComponent();
-  }
-
-  @HostListener('focus') private onFocus() {
-    this.createComponent();
-  }
-
-  @HostListener('focusout') private onFocusOut() {
-    this.clearComponent();
-  }
-
-  private clearComponent() {
+  ngOnDestroy(): void {
     this.viewContainerRef.clear();
   }
 
+  @HostListener('mouseenter') private onMouseEnter() {
+    this.componentRef.instance.show = true;
+  }
+
+  @HostListener('mouseleave') private onMouseLeave() {
+    window.setTimeout(() => {
+      this.componentRef.instance.show = false;
+    }, 200);
+  }
+
+  @HostListener('focus') private onFocus() {
+    this.componentRef.instance.show = true;
+  }
+
+  @HostListener('focusout') private onFocusOut() {
+    this.componentRef.instance.show = false;
+  }
+
   private createComponent() {
-    const componentRef =
+    this.componentRef =
       this.viewContainerRef.createComponent(BaoTooltipComponent);
-    componentRef.instance.placement = this.placement;
-    componentRef.instance.content = this.content;
-    componentRef.instance.textAlign = this.textAlign;
-    componentRef.instance.elementRef = this.elementRef;
-    componentRef.onDestroy(() => {
-      componentRef.instance.hide();
+    this.componentRef.instance.placement = this.placement;
+    this.componentRef.instance.content = this.content;
+    this.componentRef.instance.textAlign = this.textAlign;
+    this.componentRef.instance.parentRef = this.elementRef;
+    this.componentRef.onDestroy(() => {
+      this.componentRef.instance.destroy();
     });
   }
 }

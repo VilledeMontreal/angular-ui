@@ -57,12 +57,22 @@ export default {
         disable: true
       }
     },
-    clearComponent: {
+    createComponent: {
       table: {
         disable: true
       }
     },
-    createComponent: {
+    componentRef: {
+      table: {
+        disable: true
+      }
+    },
+    ngOnDestroy: {
+      table: {
+        disable: true
+      }
+    },
+    ngOnInit: {
       table: {
         disable: true
       }
@@ -103,7 +113,11 @@ const template: Story<BaoTooltipDirective> = (args: BaoTooltipDirective) => ({
     placement: args.placement,
     textAlign: args.textAlign
   },
-  template: `<span [bao-tooltip]="content" [placement]="placement" [textAlign]="textAlign" >Hover me</span>`
+  template: `
+  <div style="height: 120px; text-align: center; padding-top: 48px">
+     <span [bao-tooltip]="content" [placement]="placement" [textAlign]="textAlign" >Hover over me</span>
+  </div>
+  `
 });
 
 export const Primary = template.bind({});

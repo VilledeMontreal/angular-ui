@@ -10,14 +10,14 @@ import {
   Input,
   OnInit,
   Renderer2,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { BasePlacement, createPopper, Instance } from '@popperjs/core';
 import {
   isPlacement,
   isTextAlign,
   BaoTooltipPlacement,
-  BaoTooltipTextAlign
+  BaoTooltipTextAlign,
 } from './tooltip.model';
 
 export interface IPos {
@@ -35,7 +35,14 @@ let baoTooltipNextUniqueId = 0;
   styleUrls: ['./tooltip.component.scss'],
   providers: [],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'bao-tooltip',
+    '[class.bao-tooltip-show]': 'show',
+    '[class.bao-tooltip-center]': 'textAlign==="center"',
+    '[class.bao-tooltip-left]': 'textAlign==="left"',
+    '[class.bao-tooltip-right]': 'textAlign==="right"',
+  },
 })
 export class BaoTooltipComponent implements OnInit {
   /**
@@ -57,15 +64,41 @@ export class BaoTooltipComponent implements OnInit {
    * The parent node reference
    */
   @Input()
-  public elementRef!: ElementRef;
+  public parentRef!: ElementRef;
 
-  delay: number = 150;
-  tooltip!: HTMLElement | null;
   offset = 10;
   popperInstance!: Instance;
+  private _show = false;
   private uniqueId = `bao-tooltip-${++baoTooltipNextUniqueId}`;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private tooltipRef: ElementRef) {}
+
+  /**
+   * show or Hide tooltip
+   */
+  @Input()
+  get show() {
+    return this._show;
+  }
+
+  set show(value: boolean) {
+    if (value !== this.show) {
+      this._show = value;
+      if (value) {
+        this.renderer.setAttribute(
+          this.tooltipRef.nativeElement,
+          'aria-hidden',
+          'false'
+        );
+      } else {
+        this.renderer.setAttribute(
+          this.tooltipRef.nativeElement,
+          'aria-hidden',
+          'true'
+        );
+      }
+    }
+  }
 
   ngOnInit() {
     this.placement = this.getPlacementValid(this.placement);
@@ -73,78 +106,97 @@ export class BaoTooltipComponent implements OnInit {
     this.create();
   }
 
-  hide() {
-    window.setTimeout(() => {
-      this.renderer.removeClass(this.tooltip, 'bao-tooltip');
-      this.renderer.removeClass(this.tooltip, `bao-tooltip-${this.textAlign}`);
-      this.renderer.removeAttribute(
-        this.elementRef.nativeElement,
-        'aria-describedby'
-      );
-      this.renderer.removeAttribute(this.tooltip, 'id');
-      this.renderer.removeAttribute(this.tooltip, 'aria-hidden');
-      this.renderer.removeChild(document.body, this.tooltip);
-      this.popperInstance.destroy();
-      this.tooltip = null;
-    }, this.delay);
+  destroy() {
+    this.popperInstance.destroy();
   }
 
-  private getPlacementValid(placement: BaoTooltipPlacement): BaoTooltipPlacement {
+  /**
+   * Valid the input placement an return a valid value (default top)
+   */
+  private getPlacementValid(
+    placement: BaoTooltipPlacement
+  ): BaoTooltipPlacement {
     if (isPlacement(placement)) {
       return placement;
     }
     return 'top';
   }
 
-  private getTextAlignValid(textAlign: BaoTooltipTextAlign): BaoTooltipTextAlign {
+  /**
+   * Valid the input textAlign an return a valid value (default center)
+   */
+  private getTextAlignValid(
+    textAlign: BaoTooltipTextAlign
+  ): BaoTooltipTextAlign {
     if (isTextAlign(textAlign)) {
       return textAlign;
     }
     return 'center';
   }
 
+  /**
+   * Prepare the content
+   * Set some attributes
+   * create the popper
+   */
   private create() {
-    const cleanContent = this.removeNotAllowedTags(this.content);
-    const domParsed = new DOMParser();
-    const element = domParsed.parseFromString(
-      `<span>${cleanContent}</span>`,
-      'text/html'
-    ).body.firstElementChild;
-    this.tooltip = this.renderer.createElement('span');
-    this.renderer.appendChild(this.tooltip, element);
-    this.renderer.appendChild(document.body, this.tooltip);
-    this.renderer.addClass(this.tooltip, 'bao-tooltip');
-    this.renderer.addClass(this.tooltip, `bao-tooltip-${this.textAlign}`);
+    this.cleanContentAndAddToTooltipRef();
+    // Set the aria-describedby attribute on parent element ref
     this.renderer.setAttribute(
-      this.elementRef.nativeElement,
+      this.parentRef.nativeElement,
       'aria-describedby',
       this.uniqueId
     );
-    this.renderer.setAttribute(this.tooltip, 'id', this.uniqueId);
-    this.renderer.setAttribute(this.tooltip, 'aria-hidden', 'true');
+    // Set the id attribute on tooltip element ref
+    this.renderer.setAttribute(
+      this.tooltipRef.nativeElement,
+      'id',
+      this.uniqueId
+    );
+    // Set the initial aria-hidden attribute on tooltip element ref
+    this.renderer.setAttribute(
+      this.tooltipRef.nativeElement,
+      'aria-hidden',
+      'true'
+    );
+    // create the popper
     this.popperInstance = createPopper(
-      this.elementRef.nativeElement,
-      this.tooltip,
+      this.parentRef.nativeElement,
+      this.tooltipRef.nativeElement,
       {
         placement: this.placement as BasePlacement,
         modifiers: [
           {
             name: 'offset',
             options: {
-              offset: [0, this.offset]
-            }
+              offset: [0, this.offset],
+            },
           },
           {
             name: 'flip',
             options: {
               fallbackPlacements: this.getFallbackPlacements(
                 this.placement as BasePlacement
-              )
-            }
-          }
-        ]
+              ),
+            },
+          },
+        ],
       }
     );
+  }
+
+  /**
+   * Clean the content (HTML content)
+   * Add content to tooltip ElementRef
+   */
+  private cleanContentAndAddToTooltipRef() {
+    const cleanContent = this.removeNotAllowedTags(this.content);
+    const domParsed = new DOMParser();
+    const element = domParsed.parseFromString(
+      `<span>${cleanContent}</span>`,
+      'text/html'
+    ).body.firstElementChild;
+    this.renderer.appendChild(this.tooltipRef.nativeElement, element);
   }
 
   /**

@@ -1,14 +1,16 @@
+@import '../core/colors';
+@import '../core/typography';
+
 .bao-tooltip {
   position: absolute;
+  padding: 2px 8px;
   max-width: 200px;
-  font-size: 14px;
-  color: #f8f8f2;
-  padding: 3px 8px;
-  background: #282a36;
+  color: $neutral-primary-reversed;
+  background: $ground-reversed;
   border-radius: 4px;
   z-index: 1000;
   visibility: hidden;
-
+  @include typo-interface-small;
 
   &.bao-tooltip-show {
     visibility: visible;

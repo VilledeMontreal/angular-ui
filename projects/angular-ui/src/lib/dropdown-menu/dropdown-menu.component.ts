@@ -521,11 +521,18 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
             overlayY: 'bottom'
           } as ConnectedPosition,
           {
-            // top-right of the overlay is connected to bottom-left of the origin;
-            originX: 'start',
+            // top-right of the overlay is connected to bottom-right of the origin;
+            originX: 'end',
             originY: 'bottom',
             overlayX: 'end',
             overlayY: 'top'
+          } as ConnectedPosition,
+          {
+            // bottom-right of the overlay is connected to top-right of the origin;
+            originX: 'end',
+            originY: 'top',
+            overlayX: 'end',
+            overlayY: 'bottom'
           } as ConnectedPosition
         ]),
       backdropClass: 'bao-overlay-transparent-backdrop',

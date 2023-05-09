@@ -32,15 +32,22 @@ describe('BaoBreadcrumbComponent', () => {
       );
     });
 
-    it('should apply appropriate attribute on navigation elements', () => {
-      const navElements = Array.from(
-        breadcrumbDebugElement.childNodes[0].nativeNode.childNodes
-      );
-      const lastElement = navElements.pop() as Element;
-      navElements.forEach((el: Element) => {
-        expect(el.ariaCurrent).toBe(null);
+    it('should contains the exact html tag and attributes', () => {
+      const nav = breadcrumbDebugElement.nativeElement.querySelector('nav');
+      expect(nav).toBeTruthy();
+
+      const orderLists =
+        breadcrumbDebugElement.children[0].nativeElement.querySelector('ol');
+      expect(orderLists).toBeTruthy();
+
+      const lists = breadcrumbDebugElement.children[0].children[0].children;
+      lists.forEach((el: DebugElement) => {
+        expect(el.name).toBe('LI');
+        expect(el.nativeElement.querySelector('a')).toBeTruthy();
       });
-      expect(lastElement.ariaCurrent).toBe('page');
+
+      const lastLink = lists.slice(-1).pop();
+      expect(lastLink.children[0].nativeElement.ariaCurrent).toBe('page');
     });
   });
 });

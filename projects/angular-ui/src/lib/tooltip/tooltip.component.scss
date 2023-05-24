@@ -1,0 +1,27 @@
+@import '../core/colors';
+@import '../core/typography';
+
+.bao-tooltip {
+  position: absolute;
+  padding: 2px 8px;
+  max-width: 200px;
+  color: $neutral-primary-reversed;
+  background: $ground-reversed;
+  border-radius: 4px;
+  z-index: 1000;
+  visibility: hidden;
+  @include typo-interface-small;
+
+  &.bao-tooltip-show {
+    visibility: visible;
+  }
+  &.bao-tooltip-center {
+    text-align: center;
+  }
+  &.bao-tooltip-left {
+    text-align: left;
+  }
+  &.bao-tooltip-right {
+    text-align: right;
+  }
+}

@@ -1,0 +1,71 @@
+@import '../core/colors';
+@import '../core/grid';
+@import '../core/typography';
+
+.bao-system-header {
+  display: flex;
+  justify-content: flex-start;
+  .left-side-content {
+    display: inline-flex;
+    width: 75%;
+    .back-navigation-container {
+      a {
+        margin-right: 1.25rem;
+        border-bottom: none;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .text-content {
+      width: 100%;
+      h1 {
+        font-weight: 700;
+        color: $ground-reversed;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .tag-info-container {
+        width: 100%;
+        display: block;
+        > span:nth-child(2) {
+          &:before {
+            content: '·';
+            margin: 0 0.5rem;
+          }
+        }
+        .additional-info > * {
+          @include typo-interface-small;
+        }
+        &.mobile {
+          .bao-tag {
+            margin-bottom: 0.25rem;
+          }
+          .additional-info {
+            display: block;
+            &:before {
+              content: none;
+            }
+          }
+        }
+        > .bao-tag {
+          max-width: 100%;
+          > span {
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+  .button-container {
+    flex-shrink: 0;
+    margin-left: auto;
+    .bao-button {
+      margin-left: 1rem;
+    }
+  }
+}

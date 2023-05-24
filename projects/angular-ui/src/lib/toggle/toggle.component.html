@@ -1,0 +1,9 @@
+<button #button [id]="buttonId" type="button" role="switch" name="name" [attr.aria-label]="ariaLabel"
+  [attr.aria-labelledby]="ariaLabelledby" [attr.aria-checked]="checked" (change)="onInteractionEvent($event)"
+  (click)="onButtonClick($event)"></button>
+<label [for]="buttonId" class="bao-toggle-container">
+  <div class="bao-toggle-label" [id]="ariaLabelledby">
+    <ng-content></ng-content>
+  </div>
+  <div class="bao-toggle-switch"></div>
+</label>

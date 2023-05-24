@@ -24,4 +24,5 @@ export * from './lib/modal';
 export * from './lib/hyperlink';
 export * from './lib/dropdown-menu';
 export * from './lib/file';
+export * from './lib/toggle/index';
 export * from './lib/snack-bar';

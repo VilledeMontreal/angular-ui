@@ -1,0 +1,19 @@
+<div class="left-side-content">
+  <div class="back-navigation-container">
+    <ng-content select="a"></ng-content>
+    <ng-template backNavigationInsert></ng-template>
+  </div>
+  <div #textContainer class="text-content">
+    <ng-content select="bao-breadcrumb"></ng-content>
+    <ng-content select="h1"></ng-content>
+    <div class="tag-info-container">
+      <ng-content select="bao-tag"></ng-content>
+      <span class="additional-info">
+        <ng-content select="span"></ng-content>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="button-container">
+  <ng-content></ng-content>
+</div>

@@ -3,5 +3,5 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-export * from './colors';
-export * from './breakpoints';
+export * from './module';
+export * from './system-header.component';

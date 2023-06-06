@@ -31,7 +31,7 @@ export class BaoBreadcrumbComponent implements AfterViewInit {
     this.createLiElement();
   }
   public onContentChange() {
-    this.createLiElement();
+    this.setLastLinkAttribute();
   }
 
   private createLiElement() {

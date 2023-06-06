@@ -26,23 +26,17 @@ const LAST_NODE_ATTRIBUTE = { 'aria-current': 'page' };
 export class BaoBreadcrumbComponent implements AfterViewInit {
   @ViewChild('container', { static: false })
   private staticContainer: ElementRef;
+
   constructor(private renderer: Renderer2) {}
+
   public ngAfterViewInit() {
-    this.createLiElement();
+    this.setLastLinkAttribute();
   }
+
   public onContentChange() {
     this.setLastLinkAttribute();
   }
 
-  private createLiElement() {
-    const children = Array.from(this.staticContainer.nativeElement.children);
-    this.setLastLinkAttribute();
-    children.forEach(c => {
-      const liElement = this.renderer.createElement('li');
-      this.renderer.appendChild(liElement, c);
-      this.renderer.appendChild(this.staticContainer.nativeElement, liElement);
-    });
-  }
   private setLastLinkAttribute() {
     const children = Array.from(this.staticContainer.nativeElement.children);
     this.renderer.setAttribute(

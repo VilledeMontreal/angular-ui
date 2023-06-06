@@ -9,44 +9,36 @@ $margin-between-lines: 0.5rem;
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  > ol {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    > li {
-      line-height: 1rem;
-      display: inline-flex;
-      margin-bottom: 0;
-      margin-right: $margin-between-links;
-      &:last-child {
-        margin-right: 0;
-        &:after {
-          content: none;
-        }
-      }
+  > a {
+    @include typo-interface-xsmall-bold;
+    display: inline-flex;
+    align-items: end;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $neutral-secondary;
+    margin-bottom: $margin-between-lines;
+    margin-right: $margin-between-links;
+    border-bottom: none;
+    background-color: $transparent;
+    &:hover {
+      color: $action;
+    }
+    &:last-child {
+      margin-right: 0;
       &:after {
-        display: inline-block;
-        content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ADB5BD' fill-rule='evenodd'><path d='M12.586 12L9.293 8.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 12z'/></svg>");
-        height: $size-xx-small;
-        width: $size-xx-small;
-        margin-left: $margin-between-links;
-        color: $neutral-secondary;
-        background-color: $transparent;
-        cursor: default;
-        flex-shrink: 0;
+        content: none;
       }
-      > a {
-        @include typo-interface-xsmall-bold;
-        align-items: end;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: $neutral-secondary;
-        border-bottom: none;
-        background-color: $transparent;
-        &:hover {
-          color: $action;
-        }
-      }
+    }
+    &:after {
+      display: inline-block;
+      content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ADB5BD' fill-rule='evenodd'><path d='M12.586 12L9.293 8.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 12z'/></svg>");
+      height: $size-xx-small;
+      width: $size-xx-small;
+      margin-left: $margin-between-links;
+      color: $neutral-secondary;
+      background-color: $transparent;
+      cursor: default;
+      flex-shrink: 0;
     }
   }
 }

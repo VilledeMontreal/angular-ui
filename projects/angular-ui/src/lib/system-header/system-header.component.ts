@@ -124,11 +124,12 @@ export class BaoSystemHeaderComponent implements AfterViewInit, OnInit {
       if (this.textContainerChildren[0].className == 'bao-breadcrumb') {
         // Retrieve link of parent page
         const breadcrumbElementsList =
-          this.textContainerChildren[0].children[0].children[0];
+          this.textContainerChildren[0].children[0];
         const breadcrumbLength = breadcrumbElementsList.children.length;
         const parentLink =
-          breadcrumbElementsList.children[breadcrumbLength - 2].children[0]
-            .attributes['href'].value;
+          breadcrumbElementsList.children[breadcrumbLength - 2].attributes[
+            'href'
+          ].value;
         // Remove Breadcrumb component and replace it with back button
         this.renderer.removeChild(
           this.textContainer.nativeElement,

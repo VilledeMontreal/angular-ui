@@ -1,4 +1,4 @@
-# Releasing @villedemontreal/angular-ui package
+# 🏄 Releasing @villedemontreal/angular-ui package
 
 This document explains how to publish the package at version x.y.z. Ensure that you’re following semver when choosing a version number.
 

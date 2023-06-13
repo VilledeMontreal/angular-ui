@@ -47,7 +47,7 @@ imports: [
 
 ## 🍿 Documentation
 
-- Code examples is available [here](https://services.interne.montreal.ca/bao-storybook).
+- Code examples are available [here](https://services.interne.montreal.ca/bao-storybook).
 - The design system documentation is available [here](https://zeroheight.com/575tugn0n/p/139208-ville-de-montral-design-system). This explains which components to use depending on the context.
 
 ## Versionning
@@ -64,7 +64,7 @@ imports: [
 
 ### Composition rather than configuration
 
-When possible we want to leave the developer free to compose the content of his component as he wishes.
+When possible we want to leave the developer free to compose the content of their component as they wish.
 On the other hand, we must follow the recommendations of the [design system](https://zeroheight.com/575tugn0n/p/139208-ville-de-montral-design-system). This means that it is preferable to be able to inject content into the component via `<ng-content></ng-content>` tags rather than having an endless list of `@Input` allowing to have the desired display/behavior.
 The general idea is to use the `@Input()` for everything that is the component 'state' and the 'child-components' for everything that is content.
 

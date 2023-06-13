@@ -15,15 +15,15 @@ Tous les travaux sur cette librairie se font directement sur [GitHub] (/). Les m
 ## 👩‍💻 Contribuer à la librairie
 
 0. Vous devez "fork" le projet si vous n'ëtes pas familier avec ce processus vous pouvez suivre [cet article](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
-1. Regarder si le component existe déjà ou si quelqu'un travail déjà sur celui-ci.
+1. Regarder si la composante existe déjà ou si quelqu'un travaille déjà sur celle-ci.
 2. Si la spécification n'existe pas, demander à l'équipe UX de la produire.
 3. Si la spécification existe sur [Confluence](https://confluence.montreal.ca/pages/viewpage.action?pageId=121599367), lire la spécification et la suivre à la lettre.
-4. Produire le component conformément au niveau de qualité et avec l'approche de [Material Angular](https://material.angular.io/).
+4. Produire la composante conformément au niveau de qualité et avec l'approche de [Material Angular](https://material.angular.io/).
 5. La pull-request doit contenir les tests afin de garantir que la composante fonctionne, mais aussi éviter les regressions pour les futurs modifications à la librairie.
 6. La pull-request doit contenir une story storybook documentant l’utilisation de la nouvelle composante.
-7. Mettre le component en PR et se conformer aux demandes de changements.
-8. Une fois la PR approuvé par au moins deux des maintainers, le travail est terminé! Une nouvelle version de la lib est sur le point d'être released!
-9. Upgrader la version de la lib où nécessaire et apprécier un travail bien fait et standard qui sera utiliser par tous 💗 !
+7. Mettre la composante en PR et se conformer aux demandes de changements.
+8. Une fois la PR approuvée par au moins deux des mainteneurs, le travail est terminé! Une nouvelle version de la librairie est sur le point d'être publiée!
+9. Mettre à jour la version de la librairie où c'est nécessaire, apprécier un travail bien fait et standard qui sera utilisé par tous 💗 !
 
 ### 🤯 `master` est dangereux
 

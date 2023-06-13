@@ -2,7 +2,7 @@
 
 Une librairie de composantes Angular aux couleurs de la ville!
 
-Codes-tu avec le style ? Oui ? OK, "you rock"! 🎸 Sinon, nous pouvons t'aider à démarrer avec [la documentation, les démos et les guides](https://zeroheight.com/575tugn0n/p/261b21-avant-utilisation)!
+Codes-tu avec style ? Oui ? OK, "you rock"! 🎸 Sinon, nous pouvons t'aider à démarrer avec [la documentation, les démos et les guides](https://zeroheight.com/575tugn0n/p/261b21-avant-utilisation)!
 
 ## Objectif
 

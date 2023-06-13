@@ -1,6 +1,6 @@
 [Français](CONTRIBUTING_FR.md)
 
-# How to Contribute
+# 🦦 How to Contribute
 
 This library is one of the open source projects of the Ville de Montréal which is currently under active development and which is also used to operate online services on [montreal.ca](https://montreal.ca).
 
@@ -12,7 +12,20 @@ Ville de Montreal has adopted a Code of Conduct that we expect project participa
 
 All work on this library happens directly on [GitHub](/). Both core team members and external contributors send pull requests which go through the same review process.
 
-### `master` is unsafe
+## 👩‍💻 Contribute to the library
+
+0. You need to fork the project if you are not familiar with the process you can follow [this article](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+1. See if the component already exists or if someone is already working on it.
+2. If the specification does not exist, ask the UX team to produce it.
+3. If the specification exists on [Confluence](https://confluence.montreal.ca/pages/viewpage.action?pageId=121599367), read the specification and follow it to the letter.
+4. Produce the component according to the quality level and with the approach of [Material Angular](https://material.angular.io/).
+5. The pull-request must contain the tests to guarantee that the component works, but also to avoid regressions for future modifications to the library.
+6. The pull-request must contain a story (see storybook) documenting the use of the new component.
+7. Put the component in PR and comply with change requests.
+8. Once the PR has been approved by at least two of the maintainers, the job is done! A new version of the lib is about to be released!
+9. Upgrade the version where necessary and enjoy a job well done and standardized that will be used by all 💗!
+
+### 🤯 `master` is unsafe
 
 We will do our best to keep `master` in good shape, with tests passing at all times. But in order to move fast, we will make API changes that your application might not be compatible with. We will do our best to communicate these changes and always version appropriately so you can lock into a specific version if need be.
 
@@ -42,6 +55,7 @@ In addition, my commits follow the guidelines from ["How to write a good git com
 
 #### Documentation
 
+Open source software is made by people just like you!
 In case of new functionality, my PR adds documentation that describes how to use it.
 
 ## Developer Certificate of Origin (DCO)

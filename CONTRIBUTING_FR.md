@@ -1,6 +1,6 @@
 [English](CONTRIBUTING.md)
 
-# Comment contribuer
+# 🦦 Comment contribuer
 
 Cette librairie est l’un des projets open source de la Ville de Montréal. Elle est utilisé pour les services en ligne que vous pouvez accéder à [montreal.ca](https://montreal.ca).
 
@@ -12,7 +12,20 @@ Les participants aux projets doivent souscrire au code de conduite que la Ville 
 
 Tous les travaux sur cette librairie se font directement sur [GitHub] (/). Les membres de l'équipe principale et les contributeurs externes envoient des demandes "Pull request" qui passent par le même processus de révision.
 
-### `master` est dangereux
+## 👩‍💻 Contribuer à la librairie
+
+0. Vous devez "fork" le projet si vous n'ëtes pas familier avec ce processus vous pouvez suivre [cet article](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+1. Regarder si la composante existe déjà ou si quelqu'un travaille déjà sur celle-ci.
+2. Si la spécification n'existe pas, demander à l'équipe UX de la produire.
+3. Si la spécification existe sur [Confluence](https://confluence.montreal.ca/pages/viewpage.action?pageId=121599367), lire la spécification et la suivre à la lettre.
+4. Produire la composante conformément au niveau de qualité et avec l'approche de [Material Angular](https://material.angular.io/).
+5. La pull-request doit contenir les tests afin de garantir que la composante fonctionne, mais aussi éviter les regressions pour les futurs modifications à la librairie.
+6. La pull-request doit contenir une story storybook documentant l’utilisation de la nouvelle composante.
+7. Mettre la composante en PR et se conformer aux demandes de changements.
+8. Une fois la PR approuvée par au moins deux des mainteneurs, le travail est terminé! Une nouvelle version de la librairie est sur le point d'être publiée!
+9. Mettre à jour la version de la librairie où c'est nécessaire, apprécier un travail bien fait et standard qui sera utilisé par tous 💗 !
+
+### 🤯 `master` est dangereux
 
 Nous ferons de notre mieux pour garder la branche `master` en bonne forme, avec des tests. Mais pour aller vite, nous allons faire des changements d’API. Ces changements pourraient ne pas être compatible avec votre application. Nous ferons de notre mieux pour communiquer ces modifications et toujours disposer de la version appropriée afin que vous puissiez verrouiller une version spécifique si besoin est.
 

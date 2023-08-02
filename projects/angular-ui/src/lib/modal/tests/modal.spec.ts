@@ -61,6 +61,24 @@ class AddressComponent {
   ) {}
 }
 
+@Component({
+  template:
+    " \
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> \
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> \
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> \
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> \
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> \
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> \
+"
+})
+class LongTextComponent {
+  constructor(
+    public modalRef: BaoModalRef<LongTextComponent>,
+    public modalInjector: Injector
+  ) {}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -133,6 +151,44 @@ describe('BaoModalComponent', () => {
         overlayContainerElement.querySelector('bao-modal-container')
       ).toBeNull();
     }));
+
+    it('Should adjust to content length', () => {
+      const modalRef = modal.open(AddressComponent, {
+        size: eModalDesktopWidthSize.SMALL
+      });
+
+      viewContainerFixture.detectChanges();
+      const smallOverlay =
+        overlayContainerElement.querySelector('.cdk-overlay-pane');
+      const smallContentHeight = smallOverlay.clientHeight;
+
+      modalRef.close();
+
+      viewContainerFixture.detectChanges();
+      modal.open(LongTextComponent, {
+        size: eModalDesktopWidthSize.SMALL
+      });
+
+      viewContainerFixture.detectChanges();
+      const longOverlay =
+        overlayContainerElement.querySelector('.cdk-overlay-pane');
+      const longContentHeight = longOverlay.clientHeight;
+
+      expect(smallContentHeight).toBeLessThan(longContentHeight);
+    });
+
+    it('Should not exceed viewport height', () => {
+      modal.open(LongTextComponent, {
+        size: eModalDesktopWidthSize.SMALL
+      });
+
+      viewContainerFixture.detectChanges();
+      const overlay =
+        overlayContainerElement.querySelector('.cdk-overlay-pane');
+      const longContentHeight = overlay.clientHeight;
+
+      expect(longContentHeight).toBeLessThanOrEqual(window.innerHeight);
+    });
 
     it('should use the default value (small on desktop and fullwidth on mobile)', () => {
       modal.open(AddressComponent);

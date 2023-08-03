@@ -84,6 +84,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
       &.bao-modal-sm {
         width: 500px;
         height: auto;
+        max-height: calc(100% - 4rem);
       }
     }
 
@@ -98,10 +99,12 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
       &.bao-modal-md {
         width: 800px;
         height: auto;
+        max-height: calc(100% - 4rem);
       }
       &.bao-modal-sm {
         width: 500px;
         height: auto;
+        max-height: calc(100% - 4rem);
       }
     }
   }

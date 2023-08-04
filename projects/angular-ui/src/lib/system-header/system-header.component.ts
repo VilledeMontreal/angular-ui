@@ -140,7 +140,7 @@ export class BaoSystemHeaderComponent implements AfterViewInit, OnInit {
         const componentRef = viewContainerRef.createComponent(
           BaoBackNavigationComponent
         );
-        componentRef.setInput('link', parentLink);
+        componentRef.instance.link = parentLink;
       }
     }
   }

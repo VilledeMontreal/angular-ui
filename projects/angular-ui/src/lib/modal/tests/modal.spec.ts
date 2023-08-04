@@ -152,7 +152,7 @@ describe('BaoModalComponent', () => {
       ).toBeNull();
     }));
 
-    it('Should adjust to content length', () => {
+    it('Should adjust to content length', done => {
       const modalRef = modal.open(AddressComponent, {
         size: eModalDesktopWidthSize.SMALL
       });
@@ -162,19 +162,21 @@ describe('BaoModalComponent', () => {
         overlayContainerElement.querySelector('.cdk-overlay-pane');
       const smallContentHeight = smallOverlay.clientHeight;
 
-      modalRef.close();
+      modalRef.afterClosed().subscribe(() => {
+        // wait for the modal to close to avoid having a flaky test
+        modal.open(LongTextComponent, {
+          size: eModalDesktopWidthSize.SMALL
+        });
 
-      viewContainerFixture.detectChanges();
-      modal.open(LongTextComponent, {
-        size: eModalDesktopWidthSize.SMALL
+        viewContainerFixture.detectChanges();
+        const longOverlay =
+          overlayContainerElement.querySelector('.cdk-overlay-pane');
+        const longContentHeight = longOverlay.clientHeight;
+
+        expect(smallContentHeight).toBeLessThan(longContentHeight);
+        done();
       });
-
-      viewContainerFixture.detectChanges();
-      const longOverlay =
-        overlayContainerElement.querySelector('.cdk-overlay-pane');
-      const longContentHeight = longOverlay.clientHeight;
-
-      expect(smallContentHeight).toBeLessThan(longContentHeight);
+      modalRef.close();
     });
 
     it('Should not exceed viewport height', () => {

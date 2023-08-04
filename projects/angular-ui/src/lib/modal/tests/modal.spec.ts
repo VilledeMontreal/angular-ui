@@ -153,6 +153,7 @@ describe('BaoModalComponent', () => {
     }));
 
     it('Should adjust to content length', done => {
+      viewport.set('lg');
       const modalRef = modal.open(AddressComponent, {
         size: eModalDesktopWidthSize.SMALL
       });
@@ -180,6 +181,7 @@ describe('BaoModalComponent', () => {
     });
 
     it('Should not exceed viewport height', () => {
+      viewport.set('md');
       modal.open(LongTextComponent, {
         size: eModalDesktopWidthSize.SMALL
       });

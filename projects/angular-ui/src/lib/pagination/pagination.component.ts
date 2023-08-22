@@ -4,26 +4,28 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 @Component({
   selector: 'bao-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
-export class BaoPaginationComponent {
+export class BaoPaginationComponent implements OnChanges {
   /**
-   *  The screen reader previous button label
+   *  The previous button label
+   *  Used for accessibility
    */
   @Input() 
   public previousArialLabel: string
   /**
-   *  The screen reader next button label
+   *  The next button label
+   *  Used for accessibility 
    */
   @Input() 
   public nextArialLabel: string
   /**
-   *  The total number of calculated pages. 
+   *  The total number of calculated pages 
    *  Value calculated using the paging limit and totalCount
    */
   @Input() 
@@ -34,44 +36,73 @@ export class BaoPaginationComponent {
   @Input() 
   public currentPage: number
   /**
-   *  The previous button label
+   *  EventEmitter that triggers when there is a page change and emits page number (index adjusted)
+   * @type {EventEmitter<number>}
    */
   @Output() 
-  public pageChanged = new EventEmitter();
+  public pageChanged = new EventEmitter<number>();
 
+  /**
+   *  Flag to set start elipsis state
+   */
   public displayStartEllipsis: boolean = false;
+  /**
+   *  Flag to set end elipsis state   
+   */
   public displayEndEllipsis: boolean = false;
-  public pages = [];
+  /**
+   * Page number list to display
+   */
+  public pages:number[];
+  /**
+   * Max number of pages to display
+   */
   private maxPages = 5;
 
+  /**
+   * Flag that indicates if a previous page exists for the current list
+   */
   public get hasPrevious(): boolean {
     return this.currentPage !== 1;
   }
-
+  /**
+   * Flag that indicates if a next page exists for the current list
+   */
   public get hasNext(): boolean {
     return this.currentPage < this.totalPages;
   }
 
+  /**
+   * Triggered as part of the angular life cycle
+   */
   public ngOnChanges(): void {
     this.pages = this.buildPageNumbers();
   }
-
+  /**
+   * Navigate to specific page
+   */
   public goTo(page: number): void {
     this.pageChanged.emit(page - 1);
   }
-
+  /**
+   * Navigate to previous page
+   */
   public handlePreviousClick() {
     if (this.hasPrevious) {
       this.goTo(this.currentPage - 1);
     }
   }
-
+  /**
+   * Navigate to next page
+   */
   public handleNextClick(): void {
     if (this.hasNext) {
       this.goTo(this.currentPage + 1);
     }
   }
-
+  /**
+   * Generate series of page numbers to display
+   */
   private buildPageNumbers() : number[] {
     return  Array.from(
       {
@@ -79,7 +110,7 @@ export class BaoPaginationComponent {
         length: Math.min(this.totalPages, this.maxPages, this.totalPages - this.currentPage + Math.ceil(this.maxPages / 2))
       },
       // generate series of page numbers to display
-      (value, index) => index + 1 + Math.min(Math.max(Math.floor(this.currentPage - this.maxPages / 2), 0), this.totalPages)
+      (value, index) => Number(index) + 1 + Math.min(Math.max(Math.floor(this.currentPage - this.maxPages / 2), 0), this.totalPages)
     );
   }
 }

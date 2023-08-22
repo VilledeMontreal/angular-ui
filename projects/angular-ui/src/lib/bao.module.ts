@@ -5,25 +5,26 @@
  */
 import { NgModule } from '@angular/core';
 import { BaoAlertModule } from './alert';
+import { BaoAvatarModule } from './avatar';
 import { BaoBreadcrumbModule } from './breadcrumb';
 import { BaoButtonModule } from './button';
 import { BaoCardModule } from './card';
 import { BaoCheckboxModule } from './checkbox';
 import { BaoCommonComponentsModule } from './common-components';
-import { BaoHeaderInfoModule } from './header-info';
-import { BaoIconModule } from './icon';
-import { BaoListModule } from './list';
-import { BaoRadioModule } from './radio';
-import { BaoTagModule } from './tag';
-import { BaoSummaryModule } from './summary';
-import { BaoAvatarModule } from './avatar';
-import { BaoTabsModule } from './tabs';
-import { BaoModalModule } from './modal/module';
-import { BaoHyperlinkModule } from './hyperlink';
 import { BaoDropdownMenuModule } from './dropdown-menu';
 import { BaoFileModule } from './file/module';
+import { BaoHeaderInfoModule } from './header-info';
+import { BaoHyperlinkModule } from './hyperlink';
+import { BaoIconModule } from './icon';
+import { BaoListModule } from './list';
+import { BaoModalModule } from './modal/module';
+import { BaoPaginationModule } from './pagination';
+import { BaoRadioModule } from './radio';
 import { BaoSnackBarModule } from './snack-bar/module';
+import { BaoSummaryModule } from './summary';
 import { BaoSystemHeaderModule } from './system-header';
+import { BaoTabsModule } from './tabs';
+import { BaoTagModule } from './tag';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { BaoSystemHeaderModule } from './system-header';
     BaoAlertModule,
     BaoCardModule,
     BaoBreadcrumbModule,
-    BaoModalModule
+    BaoModalModule,
+    BaoPaginationModule
   ],
   exports: [
     BaoIconModule,
@@ -54,7 +56,8 @@ import { BaoSystemHeaderModule } from './system-header';
     BaoDropdownMenuModule,
     BaoFileModule,
     BaoSnackBarModule,
-    BaoSystemHeaderModule
+    BaoSystemHeaderModule,
+    BaoPaginationModule
     // TODO: reactivate once component does not depend on global css BaoBadgeModule,
   ]
 })

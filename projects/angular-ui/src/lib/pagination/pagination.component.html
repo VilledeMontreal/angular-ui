@@ -1,0 +1,62 @@
+<nav aria-label="Pagination">
+  <ul class="pagination">
+    <li
+      class="page-item"
+      [ngClass]="{ disabled: !hasPrevious }"
+      [attr.aria-disabled]="!hasPrevious ? 'true' : null"
+    >
+      <a
+        class="page-link"
+        href="#"
+        (click)="$event.preventDefault();handlePreviousClick();"
+        (keydown.enter)="$event.preventDefault();handlePreviousClick();"
+        (keydown.space)="$event.preventDefault();handlePreviousClick();"
+        tabindex="0"
+        >&lt;</a
+      >
+      <span class="sr-only">{{ previousArialLabel }}</span>
+    </li>
+    <li class="page-item disabled" *ngIf="pages[0] !== 1">
+      <span class="page-link">...</span>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let page of pages"
+      [ngClass]="{ active: page === currentPage }"
+      [attr.aria-current]="page === currentPage ? 'page' : null"
+    >
+      <a
+        class="page-link"
+        href="#"
+        (click)="$event.preventDefault();goTo(page);"
+        (keydown.enter)="$event.preventDefault();goTo(page);"
+        (keydown.space)="$event.preventDefault();goTo(page);"
+        tabindex="0"
+        >{{ page }}</a
+      >
+      <span class="sr-only">Page {{ page }}</span>
+    </li>
+    <li
+      class="page-item disabled"
+      *ngIf="pages[pages.length - 1] !== totalPages"
+    >
+      <a class="page-link" href="#">...</a>
+    </li>
+    <li
+      class="page-item"
+      [ngClass]="{ disabled: !hasNext }"
+      [attr.aria-disabled]="!hasNext ? 'true' : null"
+    >
+      <a
+        class="page-link"
+        href="#"
+        (click)="$event.preventDefault();handleNextClick();"
+        (keydown.enter)="$event.preventDefault();handleNextClick();"
+        (keydown.space)="$event.preventDefault();handleNextClick();"
+        tabindex="0"
+        >&gt;</a
+      >
+      <span class="sr-only">{{ nextArialLabel }}</span>
+    </li>
+  </ul>
+</nav>

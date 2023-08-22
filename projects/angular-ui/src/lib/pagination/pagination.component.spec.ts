@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
  * 4. Elipsis
  * 5. Next button
  */
-fdescribe('PaginationComponent', () => {
+describe('PaginationComponent', () => {
   let component: BaoPaginationComponent;
   let fixture: ComponentFixture<BaoPaginationComponent>;
 

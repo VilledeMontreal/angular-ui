@@ -13,52 +13,57 @@ import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core
 })
 export class BaoPaginationComponent implements OnChanges {
   /**
-   *  The previous button label
-   *  Used for accessibility
+   * The previous button label used for accessibility
    */
-  @Input() 
+  @Input()
   public previousArialLabel: string
   /**
-   *  The next button label
-   *  Used for accessibility 
+   * The next button label used for accessibility
    */
-  @Input() 
+  @Input()
   public nextArialLabel: string
   /**
-   *  The total number of calculated pages 
-   *  Value calculated using the paging limit and totalCount
+   * The total number of calculated pages. 
+   * Value calculated using the paging limit and totalCount
    */
-  @Input() 
+  @Input()
   public totalPages: number
   /**
-   *  The current page number
+   * The current page number
    */
-  @Input() 
+  @Input()
   public currentPage: number
   /**
-   *  EventEmitter that triggers when there is a page change and emits page number (index adjusted)
+   * EventEmitter that triggers when there is a page change and emits page number (index adjusted)
    * @type {EventEmitter<number>}
    */
-  @Output() 
+  @Output()
   public pageChanged = new EventEmitter<number>();
 
   /**
    *  Flag to set start elipsis state
    */
-  public displayStartEllipsis: boolean = false;
+  public displayStartEllipsis: boolean;
   /**
    *  Flag to set end elipsis state   
    */
-  public displayEndEllipsis: boolean = false;
+  public displayEndEllipsis: boolean;
   /**
    * Page number list to display
    */
-  public pages:number[];
+  public pages: number[];
   /**
    * Max number of pages to display
    */
-  private maxPages = 5;
+  private maxPages:number;
 
+  constructor() {
+    this.pages = [];
+    this.maxPages = 5;
+    this.displayStartEllipsis = false;
+    this.displayEndEllipsis = false;
+  }
+  
   /**
    * Flag that indicates if a previous page exists for the current list
    */
@@ -103,8 +108,8 @@ export class BaoPaginationComponent implements OnChanges {
   /**
    * Generate series of page numbers to display
    */
-  private buildPageNumbers() : number[] {
-    return  Array.from(
+  private buildPageNumbers(): number[] {
+    return Array.from(
       {
         // minimum between total pages, max pages and the upper bound relative to the current page
         length: Math.min(this.totalPages, this.maxPages, this.totalPages - this.currentPage + Math.ceil(this.maxPages / 2))

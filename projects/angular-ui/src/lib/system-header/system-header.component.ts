@@ -7,6 +7,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Directive,
   ElementRef,
@@ -87,6 +88,7 @@ export class BaoSystemHeaderComponent implements AfterViewInit, OnInit {
   public screenType: 'mobile' | 'tablet' | 'desktop' = 'desktop';
 
   constructor(
+    private cd: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
     private renderer: Renderer2
   ) {}
@@ -116,6 +118,7 @@ export class BaoSystemHeaderComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.formatNavigation();
     this.applySizeClass();
+    this.cd.detectChanges();
   }
 
   private formatNavigation() {

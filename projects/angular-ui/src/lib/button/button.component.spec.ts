@@ -19,19 +19,17 @@ describe('BaoButtonComponent', () => {
     let fixture: ComponentFixture<TestButtonHostComponent>;
     let buttonDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoButtonComponent,
-            TestButtonHostComponent,
-            BaoIconComponent
-          ]
-        });
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoButtonComponent,
+          TestButtonHostComponent,
+          BaoIconComponent
+        ]
+      });
 
-        return TestBed.compileComponents();
-      })
-    );
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixture = TestBed.createComponent(TestButtonHostComponent);
@@ -276,19 +274,17 @@ describe('BaoButtonComponent', () => {
     let fixtureWithIcon: ComponentFixture<TestButtonWithIconHostComponent>;
     let defaultIconDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoButtonComponent,
-            TestButtonWithIconHostComponent,
-            BaoIconComponent
-          ]
-        });
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoButtonComponent,
+          TestButtonWithIconHostComponent,
+          BaoIconComponent
+        ]
+      });
 
-        return TestBed.compileComponents();
-      })
-    );
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureWithIcon = TestBed.createComponent(

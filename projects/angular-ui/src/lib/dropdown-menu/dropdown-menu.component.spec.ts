@@ -34,22 +34,20 @@ describe('BaoDropdownMenuComponent', () => {
     let listItemDebugElement: HTMLElement[];
     let triggerDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoDropdownMenuComponent,
-            BaoDropdownMenuItem,
-            BaoDropdownMenuTrigger,
-            BaoDropdownMenuItemLabel,
-            TestDropdownMenuHostComponent,
-            BaoIconComponent
-          ],
-          imports: [OverlayModule]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoDropdownMenuComponent,
+          BaoDropdownMenuItem,
+          BaoDropdownMenuTrigger,
+          BaoDropdownMenuItemLabel,
+          TestDropdownMenuHostComponent,
+          BaoIconComponent
+        ],
+        imports: [OverlayModule]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureMenu = TestBed.createComponent(TestDropdownMenuHostComponent);
@@ -124,20 +122,18 @@ describe('BaoDropdownMenuComponent', () => {
     let buttonDebugElement: DebugElement;
     let dropdownMenuDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoDropdownMenuComponent,
-            BaoDropdownMenuTrigger,
-            TestButtonMenuHostComponent,
-            BaoIconComponent
-          ],
-          imports: [OverlayModule]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoDropdownMenuComponent,
+          BaoDropdownMenuTrigger,
+          TestButtonMenuHostComponent,
+          BaoIconComponent
+        ],
+        imports: [OverlayModule]
+      });
+      return TestBed.compileComponents();
+    }));
     beforeEach(() => {
       fixtureButton = TestBed.createComponent(TestButtonMenuHostComponent);
       fixtureButton.detectChanges();
@@ -165,23 +161,21 @@ describe('BaoDropdownMenuComponent', () => {
     let checkboxDebugElement: DebugElement;
     let radioDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoDropdownMenuComponent,
-            BaoDropdownMenuTrigger,
-            BaoDropdownMenuItem,
-            BaoDropdownMenuItemLabel,
-            TestDropdownWithInputsHostComponent,
-            BaoCheckboxComponent,
-            BaoRadioButtonComponent
-          ],
-          imports: [OverlayModule]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoDropdownMenuComponent,
+          BaoDropdownMenuTrigger,
+          BaoDropdownMenuItem,
+          BaoDropdownMenuItemLabel,
+          TestDropdownWithInputsHostComponent,
+          BaoCheckboxComponent,
+          BaoRadioButtonComponent
+        ],
+        imports: [OverlayModule]
+      });
+      return TestBed.compileComponents();
+    }));
     beforeEach(() => {
       fixture = TestBed.createComponent(TestDropdownWithInputsHostComponent);
       fixture.detectChanges();

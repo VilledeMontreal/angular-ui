@@ -3,8 +3,8 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoBreadcrumbComponent } from 'angular-ui';
+import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { BaoBreadcrumbComponent, BaoBreadcrumbModule } from 'angular-ui';
 
 const description = `
 The breadcrumb trail component allows users to locate themselves within the depth of a website's pages, while keeping a quick access to previous levels they've already visited.
@@ -19,7 +19,11 @@ The breadcrumb component has no properties.
 
 export default {
   title: 'Components/Breadcrumb',
-  component: BaoBreadcrumbComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [BaoBreadcrumbModule]
+    })
+  ],
   parameters: {
     docs: {
       description: {
@@ -51,10 +55,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoBreadcrumbComponent> = (
-  args: BaoBreadcrumbComponent
-) => ({
-  component: BaoBreadcrumbComponent,
+const Template: StoryFn = (args: BaoBreadcrumbComponent) => ({
   template: `
   <bao-breadcrumb>
     <a href=#>parent page</a>

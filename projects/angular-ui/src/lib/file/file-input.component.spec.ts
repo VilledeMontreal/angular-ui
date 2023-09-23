@@ -30,26 +30,24 @@ describe('BaoFileInputComponent', () => {
     let fixtureFileInput: ComponentFixture<TestFileInputHostComponent>;
     let fileInputDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoFileInputComponent,
-            BaoIconComponent,
-            BaoGuidingTextComponent,
-            BaoFileDropDirective,
-            BaoLabelTextComponent,
-            BaoErrorTextComponent,
-            BaoFileDropzoneIntructions,
-            BaoButtonComponent,
-            TestFileInputHostComponent
-          ],
-          imports: [OverlayModule],
-          providers: [BaoFileIntl]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoFileInputComponent,
+          BaoIconComponent,
+          BaoGuidingTextComponent,
+          BaoFileDropDirective,
+          BaoLabelTextComponent,
+          BaoErrorTextComponent,
+          BaoFileDropzoneIntructions,
+          BaoButtonComponent,
+          TestFileInputHostComponent
+        ],
+        imports: [OverlayModule],
+        providers: [BaoFileIntl]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureFileInput = TestBed.createComponent(TestFileInputHostComponent);
@@ -127,26 +125,24 @@ describe('BaoFileInputComponent', () => {
     let testComponent: TestFileInputHostComponent;
     let fixtureFileInput: ComponentFixture<TestFileInputHostComponent>;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoFileInputComponent,
-            BaoIconComponent,
-            BaoGuidingTextComponent,
-            BaoFileDropDirective,
-            BaoLabelTextComponent,
-            BaoErrorTextComponent,
-            BaoFileDropzoneIntructions,
-            BaoButtonComponent,
-            TestFileInputHostComponent
-          ],
-          imports: [OverlayModule],
-          providers: [{ provide: BaoFileIntl, useClass: BaoFileIntlEnglish }]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoFileInputComponent,
+          BaoIconComponent,
+          BaoGuidingTextComponent,
+          BaoFileDropDirective,
+          BaoLabelTextComponent,
+          BaoErrorTextComponent,
+          BaoFileDropzoneIntructions,
+          BaoButtonComponent,
+          TestFileInputHostComponent
+        ],
+        imports: [OverlayModule],
+        providers: [{ provide: BaoFileIntl, useClass: BaoFileIntlEnglish }]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureFileInput = TestBed.createComponent(TestFileInputHostComponent);

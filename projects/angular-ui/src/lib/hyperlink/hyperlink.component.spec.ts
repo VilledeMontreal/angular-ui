@@ -22,14 +22,12 @@ describe('BaoHyperlinkComponent', () => {
     let fixture: ComponentFixture<TestHyperlinkHostComponent>;
     let hyperlinkDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [BaoHyperlinkComponent, TestHyperlinkHostComponent]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [BaoHyperlinkComponent, TestHyperlinkHostComponent]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixture = TestBed.createComponent(TestHyperlinkHostComponent);
@@ -75,14 +73,12 @@ describe('BaoHyperlinkComponent', () => {
     let fixtureInList: ComponentFixture<TestHyperlinkListHostComponent>;
     let hyperlinkInListDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [BaoHyperlinkComponent, TestHyperlinkListHostComponent]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [BaoHyperlinkComponent, TestHyperlinkListHostComponent]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureInList = TestBed.createComponent(TestHyperlinkListHostComponent);
@@ -104,18 +100,16 @@ describe('BaoHyperlinkComponent', () => {
     let fixtureInlineIcon: ComponentFixture<TestHyperlinkInlineIconHostComponent>;
     let hyperlinkInlineIconDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoHyperlinkComponent,
-            TestHyperlinkInlineIconHostComponent,
-            BaoIconComponent
-          ]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoHyperlinkComponent,
+          TestHyperlinkInlineIconHostComponent,
+          BaoIconComponent
+        ]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureInlineIcon = TestBed.createComponent(
@@ -137,18 +131,16 @@ describe('BaoHyperlinkComponent', () => {
     let fixtureListIcon: ComponentFixture<TestHyperlinkListIconHostComponent>;
     let hyperlinkListIconDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoHyperlinkComponent,
-            TestHyperlinkListIconHostComponent,
-            BaoIconComponent
-          ]
-        });
-        return TestBed.compileComponents();
-      })
-    );
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoHyperlinkComponent,
+          TestHyperlinkListIconHostComponent,
+          BaoIconComponent
+        ]
+      });
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureListIcon = TestBed.createComponent(

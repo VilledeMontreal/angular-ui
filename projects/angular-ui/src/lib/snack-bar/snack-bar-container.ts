@@ -367,7 +367,12 @@ export class BaoSnackBarContainerComponent
             }
 
             inertElement.removeAttribute('aria-hidden');
-            liveElement.appendChild(inertElement);
+            try {
+              liveElement.appendChild(inertElement);
+            } catch (error) {
+              console.warn(error);
+            }
+
             focusedElement?.focus();
 
             this._onAnnounce.next();

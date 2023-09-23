@@ -19,15 +19,13 @@ describe('BaoTagComponent', () => {
     let fixture: ComponentFixture<TestTagHostComponent>;
     let tagDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [BaoTagComponent, TestTagHostComponent]
-        });
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [BaoTagComponent, TestTagHostComponent]
+      });
 
-        return TestBed.compileComponents();
-      })
-    );
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixture = TestBed.createComponent(TestTagHostComponent);
@@ -108,19 +106,17 @@ describe('BaoTagComponent', () => {
     let fixtureWithIcon: ComponentFixture<TestTagWithIconHostComponent>;
     let tagWithIconDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [
-            BaoTagComponent,
-            TestTagWithIconHostComponent,
-            BaoIconComponent
-          ]
-        });
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          BaoTagComponent,
+          TestTagWithIconHostComponent,
+          BaoIconComponent
+        ]
+      });
 
-        return TestBed.compileComponents();
-      })
-    );
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixtureWithIcon = TestBed.createComponent(TestTagWithIconHostComponent);

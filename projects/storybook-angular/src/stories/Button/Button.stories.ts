@@ -4,9 +4,8 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoButtonComponent, BaoIconComponent } from 'angular-ui';
+import { moduleMetadata, StoryFn, Meta } from '@storybook/angular';
+import { BaoButtonComponent, BaoButtonModule, BaoIconModule } from 'angular-ui';
 
 const description = `
 Primary UI component for user interaction
@@ -16,13 +15,12 @@ The full documentation of this component is available in the Hochelaga design sy
 
 export default {
   title: 'Components/Button',
+  component: BaoButtonComponent,
   decorators: [
     moduleMetadata({
-      declarations: [BaoIconComponent],
-      imports: [CommonModule]
+      imports: [CommonModule, BaoButtonModule, BaoIconModule]
     })
   ],
-  component: BaoButtonComponent,
   parameters: {
     docs: {
       description: {
@@ -35,13 +33,21 @@ export default {
       table: {
         disable: true
       }
+    },
+    rightIcon: {
+      table: {
+        disable: true
+      }
+    },
+    noText: {
+      table: {
+        disable: true
+      }
     }
   }
 } as Meta;
 
-const Template: Story<BaoButtonComponent & { label: string }> = (
-  args: BaoButtonComponent
-) => ({
+const Template: StoryFn = (args: BaoButtonComponent) => ({
   component: BaoButtonComponent,
   template: `
   <button
@@ -63,8 +69,6 @@ const Template: Story<BaoButtonComponent & { label: string }> = (
 export const Primary = Template.bind({});
 
 Primary.args = {
-  rightIcon: false,
-  noText: false,
   loading: false,
   reversed: false,
   fullWidth: false,
@@ -74,7 +78,7 @@ Primary.args = {
   size: 'medium'
 };
 
-export const UtilitySizeButton: Story = args => ({
+export const UtilitySizeButton: StoryFn = args => ({
   props: args,
   template: `
   <div>
@@ -94,7 +98,7 @@ UtilitySizeButton.args = {
   ...Primary.args
 };
 
-export const UtilityIconsButton: Story = args => ({
+export const UtilityIconsButton: StoryFn = args => ({
   props: args,
   template: `
   <div style="">
@@ -129,7 +133,7 @@ UtilityIconsButton.args = {
   ...Primary.args
 };
 
-export const UtilityLevelButton: Story = args => ({
+export const UtilityLevelButton: StoryFn = args => ({
   props: args,
   template: `
     <button bao-button type="button" displayType="utility" level="primary" style="margin-right: 1rem;">{{label}}</button>
@@ -142,7 +146,7 @@ UtilityLevelButton.args = {
   ...Primary.args
 };
 
-export const UtilityDisabledButton: Story = args => ({
+export const UtilityDisabledButton: StoryFn = args => ({
   props: args,
   template: `
   <div>
@@ -162,7 +166,7 @@ UtilityDisabledButton.args = {
   ...Primary.args
 };
 
-export const UtilityReversedButton: Story = args => ({
+export const UtilityReversedButton: StoryFn = args => ({
   props: args,
   template: `
   <div style="background-color: black; padding: 1rem;">
@@ -174,10 +178,11 @@ export const UtilityReversedButton: Story = args => ({
 });
 UtilityReversedButton.storyName = 'Utility - Reversed';
 UtilityReversedButton.args = {
-  ...Primary.args
+  ...Primary.args,
+  reversed: true
 };
 
-export const UtilityRDButton: Story = args => ({
+export const UtilityRDButton: StoryFn = args => ({
   props: args,
   template: `
   <div style="background-color: black; padding: 1rem;">
@@ -189,10 +194,11 @@ export const UtilityRDButton: Story = args => ({
 });
 UtilityRDButton.storyName = 'Utility - Reversed and Disabled';
 UtilityRDButton.args = {
-  ...Primary.args
+  ...Primary.args,
+  reversed: true
 };
 
-export const UtilityLoadingButton: Story = args => ({
+export const UtilityLoadingButton: StoryFn = args => ({
   props: args,
   template: `
   <div>
@@ -232,10 +238,11 @@ UtilityLoadingButton.parameters = {
   }
 };
 UtilityLoadingButton.args = {
-  ...Primary.args
+  ...Primary.args,
+  loading: true
 };
 
-export const UtilityFullWidthButton: Story = args => ({
+export const UtilityFullWidthButton: StoryFn = args => ({
   props: args,
   template: `
     <div>
@@ -255,5 +262,6 @@ UtilityFullWidthButton.parameters = {
   }
 };
 UtilityFullWidthButton.args = {
-  ...Primary.args
+  ...Primary.args,
+  fullWidth: true
 };

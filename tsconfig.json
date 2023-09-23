@@ -18,7 +18,7 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "angular-ui": ["dist/angular-ui"],
-      "storybook-angular-examples": ["dist/storybook-angular-examples"]
+      "storybook-angular": ["dist/storybook-angular"]
     },
     "useDefineForClassFields": false
   },
@@ -26,5 +26,5 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   },
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules", "*.spec.ts"]
 }

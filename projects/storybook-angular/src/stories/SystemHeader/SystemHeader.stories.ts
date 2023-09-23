@@ -5,19 +5,14 @@
  */
 import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Meta, StoryFn } from '@storybook/angular';
 import {
-  BaoSystemHeaderComponent,
-  BaoBackNavigationInsert,
-  BaoBackNavigationComponent,
-  BaoDropdownMenuComponent,
-  BaoDropdownMenuTrigger,
-  BaoDropdownMenuItemLabel,
-  BaoDropdownMenuItem,
-  BaoIconComponent,
-  BaoBreadcrumbComponent,
-  BaoButtonComponent,
-  BaoTagComponent
+  BaoSystemHeaderModule,
+  BaoTagModule,
+  BaoButtonModule,
+  BaoBreadcrumbModule,
+  BaoIconModule,
+  BaoDropdownMenuModule
 } from 'angular-ui';
 
 const description = `
@@ -31,22 +26,17 @@ export default {
   title: 'Patterns/SystemHeader',
   decorators: [
     moduleMetadata({
-      declarations: [
-        BaoBackNavigationInsert,
-        BaoBackNavigationComponent,
-        BaoDropdownMenuComponent,
-        BaoDropdownMenuTrigger,
-        BaoDropdownMenuItemLabel,
-        BaoDropdownMenuItem,
-        BaoIconComponent,
-        BaoBreadcrumbComponent,
-        BaoButtonComponent,
-        BaoTagComponent
-      ],
-      imports: [CommonModule]
+      imports: [
+        CommonModule,
+        BaoSystemHeaderModule,
+        BaoTagModule,
+        BaoButtonModule,
+        BaoBreadcrumbModule,
+        BaoIconModule,
+        BaoDropdownMenuModule
+      ]
     })
   ],
-  component: BaoSystemHeaderComponent,
   parameters: {
     docs: {
       description: {
@@ -99,7 +89,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story = args => ({
+const Template: StoryFn = args => ({
   props: args,
   template: `
     <bao-system-header>
@@ -201,7 +191,7 @@ Primary.args = {
   screenSize: 'desktop'
 };
 
-export const SimpleSystemHeader: Story = args => ({
+export const SimpleSystemHeader: StoryFn = args => ({
   props: args,
   template: `
     <bao-system-header>

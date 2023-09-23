@@ -14,15 +14,13 @@ describe('BaoBreadcrumbComponent', () => {
     let fixture: ComponentFixture<TestBreadcrumbHostComponent>;
     let breadcrumbDebugElement: DebugElement;
 
-    beforeEach(
-      waitForAsync(() => {
-        TestBed.configureTestingModule({
-          declarations: [BaoBreadcrumbComponent, TestBreadcrumbHostComponent]
-        });
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [BaoBreadcrumbComponent, TestBreadcrumbHostComponent]
+      });
 
-        return TestBed.compileComponents();
-      })
-    );
+      return TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
       fixture = TestBed.createComponent(TestBreadcrumbHostComponent);

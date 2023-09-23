@@ -4,9 +4,8 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoAvatarComponent, BaoAvatarContent } from 'angular-ui';
+import { moduleMetadata, StoryFn, Meta } from '@storybook/angular';
+import { BaoAvatarComponent, BaoAvatarModule } from 'angular-ui';
 
 const description = `
 Avatar are used to display a representation of a user's profile. 
@@ -19,11 +18,9 @@ export default {
   title: 'Components/Avatar',
   decorators: [
     moduleMetadata({
-      declarations: [BaoAvatarContent],
-      imports: [CommonModule]
+      imports: [CommonModule, BaoAvatarModule]
     })
   ],
-  component: BaoAvatarComponent,
   parameters: {
     docs: {
       description: {
@@ -55,8 +52,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoAvatarComponent> = (args: BaoAvatarComponent) => ({
-  component: BaoAvatarComponent,
+const Template: StoryFn = (args: BaoAvatarComponent) => ({
   template: `
     <bao-avatar [color]="color" [profileName]="profileName">
       <span bao-avatar-content>aa</span>
@@ -72,7 +68,7 @@ Primary.args = {
   profileName: 'Jean Tremblay'
 };
 
-export const AvatarDefault: Story = args => ({
+export const AvatarDefault: StoryFn = args => ({
   props: args,
   template: `
       <bao-avatar [profileName]="profileName"></bao-avatar>
@@ -83,7 +79,7 @@ AvatarDefault.args = {
   ...Primary.args
 };
 
-export const AvatarWithImage: Story = args => ({
+export const AvatarWithImage: StoryFn = args => ({
   props: args,
   template: `
       <bao-avatar [profileName]="profileName">

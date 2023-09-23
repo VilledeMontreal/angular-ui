@@ -4,24 +4,22 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
+import {
+  componentWrapperDecorator,
+  moduleMetadata,
+  Meta,
+  StoryFn
+} from '@storybook/angular';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
-import { Meta, Story } from '@storybook/angular/types-6-0';
 import {
   BaoDropdownMenuComponent,
-  BaoDropdownMenuTrigger,
-  BaoDropdownMenuItem,
-  BaoDropdownMenuSection,
-  BaoDropdownMenuItemLabel,
-  BaoDropdownMenuItemDescription,
-  BaoDropdownMenuDivider,
-  BaoIconComponent,
-  BaoButtonComponent,
-  BaoAvatarComponent,
-  BaoAvatarContent,
-  BaoCheckboxComponent,
-  BaoRadioButtonComponent
+  BaoDropdownMenuModule,
+  BaoButtonModule,
+  BaoAvatarModule,
+  BaoCheckboxModule,
+  BaoRadioModule,
+  BaoIconModule
 } from 'angular-ui';
 
 const description = `
@@ -34,27 +32,22 @@ export default {
   title: 'Components/DropdownMenu',
   decorators: [
     moduleMetadata({
-      declarations: [
-        BaoDropdownMenuTrigger,
-        BaoDropdownMenuItem,
-        BaoDropdownMenuSection,
-        BaoDropdownMenuItemLabel,
-        BaoDropdownMenuItemDescription,
-        BaoIconComponent,
-        BaoButtonComponent,
-        BaoAvatarComponent,
-        BaoAvatarContent,
-        BaoCheckboxComponent,
-        BaoRadioButtonComponent,
-        BaoDropdownMenuDivider
-      ],
-      imports: [CommonModule, OverlayModule, PortalModule]
+      imports: [
+        CommonModule,
+        BaoDropdownMenuModule,
+        BaoButtonModule,
+        BaoAvatarModule,
+        BaoCheckboxModule,
+        BaoRadioModule,
+        BaoIconModule,
+        OverlayModule,
+        PortalModule
+      ]
     }),
     componentWrapperDecorator(
       story => `<div style="max-width:30rem;">${story}</div>`
     )
   ],
-  component: BaoDropdownMenuComponent,
   parameters: {
     docs: {
       description: {
@@ -161,35 +154,32 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoDropdownMenuComponent> = (
-  args: BaoDropdownMenuComponent
-) => ({
-  component: BaoDropdownMenuComponent,
+const Template: StoryFn = (args: BaoDropdownMenuComponent) => ({
   template: `
-          <button bao-button [baoDropdownMenuTriggerFor]="testMenu" type="editorial" level="primary" 
-            size="medium" style="margin-right: 1rem;">
-              <span>Actions</span>
-              <bao-icon svgIcon="icon-chevron-down"></bao-icon>
-          </button>
-          <bao-dropdown-menu #testMenu>
-            <ul>
-              <li>
-                <a bao-dropdown-menu-item>
-                  <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
-                </a>
-              </li>   
-              <li>
-                <a bao-dropdown-menu-item>
-                  <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
-                </a>
-              </li>
-              <li>
-                <a bao-dropdown-menu-item>
-                  <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
-                </a>
-              </li>
-            </ul>
-          </bao-dropdown-menu>
+    <button bao-button [baoDropdownMenuTriggerFor]="testMenu" type="editorial" level="primary" 
+      size="medium" style="margin-right: 1rem;">
+        <span>Actions</span>
+        <bao-icon svgIcon="icon-chevron-down"></bao-icon>
+    </button>
+    <bao-dropdown-menu #testMenu>
+      <ul>
+        <li>
+          <a bao-dropdown-menu-item>
+            <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
+          </a>
+        </li>   
+        <li>
+          <a bao-dropdown-menu-item>
+            <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
+          </a>
+        </li>
+        <li>
+          <a bao-dropdown-menu-item>
+            <bao-dropdown-menu-item-label>Libellé</bao-dropdown-menu-item-label>
+          </a>
+        </li>
+      </ul>
+    </bao-dropdown-menu>
  `,
   props: args
 });
@@ -197,7 +187,7 @@ const Template: Story<BaoDropdownMenuComponent> = (
 export const Primary = Template.bind({});
 Primary.args = {};
 
-export const menuWithDescriptionIcon: Story = args => ({
+export const menuWithDescriptionIcon: StoryFn = args => ({
   props: args,
   template: `
       <button bao-button [baoDropdownMenuTriggerFor]="testMenu1" type="utility" level="secondary" 
@@ -237,7 +227,7 @@ menuWithDescriptionIcon.args = {
   ...Primary.args
 };
 
-export const menuWithAvatars: Story = args => ({
+export const menuWithAvatars: StoryFn = args => ({
   props: args,
   template: `
     <button bao-button [baoDropdownMenuTriggerFor]="testMenu2" type="utility" level="secondary" 
@@ -280,7 +270,7 @@ menuWithAvatars.args = {
   ...Primary.args
 };
 
-export const menuWithCheckbox: Story = args => ({
+export const menuWithCheckbox: StoryFn = args => ({
   props: args,
   template: `
     <button bao-button [baoDropdownMenuTriggerFor]="testMenu3" type="utility" level="secondary" 
@@ -320,7 +310,7 @@ menuWithCheckbox.args = {
   ...Primary.args
 };
 
-export const menuWithRadio: Story = args => ({
+export const menuWithRadio: StoryFn = args => ({
   props: args,
   template: `
     <button bao-button [baoDropdownMenuTriggerFor]="testMenu4" type="utility" level="secondary" 
@@ -357,7 +347,7 @@ menuWithRadio.args = {
   ...Primary.args
 };
 
-export const navigationMenu: Story = args => ({
+export const navigationMenu: StoryFn = args => ({
   props: args,
   template: `
     <button bao-button [baoDropdownMenuTriggerFor]="testMenu5" type="utility" level="secondary" 
@@ -423,7 +413,7 @@ navigationMenu.args = {
   ...Primary.args
 };
 
-export const menuSectionsWithIcon: Story = args => ({
+export const menuSectionsWithIcon: StoryFn = args => ({
   props: args,
   template: `
       <button bao-button [baoDropdownMenuTriggerFor]="testMenu6" type="editorial" level="tertiary" 

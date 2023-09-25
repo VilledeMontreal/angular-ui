@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import {
-  AfterViewInit,
+  AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -45,7 +45,7 @@ const LOADING_SPINNER_CLASS = 'loading-spinner';
     '[class.bao-button-full-width]': 'fullWidth === true'
   }
 })
-export class BaoButtonComponent implements AfterViewInit {
+export class BaoButtonComponent implements AfterContentInit {
   /**
    * The display type of the button
    */
@@ -94,7 +94,7 @@ export class BaoButtonComponent implements AfterViewInit {
     return this.elementRef.nativeElement;
   }
 
-  public ngAfterViewInit() {
+  public ngAfterContentInit() {
     const childNodes = Array.from(this.nativeElement.childNodes);
     const textIndex = childNodes.findIndex(c => c.nodeType === Node.TEXT_NODE);
     this.noText = textIndex === -1;

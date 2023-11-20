@@ -3,16 +3,8 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import {
-  BaoCardComponent,
-  BaoCardContent,
-  BaoCardHeader,
-  BaoCardTextInterface,
-  BaoCardTitle,
-  BaoIconModule
-} from 'angular-ui';
+import { moduleMetadata, StoryFn, Meta } from '@storybook/angular';
+import { BaoCardComponent, BaoCardModule, BaoIconModule } from 'angular-ui';
 
 const cardWithIconHeaderDescription = `
 To define a main icon for a card, a \`bao-icon\` component should be used inside a \`bao-card-header\` tag, 
@@ -27,16 +19,9 @@ export default {
   title: 'Components/Card',
   decorators: [
     moduleMetadata({
-      declarations: [
-        BaoCardContent,
-        BaoCardHeader,
-        BaoCardTextInterface,
-        BaoCardTitle
-      ],
-      imports: [BaoIconModule]
+      imports: [BaoIconModule, BaoCardModule]
     })
   ],
-  component: BaoCardComponent,
   parameters: {
     docs: {
       description: {
@@ -47,10 +32,7 @@ export default {
   argTypes: {}
 } as Meta;
 
-const Template: Story<BaoCardComponent & { title: string; content: string }> = (
-  args: BaoCardComponent
-) => ({
-  component: BaoCardComponent,
+const Template: StoryFn = (args: BaoCardComponent) => ({
   template: `
   <div class="container">
   <div class="row cards">
@@ -80,7 +62,7 @@ Primary.args = {
   padding: 'normal'
 };
 
-export const Cards: Story = args => ({
+export const Cards: StoryFn = args => ({
   props: args,
   template: `
   <div class="container">

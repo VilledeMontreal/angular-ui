@@ -37,10 +37,7 @@ speed-measure-plugin*.json
 /.sass-cache
 /connect.lock
 /coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
+*.log
 /typings
 
 node_modules
@@ -52,6 +49,7 @@ Thumbs.db
 # storybook output
 storybook-static
 documentation.json
+build-storybook.log
 
 # tests
 coverage/

@@ -3,9 +3,8 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconComponent, BaoTagComponent } from 'angular-ui';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import { BaoIconModule, BaoTagComponent, BaoTagModule } from 'angular-ui';
 
 const description = `
 Tags are used to categorize, identify and organize content.
@@ -17,10 +16,9 @@ export default {
   title: 'Components/Tag',
   decorators: [
     moduleMetadata({
-      declarations: [BaoIconComponent]
+      imports: [BaoIconModule, BaoTagModule]
     })
   ],
-  component: BaoTagComponent,
   parameters: {
     docs: {
       description: {
@@ -47,9 +45,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoTagComponent & { label: string }> = (
-  args: BaoTagComponent
-) => ({
+const Template: StoryFn = (args: BaoTagComponent) => ({
   component: BaoTagComponent,
   template: `
   <bao-tag [type]="type" [hiddenText]="hiddenText" [variant]="variant" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
@@ -62,7 +58,7 @@ Primary.args = {
   label: 'Label'
 };
 
-export const StrongTag: Story = args => ({
+export const StrongTag: StoryFn = args => ({
   props: args,
   template: `
   <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
@@ -78,7 +74,7 @@ StrongTag.args = {
   ...Primary.args
 };
 
-export const IconTag: Story = args => ({
+export const IconTag: StoryFn = args => ({
   props: args,
   template: `
   <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-check-circle"></bao-icon><span>{{label}}</span></bao-tag>

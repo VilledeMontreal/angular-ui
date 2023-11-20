@@ -22,22 +22,20 @@ describe('BaoFilePreviewComponent', () => {
   let fixtureWithoutIcon: ComponentFixture<TestFilePreviewWithoutIconHostComponent>;
   let filePreviewDebugElement: DebugElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          BaoFilePreviewComponent,
-          BaoIconComponent,
-          BaoButtonComponent,
-          TestFilePreviewHostComponent,
-          TestFilePreviewWithoutIconHostComponent
-        ],
-        imports: [],
-        providers: []
-      });
-      return TestBed.compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        BaoFilePreviewComponent,
+        BaoIconComponent,
+        BaoButtonComponent,
+        TestFilePreviewHostComponent,
+        TestFilePreviewWithoutIconHostComponent
+      ],
+      imports: [],
+      providers: []
+    });
+    return TestBed.compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestFilePreviewHostComponent);

@@ -3,94 +3,6 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "storybook-angular": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/storybook-angular",
-            "index": "projects/storybook-angular-examples/src/index.html",
-            "main": "projects/storybook-angular-examples/src/main.ts",
-            "polyfills": "projects/storybook-angular-examples/src/polyfills.ts",
-            "tsConfig": "tsconfig.json",
-            "aot": true,
-            "styles": [
-              "projects/angular-ui/global.scss",
-              "node_modules/@villedemontreal/hochelaga/dist/css/styles.min.css",
-              "projects/storybook-angular/src/styles.css"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "storybook-angular:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "storybook-angular:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "storybook-angular:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-builders/jest:run"
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": ["projects/storybook-angular/src/**/*.ts"]
-          }
-        },
-        "storybook": {
-          "builder": "@storybook/angular:start-storybook",
-          "options": {
-            "browserTarget": "angular-cli:build",
-            "port": 4400
-          }
-        },
-        "build-storybook": {
-          "builder": "@storybook/angular:build-storybook",
-          "options": {
-            "browserTarget": "angular-cli:build"
-          }
-        }
-      }
-    },
     "angular-ui": {
       "projectType": "library",
       "root": "projects/angular-ui",
@@ -132,7 +44,7 @@
         }
       }
     },
-    "storybook-angular-examples": {
+    "storybook-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -142,24 +54,29 @@
           "strict": true
         }
       },
-      "root": "projects/storybook-angular-examples",
-      "sourceRoot": "projects/storybook-angular-examples/src",
+      "root": "projects/storybook-angular",
+      "sourceRoot": "projects/storybook-angular/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/storybook-angular-examples",
-            "index": "projects/storybook-angular-examples/src/index.html",
-            "main": "projects/storybook-angular-examples/src/main.ts",
-            "polyfills": "projects/storybook-angular-examples/src/polyfills.ts",
-            "tsConfig": "projects/storybook-angular-examples/tsconfig.app.json",
+            "outputPath": "dist/storybook-angular",
+            "index": "projects/storybook-angular/src/index.html",
+            "main": "projects/storybook-angular/src/main.ts",
+            "polyfills": "projects/storybook-angular/src/polyfills.ts",
+            "tsConfig": "projects/storybook-angular/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/storybook-angular-examples/src/favicon.ico",
-              "projects/storybook-angular-examples/src/assets"
+              "projects/storybook-angular/src/favicon.ico",
+              "projects/storybook-angular/src/assets"
             ],
-            "styles": ["projects/storybook-angular-examples/src/styles.scss"],
+            "styles": [
+              "projects/angular-ui/global.scss",
+              "node_modules/@villedemontreal/hochelaga/dist/css/styles.min.css",
+              "projects/storybook-angular/src/styles.scss",
+              "projects/storybook-angular/.storybook/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -168,18 +85,18 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.2mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "8kb"
                 }
               ],
               "fileReplacements": [
                 {
-                  "replace": "projects/storybook-angular-examples/src/environments/environment.ts",
-                  "with": "projects/storybook-angular-examples/src/environments/environment.prod.ts"
+                  "replace": "projects/storybook-angular/src/environments/environment.ts",
+                  "with": "projects/storybook-angular/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -199,10 +116,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "storybook-angular-examples:build:production"
+              "browserTarget": "storybook-angular:build:production"
             },
             "development": {
-              "browserTarget": "storybook-angular-examples:build:development"
+              "browserTarget": "storybook-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -210,32 +127,57 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "storybook-angular-examples:build"
+            "browserTarget": "storybook-angular:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/storybook-angular-examples/src/test.ts",
-            "polyfills": "projects/storybook-angular-examples/src/polyfills.ts",
-            "tsConfig": "projects/storybook-angular-examples/tsconfig.spec.json",
-            "karmaConfig": "projects/storybook-angular-examples/karma.conf.js",
+            "main": "projects/storybook-angular/src/test.ts",
+            "polyfills": "projects/storybook-angular/src/polyfills.ts",
+            "tsConfig": "projects/storybook-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/storybook-angular/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/storybook-angular-examples/src/favicon.ico",
-              "projects/storybook-angular-examples/src/assets"
+              "projects/storybook-angular/src/favicon.ico",
+              "projects/storybook-angular/src/assets"
             ],
-            "styles": ["projects/storybook-angular-examples/src/styles.scss"],
+            "styles": ["projects/storybook-angular/src/styles.scss"],
             "scripts": []
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/storybook-angular/.storybook",
+            "browserTarget": "storybook-angular:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/storybook-angular/.storybook",
+            "browserTarget": "storybook-angular:build",
+            "compodoc": false,
+            "outputDir": "storybook-static"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/storybook-angular/**/*.ts",
+              "projects/storybook-angular/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "storybook-angular",
   "cli": {
-    "analytics": false,
-    "defaultCollection": "@angular-eslint/schematics"
+    "analytics": false
   },
   "schematics": {
     "@angular-eslint/schematics:application": {

@@ -31,29 +31,27 @@ declare const viewport;
 describe('BaoSystemHeaderComponent', () => {
   let testComponent: TestSystemHeaderHostComponent;
   let fixture: ComponentFixture<TestSystemHeaderHostComponent>;
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          BaoSystemHeaderComponent,
-          BaoBackNavigationInsert,
-          BaoBackNavigationComponent,
-          BaoIconComponent,
-          BaoDropdownMenuComponent,
-          BaoDropdownMenuTrigger,
-          BaoDropdownMenuItem,
-          BaoDropdownMenuItemLabel,
-          BaoTagComponent,
-          BaoBreadcrumbComponent,
-          TestSystemHeaderHostComponent,
-          TestBackNavigationHostComponent
-        ],
-        imports: [],
-        providers: []
-      });
-      return TestBed.compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        BaoSystemHeaderComponent,
+        BaoBackNavigationInsert,
+        BaoBackNavigationComponent,
+        BaoIconComponent,
+        BaoDropdownMenuComponent,
+        BaoDropdownMenuTrigger,
+        BaoDropdownMenuItem,
+        BaoDropdownMenuItemLabel,
+        BaoTagComponent,
+        BaoBreadcrumbComponent,
+        TestSystemHeaderHostComponent,
+        TestBackNavigationHostComponent
+      ],
+      imports: [],
+      providers: []
+    });
+    return TestBed.compileComponents();
+  }));
   describe('Desktop screen', () => {
     beforeEach(() => {
       viewport.set('xl');

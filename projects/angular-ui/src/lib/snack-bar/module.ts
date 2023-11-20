@@ -29,7 +29,6 @@ const SNACKBAR_DIRECTIVES = [
   ],
   providers: [BaoSnackBarService, BaoSnackBarConfig],
   declarations: SNACKBAR_DIRECTIVES,
-  exports: SNACKBAR_DIRECTIVES,
-  entryComponents: [SNACKBAR_DIRECTIVES]
+  exports: SNACKBAR_DIRECTIVES
 })
 export class BaoSnackBarModule {}

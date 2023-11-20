@@ -4,9 +4,12 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoHyperlinkComponent, BaoIconComponent } from 'angular-ui';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import {
+  BaoHyperlinkComponent,
+  BaoHyperlinkModule,
+  BaoIconModule
+} from 'angular-ui';
 
 const description = `
 Hyperlinks allow navigation between the various pages of a digital product.
@@ -19,11 +22,9 @@ export default {
   title: 'Components/Hyperlink',
   decorators: [
     moduleMetadata({
-      declarations: [BaoIconComponent],
-      imports: [CommonModule]
+      imports: [CommonModule, BaoHyperlinkModule, BaoIconModule]
     })
   ],
-  component: BaoHyperlinkComponent,
   parameters: {
     docs: {
       description: {
@@ -50,10 +51,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoHyperlinkComponent> = (
-  args: BaoHyperlinkComponent
-) => ({
-  component: BaoHyperlinkComponent,
+const Template: StoryFn = (args: BaoHyperlinkComponent) => ({
   template: `
     <ul>
       <li bao-hyperlink [size]="size">
@@ -74,7 +72,7 @@ export const Primary = Template.bind({});
 
 Primary.args = {};
 
-export const hyperlinkInline: Story = args => ({
+export const hyperlinkInline: StoryFn = args => ({
   props: args,
   template: `
     <span style="line-height:24px;">
@@ -91,7 +89,7 @@ hyperlinkInline.args = {
   ...Primary.args
 };
 
-export const hyperlinkWithIcon: Story = args => ({
+export const hyperlinkWithIcon: StoryFn = args => ({
   props: args,
   template: `
     <span style="line-height:1.5rem;">
@@ -109,7 +107,7 @@ hyperlinkWithIcon.args = {
   ...Primary.args
 };
 
-export const hyperlinksList: Story = args => ({
+export const hyperlinksList: StoryFn = args => ({
   props: args,
   template: `
     <div style="margin-bottom:1rem">

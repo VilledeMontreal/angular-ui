@@ -8,7 +8,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Meta, StoryFn } from '@storybook/angular';
 import {
   BaoFileInputComponent,
   BaoFileDropzoneIntructions,
@@ -24,7 +24,7 @@ import {
   BaoDropdownMenuItemLabel,
   BaoDropdownMenuItem
 } from 'angular-ui';
-import { BaoFileReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/file/file-example.component';
+import { BaoFileReactiveFormExampleComponent } from 'projects/storybook-angular/src/app/file/file-example.component';
 
 const description = `
 The File Input component allows users to transfer local files to the system. 
@@ -213,7 +213,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoFileInputComponent> = (
+const Template: StoryFn<BaoFileInputComponent> = (
   args: BaoFileInputComponent
 ) => ({
   component: BaoFileInputComponent,
@@ -238,7 +238,7 @@ Primary.args = {
   acceptedMIMETypes: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png']
 };
 
-export const baoFileIntl: Story = args => ({
+export const baoFileIntl: StoryFn = args => ({
   props: args,
   template: `
       <div style="max-width:50rem;">
@@ -272,7 +272,7 @@ baoFileIntl.args = {
   ...Primary.args
 };
 
-export const fileInputDeactivated: Story = args => ({
+export const fileInputDeactivated: StoryFn = args => ({
   props: args,
   template: `
       <div style="max-width:24rem;">
@@ -285,10 +285,11 @@ export const fileInputDeactivated: Story = args => ({
 });
 fileInputDeactivated.storyName = 'File input deactivated';
 fileInputDeactivated.args = {
-  ...Primary.args
+  ...Primary.args,
+  disabled: true
 };
 
-export const fileInputForm: Story = args => ({
+export const fileInputForm: StoryFn = args => ({
   props: args,
   template: `
     <bao-file-form-example></bao-file-form-example>

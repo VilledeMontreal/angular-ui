@@ -4,14 +4,10 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
 import { BaoModalClose, BaoModalInitialConfig, BaoModalRef } from 'angular-ui';
-import { ModalFormExample } from 'projects/storybook-angular-examples/src/app/modal/modal-form/modal-form-example.component';
-import { ModalContentMediumExample } from 'projects/storybook-angular-examples/src/app/modal/modal-medium/modal-content-medium-example.component';
-import { ModalContentScrollableExample } from 'projects/storybook-angular-examples/src/app/modal/modal-scrollable/modal-content-scrollable-example.component';
-import { ModalContentSmallExample } from 'projects/storybook-angular-examples/src/app/modal/modal-small/modal-content-small-example.component';
-import { ModalContentWithoutFooterExample } from 'projects/storybook-angular-examples/src/app/modal/modal-without-footer/modal-content-without-footer-example.component';
-import { BaoModalModuleTest } from 'projects/storybook-angular-examples/src/app/modal/module';
+import { ModalContentSmallExample } from 'projects/storybook-angular/src/app/modal/modal-small/modal-content-small-example.component';
+import { BaoModalModuleTest } from 'projects/storybook-angular/src/app/modal/module';
 
 const description = `
 The modal is used to make the user focus on a specific message or process.
@@ -38,32 +34,8 @@ export default {
   subcomponents: { BaoModalInitialConfig, BaoModalRef, BaoModalClose }
 } as Meta;
 
-const Template: Story = args => ({
+const Template: StoryFn = args => ({
   props: args
 });
 
 export const Default = Template.bind({});
-
-const TemplateMedium: Story<ModalContentMediumExample> = () => ({
-  component: ModalContentMediumExample
-});
-
-export const Medium = TemplateMedium.bind({});
-
-const TemplateScrollable: Story<ModalContentScrollableExample> = () => ({
-  component: ModalContentScrollableExample
-});
-
-export const Large = TemplateScrollable.bind({});
-
-const TemplateWithoutFooter: Story<ModalContentWithoutFooterExample> = () => ({
-  component: ModalContentWithoutFooterExample
-});
-
-export const WithoutFooter = TemplateWithoutFooter.bind({});
-
-const TemplateForm: Story<ModalFormExample> = () => ({
-  component: ModalFormExample
-});
-
-export const Form = TemplateForm.bind({});

@@ -4,16 +4,17 @@
  * See LICENSE file in the project root for full license information.
  */
 import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Meta, Story } from '@storybook/angular';
 import {
   BaoRadioButtonComponent,
   BaoRadioModule,
   BaoCommonComponentsModule,
   BaoButtonModule
 } from 'angular-ui';
-import { BaoRadioExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/form/radio-example.component';
-import { BaoRadioReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/radio/reactiveForm/radio-example.component';
+import { BaoRadioExampleComponent } from 'projects/storybook-angular/src/app/radio/form/radio-example.component';
+import { BaoRadioReactiveFormExampleComponent } from 'projects/storybook-angular/src/app/radio/reactiveForm/radio-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 const description = `
 Radio buttons allow the user to make an individual choice among multiple prensented options.
@@ -30,6 +31,7 @@ export default {
         BaoRadioReactiveFormExampleComponent
       ],
       imports: [
+        CommonModule,
         BaoRadioModule,
         BaoCommonComponentsModule,
         FormsModule,

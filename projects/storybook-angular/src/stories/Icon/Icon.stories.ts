@@ -3,8 +3,8 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoIconComponent } from 'angular-ui';
+import { Meta, StoryFn, moduleMetadata } from '@storybook/angular';
+import { BaoIconComponent, BaoIconModule } from 'angular-ui';
 
 const description = `
 If a color is provided, it will be used as the icon's color. If no color is provided, the default behaviour is to use the parent's text color.
@@ -14,7 +14,11 @@ The full documentation of this component is available in the Hochelaga design sy
 
 export default {
   title: 'Components/Icon',
-  component: BaoIconComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [BaoIconModule]
+    })
+  ],
   parameters: {
     docs: {
       description: {
@@ -76,9 +80,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoIconComponent & { title: string; content: string }> = (
-  args: BaoIconComponent
-) => ({
+const Template: StoryFn = (args: BaoIconComponent) => ({
   component: BaoIconComponent,
   template: `
   <div style="display: grid; grid-column-gap: 1rem; grid-template-columns: 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem">

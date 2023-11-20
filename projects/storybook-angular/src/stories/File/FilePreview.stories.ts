@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Meta, Story } from '@storybook/angular';
 import {
   BaoFilePreviewComponent,
   BaoDropdownMenuComponent,

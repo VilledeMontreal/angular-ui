@@ -4,14 +4,13 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
 import {
-  BaoTablistComponent,
-  BaoTabHeader,
-  BaoTabPanel,
-  BaoTabsContainer
-} from 'angular-ui';
+  componentWrapperDecorator,
+  moduleMetadata,
+  Meta,
+  StoryFn
+} from '@storybook/angular';
+import { BaoTablistComponent, BaoTabsModule } from 'angular-ui';
 
 const description = `
 The Tabs component allows to navigate quickly between different views from a same object. 
@@ -23,14 +22,12 @@ export default {
   title: 'Components/Tabs',
   decorators: [
     moduleMetadata({
-      declarations: [BaoTabHeader, BaoTabPanel, BaoTabsContainer],
-      imports: [CommonModule]
+      imports: [CommonModule, BaoTabsModule]
     }),
     componentWrapperDecorator(
       story => `<div style="max-width:30rem;">${story}</div>`
     )
   ],
-  component: BaoTablistComponent,
   parameters: {
     docs: {
       description: {
@@ -117,7 +114,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoTablistComponent> = (args: BaoTablistComponent) => ({
+const Template: StoryFn = (args: BaoTablistComponent) => ({
   component: BaoTablistComponent,
   template: `
       <bao-tabs>
@@ -147,7 +144,7 @@ Primary.args = {
   size: 'large'
 };
 
-export const TabsSize: Story = args => ({
+export const TabsSize: StoryFn = args => ({
   props: args,
   template: `
       <bao-tabs>

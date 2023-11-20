@@ -4,17 +4,8 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
-import {
-  BaoIconModule,
-  BaoAlertActions,
-  BaoAlertComponent,
-  BaoAlertContent,
-  BaoAlertLink,
-  BaoAlertTitle,
-  BaoButtonComponent
-} from 'angular-ui';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import { BaoIconModule, BaoAlertComponent, BaoAlertModule } from 'angular-ui';
 
 const description = `
 Alerts are used to display an important message and optional related **actions**.
@@ -37,17 +28,10 @@ export default {
   title: 'Components/Alert',
   decorators: [
     moduleMetadata({
-      declarations: [
-        BaoAlertContent,
-        BaoAlertTitle,
-        BaoAlertActions,
-        BaoAlertLink,
-        BaoButtonComponent
-      ],
-      imports: [CommonModule, BaoIconModule]
+      declarations: [],
+      imports: [CommonModule, BaoIconModule, BaoAlertModule]
     })
   ],
-  component: BaoAlertComponent,
   parameters: {
     docs: {
       description: {
@@ -84,17 +68,15 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoAlertComponent & { title: string; content: string }> =
-  (args: BaoAlertComponent) => ({
-    component: BaoAlertComponent,
-    template: `
+const Template: StoryFn = (args: BaoAlertComponent) => ({
+  template: `
   <bao-alert [type]="type" [dismissible]="dismissible">
     <bao-alert-title>{{title}}</bao-alert-title>
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
  `,
-    props: args
-  });
+  props: args
+});
 
 export const Primary = Template.bind({});
 
@@ -106,7 +88,7 @@ Primary.args = {
     'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.'
 };
 
-export const DismissableAlert: Story = args => ({
+export const DismissableAlert: StoryFn = args => ({
   props: args,
   template: `
   <bao-alert type="success" [dismissible]="dismissible">
@@ -149,7 +131,7 @@ DismissableAlert.args = {
   dismissible: true
 };
 
-export const DismissableWithActionsAlert: Story = args => ({
+export const DismissableWithActionsAlert: StoryFn = args => ({
   props: args,
   template: `
   <bao-alert type="success" [dismissible]="dismissible">
@@ -207,7 +189,7 @@ DismissableWithActionsAlert.args = {
   dismissible: true
 };
 
-export const DismissableWithoutTitleAlert: Story = args => ({
+export const DismissableWithoutTitleAlert: StoryFn = args => ({
   props: args,
   template: `
   <bao-alert type="success" [dismissible]="dismissible">

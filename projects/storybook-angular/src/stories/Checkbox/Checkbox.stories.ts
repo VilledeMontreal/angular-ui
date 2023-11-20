@@ -4,14 +4,14 @@
  * See LICENSE file in the project root for full license information.
  */
 import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Meta, Story } from '@storybook/angular';
 import {
   BaoCheckboxComponent,
   BaoCheckboxModule,
   BaoCommonComponentsModule
 } from 'angular-ui';
-import { BaoCheckboxExampleComponent } from 'projects/storybook-angular-examples/src/app/checkbox/form/checkbox-example.component';
-import { BaoCheckboxReactiveFormExampleComponent } from 'projects/storybook-angular-examples/src/app/checkbox/reactiveForm/checkbox-example.component';
+import { BaoCheckboxExampleComponent } from 'projects/storybook-angular/src/app/checkbox/form/checkbox-example.component';
+import { BaoCheckboxReactiveFormExampleComponent } from 'projects/storybook-angular/src/app/checkbox/reactiveForm/checkbox-example.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const description = `

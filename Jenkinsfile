@@ -35,7 +35,7 @@ sbCtx = pipeline.createContext([
             // ],
             [
                 name: "nodejs",
-                image: "node:16.13.2-alpine",
+                image: "node:16.14-alpine",
                 ttyEnabled: true,
                 command: "cat",
             ],
@@ -131,7 +131,7 @@ pipeline.start(sbCtx) {
         pipeline.buildStage(sbCtx) {
             // first, regen the static web assets used by the Hugo site
             container("nodejs") {
-                sh "npm ci"
+                sh "npm ci --ignore-scripts"
                 sh "npm run build-storybook"
             }
             // finally, build the image

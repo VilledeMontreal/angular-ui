@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:16.14-alpine
 LABEL MAINTAINER="VdMtl" 
 
 # Create app directory
@@ -10,10 +10,10 @@ WORKDIR /usr/src/lib
 COPY --chown=node:node . /usr/src/lib
 
 # Install deps
-RUN npm i
+RUN npm ci --ignore-scripts
 
 # Build library
-RUN npm run build 
+RUN npm run build-storybook 
 
 # Publish the library
 CMD ["npm", "publish", "dist/angular-ui", "--tag", "latest", "--unsafe-perm"]

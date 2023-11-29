@@ -6,10 +6,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BaoPaginationComponent } from './pagination.component';
-
+import { BaoIconModule } from '../icon';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, BaoIconModule],
   declarations: [BaoPaginationComponent],
   exports: [BaoPaginationComponent]
 })

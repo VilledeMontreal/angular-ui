@@ -1,4 +1,4 @@
-<nav aria-label="Pagination">
+<nav *ngIf="pages?.length" aria-label="Pagination">
   <ul class="pagination">
     <li
       class="page-item"
@@ -8,13 +8,16 @@
       <a
         class="page-link"
         href="#"
-        (click)="$event.preventDefault();handlePreviousClick();"
-        (keydown.enter)="$event.preventDefault();handlePreviousClick();"
-        (keydown.space)="$event.preventDefault();handlePreviousClick();"
+        (click)="$event.preventDefault(); handlePreviousClick()"
+        (keydown.enter)="$event.preventDefault(); handlePreviousClick()"
+        (keydown.space)="$event.preventDefault(); handlePreviousClick()"
         tabindex="0"
-        >&lt;</a
       >
-      <span class="sr-only">{{ previousArialLabel }}</span>
+        <bao-icon
+          [title]="previousArialLabel"
+          svgIcon="icon-chevron-left"
+        ></bao-icon
+      ></a>
     </li>
     <li class="page-item disabled" *ngIf="pages[0] !== 1">
       <span class="page-link">...</span>
@@ -28,13 +31,13 @@
       <a
         class="page-link"
         href="#"
-        (click)="$event.preventDefault();goTo(page);"
-        (keydown.enter)="$event.preventDefault();goTo(page);"
-        (keydown.space)="$event.preventDefault();goTo(page);"
+        (click)="$event.preventDefault(); goTo(page)"
+        (keydown.enter)="$event.preventDefault(); goTo(page)"
+        (keydown.space)="$event.preventDefault(); goTo(page)"
         tabindex="0"
         >{{ page }}</a
       >
-      <span class="sr-only">Page {{ page }}</span>
+      <span class="sr-only">{{ page }}</span>
     </li>
     <li
       class="page-item disabled"
@@ -50,13 +53,16 @@
       <a
         class="page-link"
         href="#"
-        (click)="$event.preventDefault();handleNextClick();"
-        (keydown.enter)="$event.preventDefault();handleNextClick();"
-        (keydown.space)="$event.preventDefault();handleNextClick();"
+        (click)="$event.preventDefault(); handleNextClick()"
+        (keydown.enter)="$event.preventDefault(); handleNextClick()"
+        (keydown.space)="$event.preventDefault(); handleNextClick()"
         tabindex="0"
-        >&gt;</a
       >
-      <span class="sr-only">{{ nextArialLabel }}</span>
+        <bao-icon
+          [title]="nextArialLabel"
+          svgIcon="icon-chevron-right"
+        ></bao-icon
+      ></a>
     </li>
   </ul>
 </nav>

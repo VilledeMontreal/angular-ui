@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
-import { BaoPaginationComponent } from 'angular-ui';
+import { BaoIconModule, BaoPaginationComponent } from 'angular-ui';
 
 const description = `
 Pagination is used to navigate through a long list of items
@@ -18,7 +18,7 @@ export default {
   title: 'Components/Pagination',
   decorators: [
     moduleMetadata({
-      imports: [CommonModule]
+      imports: [CommonModule, BaoIconModule]
     })
   ],
   component: BaoPaginationComponent,
@@ -44,10 +44,10 @@ const Template: Story<BaoPaginationComponent & { label: string }> = (
   component: BaoPaginationComponent,
   template: `
   <bao-pagination 
-    [previousArialLabel]="previousArialLabel"
-    [nextArialLabel]="nextArialLabel"
-    [totalPages]="5"
-    [currentPage]="3"
+    [previousArialLabel]=previousArialLabel
+    [nextArialLabel]=nextArialLabel
+    [totalPages]="totalPages"
+    [currentPage]="currentPage"
     >
   </bao-pagination>`,
   props: args
@@ -55,4 +55,9 @@ const Template: Story<BaoPaginationComponent & { label: string }> = (
 
 export const Default = Template.bind({});
 
-
+Default.args = {
+  previousArialLabel: false,
+  nextArialLabel: false,
+  totalPages: 5,
+  currentPage: 3
+};

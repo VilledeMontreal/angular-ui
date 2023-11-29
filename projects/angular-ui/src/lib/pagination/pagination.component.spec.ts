@@ -31,20 +31,21 @@ describe('PaginationComponent', () => {
   describe('Paging tests', () => {
     const updateComponentWithPaging = (paging, val = 0) => {
       component.totalPages = Math.ceil(paging.totalCount / paging.limit); // total number of pages based on number of items per page
-      component.currentPage = (val ? val : Math.floor(paging.offset / paging.limit)) + 1; //  passed value or page value based on offset
-    }
+      component.currentPage =
+        (val ? val : Math.floor(paging.offset / paging.limit)) + 1; //  passed value or page value based on offset
+    };
 
-    it('Should correctly navigate to target page based on paging input values', (done) => {
+    it('Should correctly navigate to target page based on paging input values', done => {
       let paging = { limit: 20, offset: 0, totalCount: 100 };
       updateComponentWithPaging(paging);
 
-      component.pageChanged.subscribe((val) => {
+      component.pageChanged.subscribe(val => {
         updateComponentWithPaging(paging, val);
 
         expect(component.totalPages).toEqual(5);
         expect(component.currentPage).toEqual(targetPage);
         done();
-      })
+      });
       expect(component.totalPages).toEqual(5);
       expect(component.currentPage).toEqual(1);
 
@@ -56,7 +57,6 @@ describe('PaginationComponent', () => {
   });
 
   describe('Page number tests', () => {
-
     it('should call goTo when a page number is clicked', () => {
       component.pages = [1, 2, 3];
       fixture.detectChanges();
@@ -73,7 +73,7 @@ describe('PaginationComponent', () => {
     it('should mark the selected page number as active', () => {
       component.pages = [1, 2, 3];
       component.currentPage = 1;
-      fixture.detectChanges()
+      fixture.detectChanges();
 
       const pageNumberButton = fixture.debugElement.query(
         By.css('.page-item.active .page-link')
@@ -84,7 +84,6 @@ describe('PaginationComponent', () => {
   });
 
   describe('Previous button tests', () => {
-
     it('should disable the Previous button when on the first page', () => {
       component.currentPage = 1;
       fixture.detectChanges();
@@ -120,7 +119,6 @@ describe('PaginationComponent', () => {
   });
 
   describe('Next button tests', () => {
-
     it('should disable the Next button when on the last page', () => {
       component.currentPage = 5;
       component.totalPages = 5;
@@ -154,11 +152,9 @@ describe('PaginationComponent', () => {
 
       expect(component.handleNextClick).toHaveBeenCalled();
     });
-
   });
 
   describe('First Elipsis', () => {
-
     it('should display the first ellipsis when the first page in pages is not 1', () => {
       component.pages = [2, 3, 4, 5, 6];
       component.currentPage = 4;
@@ -185,7 +181,6 @@ describe('PaginationComponent', () => {
   });
 
   describe('Second Elipsis', () => {
-
     it('should display the second ellipsis when the last page is not the total pages', () => {
       component.pages = [1, 2, 3, 4, 5];
       component.totalPages = 10;

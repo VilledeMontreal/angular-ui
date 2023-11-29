@@ -1,4 +1,4 @@
-<nav *ngIf="pages?.length" aria-label="Pagination">
+<nav aria-label="Pagination">
   <ul class="pagination">
     <li
       class="page-item"
@@ -19,7 +19,7 @@
         ></bao-icon
       ></a>
     </li>
-    <li class="page-item disabled" *ngIf="pages[0] !== 1">
+    <li class="page-item disabled" *ngIf="pages?.length > 0 && pages[0] !== 1">
       <span class="page-link">...</span>
     </li>
     <li
@@ -41,7 +41,7 @@
     </li>
     <li
       class="page-item disabled"
-      *ngIf="pages[pages.length - 1] !== totalPages"
+      *ngIf="pages?.length > 0 && pages[pages.length - 1] !== totalPages"
     >
       <a class="page-link" href="#">...</a>
     </li>

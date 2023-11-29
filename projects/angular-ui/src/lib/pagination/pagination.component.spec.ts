@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BaoPaginationComponent } from './pagination.component';
 import { By } from '@angular/platform-browser';
@@ -36,7 +41,7 @@ describe('PaginationComponent', () => {
     };
 
     it('Should correctly navigate to target page based on paging input values', done => {
-      let paging = { limit: 20, offset: 0, totalCount: 100 };
+      const paging = { limit: 20, offset: 0, totalCount: 100 };
       updateComponentWithPaging(paging);
 
       component.pageChanged.subscribe(val => {

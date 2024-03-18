@@ -105,6 +105,7 @@ $alert-colors: (
     .bao-icon {
       svg {
         fill: $color-dark;
+        width: auto;
       }
     }
     .bao-button {

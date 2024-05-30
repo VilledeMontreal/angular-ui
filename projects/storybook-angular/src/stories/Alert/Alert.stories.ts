@@ -22,6 +22,19 @@ To modify the color (and icon) of an alert, the \`type\` input property must be 
 * \`info\` for an informational alert
 * \`emergency\` for emergency alert
 
+## alertTypeTitle (In French by default)
+Optional. By default, the title tag of the alert type is set by one of these text depending on the alert type: 
+
+* \`Succès\` for a positive alert
+* \`Erreur\` for a negative alert
+* \`Attention\` for a warning alert
+* \`Information\` for an informational alert
+* \`Urgence\` for emergency alert
+
+The alertTypeTitle attribute is there to override the title alert type.
+ 
+## dismissibleButtonAriaLabel (In French by default)
+Optional. By default, the attribute aria-label of the dismissible button is set to 'Cacher le message'. It is possible to override it by changing the dismissibleButtonAriaLabel input.
 `;
 
 export default {
@@ -64,13 +77,23 @@ export default {
       table: {
         disable: true
       }
+    },
+    dismissibleButtonAriaLabel: {
+      table: {
+        defaultValue: { summary: 'Cacher le message' }
+      }
+    },
+    dismissible: {
+      table: {
+        defaultValue: { summary: false }
+      }
     }
   }
 } as Meta;
 
 const Template: StoryFn = (args: BaoAlertComponent) => ({
   template: `
-  <bao-alert [type]="type" [dismissible]="dismissible">
+  <bao-alert [type]="type" [dismissible]="dismissible" [alertTypeTitle]="alertTypeTitle">
     <bao-alert-title>{{title}}</bao-alert-title>
     <bao-alert-content [innerHTML]="content"></bao-alert-content>
   </bao-alert>
@@ -82,10 +105,12 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   type: 'info',
-  dismissible: false,
+  dismissible: true,
   title: "The alert's title",
   content:
-    'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.'
+    'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.',
+  alertTypeTitle: 'Information',
+  dismissibleButtonAriaLabel: 'Close the message'
 };
 
 export const DismissableAlert: StoryFn = args => ({
@@ -129,6 +154,36 @@ DismissableAlert.parameters = {
 DismissableAlert.args = {
   ...Primary.args,
   dismissible: true
+};
+
+export const DismissableAlertLocalized: StoryFn = args => ({
+  props: args,
+  template: `
+  <bao-alert type="warning" [dismissible]="dismissible" [alertTypeTitle]="alertTypeTitle" [dismissibleButtonAriaLabel]="dismissibleButtonAriaLabel">
+    <bao-alert-title>{{ title }}</bao-alert-title>
+    <bao-alert-content [innerHTML]="content"></bao-alert-content>
+  </bao-alert>
+  `
+});
+
+const dismissableStoryDescriptionLocalized = `
+Setting the \`dismissible\` input to \`true\` will add a dismiss button to the top right of the alert. 
+Setting the \`alertTypeTitle\` input will override the title tag of the alert type.
+Setting the \`dismissibleButtonAriaLabel\` input will override the dismissible button aria-label.`;
+
+DismissableAlertLocalized.storyName = 'Dismissible alerts (localized)';
+DismissableAlertLocalized.parameters = {
+  docs: {
+    description: {
+      story: dismissableStoryDescriptionLocalized
+    }
+  }
+};
+DismissableAlertLocalized.args = {
+  ...Primary.args,
+  dismissible: true,
+  alertTypeTitle: 'Warning',
+  dismissibleButtonAriaLabel: 'Hide the message'
 };
 
 export const DismissableWithActionsAlert: StoryFn = args => ({

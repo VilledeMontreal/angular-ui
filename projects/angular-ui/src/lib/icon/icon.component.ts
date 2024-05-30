@@ -31,8 +31,6 @@ const TITLE = 'title';
   exportAs: 'baoIcon',
   styleUrls: ['./icon.component.scss'],
   host: {
-    role: 'img',
-    // '[class]': "'bao-icon notranslate ' + svgIcon",
     '[class.bao-icon]': 'true',
     '[class.notranslate]': 'true',
     '[class.bao-icon-medium]': 'size === "medium"',
@@ -168,6 +166,7 @@ export class BaoIconComponent implements OnDestroy {
       let svg = this.iconRegistry.getNamedSvgIcon(iconName);
       if (title) {
         svg = this.addTitleToSVG(svg, title);
+        this.removeTitleAttributeFromHost();
       }
 
       if (!title) {
@@ -186,6 +185,10 @@ export class BaoIconComponent implements OnDestroy {
     this.renderer.appendChild(svg, titleNode);
     svg.setAttribute('aria-labelledby', this._titleId);
     return svg;
+  }
+
+  private removeTitleAttributeFromHost() {
+    this.renderer.removeAttribute(this.elementRef.nativeElement, 'title');
   }
 
   private generateUniqueTitleId(): string {

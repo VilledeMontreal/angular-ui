@@ -113,6 +113,9 @@ export class BaoAlertComponent implements OnChanges {
     | 'emergency'
     | 'info' = 'info';
   @Input() public dismissible = false;
+  @Input() public alertTypeTitle?: string;
+  @Input() public dismissibleButtonAriaLabel?: string = 'Cacher le message';
+
   @Output() public dismiss = new EventEmitter();
   public iconType: string;
   public iconTitle: string;
@@ -120,7 +123,9 @@ export class BaoAlertComponent implements OnChanges {
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['type']) {
       this.iconType = this.alertTypeIcon(changes['type'].currentValue);
-      this.iconTitle = this.alertTitleIcon(changes['type'].currentValue);
+      this.iconTitle =
+        this.alertTypeTitle ||
+        this.alertTitleIcon(changes['type'].currentValue);
     }
   }
 

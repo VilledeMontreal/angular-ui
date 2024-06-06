@@ -9,7 +9,7 @@
   level="tertiary"
   data-dismiss="alert"
   role="button"
-  aria-label="Cacher le message"
+  [attr.aria-label]="dismissibleButtonAriaLabel"
   (click)="onDismissClicked()"
 >
   <bao-icon svgIcon="icon-x"></bao-icon>

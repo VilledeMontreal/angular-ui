@@ -37,6 +37,11 @@ export class BaoFilePreviewComponent implements AfterContentInit {
   @Input() public isLoading = false;
 
   /**
+   * Is thumbnail picture hidden from file preview
+   */
+  @Input() public isHideThumbnail = false;
+
+  /**
    * True if projected content has no icon and file does not have a thumbnail.
    */
   public insertGenericIcon = false;
@@ -76,6 +81,7 @@ export class BaoFilePreviewComponent implements AfterContentInit {
   private getThumbnail() {
     if (
       this.file &&
+      !this.isHideThumbnail &&
       (this.file.type === 'image/png' || this.file.type === 'image/jpeg')
     ) {
       const reader = new FileReader();

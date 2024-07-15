@@ -5,7 +5,6 @@
  */
 
 import {
-  AfterContentInit,
   Component,
   ElementRef,
   Input,
@@ -25,11 +24,14 @@ const MEGA_THRESHOLD = 1000000;
     class: 'bao-file-preview'
   }
 })
-export class BaoFilePreviewComponent implements AfterContentInit {
+export class BaoFilePreviewComponent {
   /**
    * Uploaded file to display in list.
    */
-  @Input() public file: File;
+  @Input() set file(f: File) {
+    this._file = f;
+    this.setFileData();
+  }
 
   /**
    * Is file loading
@@ -42,21 +44,20 @@ export class BaoFilePreviewComponent implements AfterContentInit {
   public insertGenericIcon = false;
 
   public thumbnailURL = '';
+  protected _file: File;
+  protected fileSize: string;
 
   constructor(
     private elementRef: ElementRef<HTMLElement>,
     private renderer: Renderer2
   ) {}
 
-  get nativeElement(): HTMLElement {
+  private get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
   }
 
-  get fileSize(): string {
-    return this.formatSize(this.file.size);
-  }
-
-  ngAfterContentInit(): void {
+  private setFileData(): void {
+    this.formatSize(this._file.size);
     this.getThumbnail();
     this.setIcon();
   }
@@ -75,8 +76,8 @@ export class BaoFilePreviewComponent implements AfterContentInit {
 
   private getThumbnail() {
     if (
-      this.file &&
-      (this.file.type === 'image/png' || this.file.type === 'image/jpeg')
+      this._file &&
+      (this._file.type === 'image/png' || this._file.type === 'image/jpeg')
     ) {
       const reader = new FileReader();
       reader.onload = (event: any) => {
@@ -86,20 +87,22 @@ export class BaoFilePreviewComponent implements AfterContentInit {
       reader.onerror = () => {
         this.thumbnailURL = '';
       };
-      reader.readAsDataURL(this.file);
+      reader.readAsDataURL(this._file);
     }
   }
 
-  private formatSize(size: number) {
+  private formatSize(size: number): void {
     if (size >= KILO_THRESHOLD && size / KILO_THRESHOLD < KILO_THRESHOLD) {
-      return this.getSizeAndUnit(size, KILO_THRESHOLD, 'Ko');
+      this.fileSize = this.getSizeAndUnit(size, KILO_THRESHOLD, 'Ko');
+      return;
     }
     const sizeDividedByKoMultiplicator = size / KILO_THRESHOLD;
     if (sizeDividedByKoMultiplicator >= KILO_THRESHOLD) {
       const toFixed = sizeDividedByKoMultiplicator > 10 ? 0 : 1;
-      return this.getSizeAndUnit(size, MEGA_THRESHOLD, 'Mo', toFixed);
+      this.fileSize = this.getSizeAndUnit(size, MEGA_THRESHOLD, 'Mo', toFixed);
+      return;
     }
-    return `${size} octets`;
+    this.fileSize = `${size} octets`;
   }
 
   private getSizeAndUnit(

@@ -1,13 +1,10 @@
 /*
- * Copyright (c) 2023 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2024 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { Component } from '@angular/core';
-import {
-  BaoSnackBarService,
-  BaoSnackBarToastTypeEnum
-} from 'projects/angular-ui/src/public-api';
+import { BaoSnackBarService } from 'projects/angular-ui/src/public-api';
 
 /**
  * @title Opens a snackbar with extra configuration.

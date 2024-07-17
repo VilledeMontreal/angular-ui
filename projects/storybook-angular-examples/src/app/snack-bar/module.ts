@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2024 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -7,9 +7,9 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   BaoButtonModule,
-  BaoTagModule,
   BaoIconModule,
-  BaoSnackBarModule
+  BaoSnackBarModule,
+  BaoTagModule
 } from 'projects/angular-ui/src/public-api';
 import { SnackBarDemoExample } from './snack-bar-demo/snack-bar-demo-example.component';
 import { SnackBarSimpleWithActionExample } from './snack-bar-simple-with-action/snack-bar-simple-with-action-example.component';

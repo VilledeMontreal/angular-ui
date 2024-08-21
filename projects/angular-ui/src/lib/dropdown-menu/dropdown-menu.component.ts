@@ -269,18 +269,22 @@ export class BaoDropdownMenuComponent
   @HostListener('window:keyup.arrowup')
   upKeyEvent() {
     if (this.isOpen) {
-      const index = isNaN(this._activeItemIndex) ? 0 : this._activeItemIndex;
+      const index = isNaN(this._activeItemIndex) ? -1 : this._activeItemIndex;
       const nextIndex = this.getNextActivableItemIndex(index, false);
-      this.focusNextItem(nextIndex);
+      if (nextIndex > -1) {
+        this.focusNextItem(nextIndex);
+      }
     }
   }
 
   @HostListener('window:keyup.arrowdown')
   downKeyEvent() {
     if (this.isOpen) {
-      const index = isNaN(this._activeItemIndex) ? 0 : this._activeItemIndex;
+      const index = isNaN(this._activeItemIndex) ? -1 : this._activeItemIndex;
       const nextIndex = this.getNextActivableItemIndex(index, true);
-      this.focusNextItem(nextIndex);
+      if (nextIndex > -1) {
+        this.focusNextItem(nextIndex);
+      }
     }
   }
 
@@ -291,6 +295,19 @@ export class BaoDropdownMenuComponent
       if (document.activeElement === this._listItems.last.nativeElement) {
         this.isClosedByKeyEvent.emit();
       }
+    }
+  }
+
+  @HostListener('window:keyup.tab')
+  tabUpKeyEvent() {
+    if (this.isOpen) {
+      this._activeItemIndex = this._listItems.reduce((acc, element, index) => {
+        if (element.nativeElement === document.activeElement) {
+          acc = index;
+        }
+
+        return acc;
+      }, -1);
     }
   }
 
@@ -316,17 +333,17 @@ export class BaoDropdownMenuComponent
     );
   }
 
-  public focusFirstItem(): void {
-    this._activeItemIndex = 0;
-    this._listItems.first.nativeElement.focus();
-  }
-
   public open(): void {
     this.isOpen = true;
   }
 
   public close(): void {
     this.isOpen = false;
+  }
+
+  public focus(): void {
+    this._activeItemIndex = -1;
+    this._menuContent.nativeElement.focus();
   }
 
   /** Move the aria-current attribute to new active page */
@@ -364,40 +381,62 @@ export class BaoDropdownMenuComponent
    */
   private getNextActivableItemIndex(
     currentIndex: number,
-    isDown: boolean,
-    isBackward = false
+    isDown: boolean
   ): number {
-    if (!this._listItems.get(currentIndex).disabled) {
-      if (!this.canMove(currentIndex, isDown)) {
-        return currentIndex;
+    const init: number[] = [];
+    // Get all the activable indexes
+    const activableIndexes = this._listItems.reduce((acc, element, index) => {
+      if (!element.disabled) {
+        acc = [...acc, index];
       }
-    } else {
-      if (!this.canMove(currentIndex, isDown)) {
-        const previousIndex = isDown ? currentIndex - 1 : currentIndex + 1;
-        return this.getNextActivableItemIndex(previousIndex, isDown, true);
-      }
-    }
-    const nextIndex = isDown ? currentIndex + 1 : currentIndex - 1;
-    if (this._listItems.get(nextIndex).disabled) {
-      if (isBackward) {
-        return currentIndex;
-      }
-      return this.getNextActivableItemIndex(nextIndex, isDown);
-    }
-    return nextIndex;
-  }
 
-  /**
-   * Finds if focus has reached end or beginning of list
-   * @param currentIndex List item index which currently has focus
-   * @param isDown Whether the navigation is going in the down direction or not
-   * @returns Can focus move to next item or not
-   */
-  private canMove(currentIndex: number, isDown: boolean): boolean {
-    return !(
-      (currentIndex == 0 && !isDown) ||
-      (currentIndex == this._listItems.length - 1 && isDown)
-    );
+      return acc;
+    }, init);
+
+    if (activableIndexes.length) {
+      if (isDown) {
+        // Select the first enabled element
+        if (currentIndex === -1) {
+          return activableIndexes[0];
+        }
+
+        // Select the only enabled element
+        if (activableIndexes.length === 1) {
+          return activableIndexes[0];
+        }
+
+        // Stay on the last enabled element
+        if (currentIndex === activableIndexes[activableIndexes.length - 1]) {
+          return currentIndex;
+        }
+
+        // Select the next enabled element
+        return activableIndexes.find(index => index > currentIndex);
+      }
+
+      const isUp = !isDown;
+      if (isUp) {
+        // Do nothing whenever nothing is selected
+        if (currentIndex === -1) {
+          return currentIndex;
+        }
+
+        // Select the only enabled element
+        if (activableIndexes.length === 1) {
+          return activableIndexes[0];
+        }
+
+        // Stay on the first enabled element
+        if (currentIndex === activableIndexes[0]) {
+          return currentIndex;
+        }
+
+        // Select the above enabled element
+        return activableIndexes.reverse().find(index => index < currentIndex);
+      }
+
+      return -1;
+    }
   }
 }
 /**
@@ -428,16 +467,6 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     if (this._isMenuOpen) {
       this.closeMenu();
       this.nativeElement.focus();
-    }
-  }
-
-  /** Enter key event triggers click event which opens menu,
-   *  then focus is put on first item in the menu */
-  @HostListener('window:keyup.enter', ['$event'])
-  enterKeyEvent(event: KeyboardEvent) {
-    if (this._isMenuOpen && document.activeElement === this.nativeElement) {
-      event.stopImmediatePropagation();
-      this.menu.focusFirstItem();
     }
   }
 
@@ -485,6 +514,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     overlayRef.attach(this.menu.menuPortal);
     this._isMenuOpen = true;
     this.menu.open();
+    this.menu.focus();
   }
 
   private createOverlay(): OverlayRef {

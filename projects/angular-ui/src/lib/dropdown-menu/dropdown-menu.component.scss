@@ -17,8 +17,14 @@ $overlay-max-width: 32rem !default;
   background: $white;
   box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+
+  &:focus-visible {
+    outline: none;
+  }
   .bao-overlay-transparent-backdrop {
     background-color: $transparent;
     display: none;

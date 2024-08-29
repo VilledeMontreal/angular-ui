@@ -123,5 +123,10 @@ $size-xx-small: 1rem;
         }
       }
     }
+
+    > .bao-list-item-actions .bao-button {
+      margin-left: 2rem;
+      margin-top: -0.5rem;
+    }
   }
 }

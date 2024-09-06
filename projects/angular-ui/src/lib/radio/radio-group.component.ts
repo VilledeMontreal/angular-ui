@@ -65,9 +65,9 @@ export class BaoRadioButtonGroupComponent
     new EventEmitter<string>();
 
   @ContentChildren(forwardRef(() => BaoRadioButtonComponent), {
-    descendants: true
+    descendants: true,
+    read: ViewChild('container', { static: false })
   })
-  @ViewChild('container', { static: false })
   private staticContainer: ElementRef;
 
   /**

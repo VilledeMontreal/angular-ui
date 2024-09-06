@@ -244,10 +244,10 @@ export const baoFileIntl: StoryFn = args => ({
       <div style="max-width:50rem;">
         <p> By default, the File Input component displays its texts in french. To display text in another language, here are the steps to follow:
         <ol>
-          <li> In your <b>app.module.ts</b>, import <b>BaoFileIntl</b> and <b>BaoFileIntlEnglish</b> for texts in english from @villedemontreal/angular-ui. </li>
+          <li> In your <b>app.module.ts</b>, import <b>BaoFileIntl</b> and <b>BaoFileIntlEnglish</b> for texts in english from &#64;villedemontreal/angular-ui. </li>
           <li> If you need to use the component in a different language, you can declare your own class that extends BaoFileIntl and contains texts in your prefered language. It should look like this:
             <p> 
-              <code>@Injectable()<br>
+              <code>&#64;Injectable()<br>
                     class BaoFileIntlEnglish extends BaoFileIntl {{ '{' }}
                     <div style="margin-left:1rem;font-family:inherit;font-size:inherit;">
                       dropzoneButtonLabel = 'Browse';<br>

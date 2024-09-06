@@ -30,7 +30,11 @@
             "main": "projects/angular-ui/src/test.ts",
             "tsConfig": "projects/angular-ui/tsconfig.spec.json",
             "karmaConfig": "projects/angular-ui/karma.conf.js",
-            "include": ["**/*.spec.ts"]
+            "include": ["**/*.spec.ts"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         },
         "lint": {
@@ -116,10 +120,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "storybook-angular:build:production"
+              "buildTarget": "storybook-angular:build:production"
             },
             "development": {
-              "browserTarget": "storybook-angular:build:development"
+              "buildTarget": "storybook-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -127,7 +131,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "storybook-angular:build"
+            "buildTarget": "storybook-angular:build"
           }
         },
         "test": {

@@ -1,4 +1,4 @@
-FROM node:16.14-alpine
+FROM node:20-alpine
 LABEL MAINTAINER="VdMtl" 
 
 # Create app directory

@@ -4,7 +4,6 @@
   baoFileDrop
   class="file-drop-zone"
   (fileDrop)="uploadFile($event)"
-  #dropzone
 >
   <button
     bao-button
@@ -13,8 +12,6 @@
     level="secondary"
     [disabled]="disabled"
     (click)="uploader.click()"
-    aria-hidden="true"
-    tabIndex="-1"
   >
     {{ intl.dropzoneButtonLabel }}
   </button>
@@ -24,6 +21,7 @@
     class="sr-only"
     [disabled]="disabled"
     (change)="uploadFile($event.target.files[0])"
+    tabindex="-1"
     #uploader
   />
   <ng-container

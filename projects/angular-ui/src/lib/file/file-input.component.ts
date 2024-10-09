@@ -122,9 +122,6 @@ export class BaoFileInputComponent
    */
   @ViewChild('uploader', { static: false }) private uploader: ElementRef;
 
-  @ViewChild('dropzone', { static: false })
-  private dropzoneElement: ElementRef<HTMLElement>;
-
   public insertDefaultInstructions = false;
   public isFileTooBig = false;
   public isFileTypeInvalid = false;
@@ -149,26 +146,6 @@ export class BaoFileInputComponent
   enterKeyEvent() {
     if (document.activeElement.id === this.inputId) {
       document.getElementById(this.inputId).click();
-    }
-  }
-
-  @HostListener('window:keyup.tab')
-  tabKeyEvent() {
-    if (document.activeElement.id === this.inputId) {
-      this.renderer.addClass(
-        this.dropzoneElement.nativeElement,
-        'dropzone-focus'
-      );
-    }
-  }
-
-  @HostListener('window:keyup.shift.tab')
-  shiftTabKeyEvent() {
-    if (document.activeElement.id === this.inputId) {
-      this.renderer.addClass(
-        this.dropzoneElement.nativeElement,
-        'dropzone-focus'
-      );
     }
   }
 

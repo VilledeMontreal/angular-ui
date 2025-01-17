@@ -484,7 +484,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     );
     this.menu.isClosedByKeyEvent.subscribe(() => {
       this.closeMenu();
-      this.nativeElement.focus();
+      setTimeout(() => this.nativeElement.focus(), 50);
     });
   }
 

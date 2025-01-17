@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2025 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -18,19 +18,21 @@ describe('BaoList', () => {
     let fixture: ComponentFixture<TestListDropdownMenuComponent>;
     let TestListDropdownMenuComponentElement: DebugElement;
 
-    beforeEach(waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [TestListDropdownMenuComponent],
-        imports: [
-          OverlayModule,
-          BaoListModule,
-          BaoDropdownMenuModule,
-          BaoButtonModule,
-          BaoIconModule
-        ]
-      });
-      return TestBed.compileComponents();
-    }));
+    beforeEach(
+      waitForAsync(() => {
+        TestBed.configureTestingModule({
+          declarations: [TestListDropdownMenuComponent],
+          imports: [
+            OverlayModule,
+            BaoListModule,
+            BaoDropdownMenuModule,
+            BaoButtonModule,
+            BaoIconModule
+          ]
+        });
+        return TestBed.compileComponents();
+      })
+    );
 
     beforeEach(() => {
       fixture = TestBed.createComponent(TestListDropdownMenuComponent);

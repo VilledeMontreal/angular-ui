@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.

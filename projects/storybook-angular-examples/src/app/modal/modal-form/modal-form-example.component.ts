@@ -1,8 +1,13 @@
+/*
+ * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Licensed under the MIT license.
+ * See LICENSE file in the project root for full license information.
+ */
 import { Component, Inject } from '@angular/core';
 import {
+  BAO_MODAL_DATA,
   BaoModal,
-  BaoModalRef,
-  BAO_MODAL_DATA
+  BaoModalRef
 } from 'projects/angular-ui/src/public-api';
 
 export interface AddressData {

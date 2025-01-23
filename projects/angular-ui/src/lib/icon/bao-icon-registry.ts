@@ -6,7 +6,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, SecurityContext } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ICONS_DCT } from './icons-dictionary';
+import { ICONS_DCT, ILLUSTRATIVE_ICONS } from './icons-dictionary';
 
 const SVG_PREFIX = `<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">`;
 const SVG_SUFFIX = `</svg>`;
@@ -27,7 +27,10 @@ export class BaoIconDictionary {
 
   private getRawIconStringFromIconName(iconName: string) {
     const iconSvgPath = ICONS_DCT[iconName] || '';
-    return `${SVG_PREFIX}${iconSvgPath}${SVG_SUFFIX}`;
+    const iconSvgPrefix = ILLUSTRATIVE_ICONS.includes(iconName)
+      ? SVG_PREFIX.replace('0 0 24 24', '0 0 40 40')
+      : SVG_PREFIX;
+    return `${iconSvgPrefix}${iconSvgPath}${SVG_SUFFIX}`;
   }
 
   private svgElementFromString(svgString: string): SVGElement {

@@ -25,6 +25,9 @@ const MEGA_THRESHOLD = 1000000;
   }
 })
 export class BaoFilePreviewComponent {
+  public get file(): File {
+    return this._file;
+  }
   /**
    * Uploaded file to display in list.
    */

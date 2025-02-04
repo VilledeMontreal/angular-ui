@@ -87,10 +87,7 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
   @HostListener('window:keyup.enter')
   enterKeyEvent() {
     if (document.activeElement == this.nativeElement) {
-      if (this.nativeElement.attributes['href']) {
-        this._parent.setNavigationAttribute(this.nativeElement);
-      }
-      this.propagateClick();
+      this.nativeElement.click();
     }
   }
 
@@ -451,6 +448,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
   @Input('baoDropdownMenuTriggerFor') menu: BaoDropdownMenuComponent | null;
   private _overlayRef: OverlayRef | null = null;
   private _isMenuOpen = false;
+  private animationDelay = 50;
 
   constructor(
     private renderer: Renderer2,
@@ -484,7 +482,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     );
     this.menu.isClosedByKeyEvent.subscribe(() => {
       this.closeMenu();
-      setTimeout(() => this.nativeElement.focus(), 50);
+      setTimeout(() => this.nativeElement.focus(), this.animationDelay);
     });
   }
 
@@ -514,7 +512,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     overlayRef.attach(this.menu.menuPortal);
     this._isMenuOpen = true;
     this.menu.open();
-    this.menu.focus();
+    setTimeout(() => this.menu.focus(), this.animationDelay);
   }
 
   private createOverlay(): OverlayRef {

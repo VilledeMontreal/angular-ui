@@ -309,10 +309,12 @@ export class BaoDropdownMenuComponent
   }
 
   /** Prevents focus to be lost when SHIFT + TAB has reached beginning of menu  */
-  @HostListener('window:keydown.shift.tab')
-  shiftTabKeyEvent() {
+  @HostListener('window:keydown.shift.tab', ['$event'])
+  shiftTabKeyEvent(event: KeyboardEvent) {
     if (this.isOpen) {
       if (document.activeElement === this._listItems.first.nativeElement) {
+        event.preventDefault();
+        event.stopPropagation();
         this.isClosedByKeyEvent.emit();
       }
     }
@@ -448,7 +450,6 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
   @Input('baoDropdownMenuTriggerFor') menu: BaoDropdownMenuComponent | null;
   private _overlayRef: OverlayRef | null = null;
   private _isMenuOpen = false;
-  private animationDelay = 50;
 
   constructor(
     private renderer: Renderer2,
@@ -482,7 +483,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     );
     this.menu.isClosedByKeyEvent.subscribe(() => {
       this.closeMenu();
-      setTimeout(() => this.nativeElement.focus(), this.animationDelay);
+      this.nativeElement.focus();
     });
   }
 
@@ -512,7 +513,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
     overlayRef.attach(this.menu.menuPortal);
     this._isMenuOpen = true;
     this.menu.open();
-    setTimeout(() => this.menu.focus(), this.animationDelay);
+    this.menu.focus();
   }
 
   private createOverlay(): OverlayRef {

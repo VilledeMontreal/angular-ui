@@ -26,3 +26,4 @@ export * from './lib/dropdown-menu';
 export * from './lib/file';
 export * from './lib/snack-bar';
 export * from './lib/system-header';
+export * from './lib/message-bar';

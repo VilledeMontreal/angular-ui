@@ -1,0 +1,17 @@
+<bao-icon [svgIcon]="iconType" [title]="iconTitle"></bao-icon>
+
+<div class="bao-message-content">
+  <ng-content></ng-content>
+</div>
+
+<button
+  *ngIf="dismissible"
+  class="bao-message-close"
+  type="button"
+  data-dismiss="message"
+  role="button"
+  [attr.aria-label]="dismissibleButtonAriaLabel"
+  (click)="onDismissClicked()"
+>
+  <bao-icon svgIcon="icon-x"></bao-icon>
+</button>

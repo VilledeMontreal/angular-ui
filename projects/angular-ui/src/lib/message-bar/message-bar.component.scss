@@ -1,0 +1,205 @@
+@import '../core/colors';
+@import '../core/radius';
+@import '../core/shadows';
+@import '../core/typography';
+@import '../core/mixins';
+
+// Custom fade and show Animations
+@keyframes bao-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bao-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.bao-fade-in {
+  animation: bao-fade-in 0.3s ease-in-out;
+}
+
+.bao-fade-out {
+  animation: bao-fade-out 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+// Colors per message type
+$message-colors: (
+  info: (
+    base: $informative-reversed,
+    dark: $white,
+    light: $informative-reversed,
+    hover: darken($informative-reversed, 10%),
+    focus: $warning-reversed
+  ),
+  alert: (
+    base: $warning-reversed,
+    dark: $ground-reversed,
+    light: $warning-reversed,
+    hover: lighten($warning-reversed, 10%),
+    focus: $white
+  ),
+  urgent: (
+    base: $negative-reversed,
+    dark: $white,
+    light: $negative-reversed,
+    hover: darken($negative-reversed, 10%),
+    focus: $warning-reversed
+  ),
+  neutral: (
+    base: $ground-reversed,
+    dark: $white,
+    light: $ground-reversed,
+    hover: $neutral-secondary,
+    focus: $warning-reversed
+  )
+);
+
+// General rules
+.bao-message-bar {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  border-left-width: 4px;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-left: 32px;
+
+  /* Icon (Left) */
+  .bao-message-icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    svg {
+      fill: $white;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @media (max-width: 768px) {
+    padding-left: 16px;
+  }
+
+  /* Message Content */
+  .bao-message-content {
+    display: inline;
+    word-break: break-word;
+    white-space: normal;
+    max-width: calc(100% - 5rem);
+    margin-right: 1rem;
+    justify-content: space-between;
+  }
+
+  .bao-message-content > * {
+    display: inline;
+  }
+
+  /* Link styles */
+  a,
+  bao-hyperlink {
+    text-decoration: none;
+    font-weight: $font-weight-bold;
+    border-bottom: 1px solid currentColor;
+    white-space: nowrap;
+    display: inline-block;
+    flex-shrink: 0;
+    outline: none;
+    padding: 2px;
+  }
+
+  /* Close Button (Right) */
+  .bao-message-close {
+    background: $transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    @include hover-focus {
+      opacity: 0.75;
+    }
+  }
+}
+
+@mixin focus-style($map, $is-close-button: false) {
+  $color-base: map-get($map, base);
+  $color-dark: map-get($map, dark);
+  $color-focus: map-get($map, focus);
+
+  outline: 3px solid
+    if($color-base == $warning-reversed, $informative-reversed, $color-focus);
+  outline-offset: 3px;
+  background-color: rgba($color-dark, 0.1);
+  box-shadow: 0 0 0 3px if($color-base == $warning-reversed, $white, $black);
+
+  @if $is-close-button {
+    border-radius: if($color-base == $warning-reversed, 2px, 4px);
+  }
+}
+
+// Apply correct colors per type
+@each $label, $map in $message-colors {
+  $color-base: map-get($map, base);
+  $color-light: map-get($map, light);
+  $color-dark: map-get($map, dark);
+  $color-hover: map-get($map, hover);
+  $color-focus: map-get($map, focus);
+
+  .bao-message-bar-#{$label} {
+    background-color: $color-light;
+    border-left: 4px solid $color-base;
+    color: $color-dark;
+
+    a,
+    bao-hyperlink {
+      color: $color-dark;
+      margin: 3px;
+      &:hover {
+        background-color: $color-hover;
+      }
+      &:focus {
+        @include focus-style($map);
+      }
+    }
+
+    .bao-message-icon svg {
+      fill: $color-dark;
+    }
+
+    .bao-message-close {
+      color: $color-dark;
+      background-color: $transparent;
+      border-radius: $radius-none;
+      height: 2.5rem;
+      width: 2.5rem;
+      margin-left: auto;
+      margin-right: -0.5rem;
+      margin-top: -0.5rem;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:focus {
+        @include focus-style($map, true);
+      }
+    }
+  }
+}

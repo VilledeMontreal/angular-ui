@@ -49,6 +49,16 @@ export class BaoHyperlinkComponent implements AfterViewInit {
   public ngAfterViewInit() {
     this.setIcon();
     this.addIconClass();
+    this.addTabIndex();
+  }
+
+  private addTabIndex() {
+    if (!this.nativeElement) return;
+    const anchorElement = Array.from(this.nativeElement.children).find(
+      el => el.localName === 'a'
+    );
+    if (!anchorElement) return;
+    this.renderer.setAttribute(anchorElement, 'tabIndex', '0');
   }
 
   private setIcon() {

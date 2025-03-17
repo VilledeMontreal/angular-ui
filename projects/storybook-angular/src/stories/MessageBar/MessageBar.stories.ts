@@ -4,15 +4,14 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { BaoButtonComponent } from 'projects/angular-ui/src/lib/button/button.component';
+import { BaoHyperlinkModule } from 'projects/angular-ui/src/lib/hyperlink/module';
+import { BaoIconModule } from 'projects/angular-ui/src/lib/icon/module';
 import {
   BaoMessageBarComponent,
   BaoMessageBarContent
 } from 'projects/angular-ui/src/lib/message-bar/message-bar.component';
-import { BaoIconModule } from 'projects/angular-ui/src/lib/icon/module';
-import { BaoButtonComponent } from 'projects/angular-ui/src/lib/button/button.component';
-import { BaoHyperlinkModule } from 'projects/angular-ui/src/lib/hyperlink/module';
 
 const description = `
 Message bars are used to display important messages globally in the application.
@@ -67,6 +66,7 @@ export default {
     ngOnChanges: { table: { disable: true } },
     iconTitle: { table: { disable: true } },
     iconType: { table: { disable: true } },
+    onDismissClicked: { table: { disable: true } },
     dismissibleButtonAriaLabel: {
       table: { defaultValue: { summary: 'Cacher le message' } }
     },
@@ -79,7 +79,9 @@ export default {
 /**
  *  Base Story Template
  */
-const Template: Story<BaoMessageBarComponent & { content: string }> = args => ({
+const Template: StoryFn<
+  BaoMessageBarComponent & { content: string }
+> = args => ({
   template: `
     <bao-message-bar [type]="type" [dismissible]="dismissible" [dismissibleButtonAriaLabel]="dismissibleButtonAriaLabel">
       <bao-message-content>
@@ -104,7 +106,7 @@ Primary.args = {
 /**
  * Dismissible Message Bar with Links
  */
-export const DismissibleMessageBar: Story = args => ({
+export const DismissibleMessageBar: StoryFn = args => ({
   props: args,
   template: `
     <bao-message-bar type="info" [dismissible]="dismissible">
@@ -140,7 +142,7 @@ DismissibleMessageBar.args = {
 /**
  *  Message Bar with Long Text and Links
  */
-export const LongTextMessageBar: Story = args => ({
+export const LongTextMessageBar: StoryFn = args => ({
   props: args,
   template: `
     <bao-message-bar type="info" [dismissible]="dismissible">
@@ -181,7 +183,7 @@ LongTextMessageBar.args = {
 /**
  * Message Bar without Close Button
  */
-export const MessageBarWithoutCloseButton: Story = args => ({
+export const MessageBarWithoutCloseButton: StoryFn = args => ({
   props: args,
   template: `
     <bao-message-bar type="info">
@@ -221,7 +223,7 @@ MessageBarWithoutCloseButton.args = {
 /**
  * Message Bar with Different Links
  */
-export const MessageBarWithDifferentLinks: Story = args => ({
+export const MessageBarWithDifferentLinks: StoryFn = args => ({
   props: args,
   template: `
     <bao-message-bar type="info" [dismissible]="dismissible">

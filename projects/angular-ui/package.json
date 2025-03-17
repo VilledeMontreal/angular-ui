@@ -1,6 +1,6 @@
 {
   "name": "@villedemontreal/angular-ui",
-  "version": "16.0.9",
+  "version": "16.1.0",
   "dependencies": {
     "tslib": "^2.3.0"
   },

@@ -52,6 +52,7 @@ Thumbs.db
 # storybook output
 storybook-static
 documentation.json
+build-storybook.log
 
 # tests
 coverage/

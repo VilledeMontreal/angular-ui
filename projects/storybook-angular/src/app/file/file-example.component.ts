@@ -18,7 +18,10 @@ export class BaoFileReactiveFormExampleComponent {
   public fileInputForm: FormGroup;
   public lastUploadedFiles: File[];
 
-  constructor(fb: FormBuilder, private cdr: ChangeDetectorRef) {
+  constructor(
+    fb: FormBuilder,
+    private cdr: ChangeDetectorRef
+  ) {
     this.fileInputForm = fb.group({
       fileList: [[], [Validators.required]]
     });

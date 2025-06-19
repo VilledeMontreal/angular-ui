@@ -3,8 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
 import {
   BaoRadioButtonComponent,
   BaoRadioModule,
@@ -51,7 +50,7 @@ export default {
   argTypes: {}
 } as Meta;
 
-const Template: Story<BaoRadioButtonComponent & { label: string }> = (
+const Template: StoryFn<BaoRadioButtonComponent & { label: string }> = (
   args: BaoRadioButtonComponent
 ) => ({
   component: BaoRadioButtonComponent,
@@ -69,7 +68,7 @@ Primary.args = {
   label: 'Label'
 };
 
-export const RadioSimple: Story = args => ({
+export const RadioSimple: StoryFn = args => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioSimple" name="RadioSimple">
@@ -92,7 +91,7 @@ RadioSimple.args = {
   ...Primary.args
 };
 
-export const RadioWithDescriptionAndBorder: Story = args => ({
+export const RadioWithDescriptionAndBorder: StoryFn = args => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioWithDescriptionAndBorder" name="RadioWithDescriptionAndBorder">
@@ -118,7 +117,7 @@ RadioWithDescriptionAndBorder.args = {
   ...Primary.args
 };
 
-export const RadioWithDescAndHiddenLabel: Story = args => ({
+export const RadioWithDescAndHiddenLabel: StoryFn = args => ({
   props: args,
   template: `
   <bao-radio-button-group id="RadioWithDescAndHiddenLabel" name="RadioWithDescAndHiddenLabel">
@@ -143,7 +142,7 @@ RadioWithDescAndHiddenLabel.args = {
   ...Primary.args
 };
 
-export const RadioExample: Story = args => ({
+export const RadioExample: StoryFn = args => ({
   props: args,
   template: `
     <bao-radio-button-example></bao-radio-button-example>
@@ -154,7 +153,7 @@ RadioExample.args = {
   ...Primary.args
 };
 
-export const RadioReactiveExample: Story = args => ({
+export const RadioReactiveExample: StoryFn = args => ({
   props: args,
   template: `
     <bao-radio-button-reactive-form-example></bao-radio-button-reactive-form-example>

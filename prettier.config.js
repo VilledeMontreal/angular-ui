@@ -1,1 +1,5 @@
-module.exports = require('@villedemontreal/lint-config/rules/prettier.config');
+module.exports = {
+  trailingComma: 'none',
+  singleQuote: true,
+  arrowParens: 'avoid'
+};

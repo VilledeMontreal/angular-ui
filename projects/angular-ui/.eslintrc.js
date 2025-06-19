@@ -11,7 +11,9 @@ module.exports = {
         createDefaultProgram: true
       },
       rules: {
-        '@typescript-eslint/no-explicit-any': 0
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unused-vars': 'error',
+        'prefer-const': 'error'
       }
     },
     {
@@ -21,13 +23,13 @@ module.exports = {
         project: ['projects/angular-ui/tsconfig.lib.json']
       },
       rules: {
-        'header/header': 0
+        'header/header': 'off'
       }
     },
     {
       files: ['*.spec.ts'],
       rules: {
-        'max-lines-per-function': 0
+        'max-lines-per-function': 'off'
       }
     }
   ]

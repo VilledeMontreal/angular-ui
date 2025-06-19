@@ -192,17 +192,13 @@ export class BaoModalRef<T, R = unknown> {
     const strategy = this._getPositionStrategy();
 
     if (position && (position.left || position.right)) {
-      position.left
-        ? strategy.left(position.left)
-        : strategy.right(position.right);
+      this.applyPositionStrategy(position, strategy, 'horizontal');
     } else {
       strategy.centerHorizontally();
     }
 
     if (position && (position.top || position.bottom)) {
-      position.top
-        ? strategy.top(position.top)
-        : strategy.bottom(position.bottom);
+      this.applyPositionStrategy(position, strategy, 'vertical');
     } else {
       strategy.centerVertically();
     }
@@ -251,6 +247,32 @@ export class BaoModalRef<T, R = unknown> {
   private _getPositionStrategy(): GlobalPositionStrategy {
     return this._overlayRef.getConfig()
       .positionStrategy as GlobalPositionStrategy;
+  }
+
+  /**
+   * Applies the position strategy to the overlay.
+   * @param position The position configuration for the modal.
+   * @param strategy The position strategy to be applied.
+   * @param axis The axis to apply the position ('horizontal' | 'vertical')
+   */
+  private applyPositionStrategy(
+    position: ModalPosition,
+    strategy: GlobalPositionStrategy,
+    axis: 'horizontal' | 'vertical'
+  ): void {
+    if (axis === 'vertical') {
+      if (position.top) {
+        strategy.top(position.top);
+      } else {
+        strategy.bottom(position.bottom);
+      }
+    } else {
+      if (position.left) {
+        strategy.left(position.left);
+      } else {
+        strategy.right(position.right);
+      }
+    }
   }
 }
 

@@ -192,12 +192,14 @@ export class BaoModalRef<T, R = unknown> {
     const strategy = this._getPositionStrategy();
 
     if (position && (position.left || position.right)) {
+      // Here we will set the horizontal position of the modal (left or right).
       this.applyPositionStrategy(position, strategy, 'horizontal');
     } else {
       strategy.centerHorizontally();
     }
 
     if (position && (position.top || position.bottom)) {
+      // Here we will set the vertical position of the modal (top or bottom).
       this.applyPositionStrategy(position, strategy, 'vertical');
     } else {
       strategy.centerVertically();
@@ -251,9 +253,14 @@ export class BaoModalRef<T, R = unknown> {
 
   /**
    * Applies the position strategy to the overlay.
+   *
+   * This method sets the position of the modal based on the provided `position` configuration.
+   * It determines whether to apply the position to the vertical or horizontal axis based on the
+   * `axis` parameter.
+   *
    * @param position The position configuration for the modal.
    * @param strategy The position strategy to be applied.
-   * @param axis The axis to apply the position ('horizontal' | 'vertical')
+   * @param axis The axis to apply the position (`'horizontal' | 'vertical'`)
    */
   private applyPositionStrategy(
     position: ModalPosition,

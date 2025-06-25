@@ -3,8 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
 import {
   BaoBreadcrumbComponent,
   BaoHeaderInfoComponent,
@@ -37,7 +36,7 @@ export default {
   argTypes: {}
 } as Meta;
 
-const Template: Story<
+const Template: StoryFn<
   BaoHeaderInfoComponent & { title: string; subtitle: string }
 > = (args: BaoHeaderInfoComponent) => ({
   component: BaoHeaderInfoComponent,
@@ -63,7 +62,7 @@ Primary.args = {
   notch: 'left'
 };
 
-export const HeaderInfo: Story = args => ({
+export const HeaderInfo: StoryFn = args => ({
   props: args,
   template: `
     <bao-header-info [brandBorder]="true">
@@ -81,7 +80,7 @@ HeaderInfo.args = {
   ...Primary.args
 };
 
-export const HeaderInfoComplex: Story = args => ({
+export const HeaderInfoComplex: StoryFn = args => ({
   props: args,
   template: `
   <bao-header-info imageUrl="https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1570212188/portail/background/texture-large-undeground.png">
@@ -119,7 +118,7 @@ HeaderInfoComplex.args = {
   ...Primary.args
 };
 
-export const HeaderInfoBreadcrumb: Story = args => ({
+export const HeaderInfoBreadcrumb: StoryFn = args => ({
   props: args,
   template: `
   <bao-header-info imageUrl="https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1573672979/portail/background/EnteteVitrine_Quartier.png">
@@ -139,7 +138,7 @@ HeaderInfoBreadcrumb.args = {
   ...Primary.args
 };
 
-export const HeaderInfoCenterNotch: Story = args => ({
+export const HeaderInfoCenterNotch: StoryFn = args => ({
   props: args,
   template: `
   <bao-header-info notch="center" imageUrl="https://res.cloudinary.com/villemontreal/image/upload/q_auto,f_auto,dpr_auto/v1570212188/portail/background/texture-large-undeground.png">

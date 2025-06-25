@@ -4,10 +4,9 @@
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
-import { Meta, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
 import {
   BaoFilePreviewComponent,
   BaoDropdownMenuComponent,
@@ -88,7 +87,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<BaoFilePreviewComponent> = (
+const Template: StoryFn<BaoFilePreviewComponent> = (
   args: BaoFilePreviewComponent
 ) => ({
   component: BaoFilePreviewComponent,
@@ -118,7 +117,7 @@ Primary.args = {
   isLoading: false
 };
 
-export const filePreviewWithMenu: Story = args => ({
+export const filePreviewWithMenu: StoryFn = args => ({
   props: args,
   template: `
       <div style="max-width:20rem;">

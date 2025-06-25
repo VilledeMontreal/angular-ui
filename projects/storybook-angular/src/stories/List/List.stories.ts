@@ -6,8 +6,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
 import {
   BaoAvatarModule,
   BaoButtonModule,
@@ -57,7 +56,7 @@ export default {
   argTypes: {}
 } as Meta;
 
-const Template: Story<BaoListItem & { content: string }> = (
+const Template: StoryFn<BaoListItem & { content: string }> = (
   args: BaoListItem
 ) => ({
   component: BaoListItem,
@@ -76,7 +75,7 @@ Primary.args = {
   content: 'content'
 };
 
-export const SimpleListWithLeftIcon: Story = args => ({
+export const SimpleListWithLeftIcon: StoryFn = args => ({
   props: args,
   template: `
     <bao-list>
@@ -96,7 +95,7 @@ SimpleListWithLeftIcon.args = {
   ...Primary.args
 };
 
-export const SimpleListWithRightIcon: Story = args => ({
+export const SimpleListWithRightIcon: StoryFn = args => ({
   props: args,
   template: `
     <bao-list>
@@ -116,7 +115,7 @@ SimpleListWithRightIcon.args = {
   ...Primary.args
 };
 
-export const SimpleListWithTag: Story = args => ({
+export const SimpleListWithTag: StoryFn = args => ({
   props: args,
   template: `
     <bao-list>
@@ -136,7 +135,7 @@ SimpleListWithTag.args = {
   ...Primary.args
 };
 
-export const SimpleListWithTagAndIcon: Story = args => ({
+export const SimpleListWithTagAndIcon: StoryFn = args => ({
   props: args,
   template: `
   <bao-list>
@@ -158,7 +157,7 @@ SimpleListWithTagAndIcon.args = {
   ...Primary.args
 };
 
-export const SimpleListWithDescription: Story = args => ({
+export const SimpleListWithDescription: StoryFn = args => ({
   props: args,
   template: `
   <bao-list>
@@ -197,7 +196,7 @@ SimpleListWithDescription.args = {
   ...Primary.args
 };
 
-export const SimpleListWithInlineDescription: Story = args => ({
+export const SimpleListWithInlineDescription: StoryFn = args => ({
   props: args,
   template: `
   <bao-list>
@@ -236,7 +235,7 @@ SimpleListWithInlineDescription.args = {
   ...Primary.args
 };
 
-export const SimpleListWithDropdownMenu: Story = args => ({
+export const SimpleListWithDropdownMenu: StoryFn = args => ({
   props: args,
   template: `
     <bao-list>
@@ -346,7 +345,7 @@ SimpleListWithDropdownMenu.args = {
   ...Primary.args
 };
 
-export const SimpleListWithActionButton: Story = args => ({
+export const SimpleListWithActionButton: StoryFn = args => ({
   props: args,
   template: `
     <bao-list>

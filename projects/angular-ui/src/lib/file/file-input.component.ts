@@ -353,6 +353,7 @@ export class BaoFileDropDirective {
     event.stopPropagation();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   private getDataTransfer(event: DragEvent | any): DataTransfer {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return event.dataTransfer

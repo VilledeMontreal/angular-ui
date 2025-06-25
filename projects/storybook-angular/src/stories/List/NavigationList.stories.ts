@@ -3,8 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
 import {
   BaoIconModule,
   BaoListItem,
@@ -36,7 +35,7 @@ export default {
   argTypes: {}
 } as Meta;
 
-export const navigationList: Story = args => ({
+export const navigationList: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -50,7 +49,7 @@ navigationList.args = {
   ...Primary.args
 };
 
-export const navigationListWithLeftIcon: Story = args => ({
+export const navigationListWithLeftIcon: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -70,7 +69,7 @@ navigationListWithLeftIcon.args = {
   ...Primary.args
 };
 
-export const navigationListWithRightIcon: Story = args => ({
+export const navigationListWithRightIcon: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -90,7 +89,7 @@ navigationListWithRightIcon.args = {
   ...Primary.args
 };
 
-export const navigationListWithTag: Story = args => ({
+export const navigationListWithTag: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -110,7 +109,7 @@ navigationListWithTag.args = {
   ...Primary.args
 };
 
-export const navigationListWithTagAndIcon: Story = args => ({
+export const navigationListWithTagAndIcon: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -130,7 +129,7 @@ navigationListWithTagAndIcon.args = {
   ...Primary.args
 };
 
-export const navigationListDescription: Story = args => ({
+export const navigationListDescription: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>
@@ -169,7 +168,7 @@ navigationListDescription.args = {
   ...Primary.args
 };
 
-export const navigationListInlineDescription: Story = args => ({
+export const navigationListInlineDescription: StoryFn = args => ({
   props: args,
   template: `
   <bao-nav-list>

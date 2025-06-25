@@ -10,7 +10,7 @@ import {
   applicationConfig,
   Meta,
   moduleMetadata,
-  Story
+  StoryFn
 } from '@storybook/angular';
 import {
   BaoButtonModule,
@@ -50,7 +50,7 @@ export default {
   ]
 } as Meta;
 
-const Template: Story = args => ({
+const Template: StoryFn = args => ({
   props: args
 });
 

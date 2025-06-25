@@ -9,13 +9,27 @@ on:
   pull_request:
 jobs:
   build:
+    name: Build, Lint and Test Project
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - run: npm run test-ci
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      # Because the storybook project use the built version of angular-ui,
+      # we need to run these steps after building the project.
+      - name: Lint project
+        run: npm run lint
+
+      - name: Test project
+        run: npm run test-ci

@@ -27,7 +27,11 @@ export interface BaoModalConfig {
 }
 
 /** Options for where to set focus to automatically on dialog open */
-export type AutoFocusTarget = 'dialog' | 'first-tabbable' | 'first-heading';
+export type AutoFocusTarget =
+  | 'dialog'
+  | 'modal'
+  | 'first-tabbable'
+  | 'first-heading';
 
 /** Valid ARIA roles for a dialog element. */
 export type ModalRole = 'dialog' | 'alertdialog';
@@ -122,7 +126,7 @@ export class BaoModalInitialConfig<D = unknown> {
   /**
    * Where the dialog should focus on open.
    */
-  autoFocus?: AutoFocusTarget | string = 'first-tabbable';
+  autoFocus?: AutoFocusTarget = 'first-tabbable';
 
   /**
    * Whether the dialog should restore focus to the

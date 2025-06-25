@@ -29,7 +29,7 @@ export class ModalContentScrollableExample {
     });
 
     modalRef.afterClosed().subscribe(result => {
-      console.log(`Modal result: ${result}`);
+      console.log(`Modal result: ${JSON.stringify(result)}`);
     });
   }
 }

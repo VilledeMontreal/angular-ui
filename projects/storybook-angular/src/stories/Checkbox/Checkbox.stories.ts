@@ -3,8 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
 import {
   BaoCheckboxComponent,
   BaoCheckboxModule,
@@ -46,7 +45,7 @@ export default {
   argTypes: {}
 } as Meta;
 
-const Template: Story<BaoCheckboxComponent & { label: string }> = (
+const Template: StoryFn<BaoCheckboxComponent & { label: string }> = (
   args: BaoCheckboxComponent
 ) => ({
   component: BaoCheckboxComponent,
@@ -71,7 +70,7 @@ Primary.args = {
   label: 'Label'
 };
 
-export const CheckboxSimple: Story = args => ({
+export const CheckboxSimple: StoryFn = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -96,7 +95,7 @@ CheckboxSimple.args = {
   ...Primary.args
 };
 
-export const InlineCheckboxWithGuidingText: Story = args => ({
+export const InlineCheckboxWithGuidingText: StoryFn = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -122,7 +121,7 @@ InlineCheckboxWithGuidingText.args = {
   ...Primary.args
 };
 
-export const CheckboxDescriptionError: Story = args => ({
+export const CheckboxDescriptionError: StoryFn = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -152,7 +151,7 @@ CheckboxDescriptionError.args = {
   ...Primary.args
 };
 
-export const CheckboxDescriptionHiddenLabel: Story = args => ({
+export const CheckboxDescriptionHiddenLabel: StoryFn = args => ({
   props: args,
   template: `
   <bao-checkbox-group>
@@ -182,7 +181,7 @@ CheckboxDescriptionHiddenLabel.args = {
   ...Primary.args
 };
 
-export const CheckboxExample: Story = args => ({
+export const CheckboxExample: StoryFn = args => ({
   props: args,
   template: `
     <bao-checkbox-example></bao-checkbox-example>
@@ -193,7 +192,7 @@ CheckboxExample.args = {
   ...Primary.args
 };
 
-export const CheckboxReactiveExample: Story = args => ({
+export const CheckboxReactiveExample: StoryFn = args => ({
   props: args,
   template: `
     <bao-checkbox-reactive-form-example></bao-checkbox-reactive-form-example>

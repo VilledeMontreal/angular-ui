@@ -3,8 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
 import {
   BaoIconModule,
   BaoButtonModule,
@@ -106,7 +105,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<
+const Template: StoryFn<
   BaoSummaryComponent & { title: string; content: string }
 > = (args: BaoSummaryComponent) => ({
   component: BaoSummaryComponent,
@@ -156,7 +155,7 @@ Primary.args = {
   content: 'Content'
 };
 
-export const SimpleSummary: Story = args => ({
+export const SimpleSummary: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4">
@@ -209,7 +208,7 @@ SimpleSummary.args = {
   ...Primary.args
 };
 
-export const SummaryWithErrorText: Story = args => ({
+export const SummaryWithErrorText: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4" >
@@ -256,7 +255,7 @@ SummaryWithErrorText.args = {
   ...Primary.args
 };
 
-export const SummaryWithHiddenLabel: Story = args => ({
+export const SummaryWithHiddenLabel: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4">
@@ -297,7 +296,7 @@ SummaryWithHiddenLabel.args = {
   ...Primary.args
 };
 
-export const SummaryWithHiddenLabelWithoutButton: Story = args => ({
+export const SummaryWithHiddenLabelWithoutButton: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4">
@@ -318,7 +317,7 @@ SummaryWithHiddenLabelWithoutButton.args = {
   ...Primary.args
 };
 
-export const SummaryWithHiddenLabelAndButton: Story = args => ({
+export const SummaryWithHiddenLabelAndButton: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4">
@@ -340,7 +339,7 @@ SummaryWithHiddenLabelAndButton.args = {
   ...Primary.args
 };
 
-export const SummaryWithHiddenLabelErrorText: Story = args => ({
+export const SummaryWithHiddenLabelErrorText: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4">
@@ -388,7 +387,7 @@ SummaryWithHiddenLabelErrorText.args = {
   ...Primary.args
 };
 
-export const SummaryWithHiddenLabelErrorTextResponsive: Story = args => ({
+export const SummaryWithHiddenLabelErrorTextResponsive: StoryFn = args => ({
   props: args,
   template: `
   <div class="col-12 md-6 md-4">

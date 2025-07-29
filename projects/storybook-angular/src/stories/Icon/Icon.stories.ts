@@ -201,6 +201,7 @@ const Template: StoryFn = (args: BaoIconComponent) => ({
   <bao-icon [color]="color" [size]="size" title="spinner" svgIcon="icon-spinner"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="emergency" svgIcon="icon-emergency"></bao-icon>
   <bao-icon [color]="color" [size]="size" title="error-octagon" svgIcon="icon-error-octagon"></bao-icon>
+  <bao-icon [color]="color" [size]="size" title="slash" svgIcon="icon-slash"></bao-icon>
 </div>
  `,
   props: args

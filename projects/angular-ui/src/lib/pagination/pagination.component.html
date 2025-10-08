@@ -1,0 +1,77 @@
+<div class="items-diplayed-controls">
+  <span class="range-display">
+    {{ rangeLabel }}
+  </span>
+  <div *ngIf="showItemsPerPageSelector" class="items-per-page">
+    <label for="items-per-page-select" class="select-label"
+      >Items par page
+    </label>
+    <select
+      [(ngModel)]="itemsPerPage"
+      (ngModelChange)="handlePageSizeChange($event)"
+      name="items-per-page"
+      id="items-per-page-select"
+      class="dropdown-select"
+    >
+      <option *ngFor="let size of pageSizeOptions" [value]="size">
+        {{ size }}
+      </option>
+    </select>
+  </div>
+</div>
+<nav aria-label="Pagination" class="page-controls">
+  <ul>
+    <li
+      class="page-item"
+      [ngClass]="{ disabled: !hasPrevious }"
+      [attr.aria-disabled]="!hasPrevious ? 'true' : null"
+    >
+      <a
+        class="page-link"
+        (click)="$event.preventDefault(); handlePreviousClick()"
+        (keydown.enter)="$event.preventDefault(); handlePreviousClick()"
+        (keydown.space)="$event.preventDefault(); handlePreviousClick()"
+        tabindex="0"
+      >
+        <bao-icon title="Page précédente" svgIcon="icon-chevron-left"></bao-icon
+      ></a>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let page of displayedPages"
+      [ngClass]="{ active: page === currentPage }"
+      [attr.aria-current]="page === currentPage ? 'page' : null"
+    >
+      <ng-container *ngIf="page > 0; else ellipsis">
+        <span class="sr-only">{{ page }}</span>
+        <a
+          class="page-link"
+          (click)="$event.preventDefault(); goTo(page)"
+          (keydown.enter)="$event.preventDefault(); goTo(page)"
+          (keydown.space)="$event.preventDefault(); goTo(page)"
+          tabindex="0"
+          >{{ page }}</a
+        >
+      </ng-container>
+      <ng-template #ellipsis>
+        <span class="page-link ellipsis" aria-hidden="true">...</span>
+      </ng-template>
+    </li>
+
+    <li
+      class="page-item"
+      [ngClass]="{ disabled: !hasNext }"
+      [attr.aria-disabled]="!hasNext ? 'true' : null"
+    >
+      <a
+        class="page-link"
+        (click)="$event.preventDefault(); handleNextClick()"
+        (keydown.enter)="$event.preventDefault(); handleNextClick()"
+        (keydown.space)="$event.preventDefault(); handleNextClick()"
+        tabindex="0"
+      >
+        <bao-icon title="Page suivante" svgIcon="icon-chevron-right"></bao-icon
+      ></a>
+    </li>
+  </ul>
+</nav>

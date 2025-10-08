@@ -1,0 +1,93 @@
+@import '../core/typography';
+@import '../core/colors';
+@import '../core//grid';
+
+.bao-pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include respond-to(md) {
+    justify-content: flex-start;
+  }
+  > .items-diplayed-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    @include respond-to(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-self: auto;
+      margin-bottom: 1rem;
+    }
+    .range-display {
+      @include typo-interface-small-bold;
+      margin-bottom: 1rem;
+      @include respond-to(md) {
+        margin-bottom: 0rem;
+      }
+    }
+    > .items-per-page {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 2rem;
+      @include respond-to(md) {
+        margin-bottom: 0rem;
+      }
+      > .select-label {
+        @include typo-interface-small-bold;
+        color: $neutral-secondary;
+        margin-right: 1rem;
+      }
+      > .dropdown-select {
+        background-color: $neutral-ground;
+        border-radius: 0.25rem;
+        border-color: $neutral-stroke;
+        border-style: solid;
+        border-width: thin;
+        padding: 0.4375rem 2.4375rem 0.4375rem 0.4375rem;
+        @include typo-interface-medium-normal;
+        color: $ground-reversed;
+        appearance: none;
+        background: $white
+          url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='%23adb2bd' d='M12 12.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L12 12.586z'/%3e%3c/svg%3e")
+          right 0.4375rem center/24px 24px no-repeat;
+      }
+    }
+  }
+  .page-controls {
+    align-self: center;
+    > ul {
+      display: flex;
+      padding-left: 0;
+      margin-bottom: 0;
+      > .page-item {
+        &.disabled > .page-link > .bao-icon {
+          color: $neutral-tertiary;
+        }
+        > .page-link {
+          border-style: none;
+        }
+        &.active {
+          > .page-link {
+            background-color: $highlight-light;
+            border: 1px solid $action;
+            border-radius: 0.25rem;
+          }
+        }
+        > .page-link {
+          font-size: 0.875rem;
+          &:focus {
+            box-shadow: inset 0px 0px 0px 2px $informative-reversed;
+          }
+        }
+        > .ellipsis {
+          font-weight: bold;
+          &:hover {
+            background-color: $neutral-ground;
+          }
+        }
+      }
+    }
+  }
+}

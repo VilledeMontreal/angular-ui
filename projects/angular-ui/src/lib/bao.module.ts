@@ -19,6 +19,7 @@ import { BaoIconModule } from './icon';
 import { BaoListModule } from './list';
 import { BaoMessageBarModule } from './message-bar';
 import { BaoModalModule } from './modal/module';
+import { BaoPaginationModule } from './pagination';
 import { BaoRadioModule } from './radio';
 import { BaoSnackBarModule } from './snack-bar/module';
 import { BaoSummaryModule } from './summary';
@@ -56,8 +57,8 @@ import { BaoTagModule } from './tag';
     BaoFileModule,
     BaoSnackBarModule,
     BaoSystemHeaderModule,
-    BaoMessageBarModule
-    // TODO: reactivate once component does not depend on global css BaoBadgeModule,
+    BaoMessageBarModule,
+    BaoPaginationModule
   ]
 })
 export class BaoModule {}

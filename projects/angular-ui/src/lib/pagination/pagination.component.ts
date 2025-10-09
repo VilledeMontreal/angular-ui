@@ -179,8 +179,7 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
    * @param value New amount of items per page
    */
   public handlePageSizeChange(value: number) {
-    this.currentPage =
-      this.currentPage > this.totalPages ? this.totalPages : this.currentPage;
+    this.currentPage = 1;
     this.startItem = this.updateStartItem();
     this.endItem = this.updateEndItem();
     this.totalPages = this.updateTotalPages();
@@ -193,10 +192,11 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
   }
 
   private updateStartItem(): number {
-    return Math.min(
+    const startItem = Math.min(
       (this.currentPage - 1) * this.itemsPerPage + 1,
       Math.floor(this.totalItems / 10) * 10
     );
+    return startItem || 1;
   }
 
   private updateEndItem(): number {

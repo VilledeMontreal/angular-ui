@@ -6,6 +6,15 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-return*/
 import {
+  ComponentType,
+  ConnectedPosition,
+  Overlay,
+  OverlayConfig,
+  OverlayContainer,
+  OverlayRef
+} from '@angular/cdk/overlay';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import {
   Directive,
   Injectable,
   InjectionToken,
@@ -18,22 +27,16 @@ import {
   Type
 } from '@angular/core';
 import { defer, Observable, startWith, Subject, Subscription } from 'rxjs';
-import { BaoModalContainer, _BaoModalContainerBase } from './modal-container';
-import { BaoModalRef } from './modal-ref';
 import {
   BaoModalConfig,
   BaoModalInitialConfig,
   eModalDesktopWidthSize,
-  eModalMobileWidthSize
+  eModalMobileWidthSize,
+  eModalVariant,
+  FILTER_MODAL_WIDTH
 } from './modal-config';
-import {
-  ComponentType,
-  Overlay,
-  OverlayConfig,
-  OverlayContainer,
-  OverlayRef
-} from '@angular/cdk/overlay';
-import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { _BaoModalContainerBase, BaoModalContainer } from './modal-container';
+import { BaoModalRef } from './modal-ref';
 
 /** Injection token that can be used to access the data that was passed in to a modal. */
 export const BAO_MODAL_DATA = new InjectionToken<unknown>('BaoModalData');
@@ -168,16 +171,74 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
    * Creates an overlay config from a modal config.
    */
   private _getOverlayConfig(config: BaoModalInitialConfig): OverlayConfig {
+    let positionStrategy;
+    let hasBackdrop = config.hasBackdrop;
+    let backdropClass = config.backdropClass;
+
+    if (config.variant === eModalVariant.FILTER && config.triggerElement) {
+      // Use connected positioning for filter variant
+      positionStrategy = this._overlay
+        .position()
+        .flexibleConnectedTo(config.triggerElement.nativeElement)
+        .withLockedPosition()
+        .withGrowAfterOpen()
+        .withPositions([
+          {
+            // top-left of the overlay is connected to bottom-left of the origin;
+            originX: 'start',
+            originY: 'bottom',
+            overlayX: 'start',
+            overlayY: 'top'
+          } as ConnectedPosition,
+          {
+            // bottom-left of the overlay is connected to top-left of the origin;
+            originX: 'start',
+            originY: 'top',
+            overlayX: 'start',
+            overlayY: 'bottom'
+          } as ConnectedPosition,
+          {
+            // top-right of the overlay is connected to bottom-right of the origin;
+            originX: 'end',
+            originY: 'bottom',
+            overlayX: 'end',
+            overlayY: 'top'
+          } as ConnectedPosition,
+          {
+            // bottom-right of the overlay is connected to top-right of the origin;
+            originX: 'end',
+            originY: 'top',
+            overlayX: 'end',
+            overlayY: 'bottom'
+          } as ConnectedPosition
+        ]);
+      // Filter variant should have transparent backdrop
+      hasBackdrop = true;
+      backdropClass = 'bao-overlay-transparent-backdrop';
+    } else {
+      // Use global positioning for default variant
+      positionStrategy = this._overlay.position().global();
+    }
+
     const state = new OverlayConfig({
-      positionStrategy: this._overlay.position().global(),
+      positionStrategy,
       scrollStrategy: this._overlay.scrollStrategies.block(),
       panelClass: config.panelClass,
-      hasBackdrop: config.hasBackdrop,
-      disposeOnNavigation: config.closeOnNavigation
+      hasBackdrop,
+      disposeOnNavigation: config.closeOnNavigation,
+      // Set dimensions for filter variant in OverlayConfig instead of via updateSize()
+      width:
+        config.variant === eModalVariant.FILTER
+          ? FILTER_MODAL_WIDTH
+          : config.width,
+      minWidth: config.minWidth,
+      minHeight: config.minHeight,
+      maxWidth: config.maxWidth,
+      maxHeight: config.maxHeight
     });
 
-    if (config.backdropClass) {
-      state.backdropClass = config.backdropClass;
+    if (backdropClass) {
+      state.backdropClass = backdropClass;
     }
 
     return state;
@@ -244,10 +305,13 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
       modalRef.componentInstance = contentRef.instance;
     }
 
-    modalRef
-      .updateSize(config.width, config.height)
-      .updatePosition(config.position);
-
+    // Only update size and position for global variant
+    // Filter variant dimensions are set in OverlayConfig and positioning is handled by FlexibleConnectedPositionStrategy
+    if (config.variant !== eModalVariant.FILTER) {
+      modalRef
+        .updateSize(config.width, config.height)
+        .updatePosition(config.position);
+    }
     return modalRef;
   }
 
@@ -353,13 +417,27 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
     const mobilClass = config?.mobileSize || eModalMobileWidthSize.FULL;
     const data = config?.data || null;
     const ariaLabelledBy = config?.ariaLabelledBy || null;
+    const variant = config?.variant || eModalVariant.GLOBAL;
+    const triggerElement = config?.triggerElement;
 
+    // Add variant class for styling
+    const variantClass =
+      variant === eModalVariant.FILTER
+        ? 'bao-modal-filter'
+        : 'bao-modal-global';
+    // Filter variant does not have responsive css classes
+    const panelClass =
+      variant === eModalVariant.FILTER
+        ? [variantClass]
+        : [desktopClass, mobilClass, variantClass];
     return {
       ...defaultOptions,
       ...{
-        panelClass: [desktopClass, mobilClass],
+        panelClass,
         ariaLabelledBy,
-        data
+        data,
+        variant,
+        triggerElement
       }
     };
   }

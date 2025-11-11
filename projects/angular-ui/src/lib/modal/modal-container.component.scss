@@ -18,6 +18,13 @@
   border-radius: 0.5rem;
   outline: 0;
 }
+// Filter variant styling with shadow
+.bao-modal-filter .bao-modal-container {
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.15);
+  overflow: auto;
+  max-height: calc(100vh - 16px);
+  width: inherit;
+}
 
 .bao-modal-content {
   display: flex;
@@ -50,13 +57,15 @@
   padding: 1rem;
   overflow: auto;
   flex-grow: 1;
-
+}
+// Only the global variant is responsive
+.bao-modal-global .bao-modal-body {
   @include respond-to(md) {
     padding: 2rem;
   }
 }
 
-.bao-modal-footer {
+.bao-modal-global .bao-modal-footer {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
@@ -108,6 +117,22 @@
 
     .bao-button-tertiary {
       display: block;
+    }
+  }
+}
+
+.bao-modal-filter .bao-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid $neutral-stroke;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  > button {
+    flex-grow: 1;
+    justify-content: center;
+    &:first-child {
+      margin-right: 1rem;
     }
   }
 }

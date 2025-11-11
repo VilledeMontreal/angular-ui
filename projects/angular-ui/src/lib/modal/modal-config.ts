@@ -4,14 +4,20 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { ViewContainerRef, Injector } from '@angular/core';
 import { Direction } from '@angular/cdk/bidi';
 import { ScrollStrategy } from '@angular/cdk/overlay';
+import { ElementRef, Injector, ViewContainerRef } from '@angular/core';
 
+export const FILTER_MODAL_WIDTH = '360px';
 export enum eModalDesktopWidthSize {
   SMALL = 'bao-modal-sm', // 500px
   MEDIUM = 'bao-modal-md', // 800px
   LARGE = 'bao-modal-lg' // Full width minus 32px (global margin : left and rigth)
+}
+
+export enum eModalVariant {
+  GLOBAL = 'global',
+  FILTER = 'filter'
 }
 
 export enum eModalMobileWidthSize {
@@ -24,6 +30,8 @@ export interface BaoModalConfig {
   mobileSize?: eModalMobileWidthSize;
   data?: unknown;
   ariaLabelledBy?: string;
+  variant?: eModalVariant;
+  triggerElement?: ElementRef;
 }
 
 /** Options for where to set focus to automatically on dialog open */
@@ -118,6 +126,12 @@ export class BaoModalInitialConfig<D = unknown> {
 
   /** Aria label to assign to the dialog element. */
   ariaLabel?: string | null = null;
+
+  /** Modal variant (default or filter). */
+  variant?: eModalVariant = eModalVariant.GLOBAL;
+
+  /** Trigger element for connected positioning (used with filter variant). */
+  triggerElement?: ElementRef;
 
   /**
    * Where the dialog should focus on open.

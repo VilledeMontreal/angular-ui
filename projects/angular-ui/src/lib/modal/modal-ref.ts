@@ -5,7 +5,11 @@
  */
 import { FocusOrigin } from '@angular/cdk/a11y';
 import { ESCAPE, hasModifierKey } from '@angular/cdk/keycodes';
-import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay';
+import {
+  FlexibleConnectedPositionStrategy,
+  GlobalPositionStrategy,
+  OverlayRef
+} from '@angular/cdk/overlay';
 import { filter, Observable, Subject, take } from 'rxjs';
 import { ModalPosition } from './modal-config';
 import { _BaoModalContainerBase } from './modal-container';
@@ -191,20 +195,23 @@ export class BaoModalRef<T, R = unknown> {
   public updatePosition(position?: ModalPosition): this {
     const strategy = this._getPositionStrategy();
 
-    if (position && (position.left || position.right)) {
-      position.left
-        ? strategy.left(position.left)
-        : strategy.right(position.right);
-    } else {
-      strategy.centerHorizontally();
-    }
+    // Only apply custom position for GlobalPositionStrategy
+    if (strategy instanceof GlobalPositionStrategy) {
+      if (position && (position.left || position.right)) {
+        position.left
+          ? strategy.left(position.left)
+          : strategy.right(position.right);
+      } else {
+        strategy.centerHorizontally();
+      }
 
-    if (position && (position.top || position.bottom)) {
-      position.top
-        ? strategy.top(position.top)
-        : strategy.bottom(position.bottom);
-    } else {
-      strategy.centerVertically();
+      if (position && (position.top || position.bottom)) {
+        position.top
+          ? strategy.top(position.top)
+          : strategy.bottom(position.bottom);
+      } else {
+        strategy.centerVertically();
+      }
     }
 
     this._overlayRef.updatePosition();
@@ -248,9 +255,12 @@ export class BaoModalRef<T, R = unknown> {
   }
 
   /** Fetches the position strategy object from the overlay ref. */
-  private _getPositionStrategy(): GlobalPositionStrategy {
-    return this._overlayRef.getConfig()
-      .positionStrategy as GlobalPositionStrategy;
+  private _getPositionStrategy():
+    | GlobalPositionStrategy
+    | FlexibleConnectedPositionStrategy {
+    return this._overlayRef.getConfig().positionStrategy as
+      | GlobalPositionStrategy
+      | FlexibleConnectedPositionStrategy;
   }
 }
 

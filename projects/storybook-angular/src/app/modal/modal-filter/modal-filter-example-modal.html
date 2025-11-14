@@ -1,0 +1,57 @@
+<div class="bao-modal-content">
+  <div class="bao-modal-header">
+    <h1 id="bao-modal-filter-title" class="bao-modal-title">Types de permis</h1>
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      data-dismiss="modal"
+      level="tertiary"
+      no-text="true"
+      (click)="onNoClick()"
+    >
+      <bao-icon
+        color="action"
+        svgIcon="icon-x"
+        size="x-small"
+        title="Fermer la fenêtre modale"
+      ></bao-icon>
+    </button>
+  </div>
+  <div class="bao-modal-body">
+    <bao-checkbox-group>
+      <span class="example-list-section">
+        <ul style="list-style-type: none; margin-bottom: 0; padding-left: 0">
+          <li>
+            <bao-checkbox id="1" name="temporaire"> Temporaire </bao-checkbox>
+          </li>
+          <li>
+            <bao-checkbox id="2" name="permanent"> Permanent </bao-checkbox>
+          </li>
+        </ul>
+      </span>
+    </bao-checkbox-group>
+  </div>
+  <div class="bao-modal-footer">
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      level="secondary"
+      size="medium"
+      (click)="onNoClick()"
+    >
+      Réinitialiser
+    </button>
+    <button
+      bao-button
+      type="button"
+      displayType="utility"
+      level="primary"
+      size="medium"
+      (click)="onApplyFilters()"
+    >
+      Appliquer
+    </button>
+  </div>
+</div>

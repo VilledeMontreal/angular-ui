@@ -146,6 +146,12 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
     if (changes.hasOwnProperty('currentPage')) {
       this.displayedPages = this.buildPageNumbers();
     }
+    if (changes.hasOwnProperty('totalItems')) {
+      this.startItem = this.updateStartItem();
+      this.endItem = this.updateEndItem();
+      this.totalPages = this.updateTotalPages();
+      this.displayedPages = this.buildPageNumbers();
+    }
   }
   /**
    * Navigate to specific page

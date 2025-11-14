@@ -7,8 +7,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   BaoButtonModule,
+  BaoCheckboxModule,
+  BaoIconModule,
   BaoModalModule
 } from 'projects/angular-ui/src/public-api';
+import {
+  ModalFilterExample,
+  ModalFilterExampleModal
+} from './modal-filter/modal-filter-example.component';
 import {
   ModalFormExample,
   ModalFormExampleModal
@@ -33,6 +39,8 @@ import {
 const MODAL_DIRECTIVES = [
   ModalFormExampleModal,
   ModalFormExample,
+  ModalFilterExample,
+  ModalFilterExampleModal,
   ModalContentScrollableExample,
   ModalContentScrollableExampleModal,
   ModalContentMediumExampleModal,
@@ -44,7 +52,13 @@ const MODAL_DIRECTIVES = [
 ];
 
 @NgModule({
-  imports: [BaoModalModule, BaoButtonModule, FormsModule],
+  imports: [
+    BaoModalModule,
+    BaoButtonModule,
+    BaoCheckboxModule,
+    FormsModule,
+    BaoIconModule
+  ],
   declarations: MODAL_DIRECTIVES,
   exports: MODAL_DIRECTIVES,
   providers: []

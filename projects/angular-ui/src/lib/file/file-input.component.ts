@@ -37,6 +37,7 @@ let fileInputUniqueId = 0;
 let fileTextUniqueId = 0;
 
 @Component({
+  standalone: false,
   selector: 'bao-file-input, [bao-file-input]',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.scss'],
@@ -321,6 +322,7 @@ export class BaoFileInputComponent
 }
 
 @Directive({
+  standalone: false,
   selector: '[baoFileDrop]',
   host: { '[class.drag-over]': '_isDragOver == true' }
 })
@@ -363,6 +365,7 @@ export class BaoFileDropDirective {
 }
 
 @Directive({
+  standalone: false,
   selector: 'bao-file-dropzone-instructions, [bao-file-dropzone-instructions]',
   host: {
     class: 'bao-file-dropzone-instructions'

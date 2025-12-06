@@ -16,6 +16,7 @@ const KILO_THRESHOLD = 1000;
 const MEGA_THRESHOLD = 1000000;
 
 @Component({
+  standalone: false,
   selector: 'bao-file-preview, [bao-file-preview]',
   templateUrl: './file-preview.component.html',
   styleUrls: ['./file-preview.component.scss'],

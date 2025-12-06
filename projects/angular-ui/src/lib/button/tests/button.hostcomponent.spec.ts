@@ -7,6 +7,7 @@ import { Component, ViewChild } from '@angular/core';
 import { BaoButtonComponent } from 'dist/angular-ui/public-api';
 
 @Component({
+  standalone: false,
   template: `
     <button
       #ref
@@ -47,6 +48,7 @@ export class TestButtonHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <button bao-button [loading]="loading">
       <bao-icon svgIcon="icon-help"></bao-icon>

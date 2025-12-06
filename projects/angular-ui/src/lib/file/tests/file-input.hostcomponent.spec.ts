@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: `
     <bao-file-input
       [disabled]="disabled"

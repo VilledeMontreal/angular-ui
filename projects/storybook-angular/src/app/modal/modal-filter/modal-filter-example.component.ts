@@ -14,6 +14,7 @@ import {
  * @title Modal with filter variant
  */
 @Component({
+  standalone: false,
   selector: 'modal-filter-example',
   templateUrl: 'modal-filter-example.html'
 })
@@ -41,6 +42,7 @@ export class ModalFilterExample {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-filter-example-modal',
   templateUrl: 'modal-filter-example-modal.html'
 })

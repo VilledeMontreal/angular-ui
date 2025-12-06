@@ -6,6 +6,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: ` <bao-tabs>
     <bao-tablist [size]="size">
       <button bao-tab-header>Tab1</button>

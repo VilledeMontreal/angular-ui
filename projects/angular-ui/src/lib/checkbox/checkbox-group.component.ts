@@ -19,6 +19,7 @@ import {
 let checkboxGroupNextUniqueId = 0;
 
 @Component({
+  standalone: false,
   selector: 'bao-checkbox-group, [bao-checkbox-group]',
   templateUrl: './checkbox-group.component.html',
   styleUrls: ['./checkbox-group.component.scss'],

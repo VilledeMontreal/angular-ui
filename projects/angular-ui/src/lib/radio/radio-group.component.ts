@@ -35,6 +35,7 @@ export const BAO_RADIO_GROUP = new InjectionToken<BaoRadioButtonGroupComponent>(
 let radioGroupNextUniqueId = 0;
 
 @Component({
+  standalone: false,
   selector:
     'bao-radio-button-group, [bao-radio-button-group], [baoRadioButtonGroup]',
   exportAs: 'baoRadioGroup',

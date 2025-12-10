@@ -13,6 +13,6 @@ import { Component } from '@angular/core';
   templateUrl: './radio-example.component.html'
 })
 export class BaoRadioExampleComponent {
-  public animalFavori: string = 'Tortue';
+  public animalFavori = 'Tortue';
   public animaux: string[] = ['Chien', 'Chat', 'Poisson', 'Tortue'];
 }

@@ -20,8 +20,8 @@ export interface AddressData {
   templateUrl: 'modal-form-example.html'
 })
 export class ModalFormExample {
-  public numeroCivique: string = '801';
-  public rue: string = 'Brennan';
+  public numeroCivique = '801';
+  public rue = 'Brennan';
 
   constructor(public modal: BaoModal) {}
 

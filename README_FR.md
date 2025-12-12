@@ -56,6 +56,9 @@ imports: [
 | @villedemontreal/angular-ui@^14.0.0 | Angular 14                             |
 | @villedemontreal/angular-ui@^15.0.0 | Angular 15                             |
 | @villedemontreal/angular-ui@^16.0.0 | Angular 16                             |
+| @villedemontreal/angular-ui@^17.0.0 | Angular 17                             |
+| @villedemontreal/angular-ui@^18.0.0 | Angular 18                             |
+| @villedemontreal/angular-ui@^19.0.0 | Angular 19                             |
 
 📢 Nous n'utilisons pas semver dans les versions étant donné que la `majeur` est destinée à la version d'Angular afin de faciliter votre compréhension et la gestion des versions. Nous recommandons d'utiliser `~` et non `^` sur les versions comme par exemple `~15.3.0` (_MAJEUR.MINEUR.CORRECTIF_) et non `^15.3.0`, car nous nous reservons le droit de faire des ruptures ☝️ dans le support de composants dans les versions `mineur`. `~` permettant de mettre à jour automatiquement les `correctifs`.
 

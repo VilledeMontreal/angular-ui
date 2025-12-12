@@ -15,6 +15,7 @@ import {
 } from '@angular/core';
 
 @Directive({
+  standalone: false,
   selector: 'bao-avatar-content, [bao-avatar-content]',
   exportAs: 'baoAvatarContent',
   host: {
@@ -29,6 +30,7 @@ const SVG_PROFILE_ICON =
 const SCREEN_READER_CLASS_NAME = 'sr-only';
 const SPAN_TEXT_PROPERTY = 'textContent';
 @Component({
+  standalone: false,
   selector: 'bao-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],

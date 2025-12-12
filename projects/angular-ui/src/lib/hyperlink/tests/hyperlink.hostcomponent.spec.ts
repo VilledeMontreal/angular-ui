@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: `
     <bao-hyperlink [size]="size">
       <a href="#"> a hyperlink!</a>
@@ -18,6 +19,7 @@ export class TestHyperlinkHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <bao-hyperlink [size]="size">
       <bao-icon svgIcon="icon-externallink" title="navigation link"></bao-icon>
@@ -30,6 +32,7 @@ export class TestHyperlinkInlineIconHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <ul>
       <li bao-hyperlink [size]="size">
@@ -54,6 +57,7 @@ export class TestHyperlinkListIconHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <ul>
       <li bao-hyperlink [size]="size">

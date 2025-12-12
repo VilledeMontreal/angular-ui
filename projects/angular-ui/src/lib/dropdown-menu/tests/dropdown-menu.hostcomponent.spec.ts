@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: `
     <button [baoDropdownMenuTriggerFor]="testMenu">
       <span>Actions</span>
@@ -18,6 +19,7 @@ import { Component } from '@angular/core';
 export class TestButtonMenuHostComponent {}
 
 @Component({
+  standalone: false,
   template: `
     <button [baoDropdownMenuTriggerFor]="testMenu">
       <span>Actions</span>
@@ -49,6 +51,7 @@ export class TestDropdownMenuHostComponent {
   }
 }
 @Component({
+  standalone: false,
   template: `
     <bao-dropdown-menu>
       <a bao-dropdown-menu-item>

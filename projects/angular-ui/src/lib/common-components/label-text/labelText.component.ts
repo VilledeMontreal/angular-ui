@@ -6,6 +6,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'bao-label, [bao-label]',
   encapsulation: ViewEncapsulation.None,
   template: '<ng-content></ng-content><span *ngIf="required">&nbsp;*</span>',

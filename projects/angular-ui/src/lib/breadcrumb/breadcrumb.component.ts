@@ -15,6 +15,7 @@ import {
 const LAST_NODE_ATTRIBUTE = { 'aria-current': 'page' };
 
 @Component({
+  standalone: false,
   selector: 'bao-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],

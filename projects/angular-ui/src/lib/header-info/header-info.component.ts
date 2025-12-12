@@ -23,6 +23,7 @@ import {
  * - bao-header-info-subtitle
  */
 @Component({
+  standalone: false,
   selector: 'bao-header-info',
   templateUrl: 'header-info.html',
   styleUrls: ['header-info.scss'],
@@ -40,6 +41,7 @@ export class BaoHeaderInfoComponent {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-header-info-title-group',
   templateUrl: 'header-info-title-group.html',
   encapsulation: ViewEncapsulation.None,
@@ -51,6 +53,7 @@ export class BaoHeaderInfoComponent {
 export class BaoHeaderInfoTitleGroupComponent {}
 
 @Directive({
+  standalone: false,
   selector: 'bao-header-info-content',
   host: {
     class: 'bao-header-info-content'
@@ -59,6 +62,7 @@ export class BaoHeaderInfoTitleGroupComponent {}
 export class BaoHeaderInfoContent {}
 
 @Directive({
+  standalone: false,
   selector:
     'bao-header-info-surtitle, [bao-header-info-surtitle], [baoHeaderInfoSurtitle]',
   host: {
@@ -68,6 +72,7 @@ export class BaoHeaderInfoContent {}
 export class BaoHeaderInfoSurtitle {}
 
 @Directive({
+  standalone: false,
   selector:
     'bao-header-info-subtitle, [bao-header-info-subtitle], [baoHeaderInfoSubtitle]',
   host: {
@@ -77,6 +82,7 @@ export class BaoHeaderInfoSurtitle {}
 export class BaoHeaderInfoSubtitle {}
 
 @Directive({
+  standalone: false,
   selector:
     'bao-header-info-title, [bao-header-info-title], [baoHeaderInfoTitle]',
   host: {

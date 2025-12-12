@@ -57,7 +57,7 @@ export class BaoModalRef<T, R = unknown> {
     private _overlayRef: OverlayRef,
     public _containerInstance: _BaoModalContainerBase,
     /** Id of the modal. */
-    readonly id: string = `bao-modal-${uniqueId++}`
+    readonly id = `bao-modal-${uniqueId++}`
   ) {
     // Pass the id along to the container.
     _containerInstance._id = id;
@@ -142,7 +142,7 @@ export class BaoModalRef<T, R = unknown> {
         // vast majority of cases the timeout will have been cleared before it has the chance to fire.
         this._closeFallbackTimeout = setTimeout(
           () => this._finishModalClose(),
-          (event.totalTime as number) + 100
+          event.totalTime + 100
         );
       });
 

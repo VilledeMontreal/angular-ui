@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'bao-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
@@ -34,12 +35,12 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
    * The number of items per page as selected.
    */
   @Input()
-  public itemsPerPage: number = 10;
+  public itemsPerPage = 10;
   /**
    * The current page number.
    */
   @Input()
-  public currentPage: number = 1;
+  public currentPage = 1;
   /**
    * The different page size options.
    */
@@ -49,12 +50,12 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
    * The label for the type of items that are displayed on the page
    */
   @Input()
-  public itemLabel: string = 'items';
+  public itemLabel = 'items';
   /**
    * If selector for number of items per page should be displayed or not
    */
   @Input()
-  public showItemsPerPageSelector: boolean = true;
+  public showItemsPerPageSelector = true;
   /**
    * EventEmitter that triggers when there is a page change and emits page number (index adjusted)
    */
@@ -72,7 +73,7 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
   /**
    * Max number of pages to display
    */
-  private _maxPages: number = 5;
+  private _maxPages = 5;
   /**
    * Number of pages in total.
    */

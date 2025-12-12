@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -133,7 +133,7 @@ describe('BaoModalComponent', () => {
 
       const modalContainerElement = overlayContainerElement.querySelector(
         'bao-modal-container'
-      )!;
+      );
       expect(modalContainerElement.getAttribute('role')).toBe('dialog');
     });
 

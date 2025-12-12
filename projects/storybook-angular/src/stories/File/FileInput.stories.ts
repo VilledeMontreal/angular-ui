@@ -1,14 +1,13 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Meta, StoryFn } from '@storybook/angular';
 import {
   BaoFileInputComponent,
   BaoFileDropzoneIntructions,
@@ -33,7 +32,7 @@ The File Input component allows users to transfer local files to the system.
 The full documentation of this component is available in the Hochelaga design system documentation under "[Fichier](https://zeroheight.com/575tugn0n/p/26da67)".
 `;
 
-export default {
+const meta = {
   title: 'Components/File/Selector',
   decorators: [
     moduleMetadata({
@@ -211,91 +210,108 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoFileInputComponent>;
+export default meta;
 
-const Template: StoryFn<BaoFileInputComponent> = (
-  args: BaoFileInputComponent
-) => ({
-  component: BaoFileInputComponent,
-  template: `
-    <div style="max-width:24rem;">
-      <bao-file-input [disabled]="disabled" [label]="label" [size]="size" [required]="required" [maximalFileSize]="maximalFileSize" [acceptedMIMETypes]="acceptedMIMETypes">
-        <bao-guiding-text>Les documents .pdf, .docx, .png sont acceptés</bao-guiding-text>
-        <bao-file-dropzone-instructions> ou deposer votre [elt] ici</bao-file-dropzone-instructions>
-      </bao-file-input>
-    </div>
-   `,
-  props: args
-});
+type Story = StoryObj<BaoFileInputComponent>;
 
-export const Primary = Template.bind({});
-
-Primary.args = {
-  label: 'Libellé',
-  size: 'medium',
-  required: true,
-  disabled: false,
-  acceptedMIMETypes: ['application/pdf', 'image/jpg', 'image/jpeg', 'image/png']
-};
-
-export const baoFileIntl: StoryFn = args => ({
-  props: args,
-  template: `
-      <div style="max-width:50rem;">
-        <p> By default, the File Input component displays its texts in french. To display text in another language, here are the steps to follow:
-        <ol>
-          <li> In your <b>app.module.ts</b>, import <b>BaoFileIntl</b> and <b>BaoFileIntlEnglish</b> for texts in english from &#64;villedemontreal/angular-ui. </li>
-          <li> If you need to use the component in a different language, you can declare your own class that extends BaoFileIntl and contains texts in your prefered language. It should look like this:
-            <p> 
-              <code>&#64;Injectable()<br>
-                    class BaoFileIntlEnglish extends BaoFileIntl {{ '{' }}
-                    <div style="margin-left:1rem;font-family:inherit;font-size:inherit;">
-                      dropzoneButtonLabel = 'Browse';<br>
-                      defaultDropzoneInstructions = 'or drop your file here';<br>
-                      fileTooBigErrorMessage = 'The size of this file is too large';<br>
-                      invalidFileTypeErrorMessage = 'The format of this file is unauthorized';<br>
-                    </div>
-                  {{ '}' }}
-              </code>
-            </p>
-          </li>
-          <li>In the providers of your app's module, add this line:<br>
-            <code> providers: [{{ '{' }}provide: BaoFileIntl, useClass: BaoFileIntlEnglish{{ '}' }}]</code> 
-          </li>
-          <li> And that's it, the content of the component should now be in your preferedd language!</li>
-        </ol>
-      </div>
-  `
-});
-baoFileIntl.storyName = 'BAOFileIntl - Translating the File Input component';
-baoFileIntl.args = {
-  ...Primary.args
-};
-
-export const fileInputDeactivated: StoryFn = args => ({
-  props: args,
-  template: `
+export const Primary: Story = {
+  render: args => ({
+    component: BaoFileInputComponent,
+    template: `
       <div style="max-width:24rem;">
-        <bao-file-input disabled="true" [label]="label">
+        <bao-file-input [disabled]="disabled" [label]="label" [size]="size" [required]="required" [maximalFileSize]="maximalFileSize" [acceptedMIMETypes]="acceptedMIMETypes">
           <bao-guiding-text>Les documents .pdf, .docx, .png sont acceptés</bao-guiding-text>
-          <bao-file-dropzone-instructions> ou déposer votre [elt] ici</bao-file-dropzone-instructions>
+          <bao-file-dropzone-instructions> ou deposer votre [elt] ici</bao-file-dropzone-instructions>
         </bao-file-input>
       </div>
-  `
-});
-fileInputDeactivated.storyName = 'File input deactivated';
-fileInputDeactivated.args = {
-  ...Primary.args,
-  disabled: true
+    `,
+    props: args
+  }),
+  args: {
+    label: 'Libellé',
+    size: 'medium',
+    required: true,
+    disabled: false,
+    acceptedMIMETypes: [
+      'application/pdf',
+      'image/jpg',
+      'image/jpeg',
+      'image/png'
+    ]
+  }
 };
 
-export const fileInputForm: StoryFn = args => ({
-  props: args,
-  template: `
-    <bao-file-form-example></bao-file-form-example>
-  `
-});
-fileInputForm.storyName = 'File input reactive form';
-fileInputForm.args = {
-  ...Primary.args
+export const baoFileIntl: Story = {
+  render: args => ({
+    props: args,
+    template: `
+        <div style="max-width:50rem;">
+          <p> By default, the File Input component displays its texts in french. To display text in another language, here are the steps to follow:
+          <ol>
+            <li> In your <b>app.module.ts</b>, import <b>BaoFileIntl</b> and <b>BaoFileIntlEnglish</b> for texts in english from &#64;villedemontreal/angular-ui. </li>
+            <li> If you need to use the component in a different language, you can declare your own class that extends BaoFileIntl and contains texts in your prefered language. It should look like this:
+              <p> 
+                <code>&#64;Injectable()<br>
+                      class BaoFileIntlEnglish extends BaoFileIntl {{ '{' }}
+                      <div style="margin-left:1rem;font-family:inherit;font-size:inherit;">
+                        dropzoneButtonLabel = 'Browse';<br>
+                        defaultDropzoneInstructions = 'or drop your file here';<br>
+                        fileTooBigErrorMessage = 'The size of this file is too large';<br>
+                        invalidFileTypeErrorMessage = 'The format of this file is unauthorized';<br>
+                      </div>
+                    {{ '}' }}
+                </code>
+              </p>
+            </li>
+            <li>In the providers of your app's module, add this line:<br>
+              <code> providers: [{{ '{' }}provide: BaoFileIntl, useClass: BaoFileIntlEnglish{{ '}' }}]</code> 
+            </li>
+            <li> And that's it, the content of the component should now be in your preferedd language!</li>
+          </ol>
+        </div>
+    `
+  }),
+
+  name: 'BAOFileIntl - Translating the File Input component',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const fileInputDeactivated: StoryObj = {
+  render: args => ({
+    props: args,
+    template: `
+        <div style="max-width:24rem;">
+          <bao-file-input disabled="true" [label]="label">
+            <bao-guiding-text>Les documents .pdf, .docx, .png sont acceptés</bao-guiding-text>
+            <bao-file-dropzone-instructions> ou déposer votre [elt] ici</bao-file-dropzone-instructions>
+          </bao-file-input>
+        </div>
+    `
+  }),
+
+  name: 'File input deactivated',
+
+  args: {
+    ...Primary.args,
+    disabled: true
+  }
+};
+
+export const fileInputForm: StoryObj = {
+  render: args => ({
+    props: args,
+    template: `
+      <bao-file-form-example></bao-file-form-example>
+    `
+  }),
+
+  name: 'File input reactive form',
+
+  args: {
+    ...Primary.args
+  }
 };

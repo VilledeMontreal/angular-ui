@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import {
   BaoIconModule,
   BaoListItem,
@@ -16,7 +16,7 @@ const description = `
 A list of utility items is a list composed of complex objects intended for an application or a tool.
 `;
 
-export default {
+const meta = {
   title: 'Components/List/Navigation',
   decorators: [
     moduleMetadata({
@@ -33,177 +33,208 @@ export default {
     }
   },
   argTypes: {}
-} as Meta;
+} as Meta<BaoListItem>;
 
-export const navigationList: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href="#">Navigation list 1</a>
-    <a bao-list-item href="#">Navigation list 2</a>
-  </bao-nav-list>
-  `
-});
-navigationList.storyName = 'Navigation list';
-navigationList.args = {
-  ...Primary.args
+export default meta;
+
+type Story = StoryObj;
+
+export const navigationList: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href="#">Navigation list 1</a>
+      <a bao-list-item href="#">Navigation list 2</a>
+    </bao-nav-list>
+    `
+  }),
+
+  name: 'Navigation list',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const navigationListWithLeftIcon: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-    </a>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-    </a>
-  </bao-nav-list>
-  `
-});
-navigationListWithLeftIcon.storyName = 'Navigation list - Left icon';
-navigationListWithLeftIcon.args = {
-  ...Primary.args
+export const navigationListWithLeftIcon: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
+        <span bao-list-item-title>Title</span>
+      </a>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
+        <span bao-list-item-title>Title</span>
+      </a>
+    </bao-nav-list>
+    `
+  }),
+
+  name: 'Navigation list - Left icon',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const navigationListWithRightIcon: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href=#>
-      <span bao-list-item-title>Title</span>
-      <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
-    </a>
-    <a bao-list-item href=#>
-      <span bao-list-item-title>Title</span>
-      <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
-    </a>
-  </bao-nav-list>
-  `
-});
-navigationListWithRightIcon.storyName = 'Navigation list - Right icon';
-navigationListWithRightIcon.args = {
-  ...Primary.args
+export const navigationListWithRightIcon: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href=#>
+        <span bao-list-item-title>Title</span>
+        <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
+      </a>
+      <a bao-list-item href=#>
+        <span bao-list-item-title>Title</span>
+        <bao-icon baoIconTag svgIcon="icon-arrow-right"></bao-icon>
+      </a>
+    </bao-nav-list>
+    `
+  }),
+
+  name: 'Navigation list - Right icon',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const navigationListWithTag: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href=#>
+export const navigationListWithTag: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href=#>
+          <span bao-list-item-title>Title</span>
+          <bao-tag type="positive"><span>Label</span></bao-tag>
+      </a>
+      <a bao-list-item href=#>
+          <span bao-list-item-title>Title</span>
+          <bao-tag type="positive"><span>Label</span></bao-tag>
+      </a>
+    </bao-nav-list>
+    `
+  }),
+
+  name: 'Navigation list - Tag',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const navigationListWithTagAndIcon: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href=#>
+          <span bao-list-item-title>Title</span>
+          <bao-tag type="positive"><span>Label</span></bao-tag>
+      </a>
+      <a bao-list-item href=#>
+          <span bao-list-item-title>Title</span>
+          <bao-tag type="positive"><span>Label</span></bao-tag>
+      </a>
+    </bao-nav-list>
+    `
+  }),
+
+  name: 'Navigation list - Tag & icon',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const navigationListDescription: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
         <span bao-list-item-title>Title</span>
         <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-    <a bao-list-item href=#>
+        <bao-list-item-description>
+          <div>Description 1</div>
+          <div>Description 2</div>
+        </bao-list-item-description>
+      </a>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
         <span bao-list-item-title>Title</span>
         <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-  </bao-nav-list>
-  `
-});
-navigationListWithTag.storyName = 'Navigation list - Tag';
-navigationListWithTag.args = {
-  ...Primary.args
-};
-
-export const navigationListWithTagAndIcon: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href=#>
+        <bao-list-item-description>
+          <div>Description 1</div>
+          <div>Description 2</div>
+        </bao-list-item-description>
+      </a>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
         <span bao-list-item-title>Title</span>
         <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-    <a bao-list-item href=#>
+        <bao-list-item-description>
+          <div>Description 1</div>
+          <div>Description 2</div>
+        </bao-list-item-description>
+      </a>
+    </bao-nav-list>
+    `
+  }),
+
+  name: 'Navigation list - Description',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const navigationListInlineDescription: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-nav-list>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
         <span bao-list-item-title>Title</span>
+        <ul bao-list-item-description>
+          <li>Description 1</li>
+          <li>Description 2</li>
+        </ul>
         <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-  </bao-nav-list>
-  `
-});
-navigationListWithTagAndIcon.storyName = 'Navigation list - Tag & icon';
-navigationListWithTagAndIcon.args = {
-  ...Primary.args
-};
+      </a>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
+        <span bao-list-item-title>Title</span>
+        <ul bao-list-item-description>
+          <li>Description 1</li>
+          <li>Description 2</li>
+        </ul>
+        <bao-tag type="positive"><span>Label</span></bao-tag>
+      </a>
+      <a bao-list-item href=#>
+        <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
+        <span bao-list-item-title>Title</span>
+        <ul bao-list-item-description>
+          <li>Description 1</li>
+          <li>Description 2</li>
+        </ul>
+        <bao-tag type="positive"><span>Label</span></bao-tag>
+      </a>
+    </bao-nav-list>
+    `
+  }),
 
-export const navigationListDescription: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-      <bao-tag type="positive"><span>Label</span></bao-tag>
-      <bao-list-item-description>
-        <div>Description 1</div>
-        <div>Description 2</div>
-      </bao-list-item-description>
-    </a>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-      <bao-tag type="positive"><span>Label</span></bao-tag>
-      <bao-list-item-description>
-        <div>Description 1</div>
-        <div>Description 2</div>
-      </bao-list-item-description>
-    </a>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-      <bao-tag type="positive"><span>Label</span></bao-tag>
-      <bao-list-item-description>
-        <div>Description 1</div>
-        <div>Description 2</div>
-      </bao-list-item-description>
-    </a>
-  </bao-nav-list>
-  `
-});
-navigationListDescription.storyName = 'Navigation list - Description';
-navigationListDescription.args = {
-  ...Primary.args
-};
+  name: 'Navigation list - Inline Description',
 
-export const navigationListInlineDescription: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-nav-list>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-      <ul bao-list-item-description>
-        <li>Description 1</li>
-        <li>Description 2</li>
-      </ul>
-      <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-      <ul bao-list-item-description>
-        <li>Description 1</li>
-        <li>Description 2</li>
-      </ul>
-      <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-    <a bao-list-item href=#>
-      <bao-icon baoIconItemType svgIcon="icon-eye"></bao-icon>
-      <span bao-list-item-title>Title</span>
-      <ul bao-list-item-description>
-        <li>Description 1</li>
-        <li>Description 2</li>
-      </ul>
-      <bao-tag type="positive"><span>Label</span></bao-tag>
-    </a>
-  </bao-nav-list>
-  `
-});
-navigationListInlineDescription.storyName =
-  'Navigation list - Inline Description';
-navigationListInlineDescription.args = {
-  ...Primary.args
+  args: {
+    ...Primary.args
+  }
 };

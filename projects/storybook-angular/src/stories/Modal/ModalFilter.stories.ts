@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { type Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
 import {
   BaoCheckboxModule,
   BaoIconModule,
@@ -60,18 +60,20 @@ export default {
     openFilterModal: { table: { disable: true } },
     triggerButton: { table: { disable: true } }
   }
-} as Meta;
+} as Meta<ModalFilterExample>;
 
-const Template: StoryFn = args => ({
-  props: args
-});
+type Story = StoryObj<ModalFilterExample>;
 
-export const Default = Template.bind({});
-Default.parameters = {
-  docs: {
-    description: {
-      story:
-        'This example shows how the filter variant modal opens connected to the trigger button.'
+export const Default: Story = {
+  render: args => ({
+    props: args
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example shows how the filter variant modal opens connected to the trigger button.'
+      }
     }
   }
 };

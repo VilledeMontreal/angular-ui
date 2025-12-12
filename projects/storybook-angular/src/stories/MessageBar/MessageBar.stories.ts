@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoButtonComponent } from 'projects/angular-ui/src/lib/button/button.component';
 import { BaoHyperlinkModule } from 'projects/angular-ui/src/lib/hyperlink/module';
 import { BaoIconModule } from 'projects/angular-ui/src/lib/icon/module';
@@ -44,7 +44,7 @@ By default, message bars are non-dismissible. To enable the close button, set \`
 The close button has an aria-label of **"Cacher le message"** by default. You can override it using \`dismissibleButtonAriaLabel\`.
 `;
 
-export default {
+const meta = {
   title: 'Components/Message Bar',
   decorators: [
     moduleMetadata({
@@ -71,17 +71,19 @@ export default {
       table: { defaultValue: { summary: 'Cacher le message' } }
     },
     dismissible: {
-      table: { defaultValue: { summary: false } }
+      table: { defaultValue: { summary: 'false' } }
     }
   }
-} as Meta;
+} as Meta<BaoMessageBarComponent>;
+
+export default meta;
+
+type Story = StoryObj;
 
 /**
  *  Base Story Template
  */
-const Template: StoryFn<
-  BaoMessageBarComponent & { content: string }
-> = args => ({
+const Template: Story['render'] = args => ({
   template: `
     <bao-message-bar [type]="type" [dismissible]="dismissible" [dismissibleButtonAriaLabel]="dismissibleButtonAriaLabel">
       <bao-message-content>
@@ -92,156 +94,159 @@ const Template: StoryFn<
   props: args
 });
 
-/**
- * Primary (Informational) Message Bar
- */
-export const Primary = Template.bind({});
-Primary.args = {
-  type: 'info',
-  dismissible: true,
-  alertTypeTitle: 'Information',
-  dismissibleButtonAriaLabel: 'Close the message'
+export const Primary = {
+  render: Template,
+
+  args: {
+    type: 'info',
+    dismissible: true,
+    alertTypeTitle: 'Information',
+    dismissibleButtonAriaLabel: 'Close the message'
+  }
 };
 
-/**
- * Dismissible Message Bar with Links
- */
-export const DismissibleMessageBar: StoryFn = args => ({
-  props: args,
-  template: `
-    <bao-message-bar type="info" [dismissible]="dismissible">
-      <bao-message-content>
-        This is an informational message. <a href="#">Learn more</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="alert" [dismissible]="dismissible">
-      <bao-message-content>
-        This is an alert message. <a href="#">See details</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="urgent" [dismissible]="dismissible">
-      <bao-message-content>
-        This is an urgent message. <a href="#">Act now</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="neutral" [dismissible]="dismissible">
-      <bao-message-content>
-        This is a neutral message. <a href="#">More info</a>
-      </bao-message-content>
-    </bao-message-bar>
-  `
-});
-DismissibleMessageBar.storyName = 'Dismissible Message Bar';
-DismissibleMessageBar.args = {
-  dismissible: true
+export const DismissibleMessageBar: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <bao-message-bar type="info" [dismissible]="dismissible">
+        <bao-message-content>
+          This is an informational message. <a href="#">Learn more</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="alert" [dismissible]="dismissible">
+        <bao-message-content>
+          This is an alert message. <a href="#">See details</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="urgent" [dismissible]="dismissible">
+        <bao-message-content>
+          This is an urgent message. <a href="#">Act now</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="neutral" [dismissible]="dismissible">
+        <bao-message-content>
+          This is a neutral message. <a href="#">More info</a>
+        </bao-message-content>
+      </bao-message-bar>
+    `
+  }),
+
+  name: 'Dismissible Message Bar',
+
+  args: {
+    dismissible: true
+  }
 };
 
-/**
- *  Message Bar with Long Text and Links
- */
-export const LongTextMessageBar: StoryFn = args => ({
-  props: args,
-  template: `
-    <bao-message-bar type="info" [dismissible]="dismissible">
-      <bao-message-content>
-        This message is an informational message. It provides general guidance and does not require immediate action. It may contain important details for better understanding. Please read carefully.
-        <a href="#">Learn more</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="alert" [dismissible]="dismissible">
-      <bao-message-content>
-        Attention! This is an alert message to warn you about a potential issue or situation to monitor. Please take note and act accordingly.
-        <a href="#">See details</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="urgent" [dismissible]="dismissible">
-      <bao-message-content>
-        Urgency! This message indicates a critical situation requiring immediate action. Read carefully and follow instructions without delay.
-        <a href="#">Act now</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="neutral" [dismissible]="dismissible">
-      <bao-message-content>
-        This is a neutral message providing general information without requiring any specific action.
-        <a href="#">More info</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-  `
-});
-LongTextMessageBar.storyName = 'Message Bar with Long Text';
-LongTextMessageBar.args = {
-  dismissible: true
+export const LongTextMessageBar: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <bao-message-bar type="info" [dismissible]="dismissible">
+        <bao-message-content>
+          This message is an informational message. It provides general guidance and does not require immediate action. It may contain important details for better understanding. Please read carefully.
+          <a href="#">Learn more</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="alert" [dismissible]="dismissible">
+        <bao-message-content>
+          Attention! This is an alert message to warn you about a potential issue or situation to monitor. Please take note and act accordingly.
+          <a href="#">See details</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="urgent" [dismissible]="dismissible">
+        <bao-message-content>
+          Urgency! This message indicates a critical situation requiring immediate action. Read carefully and follow instructions without delay.
+          <a href="#">Act now</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="neutral" [dismissible]="dismissible">
+        <bao-message-content>
+          This is a neutral message providing general information without requiring any specific action.
+          <a href="#">More info</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+    `
+  }),
+
+  name: 'Message Bar with Long Text',
+
+  args: {
+    dismissible: true
+  }
 };
 
-/**
- * Message Bar without Close Button
- */
-export const MessageBarWithoutCloseButton: StoryFn = args => ({
-  props: args,
-  template: `
-    <bao-message-bar type="info">
-      <bao-message-content>
-        This is an informational message without a close button.
-        <a href="#">Learn more</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="alert">
-      <bao-message-content>
-        This is an alert message without a close button.
-        <a href="#">See details</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="urgent">
-      <bao-message-content>
-        This is an urgent message without a close button.
-        <a href="#">Act now</a>
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="neutral">
-      <bao-message-content>
-        This is a neutral message without a close button.
-        <a href="#">More info</a>
-      </bao-message-content>
-    </bao-message-bar>
-  `
-});
-MessageBarWithoutCloseButton.storyName = 'Message Bar without Close Button';
-MessageBarWithoutCloseButton.args = {
-  dismissible: false
+export const MessageBarWithoutCloseButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <bao-message-bar type="info">
+        <bao-message-content>
+          This is an informational message without a close button.
+          <a href="#">Learn more</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="alert">
+        <bao-message-content>
+          This is an alert message without a close button.
+          <a href="#">See details</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="urgent">
+        <bao-message-content>
+          This is an urgent message without a close button.
+          <a href="#">Act now</a>
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="neutral">
+        <bao-message-content>
+          This is a neutral message without a close button.
+          <a href="#">More info</a>
+        </bao-message-content>
+      </bao-message-bar>
+    `
+  }),
+
+  name: 'Message Bar without Close Button',
+
+  args: {
+    dismissible: false
+  }
 };
 
-/**
- * Message Bar with Different Links
- */
-export const MessageBarWithDifferentLinks: StoryFn = args => ({
-  props: args,
-  template: `
-    <bao-message-bar type="info" [dismissible]="dismissible">
-      <bao-message-content>
-        This message uses a standard <a href="#">HTML Anchor Tag</a>.
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-    <bao-message-bar type="urgent" [dismissible]="dismissible">
-      <bao-message-content>
-        This message uses the <bao-hyperlink href="#" >HyperLink Component</bao-hyperlink>.
-      </bao-message-content>
-    </bao-message-bar>
-    <br />
-  `
-});
+export const MessageBarWithDifferentLinks: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <bao-message-bar type="info" [dismissible]="dismissible">
+        <bao-message-content>
+          This message uses a standard <a href="#">HTML Anchor Tag</a>.
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+      <bao-message-bar type="urgent" [dismissible]="dismissible">
+        <bao-message-content>
+          This message uses the <bao-hyperlink href="#" >HyperLink Component</bao-hyperlink>.
+        </bao-message-content>
+      </bao-message-bar>
+      <br />
+    `
+  }),
 
-MessageBarWithDifferentLinks.storyName = 'Message Bar with Different Links';
-MessageBarWithDifferentLinks.args = {
-  dismissible: true
+  name: 'Message Bar with Different Links',
+
+  args: {
+    dismissible: true
+  }
 };

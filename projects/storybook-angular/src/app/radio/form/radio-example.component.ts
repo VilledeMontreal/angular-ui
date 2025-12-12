@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -13,6 +13,6 @@ import { Component } from '@angular/core';
   templateUrl: './radio-example.component.html'
 })
 export class BaoRadioExampleComponent {
-  public animalFavori: string = 'Tortue';
+  public animalFavori = 'Tortue';
   public animaux: string[] = ['Chien', 'Chat', 'Poisson', 'Tortue'];
 }

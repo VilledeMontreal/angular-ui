@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import {
   BaoHyperlinkComponent,
   BaoHyperlinkModule,
@@ -18,7 +18,7 @@ Hyperlinks allow navigation between the various pages of a digital product.
 The full documentation of this component is available in the Hochelaga design system documentation under "[Hyperlink](https://zeroheight.com/575tugn0n/p/09cec1)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Hyperlink',
   decorators: [
     moduleMetadata({
@@ -49,9 +49,13 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoHyperlinkComponent>;
 
-const Template: StoryFn = (args: BaoHyperlinkComponent) => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   template: `
     <ul>
       <li bao-hyperlink [size]="size">
@@ -68,94 +72,107 @@ const Template: StoryFn = (args: BaoHyperlinkComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
-
-Primary.args = {};
-
-export const hyperlinkInline: StoryFn = args => ({
-  props: args,
-  template: `
-    <span style="line-height:24px;">
-      This is a line of text and here we have
-        <bao-hyperlink>
-          <a href=#> a hyperlink!</a>
-        </bao-hyperlink>
-      Note that inline hyperlinks' size is not affected by the size input.
-    </span>
-      `
-});
-hyperlinkInline.storyName = 'Hyperlink inline';
-hyperlinkInline.args = {
-  ...Primary.args
+export const Primary = {
+  render: Template,
+  args: {}
 };
 
-export const hyperlinkWithIcon: StoryFn = args => ({
-  props: args,
-  template: `
-    <span style="line-height:1.5rem;">
-      This
-        <bao-hyperlink>
-          <a href=#> hyperlink </a>
-          <bao-icon svgIcon="icon-externallink"></bao-icon>
-        </bao-hyperlink>
-      also has an icon.
-    </span>
-      `
-});
-hyperlinkWithIcon.storyName = 'Hyperlink inline - With icon';
-hyperlinkWithIcon.args = {
-  ...Primary.args
+export const hyperlinkInline: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <span style="line-height:24px;">
+        This is a line of text and here we have
+          <bao-hyperlink>
+            <a href=#> a hyperlink!</a>
+          </bao-hyperlink>
+        Note that inline hyperlinks' size is not affected by the size input.
+      </span>
+        `
+  }),
+
+  name: 'Hyperlink inline',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const hyperlinksList: StoryFn = args => ({
-  props: args,
-  template: `
-    <div style="margin-bottom:1rem">
+export const hyperlinkWithIcon: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <span style="line-height:1.5rem;">
+        This
+          <bao-hyperlink>
+            <a href=#> hyperlink </a>
+            <bao-icon svgIcon="icon-externallink"></bao-icon>
+          </bao-hyperlink>
+        also has an icon.
+      </span>
+        `
+  }),
+
+  name: 'Hyperlink inline - With icon',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const hyperlinksList: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <div style="margin-bottom:1rem">
+        <ul>
+          <li bao-hyperlink size="extra-small">
+            <a href=#> This is a hyperlink!</a>
+            <bao-icon svgIcon="icon-externallink"></bao-icon>
+          </li>
+          <li bao-hyperlink size="extra-small">
+            <a href=#> This is a hyperlink!</a>
+            <bao-icon svgIcon="icon-externallink"></bao-icon>
+          </li>
+          <li bao-hyperlink size="extra-small">
+            <a href=#> This is a hyperlink!</a>
+            <bao-icon svgIcon="icon-externallink"></bao-icon>
+          </li>
+        </ul>
+      </div>
+      <div style="margin-bottom:1rem">
+        <ul>
+          <li bao-hyperlink size="small">
+            <bao-icon svgIcon="icon-warning"></bao-icon>
+            <a href=#> This is a hyperlink!</a>
+          </li>
+          <li bao-hyperlink size="small">
+            <bao-icon svgIcon="icon-warning"></bao-icon>
+            <a href=#> This is a hyperlink!</a>
+          </li>
+          <li bao-hyperlink size="small">
+            <bao-icon svgIcon="icon-warning"></bao-icon>
+            <a href=#> This is a hyperlink!</a>
+          </li>
+        </ul>
+      </div>
       <ul>
-        <li bao-hyperlink size="extra-small">
+        <li bao-hyperlink size="medium">
           <a href=#> This is a hyperlink!</a>
-          <bao-icon svgIcon="icon-externallink"></bao-icon>
         </li>
-        <li bao-hyperlink size="extra-small">
+        <li bao-hyperlink size="medium">
           <a href=#> This is a hyperlink!</a>
-          <bao-icon svgIcon="icon-externallink"></bao-icon>
         </li>
-        <li bao-hyperlink size="extra-small">
+        <li bao-hyperlink size="medium">
           <a href=#> This is a hyperlink!</a>
-          <bao-icon svgIcon="icon-externallink"></bao-icon>
         </li>
       </ul>
-    </div>
-    <div style="margin-bottom:1rem">
-      <ul>
-        <li bao-hyperlink size="small">
-          <bao-icon svgIcon="icon-warning"></bao-icon>
-          <a href=#> This is a hyperlink!</a>
-        </li>
-        <li bao-hyperlink size="small">
-          <bao-icon svgIcon="icon-warning"></bao-icon>
-          <a href=#> This is a hyperlink!</a>
-        </li>
-        <li bao-hyperlink size="small">
-          <bao-icon svgIcon="icon-warning"></bao-icon>
-          <a href=#> This is a hyperlink!</a>
-        </li>
-      </ul>
-    </div>
-    <ul>
-      <li bao-hyperlink size="medium">
-        <a href=#> This is a hyperlink!</a>
-      </li>
-      <li bao-hyperlink size="medium">
-        <a href=#> This is a hyperlink!</a>
-      </li>
-      <li bao-hyperlink size="medium">
-        <a href=#> This is a hyperlink!</a>
-      </li>
-    </ul>
-      `
-});
-hyperlinksList.storyName = 'List of hyperlinks - Size';
-hyperlinksList.args = {
-  ...Primary.args
+        `
+  }),
+
+  name: 'List of hyperlinks - Size',
+
+  args: {
+    ...Primary.args
+  }
 };

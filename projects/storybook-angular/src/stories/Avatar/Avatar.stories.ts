@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, StoryFn, Meta } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoAvatarComponent, BaoAvatarModule } from 'angular-ui';
 
 const description = `
@@ -14,7 +14,7 @@ Avatar are used to display a representation of a user's profile.
 The full documentation of this component is available in the Hochelaga design system documentation under "[Avatar](https://zeroheight.com/575tugn0n/p/34e9ae)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Avatar',
   decorators: [
     moduleMetadata({
@@ -50,9 +50,12 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoAvatarComponent>;
+export default meta;
 
-const Template: StoryFn = (args: BaoAvatarComponent) => ({
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   template: `
     <bao-avatar [color]="color" [profileName]="profileName">
       <span bao-avatar-content>aa</span>
@@ -61,33 +64,43 @@ const Template: StoryFn = (args: BaoAvatarComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  color: 'background-color-1',
-  profileName: 'Jean Tremblay'
+  args: {
+    color: 'background-color-1',
+    profileName: 'Jean Tremblay'
+  }
 };
 
-export const AvatarDefault: StoryFn = args => ({
-  props: args,
-  template: `
-      <bao-avatar [profileName]="profileName"></bao-avatar>
-      `
-});
-AvatarDefault.storyName = 'Avatar with icon - Default';
-AvatarDefault.args = {
-  ...Primary.args
+export const AvatarDefault: Story = {
+  render: args => ({
+    props: args,
+    template: `
+        <bao-avatar [profileName]="profileName"></bao-avatar>
+        `
+  }),
+
+  name: 'Avatar with icon - Default',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const AvatarWithImage: StoryFn = args => ({
-  props: args,
-  template: `
-      <bao-avatar [profileName]="profileName">
-        <img bao-avatar-content src="https://picsum.photos/768/768?image=1074">
-      </bao-avatar>
-      `
-});
-AvatarWithImage.storyName = 'Avatar with image';
-AvatarWithImage.args = {
-  ...Primary.args
+export const AvatarWithImage: Story = {
+  render: args => ({
+    props: args,
+    template: `
+        <bao-avatar [profileName]="profileName">
+          <img bao-avatar-content src="https://picsum.photos/768/768?image=1074">
+        </bao-avatar>
+        `
+  }),
+
+  name: 'Avatar with image',
+
+  args: {
+    ...Primary.args
+  }
 };

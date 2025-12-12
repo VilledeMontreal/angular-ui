@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoBreadcrumbComponent, BaoBreadcrumbModule } from 'angular-ui';
 
 const description = `
@@ -17,7 +17,7 @@ The breadcrumb component has no properties.
 
 `;
 
-export default {
+const meta = {
   title: 'Components/Breadcrumb',
   decorators: [
     moduleMetadata({
@@ -53,9 +53,12 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoBreadcrumbComponent>;
+export default meta;
 
-const Template: StoryFn = (args: BaoBreadcrumbComponent) => ({
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   template: `
   <bao-breadcrumb>
     <a href=#>parent page</a>
@@ -66,4 +69,6 @@ const Template: StoryFn = (args: BaoBreadcrumbComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template
+};

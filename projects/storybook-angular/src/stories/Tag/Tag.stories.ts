@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoIconModule, BaoTagComponent, BaoTagModule } from 'angular-ui';
 
 const description = `
@@ -12,7 +12,7 @@ Tags are used to categorize, identify and organize content.
 The full documentation of this component is available in the Hochelaga design system documentation under "[Étiquette](https://zeroheight.com/575tugn0n/p/8594a9)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Tag',
   decorators: [
     moduleMetadata({
@@ -43,9 +43,13 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoTagComponent>;
 
-const Template: StoryFn = (args: BaoTagComponent) => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = (args: BaoTagComponent) => ({
   component: BaoTagComponent,
   template: `
   <bao-tag [type]="type" [hiddenText]="hiddenText" [variant]="variant" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
@@ -53,39 +57,48 @@ const Template: StoryFn = (args: BaoTagComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  label: 'Label'
+export const Primary = {
+  render: Template,
+
+  args: {
+    label: 'Label'
+  }
 };
 
-export const StrongTag: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
-  <bao-tag type="negative" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
-  <bao-tag variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
-  <bao-tag type="alert" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
-  <bao-tag type="info" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
-  `
-});
+export const StrongTag: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
+    <bao-tag type="negative" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
+    <bao-tag variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
+    <bao-tag type="alert" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
+    <bao-tag type="info" variant="strong" style="margin-right:1.5rem"><span>{{label}}</span></bao-tag>
+    `
+  }),
 
-StrongTag.storyName = 'Tags - Strong';
-StrongTag.args = {
-  ...Primary.args
+  name: 'Tags - Strong',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const IconTag: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-check-circle"></bao-icon><span>{{label}}</span></bao-tag>
-  <bao-tag type="negative" style="margin-right:1.5rem"><bao-icon svgIcon="icon-minus-circle"></bao-icon><span>{{label}}</span></bao-tag>
-  <bao-tag hiddenText="Neutre" style="margin-right:1.5rem"><bao-icon svgIcon="icon-bell"></bao-icon><span>{{label}}</span></bao-tag>
-  <bao-tag type="alert" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-warning"></bao-icon><span>{{label}}</span></bao-tag>
-  <bao-tag type="info" variant="light" style="margin-right:1.5rem"><bao-icon svgIcon="icon-info"></bao-icon><span>{{label}}</span></bao-tag>
-  `
-});
+export const IconTag: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-tag type="positive" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-check-circle"></bao-icon><span>{{label}}</span></bao-tag>
+    <bao-tag type="negative" style="margin-right:1.5rem"><bao-icon svgIcon="icon-minus-circle"></bao-icon><span>{{label}}</span></bao-tag>
+    <bao-tag hiddenText="Neutre" style="margin-right:1.5rem"><bao-icon svgIcon="icon-bell"></bao-icon><span>{{label}}</span></bao-tag>
+    <bao-tag type="alert" variant="strong" style="margin-right:1.5rem"><bao-icon svgIcon="icon-warning"></bao-icon><span>{{label}}</span></bao-tag>
+    <bao-tag type="info" variant="light" style="margin-right:1.5rem"><bao-icon svgIcon="icon-info"></bao-icon><span>{{label}}</span></bao-tag>
+    `
+  }),
 
-IconTag.storyName = 'Tags - Icon';
-IconTag.args = {
-  ...Primary.args
+  name: 'Tags - Icon',
+
+  args: {
+    ...Primary.args
+  }
 };

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -8,9 +8,9 @@ import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   applicationConfig,
-  Meta,
   moduleMetadata,
-  StoryFn
+  type Meta,
+  type StoryObj
 } from '@storybook/angular';
 import {
   BaoButtonModule,
@@ -27,7 +27,7 @@ The Snackbar (or Toast) is used to give feedback to the user following an action
 The full documentation of this component is available in the Hochelaga design system documentation under "[Toast](https://zeroheight.com/575tugn0n/p/29e96e-toast)".
 `;
 
-export default {
+const meta = {
   title: 'Components/SnackBar/SnackBar colors',
   component: SnackBarSimpleExample,
   parameters: {
@@ -49,10 +49,16 @@ export default {
       imports: [BaoSnackBarModule, BaoButtonModule, BaoIconModule, BaoTagModule]
     })
   ]
-} as Meta;
+} as Meta<SnackBarSimpleExample>;
 
-const Template: StoryFn = args => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template
+};

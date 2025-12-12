@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { type Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
 import { BaoIconModule } from 'projects/angular-ui/src/lib/icon/module';
 import { BaoPaginationModule } from 'projects/angular-ui/src/lib/pagination/module';
 import { BaoPaginationComponent } from 'projects/angular-ui/src/lib/pagination/pagination.component';
@@ -16,7 +16,7 @@ Pagination is used to navigate through a long list of items
 The full documentation of this component is available in the Hochelaga design system documentation under "[Pagination](https://zeroheight.com/575tugn0n/p/65fd94)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Pagination',
   decorators: [
     moduleMetadata({
@@ -48,31 +48,36 @@ export default {
     updateEndItem: { table: { disable: true } },
     updateTotalPages: { table: { disable: true } }
   }
-} as Meta;
+} as Meta<BaoPaginationComponent>;
+export default meta;
 
-const Template: StoryFn<BaoPaginationComponent> = (
-  args: BaoPaginationComponent
-) => ({
-  props: args
-});
+type Story = StoryObj<BaoPaginationComponent>;
 
-export const Default = Template.bind({});
-Default.args = {
-  totalItems: 65,
-  itemsPerPage: 10,
-  currentPage: 4,
-  pageSizeOptions: [10, 25, 50, 100],
-  itemLabel: 'documents',
-  showItemsPerPageSelector: true
+export const Default: Story = {
+  render: args => ({
+    props: args
+  }),
+  args: {
+    totalItems: 65,
+    itemsPerPage: 10,
+    currentPage: 4,
+    pageSizeOptions: [10, 25, 50, 100],
+    itemLabel: 'documents',
+    showItemsPerPageSelector: true
+  }
 };
 
-export const NoItemsPerPageSelector = Template.bind({});
-NoItemsPerPageSelector.storyName = 'No items per page selector';
-NoItemsPerPageSelector.args = {
-  totalItems: 34,
-  itemsPerPage: 10,
-  currentPage: 4,
-  pageSizeOptions: [10, 25, 50, 100],
-  itemLabel: 'documents',
-  showItemsPerPageSelector: false
+export const NoItemsPerPageSelector: Story = {
+  render: args => ({
+    props: args
+  }),
+  name: 'No items per page selector',
+  args: {
+    totalItems: 34,
+    itemsPerPage: 10,
+    currentPage: 4,
+    pageSizeOptions: [10, 25, 50, 100],
+    itemLabel: 'documents',
+    showItemsPerPageSelector: false
+  }
 };

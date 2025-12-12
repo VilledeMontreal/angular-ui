@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoIconModule, BaoAlertComponent, BaoAlertModule } from 'angular-ui';
 
 const description = `
@@ -37,7 +37,7 @@ The alertTypeTitle attribute is there to override the title alert type.
 Optional. By default, the attribute aria-label of the dismissible button is set to 'Cacher le message'. It is possible to override it by changing the dismissibleButtonAriaLabel input.
 `;
 
-export default {
+const meta = {
   title: 'Components/Alert',
   decorators: [
     moduleMetadata({
@@ -85,13 +85,16 @@ export default {
     },
     dismissible: {
       table: {
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'false' }
       }
     }
   }
-} as Meta;
+} as Meta<BaoAlertComponent>;
+export default meta;
 
-const Template: StoryFn = (args: BaoAlertComponent) => ({
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   template: `
   <bao-alert [type]="type" [dismissible]="dismissible" [alertTypeTitle]="alertTypeTitle">
     <bao-alert-title>{{title}}</bao-alert-title>
@@ -101,173 +104,187 @@ const Template: StoryFn = (args: BaoAlertComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
-
-Primary.args = {
-  type: 'info',
-  dismissible: true,
-  title: "The alert's title",
-  content:
-    'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.',
-  alertTypeTitle: 'Information',
-  dismissibleButtonAriaLabel: 'Close the message'
-};
-
-export const DismissableAlert: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-alert type="success" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="danger" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="warning" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="info" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="emergency" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  `
-});
-
 const dismissableStoryDescription = `
 Setting the \`dismissible\` input to \`true\` will add a dismiss button to the top right of the alert. Clicking on the button will result in the
 the component emitting a \`dismiss\` event that the parent component will be able to handle.`;
-
-DismissableAlert.storyName = 'Dismissible alerts';
-DismissableAlert.parameters = {
-  docs: {
-    description: {
-      story: dismissableStoryDescription
-    }
-  }
-};
-DismissableAlert.args = {
-  ...Primary.args,
-  dismissible: true
-};
-
-export const DismissableAlertLocalized: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-alert type="warning" [dismissible]="dismissible" [alertTypeTitle]="alertTypeTitle" [dismissibleButtonAriaLabel]="dismissibleButtonAriaLabel">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  `
-});
 
 const dismissableStoryDescriptionLocalized = `
 Setting the \`dismissible\` input to \`true\` will add a dismiss button to the top right of the alert. 
 Setting the \`alertTypeTitle\` input will override the title tag of the alert type.
 Setting the \`dismissibleButtonAriaLabel\` input will override the dismissible button aria-label.`;
 
-DismissableAlertLocalized.storyName = 'Dismissible alerts (localized)';
-DismissableAlertLocalized.parameters = {
-  docs: {
-    description: {
-      story: dismissableStoryDescriptionLocalized
-    }
+export const Primary = {
+  render: Template,
+
+  args: {
+    type: 'info',
+    dismissible: true,
+    title: "The alert's title",
+    content:
+      'Alert message with <a href="#" bao-alert-link>an optional link</a> if needed.',
+    alertTypeTitle: 'Information',
+    dismissibleButtonAriaLabel: 'Close the message'
   }
 };
-DismissableAlertLocalized.args = {
-  ...Primary.args,
-  dismissible: true,
-  alertTypeTitle: 'Warning',
-  dismissibleButtonAriaLabel: 'Hide the message'
+
+export const DismissableAlert: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-alert type="success" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="danger" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="warning" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="info" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="emergency" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    `
+  }),
+
+  name: 'Dismissible alerts',
+
+  parameters: {
+    docs: {
+      description: {
+        story: dismissableStoryDescription
+      }
+    }
+  },
+
+  args: {
+    ...Primary.args,
+    dismissible: true
+  }
 };
 
-export const DismissableWithActionsAlert: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-alert type="success" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-    <bao-alert-actions>
-    <button bao-button role="button" type="utility" level="primary">Label</button>
-    <button bao-button role="button" type="utility" level="secondary">Label</button>
-    <button bao-button role="button" type="utility" level="tertiary">Label</button>
-  </bao-alert-actions>
-  </bao-alert>
-  <bao-alert type="danger" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-    <bao-alert-actions>
-    <button bao-button role="button" type="utility" level="primary">Label</button>
-    <button bao-button role="button" type="utility" level="secondary">Label</button>
-    <button bao-button role="button" type="utility" level="tertiary">Label</button>
-  </bao-alert-actions>
-  </bao-alert>
-  <bao-alert type="warning" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-    <bao-alert-actions>
-    <button bao-button role="button" type="utility" level="primary">Label</button>
-    <button bao-button role="button" type="utility" level="secondary">Label</button>
-    <button bao-button role="button" type="utility" level="tertiary">Label</button>
-  </bao-alert-actions>
-  </bao-alert>
-  <bao-alert type="info" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-    <bao-alert-actions>
-    <button bao-button role="button" type="utility" level="primary">Label</button>
-    <button bao-button role="button" type="utility" level="secondary">Label</button>
-    <button bao-button role="button" type="utility" level="tertiary">Label</button>
-  </bao-alert-actions>
-  </bao-alert>
-  <bao-alert type="emergency" [dismissible]="dismissible">
-    <bao-alert-title>{{ title }}</bao-alert-title>
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-    <bao-alert-actions>
-    <button bao-button role="button" type="utility" level="primary">Label</button>
-    <button bao-button role="button" type="utility" level="secondary">Label</button>
-    <button bao-button role="button" type="utility" level="tertiary">Label</button>
-  </bao-alert-actions>
-  </bao-alert>
-  `
-});
+export const DismissableAlertLocalized: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-alert type="warning" [dismissible]="dismissible" [alertTypeTitle]="alertTypeTitle" [dismissibleButtonAriaLabel]="dismissibleButtonAriaLabel">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    `
+  }),
 
-DismissableWithActionsAlert.storyName = 'Alerts with actions';
+  name: 'Dismissible alerts (localized)',
 
-DismissableWithActionsAlert.args = {
-  ...Primary.args,
-  dismissible: true
+  parameters: {
+    docs: {
+      description: {
+        story: dismissableStoryDescriptionLocalized
+      }
+    }
+  },
+
+  args: {
+    ...Primary.args,
+    dismissible: true,
+    alertTypeTitle: 'Warning',
+    dismissibleButtonAriaLabel: 'Hide the message'
+  }
 };
 
-export const DismissableWithoutTitleAlert: StoryFn = args => ({
-  props: args,
-  template: `
-  <bao-alert type="success" [dismissible]="dismissible">
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="danger" [dismissible]="dismissible">
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="warning" [dismissible]="dismissible">
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="info" [dismissible]="dismissible">
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  <bao-alert type="emergency" [dismissible]="dismissible">
-    <bao-alert-content [innerHTML]="content"></bao-alert-content>
-  </bao-alert>
-  `
-});
+export const DismissableWithActionsAlert: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-alert type="success" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+      <bao-alert-actions>
+      <button bao-button role="button" type="utility" level="primary">Label</button>
+      <button bao-button role="button" type="utility" level="secondary">Label</button>
+      <button bao-button role="button" type="utility" level="tertiary">Label</button>
+    </bao-alert-actions>
+    </bao-alert>
+    <bao-alert type="danger" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+      <bao-alert-actions>
+      <button bao-button role="button" type="utility" level="primary">Label</button>
+      <button bao-button role="button" type="utility" level="secondary">Label</button>
+      <button bao-button role="button" type="utility" level="tertiary">Label</button>
+    </bao-alert-actions>
+    </bao-alert>
+    <bao-alert type="warning" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+      <bao-alert-actions>
+      <button bao-button role="button" type="utility" level="primary">Label</button>
+      <button bao-button role="button" type="utility" level="secondary">Label</button>
+      <button bao-button role="button" type="utility" level="tertiary">Label</button>
+    </bao-alert-actions>
+    </bao-alert>
+    <bao-alert type="info" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+      <bao-alert-actions>
+      <button bao-button role="button" type="utility" level="primary">Label</button>
+      <button bao-button role="button" type="utility" level="secondary">Label</button>
+      <button bao-button role="button" type="utility" level="tertiary">Label</button>
+    </bao-alert-actions>
+    </bao-alert>
+    <bao-alert type="emergency" [dismissible]="dismissible">
+      <bao-alert-title>{{ title }}</bao-alert-title>
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+      <bao-alert-actions>
+      <button bao-button role="button" type="utility" level="primary">Label</button>
+      <button bao-button role="button" type="utility" level="secondary">Label</button>
+      <button bao-button role="button" type="utility" level="tertiary">Label</button>
+    </bao-alert-actions>
+    </bao-alert>
+    `
+  }),
 
-DismissableWithoutTitleAlert.storyName = 'Alerts without title';
+  name: 'Alerts with actions',
 
-DismissableWithoutTitleAlert.args = {
-  ...Primary.args,
-  dismissible: true
+  args: {
+    ...Primary.args,
+    dismissible: true
+  }
+};
+
+export const DismissableWithoutTitleAlert: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <bao-alert type="success" [dismissible]="dismissible">
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="danger" [dismissible]="dismissible">
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="warning" [dismissible]="dismissible">
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="info" [dismissible]="dismissible">
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    <bao-alert type="emergency" [dismissible]="dismissible">
+      <bao-alert-content [innerHTML]="content"></bao-alert-content>
+    </bao-alert>
+    `
+  }),
+
+  name: 'Alerts without title',
+
+  args: {
+    ...Primary.args,
+    dismissible: true
+  }
 };

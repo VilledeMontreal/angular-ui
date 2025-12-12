@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata, StoryFn, Meta } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoCardComponent, BaoCardModule, BaoIconModule } from 'angular-ui';
 
 const cardWithIconHeaderDescription = `
@@ -15,7 +15,7 @@ The full documentation of this component is available in the Hochelaga design sy
 
 `;
 
-export default {
+const meta = {
   title: 'Components/Card',
   decorators: [
     moduleMetadata({
@@ -30,9 +30,12 @@ export default {
     }
   },
   argTypes: {}
-} as Meta;
+} as Meta<BaoCardComponent>;
+export default meta;
 
-const Template: StoryFn = (args: BaoCardComponent) => ({
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   template: `
   <div class="container">
   <div class="row cards">
@@ -53,57 +56,63 @@ const Template: StoryFn = (args: BaoCardComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  title: 'Card title',
-  content:
-    'Optional description on multiple lines. Maximal number of characters recommended - 140 characters.',
-  padding: 'normal'
+  args: {
+    title: 'Card title',
+    content:
+      'Optional description on multiple lines. Maximal number of characters recommended - 140 characters.',
+    padding: 'normal'
+  }
 };
 
-export const Cards: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="container">
-    <div class="row cards">
-      <div class="col-12 col-lg-4">
-        <a bao-card href="#">
-          <bao-card-content>
-            <h2 bao-card-title>Card title</h2>
-            <bao-card-text-interface>Optional description</bao-card-text-interface>
-          </bao-card-content>
-        </a>
+export const Cards: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="container">
+      <div class="row cards">
+        <div class="col-12 col-lg-4">
+          <a bao-card href="#">
+            <bao-card-content>
+              <h2 bao-card-title>Card title</h2>
+              <bao-card-text-interface>Optional description</bao-card-text-interface>
+            </bao-card-content>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="row cards">
-      <div class="col-12 col-lg-4">
-        <a bao-card href="#">
-          <bao-card-content>
-            <h2 bao-card-title>Card title</h2>
-            <bao-card-text-interface>Optional description on multiple lines. Maximal number of characters recommended - 140 characters.</bao-card-text-interface>
-          </bao-card-content>
-        </a>
+    <div class="container">
+      <div class="row cards">
+        <div class="col-12 col-lg-4">
+          <a bao-card href="#">
+            <bao-card-content>
+              <h2 bao-card-title>Card title</h2>
+              <bao-card-text-interface>Optional description on multiple lines. Maximal number of characters recommended - 140 characters.</bao-card-text-interface>
+            </bao-card-content>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="row cards">
-      <div class="col-12 col-lg-4">
-        <a bao-card href="#">
-          <bao-card-content>
-            <h2 bao-card-title>Card title on multiple lines Card title on multiple lines</h2>
-            <bao-card-text-interface>Optional description</bao-card-text-interface>
-          </bao-card-content>
-        </a>
+    <div class="container">
+      <div class="row cards">
+        <div class="col-12 col-lg-4">
+          <a bao-card href="#">
+            <bao-card-content>
+              <h2 bao-card-title>Card title on multiple lines Card title on multiple lines</h2>
+              <bao-card-text-interface>Optional description</bao-card-text-interface>
+            </bao-card-content>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  `
-});
-Cards.storyName = 'Cards';
-Cards.args = {
-  ...Primary.args
+    `
+  }),
+
+  name: 'Cards',
+
+  args: {
+    ...Primary.args
+  }
 };

@@ -133,7 +133,7 @@ describe('BaoModalComponent', () => {
 
       const modalContainerElement = overlayContainerElement.querySelector(
         'bao-modal-container'
-      )!;
+      );
       expect(modalContainerElement.getAttribute('role')).toBe('dialog');
     });
 

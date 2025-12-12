@@ -22,7 +22,7 @@ export class BaoCheckboxExampleComponent {
     ]
   };
 
-  public allComplete: boolean = false;
+  public allComplete = false;
 
   public updateAllComplete() {
     this.allComplete =

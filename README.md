@@ -59,6 +59,7 @@ imports: [
 | @villedemontreal/angular-ui@^15.0.0 | Angular 15                             |
 | @villedemontreal/angular-ui@^16.0.0 | Angular 16                             |
 | @villedemontreal/angular-ui@^17.0.0 | Angular 17                             |
+| @villedemontreal/angular-ui@^18.0.0 | Angular 18                             |
 
 📢 We don't use semver in releases since `major` is for Angular release to make it easier for you to understand and manage releases. We recommend using `~` and not `^` on versions such as `~15.3.0` (_MAJOR.MINOR.PATCH_) and not `^15.3.0`, because we reserve the right to make breaking changes ☝️ in components in `minor` releases. `~` to automatically update `patches`.
 

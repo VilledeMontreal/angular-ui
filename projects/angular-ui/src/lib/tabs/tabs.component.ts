@@ -27,6 +27,7 @@ import {
  */
 let tabsNextUniqueId = 0;
 @Directive({
+  standalone: false,
   selector: 'bao-tab-header, [bao-tab-header]',
   exportAs: 'baoTabHeader',
   host: {
@@ -63,6 +64,7 @@ export class BaoTabHeader implements AfterViewInit {
 }
 
 @Directive({
+  standalone: false,
   selector: 'bao-panel, [bao-panel]',
   exportAs: 'baoPanel',
   host: {
@@ -88,6 +90,7 @@ export class BaoTabPanel implements AfterViewInit {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-tablist, [bao-tablist]',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
@@ -281,6 +284,7 @@ export class BaoTablistComponent
 }
 
 @Directive({
+  standalone: false,
   selector: 'bao-tabs, [bao-tabs]',
   exportAs: 'baoTabs',
   host: {

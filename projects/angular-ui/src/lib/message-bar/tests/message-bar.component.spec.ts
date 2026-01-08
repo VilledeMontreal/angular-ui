@@ -17,6 +17,7 @@ import { SimpleChange } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
 
 @Component({
+  standalone: false,
   selector: 'bao-test-host-text',
   template: `
     <bao-message-bar [type]="type" [dismissible]="dismissible">
@@ -30,6 +31,7 @@ class TestHostTextComponent {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-test-host-anchor',
   template: `
     <bao-message-bar [type]="type" [dismissible]="dismissible">
@@ -43,6 +45,7 @@ class TestHostAnchorComponent {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-test-host-hyperlink',
   template: `
     <bao-message-bar [type]="type" [dismissible]="dismissible">
@@ -59,6 +62,7 @@ class TestHostHyperlinkComponent {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-test-host-mixed-content',
   template: `
     <bao-message-bar [type]="type" [dismissible]="dismissible">

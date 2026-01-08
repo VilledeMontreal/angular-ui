@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector:
     'bao-list-summary-item, [bao-list-summary-item], [baoListSummaryItem]',
   template: `<ng-content></ng-content>`,
@@ -24,6 +25,7 @@ import {
 export class BaoListSummaryItem {}
 
 @Component({
+  standalone: false,
   selector: 'bao-list-summary, [bao-list-summary], [baoListSummary]',
   template: `<ng-content></ng-content>`,
   styles: ['.bao-list-summary { padding-left:2rem }'],

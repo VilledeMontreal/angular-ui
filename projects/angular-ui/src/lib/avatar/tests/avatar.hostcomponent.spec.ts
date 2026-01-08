@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: ` <bao-avatar [title]="title"></bao-avatar> `
 })
 export class TestAvatarIconHostComponent {
@@ -14,6 +15,7 @@ export class TestAvatarIconHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <bao-avatar [color]="color" [title]="title">
       <span bao-avatar-content>aaaa</span>
@@ -26,6 +28,7 @@ export class TestAvatarTextHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <bao-avatar [title]="title">
       <img bao-avatar-content src="https://picsum.photos/768/768?image=1074" />

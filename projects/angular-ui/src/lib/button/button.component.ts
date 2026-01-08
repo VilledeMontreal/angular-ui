@@ -17,6 +17,7 @@ const BAO_ICON_NODE_NAME = 'BAO-ICON';
 const LOADING_SPINNER_CLASS = 'loading-spinner';
 
 @Component({
+  standalone: false,
   /**
    * There are a few cases where you give a component an attribute, such as
    * when you want to augment a built-in element. For example, Material Design

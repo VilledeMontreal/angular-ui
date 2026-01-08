@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: `
     <bao-file-preview [file]="file" [isLoading]="isLoading">
       <bao-icon svgIcon="icon-trash"></bao-icon>
@@ -21,6 +22,7 @@ export class TestFilePreviewHostComponent {
   isLoading: boolean;
 }
 @Component({
+  standalone: false,
   template: `
     <bao-file-preview [file]="file" [isLoading]="isLoading">
       <button bao-button type="editorial" level="tertiary" size="medium">

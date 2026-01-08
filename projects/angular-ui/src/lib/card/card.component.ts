@@ -23,6 +23,7 @@ import {
  * * More to come!
  */
 @Component({
+  standalone: false,
   selector: 'bao-card, [bao-card], [baoCard]',
   templateUrl: 'card.component.html',
   styleUrls: ['./card.component.scss'],
@@ -42,6 +43,7 @@ export class BaoCardComponent {
  * Header of a card, needed as it's used as a selector in the API.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-card-header, [bao-card-header], [baoCardHeader]',
   host: { class: 'bao-card-header' }
 })
@@ -51,6 +53,7 @@ export class BaoCardHeader {}
  * Body of a card, needed as it's used as a selector in the API.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-card-content, [bao-card-content], [baoCardContent]',
   host: { class: 'bao-card-content' }
 })
@@ -60,6 +63,7 @@ export class BaoCardContent {}
  * Title of a card, needed as it's used as a selector in the API.
  */
 @Directive({
+  standalone: false,
   selector: `bao-card-title, [bao-card-title], [baoCardTitle]`,
   host: {
     class: 'bao-card-title'
@@ -71,6 +75,7 @@ export class BaoCardTitle {}
  * Text of a card, needed as it's used as a selector in the API.
  */
 @Directive({
+  standalone: false,
   selector: `bao-card-text-interface, [bao-card-text-interface], [baoCardTextInterface]`,
   host: {
     class: 'bao-card-text-interface'

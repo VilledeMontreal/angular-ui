@@ -6,6 +6,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'bao-guiding-text, [bao-guiding-text]',
   template: '<div class="bao-guiding-text"><ng-content></ng-content></div>',
   styleUrls: ['./guidingText.component.scss'],

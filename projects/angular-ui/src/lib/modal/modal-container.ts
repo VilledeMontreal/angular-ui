@@ -280,6 +280,7 @@ export abstract class _BaoModalContainerBase extends BasePortalOutlet {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-modal-container',
   templateUrl: 'modal-container.component.html',
   styleUrls: ['modal-container.component.scss'],

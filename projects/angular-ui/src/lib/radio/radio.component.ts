@@ -36,6 +36,7 @@ import {
 let radioNextUniqueId = 0;
 
 @Component({
+  standalone: false,
   selector: 'bao-radio-button, [bao-radio-button]',
   templateUrl: 'radio.component.html',
   styleUrls: ['./radio.component.scss'],
@@ -345,6 +346,7 @@ export class BaoRadioButtonComponent
 }
 
 @Directive({
+  standalone: false,
   selector:
     'bao-radio-button-description, [bao-radio-button-description],  [baoRadioButtonDescription]',
   host: { class: 'bao-radio-button-description' }

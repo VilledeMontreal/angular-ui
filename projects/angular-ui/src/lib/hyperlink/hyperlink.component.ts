@@ -20,6 +20,7 @@ const HAS_RIGHT_ICON = 'has-right-icon';
 const LIST_PARENT = 'bao-hyperlink-list-parent';
 
 @Component({
+  standalone: false,
   selector: 'bao-hyperlink, [bao-hyperlink]',
   templateUrl: './hyperlink.component.html',
   styleUrls: ['./hyperlink.component.scss'],

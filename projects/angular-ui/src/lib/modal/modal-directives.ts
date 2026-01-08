@@ -20,6 +20,7 @@ import { _closeModalVia, BaoModalRef } from './modal-ref';
  * Button that will close the current dialog.
  */
 @Directive({
+  standalone: false,
   selector: '[bao-modal-close], [baoModalClose]',
   exportAs: 'BaoModalClose',
   host: {

@@ -37,6 +37,7 @@ export const enum eCheckboxAriaState {
 let checkboxNextUniqueId = 0;
 
 @Component({
+  standalone: false,
   selector: 'bao-checkbox, [bao-checkbox]',
   templateUrl: 'checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
@@ -376,6 +377,7 @@ export class BaoCheckboxComponent
 }
 
 @Directive({
+  standalone: false,
   selector:
     'bao-checkbox-description, [bao-checkbox-description],  [baoCheckboxDescription]',
   host: { class: 'bao-checkbox-description' }

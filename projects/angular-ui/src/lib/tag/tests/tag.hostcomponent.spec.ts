@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: `
     <bao-tag [type]="type" [hiddenText]="hiddenText" [variant]="variant">
       <span>Label</span>
@@ -20,6 +21,7 @@ export class TestTagHostComponent {
 }
 
 @Component({
+  standalone: false,
   template: `
     <bao-tag [type]="type" [hiddenText]="hiddenText" [variant]="variant">
       <bao-icon svgIcon="icon-warning"></bao-icon>

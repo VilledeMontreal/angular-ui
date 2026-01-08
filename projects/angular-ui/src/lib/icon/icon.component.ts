@@ -26,6 +26,7 @@ const TITLE = 'title';
  *     `<bao-icon svgIcon="heart"></bao-icon>`
  */
 @Component({
+  standalone: false,
   template: '<ng-content></ng-content>',
   selector: 'bao-icon',
   exportAs: 'baoIcon',

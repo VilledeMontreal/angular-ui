@@ -54,6 +54,7 @@ export interface IBaoSnackBarContainer {
  * @docs-private
  */
 @Component({
+  standalone: false,
   selector: 'bao-snack-bar-container',
   templateUrl: 'snack-bar-container.html',
   styleUrls: ['snack-bar-container.scss'],

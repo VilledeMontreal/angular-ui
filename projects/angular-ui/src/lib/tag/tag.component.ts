@@ -20,6 +20,7 @@ const BAO_ICON = 'bao-icon';
 const HAS_ICON = 'has-icon';
 
 @Component({
+  standalone: false,
   selector: 'bao-tag, [bao-tag], [baoTag]',
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],

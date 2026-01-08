@@ -6,6 +6,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'bao-title-text, [bao-title-text]',
   template: '<div class="bao-title-text"><ng-content></ng-content></div>',
   styleUrls: ['./titleText.component.scss'],

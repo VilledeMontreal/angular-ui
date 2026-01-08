@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { StoryFn, moduleMetadata, Meta } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoButtonComponent, BaoButtonModule, BaoIconModule } from 'angular-ui';
-export default {
+const meta = {
   title: 'Components/Button/Editorial',
   decorators: [
     moduleMetadata({
@@ -28,9 +28,12 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoButtonComponent>;
+export default meta;
 
-const Template: StoryFn = (args: BaoButtonComponent) => ({
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   component: BaoButtonComponent,
   template: `
   <button
@@ -49,111 +52,137 @@ const Template: StoryFn = (args: BaoButtonComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  loading: false,
-  reversed: false,
-  fullWidth: false,
-  displayType: 'editorial',
-  label: 'Button',
-  level: 'primary',
-  size: 'medium'
-};
-
-export const EditorialLevelButton: StoryFn = args => ({
-  props: args,
-  template: `
-  <button bao-button type="button" displayType="editorial" level="primary" style="margin-right: 1rem;">{{label}}</button>
-  <button bao-button type="button" displayType="editorial" level="secondary" style="margin-right: 1rem;">{{label}}</button>
-  <button bao-button type="button" displayType="editorial" level="tertiary">{{label}}</button>
-  `
-});
-EditorialLevelButton.storyName = 'Editorial - Levels';
-EditorialLevelButton.args = {
-  ...Primary.args
-};
-
-export const EditorialSizeButton: StoryFn = args => ({
-  props: args,
-  template: `
-  <button bao-button type="button" displayType="editorial" level="primary" size="large" style="margin-right: 1rem;">{{label}}</button>
-  <button bao-button type="button" displayType="editorial" level="primary" size="medium" style="margin-right: 1rem;">{{label}}</button>
-  <button bao-button type="button" displayType="editorial" level="primary" size="small">{{label}}</button>
-  `
-});
-EditorialSizeButton.storyName = 'Editorial - Sizes';
-EditorialSizeButton.args = {
-  ...Primary.args,
-  size: 'large'
-};
-
-export const EditorialFullWidthButton = args => ({
-  props: args,
-  template: `
-    <div>
-    <button bao-button type="button" displayType="editorial" level="primary" [fullWidth]="true">{{label}}</button>
-    <button bao-button type="button" displayType="editorial" level="secondary" [fullWidth]="true">{{label}}</button>
-    <button bao-button type="button" displayType="editorial" level="tertiary" [fullWidth]="true">{{label}}</button>
-  </div>
-  `
-});
-EditorialFullWidthButton.storyName = 'Editorial - Full width';
-EditorialFullWidthButton.parameters = {
-  docs: {
-    description: {
-      story:
-        "If the input `fullWidth` is set to `true`, the button will grow to the width of it's container"
-    }
+  args: {
+    loading: false,
+    reversed: false,
+    fullWidth: false,
+    displayType: 'editorial',
+    label: 'Button',
+    level: 'primary',
+    size: 'medium'
   }
 };
-EditorialFullWidthButton.args = {
-  ...Primary.args,
-  fullWidth: true
+
+export const EditorialLevelButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <button bao-button type="button" displayType="editorial" level="primary" style="margin-right: 1rem;">{{label}}</button>
+    <button bao-button type="button" displayType="editorial" level="secondary" style="margin-right: 1rem;">{{label}}</button>
+    <button bao-button type="button" displayType="editorial" level="tertiary">{{label}}</button>
+    `
+  }),
+
+  name: 'Editorial - Levels',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const EditorialDiabledButton = args => ({
-  props: args,
-  template: `
-  <button bao-button type="button" displayType="editorial" level="primary" disabled style="margin-right: 1rem;">{{label}}</button>
-  <button bao-button type="button" displayType="editorial" level="secondary" disabled style="margin-right: 1rem;">{{label}}</button>
-  <button bao-button type="button" displayType="editorial" level="tertiary" disabled>{{label}}</button>
-  `
-});
-EditorialDiabledButton.storyName = 'Editorial - Disabled';
-EditorialDiabledButton.args = {
-  ...Primary.args
+export const EditorialSizeButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <button bao-button type="button" displayType="editorial" level="primary" size="large" style="margin-right: 1rem;">{{label}}</button>
+    <button bao-button type="button" displayType="editorial" level="primary" size="medium" style="margin-right: 1rem;">{{label}}</button>
+    <button bao-button type="button" displayType="editorial" level="primary" size="small">{{label}}</button>
+    `
+  }),
+
+  name: 'Editorial - Sizes',
+
+  args: {
+    ...Primary.args,
+    size: 'large'
+  }
 };
 
-export const EditorialReversedButton: StoryFn = args => ({
-  props: args,
-  template: `
-  <div style="background-color: black; padding: 1rem;">
-    <button bao-button type="button" displayType="editorial" level="primary" [reversed]="true" style="margin-right: 1rem;">{{label}}</button>
-    <button bao-button type="button" displayType="editorial" level="secondary" [reversed]="true" style="margin-right: 1rem;">{{label}}</button>
-    <button bao-button type="button" displayType="editorial" level="tertiary" [reversed]="true">{{label}}</button>
-  </div>
-  `
-});
-EditorialReversedButton.storyName = 'Editorial - Reversed';
-EditorialReversedButton.args = {
-  ...Primary.args,
-  reversed: true
+export const EditorialFullWidthButton = {
+  render: args => ({
+    props: args,
+    template: `
+      <div>
+      <button bao-button type="button" displayType="editorial" level="primary" [fullWidth]="true">{{label}}</button>
+      <button bao-button type="button" displayType="editorial" level="secondary" [fullWidth]="true">{{label}}</button>
+      <button bao-button type="button" displayType="editorial" level="tertiary" [fullWidth]="true">{{label}}</button>
+    </div>
+    `
+  }),
+
+  name: 'Editorial - Full width',
+
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "If the input `fullWidth` is set to `true`, the button will grow to the width of it's container"
+      }
+    }
+  },
+
+  args: {
+    ...Primary.args,
+    fullWidth: true
+  }
 };
 
-export const EditorialRDButton: StoryFn = args => ({
-  props: args,
-  template: `
-  <div style="background-color: black; padding: 1rem;">
-    <button bao-button type="button" displayType="editorial" level="primary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
-    <button bao-button type="button" displayType="editorial" level="secondary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
-    <button bao-button type="button" displayType="editorial" level="tertiary" [reversed]="true" disabled>Label</button>
-  </div>
-  `
-});
+export const EditorialDiabledButton = {
+  render: args => ({
+    props: args,
+    template: `
+    <button bao-button type="button" displayType="editorial" level="primary" disabled style="margin-right: 1rem;">{{label}}</button>
+    <button bao-button type="button" displayType="editorial" level="secondary" disabled style="margin-right: 1rem;">{{label}}</button>
+    <button bao-button type="button" displayType="editorial" level="tertiary" disabled>{{label}}</button>
+    `
+  }),
 
-EditorialRDButton.storyName = 'Editorial - Reversed and Disabled';
-EditorialRDButton.args = {
-  ...Primary.args,
-  reversed: true
+  name: 'Editorial - Disabled',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const EditorialReversedButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div style="background-color: black; padding: 1rem;">
+      <button bao-button type="button" displayType="editorial" level="primary" [reversed]="true" style="margin-right: 1rem;">{{label}}</button>
+      <button bao-button type="button" displayType="editorial" level="secondary" [reversed]="true" style="margin-right: 1rem;">{{label}}</button>
+      <button bao-button type="button" displayType="editorial" level="tertiary" [reversed]="true">{{label}}</button>
+    </div>
+    `
+  }),
+
+  name: 'Editorial - Reversed',
+
+  args: {
+    ...Primary.args,
+    reversed: true
+  }
+};
+
+export const EditorialRDButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div style="background-color: black; padding: 1rem;">
+      <button bao-button type="button" displayType="editorial" level="primary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
+      <button bao-button type="button" displayType="editorial" level="secondary" [reversed]="true" disabled style="margin-right: 1rem;">Label</button>
+      <button bao-button type="button" displayType="editorial" level="tertiary" [reversed]="true" disabled>Label</button>
+    </div>
+    `
+  }),
+
+  name: 'Editorial - Reversed and Disabled',
+
+  args: {
+    ...Primary.args,
+    reversed: true
+  }
 };

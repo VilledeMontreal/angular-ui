@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
-import { moduleMetadata } from '@storybook/angular';
-import { Meta, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import {
   BaoSystemHeaderModule,
   BaoTagModule,
@@ -22,7 +21,7 @@ The System Header pattern is used to display the title of a page from an interna
 The full documentation of this pattern is available in the Hochelaga design system documentation under "[En-tête de système](https://zeroheight.com/575tugn0n/p/461f9f-en-tete-de-systeme)".
 `;
 
-export default {
+const meta = {
   title: 'Patterns/SystemHeader',
   decorators: [
     moduleMetadata({
@@ -89,7 +88,11 @@ export default {
   }
 } as Meta;
 
-const Template: StoryFn = args => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   props: args,
   template: `
     <bao-system-header>
@@ -185,31 +188,36 @@ const Template: StoryFn = args => ({
     `
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  screenSize: 'desktop'
+  args: {
+    screenSize: 'desktop'
+  }
 };
 
-export const SimpleSystemHeader: StoryFn = args => ({
-  props: args,
-  template: `
-    <bao-system-header>
-      <a href="#">
-        <bao-icon
-          color="action"
-          title="arrow-left"
-          svgIcon="icon-arrow-left"
-          size="x-small"
-        ></bao-icon>
-      </a>
-      <h1>This is a system header</h1>
-      <button bao-button type="button" level="primary">
-          Primary action
-      </button>
-    </bao-system-header>
-  `
-});
-SimpleSystemHeader.args = {
-  ...Primary.args
+export const SimpleSystemHeader: Story = {
+  render: args => ({
+    props: args,
+    template: `
+      <bao-system-header>
+        <a href="#">
+          <bao-icon
+            color="action"
+            title="arrow-left"
+            svgIcon="icon-arrow-left"
+            size="x-small"
+          ></bao-icon>
+        </a>
+        <h1>This is a system header</h1>
+        <button bao-button type="button" level="primary">
+            Primary action
+        </button>
+      </bao-system-header>
+    `
+  }),
+
+  args: {
+    ...Primary.args
+  }
 };

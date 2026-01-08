@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 
-import { Meta, moduleMetadata } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import {
   BaoButtonModule,
   BaoIconModule,
@@ -19,7 +19,7 @@ The Snackbar (or Toast) is used to give feedback to the user following an action
 The full documentation of this component is available in the Hochelaga design system documentation under "[Toast](https://zeroheight.com/575tugn0n/p/29e96e-toast)".
 `;
 
-export default {
+const meta = {
   title: 'Components/SnackBar',
   component: SnackBarPreview,
   parameters: {
@@ -47,16 +47,23 @@ export default {
   >
   </snack-bar-preview>
  `
-} as Meta;
+} as Meta<SnackBarPreview>;
 
-const Template = args => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   props: args
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  toastType: 'success',
-  message: 'This is a preview component',
-  actionLabelOrIcon: 'icon-refresh',
-  showClose: false
+export const Primary = {
+  render: Template,
+
+  args: {
+    toastType: 'success',
+    message: 'This is a preview component',
+    actionLabelOrIcon: 'icon-refresh',
+    showClose: false
+  }
 };

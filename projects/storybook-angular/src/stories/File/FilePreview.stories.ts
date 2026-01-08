@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
-import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import {
   BaoFilePreviewComponent,
   BaoDropdownMenuComponent,
@@ -24,7 +24,7 @@ The File component allows users to transfer local files to the system.
 The full documentation of this component is available in the Hochelaga design system documentation under "[Fichier](https://zeroheight.com/575tugn0n/p/26da67)".
 `;
 
-export default {
+const meta = {
   title: 'Components/File/Preview',
   decorators: [
     moduleMetadata({
@@ -85,11 +85,12 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoFilePreviewComponent>;
+export default meta;
 
-const Template: StoryFn<BaoFilePreviewComponent> = (
-  args: BaoFilePreviewComponent
-) => ({
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   component: BaoFilePreviewComponent,
   template: `
     <div style="max-width:20rem;">
@@ -104,50 +105,56 @@ const Template: StoryFn<BaoFilePreviewComponent> = (
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  file: {
-    name: 'sample.pdf',
-    size: 55555,
-    lastModified: 1669754503525,
-    type: 'application/pdf',
-    webkitRelativePath: ''
-  },
-  isLoading: false
+  args: {
+    file: {
+      name: 'sample.pdf',
+      size: 55555,
+      lastModified: 1669754503525,
+      type: 'application/pdf',
+      webkitRelativePath: ''
+    },
+    isLoading: false
+  }
 };
 
-export const filePreviewWithMenu: StoryFn = args => ({
-  props: args,
-  template: `
-      <div style="max-width:20rem;">
-        <bao-file-preview [file]="file">
-          <bao-icon svgIcon="icon-file"></bao-icon>
-          <button bao-button [baoDropdownMenuTriggerFor]="testMenu" type="editorial" level="tertiary" 
-            size="medium">
-              <bao-icon svgIcon="icon-more-vertical"></bao-icon>
-          </button>
-          <bao-dropdown-menu #testMenu>
-            <ul>
-              <li>
-                <a bao-dropdown-menu-item>
-                  <bao-icon svgIcon="icon-trash"></bao-icon>
-                  <bao-dropdown-menu-item-label>Delete</bao-dropdown-menu-item-label>
-                </a>
-              </li>   
-              <li>
-                <a bao-dropdown-menu-item>
-                  <bao-icon svgIcon="icon-edit"></bao-icon>
-                  <bao-dropdown-menu-item-label>Rename</bao-dropdown-menu-item-label>
-                </a>
-              </li>
-            </ul>
-          </bao-dropdown-menu>
-        </bao-file-preview>
-      </div>
-  `
-});
-filePreviewWithMenu.storyName = 'File preview with dropdown menu';
-filePreviewWithMenu.args = {
-  ...Primary.args
+export const filePreviewWithMenu: Story = {
+  render: args => ({
+    props: args,
+    template: `
+        <div style="max-width:20rem;">
+          <bao-file-preview [file]="file">
+            <bao-icon svgIcon="icon-file"></bao-icon>
+            <button bao-button [baoDropdownMenuTriggerFor]="testMenu" type="editorial" level="tertiary" 
+              size="medium">
+                <bao-icon svgIcon="icon-more-vertical"></bao-icon>
+            </button>
+            <bao-dropdown-menu #testMenu>
+              <ul>
+                <li>
+                  <a bao-dropdown-menu-item>
+                    <bao-icon svgIcon="icon-trash"></bao-icon>
+                    <bao-dropdown-menu-item-label>Delete</bao-dropdown-menu-item-label>
+                  </a>
+                </li>   
+                <li>
+                  <a bao-dropdown-menu-item>
+                    <bao-icon svgIcon="icon-edit"></bao-icon>
+                    <bao-dropdown-menu-item-label>Rename</bao-dropdown-menu-item-label>
+                  </a>
+                </li>
+              </ul>
+            </bao-dropdown-menu>
+          </bao-file-preview>
+        </div>
+    `
+  }),
+
+  name: 'File preview with dropdown menu',
+
+  args: {
+    ...Primary.args
+  }
 };

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -7,8 +7,8 @@ import { CommonModule } from '@angular/common';
 import {
   componentWrapperDecorator,
   moduleMetadata,
-  Meta,
-  StoryFn
+  type Meta,
+  type StoryObj
 } from '@storybook/angular';
 import { BaoTablistComponent, BaoTabsModule } from 'angular-ui';
 
@@ -18,7 +18,7 @@ The Tabs component allows to navigate quickly between different views from a sam
 The full documentation of this component is available in the Hochelaga design system documentation under "[Onglet](https://zeroheight.com/575tugn0n/p/86c083)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Tabs',
   decorators: [
     moduleMetadata({
@@ -112,9 +112,13 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoTablistComponent>;
 
-const Template: StoryFn = (args: BaoTablistComponent) => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   component: BaoTablistComponent,
   template: `
       <bao-tabs>
@@ -137,67 +141,73 @@ const Template: StoryFn = (args: BaoTablistComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  ariaLabel: 'onglets',
-  size: 'large'
+  args: {
+    ariaLabel: 'onglets',
+    size: 'large'
+  }
 };
 
-export const TabsSize: StoryFn = args => ({
-  props: args,
-  template: `
-      <bao-tabs>
-        <bao-tablist size="large" style="margin-bottom:2rem;">
-          <button bao-tab-header>
-            Tab #1
-          </button>
-          <button bao-tab-header>
-            Tab #2
-          </button>
-          <button bao-tab-header>
-            Tab #3
-          </button>
-        </bao-tablist>
-        <bao-panel></bao-panel>
-        <bao-panel></bao-panel>
-        <bao-panel></bao-panel>
-      </bao-tabs>
-      <bao-tabs>
-        <bao-tablist size="medium" style="margin-bottom:2rem;">
-          <button bao-tab-header>
-            Tab #1
-          </button>
-          <button bao-tab-header>
-            Tab #2
-          </button>
-          <button bao-tab-header>
-            Tab #3
-          </button>
-        </bao-tablist>
-        <bao-panel></bao-panel>
-        <bao-panel></bao-panel>
-        <bao-panel></bao-panel>
-      </bao-tabs>
-      <bao-tabs>
-        <bao-tablist size="small">
-          <button bao-tab-header>
-            Tab #1
-          </button>
-          <button bao-tab-header>
-            Tab #2
-          </button>
-          <button bao-tab-header>
-            Tab #3
-          </button>
-        </bao-tablist>
-        <bao-panel></bao-panel>
-        <bao-panel></bao-panel>
-        <bao-panel></bao-panel>
-      </bao-tabs>
-      `
-});
-TabsSize.storyName = 'Sizes';
-TabsSize.args = {
-  ...Primary.args
+export const TabsSize: Story = {
+  render: args => ({
+    props: args,
+    template: `
+        <bao-tabs>
+          <bao-tablist size="large" style="margin-bottom:2rem;">
+            <button bao-tab-header>
+              Tab #1
+            </button>
+            <button bao-tab-header>
+              Tab #2
+            </button>
+            <button bao-tab-header>
+              Tab #3
+            </button>
+          </bao-tablist>
+          <bao-panel></bao-panel>
+          <bao-panel></bao-panel>
+          <bao-panel></bao-panel>
+        </bao-tabs>
+        <bao-tabs>
+          <bao-tablist size="medium" style="margin-bottom:2rem;">
+            <button bao-tab-header>
+              Tab #1
+            </button>
+            <button bao-tab-header>
+              Tab #2
+            </button>
+            <button bao-tab-header>
+              Tab #3
+            </button>
+          </bao-tablist>
+          <bao-panel></bao-panel>
+          <bao-panel></bao-panel>
+          <bao-panel></bao-panel>
+        </bao-tabs>
+        <bao-tabs>
+          <bao-tablist size="small">
+            <button bao-tab-header>
+              Tab #1
+            </button>
+            <button bao-tab-header>
+              Tab #2
+            </button>
+            <button bao-tab-header>
+              Tab #3
+            </button>
+          </bao-tablist>
+          <bao-panel></bao-panel>
+          <bao-panel></bao-panel>
+          <bao-panel></bao-panel>
+        </bao-tabs>
+        `
+  }),
+
+  name: 'Sizes',
+
+  args: {
+    ...Primary.args
+  }
 };

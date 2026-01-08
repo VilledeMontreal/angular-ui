@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -20,8 +20,8 @@ export interface AddressData {
   templateUrl: 'modal-form-example.html'
 })
 export class ModalFormExample {
-  public numeroCivique: string = '801';
-  public rue: string = 'Brennan';
+  public numeroCivique = '801';
+  public rue = 'Brennan';
 
   constructor(public modal: BaoModal) {}
 

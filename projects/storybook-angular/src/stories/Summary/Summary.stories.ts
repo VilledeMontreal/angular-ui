@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { moduleMetadata, Meta, StoryFn } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import {
   BaoIconModule,
   BaoButtonModule,
@@ -20,7 +20,7 @@ This component displays the sumamry of an object that can be edited, such as an 
 The full documentation of this component is available in the Hochelaga design system documentation under "[Résumé d'objet](https://zeroheight.com/575tugn0n/p/627489)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Summary',
   decorators: [
     moduleMetadata({
@@ -103,11 +103,13 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoSummaryComponent>;
 
-const Template: StoryFn<
-  BaoSummaryComponent & { title: string; content: string }
-> = (args: BaoSummaryComponent) => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   component: BaoSummaryComponent,
   template: `
   <div class="col-12 md-6 md-4">
@@ -148,289 +150,313 @@ const Template: StoryFn<
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template,
 
-Primary.args = {
-  title: 'Libellé',
-  content: 'Content'
+  args: {
+    title: 'Libellé',
+    content: 'Content'
+  }
 };
 
-export const SimpleSummary: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4">
-    <bao-summary id="ID1111">
-      <bao-label required="true">Libellé</bao-label>
+export const SimpleSummary: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4">
+      <bao-summary id="ID1111">
+        <bao-label required="true">Libellé</bao-label>
 
-      <bao-guiding-text>
+        <bao-guiding-text>
+          Texte d’assisance Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Ridiculus tempus arcu neque arcu quisque egestas.
+        </bao-guiding-text>
+        <bao-title-text>Libellé optionnel</bao-title-text>
+        <bao-summary-description>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
+            </p>
+        </bao-summary-description>
+        <bao-list-summary>
+          <bao-list-summary-item>apple</bao-list-summary-item><br/>
+          <bao-list-summary-item>pear</bao-list-summary-item><br/>
+          <bao-list-summary-item>banana</bao-list-summary-item><br/>
+          <bao-list-summary-item>coconut</bao-list-summary-item><br/>
+        </bao-list-summary>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonText"
+        >
+          <span>Modifier</span>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonIcon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
+        </button>
+      </bao-summary>
+    </div>
+    `
+  }),
+
+  name: 'Summary - Description - label with list',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const SummaryWithErrorText: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4" >
+      <bao-summary id="ID1112">
+        <bao-label required="true">Libellé</bao-label>
+        <bao-title-text>Libellé Optionnel</bao-title-text>
+        <bao-summary-description>
+            <p>
+              Lorem ipsum dolor sit amet
+            </p>
+        </bao-summary-description>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonText"
+        >
+          <span>Modifier</span>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonIcon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
+        </button>
+        <bao-error>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </bao-error>
+      </bao-summary>
+    </div>
+    `
+  }),
+
+  name: 'Summary - Description & label with error text',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const SummaryWithHiddenLabel: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4">
+      <bao-summary id="ID1112" displayMode="compact">
+        <bao-label required="true">Libellé</bao-label>
+        <bao-summary-description>
+            <p>
+              Lorem ipsum dolor sit amet
+            </p>
+        </bao-summary-description>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonText"
+        >
+          <span>Modifier</span>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonIcon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
+        </button>
+      </bao-summary>
+    </div>
+    `
+  }),
+
+  name: 'Summary - Description & hidden label [Compact Mode]',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const SummaryWithHiddenLabelWithoutButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4">
+      <bao-summary id="ID1112" displayMode="compact">
+        <bao-label required="true">Libellé</bao-label>
+        <bao-summary-description>
+            <p>
+              Lorem ipsum dolor sit amet
+            </p>
+        </bao-summary-description>
+      </bao-summary>
+    </div>
+    `
+  }),
+
+  name: 'Summary - Description & hidden label without button [Compact Mode]',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const SummaryWithHiddenLabelAndButton: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4">
+      <bao-summary id="ID1113">
+        <bao-label required="true">Libellé</bao-label>
+        <bao-summary-description>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
+            </p>
+        </bao-summary-description>
+      </bao-summary>
+    </div>
+    `
+  }),
+
+  name: 'Summary - Description -  hidden label & button',
+
+  args: {
+    ...Primary.args
+  }
+};
+
+export const SummaryWithHiddenLabelErrorText: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4">
+      <bao-summary id="ID1114" displayMode="compact">
+        <bao-label required="true">Libellé</bao-label>
+        <bao-guiding-text>
         Texte d’assisance Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Ridiculus tempus arcu neque arcu quisque egestas.
       </bao-guiding-text>
-      <bao-title-text>Libellé optionnel</bao-title-text>
-      <bao-summary-description>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
-          </p>
-      </bao-summary-description>
-      <bao-list-summary>
-        <bao-list-summary-item>apple</bao-list-summary-item><br/>
-        <bao-list-summary-item>pear</bao-list-summary-item><br/>
-        <bao-list-summary-item>banana</bao-list-summary-item><br/>
-        <bao-list-summary-item>coconut</bao-list-summary-item><br/>
-      </bao-list-summary>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonText"
-      >
-        <span>Modifier</span>
-      </button>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonIcon"
-      >
-        <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
-      </button>
-    </bao-summary>
-  </div>
-  `
-});
-SimpleSummary.storyName = 'Summary - Description - label with list';
-SimpleSummary.args = {
-  ...Primary.args
+        <bao-title-text>Libellé optionnel</bao-title-text>
+        <bao-summary-description>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
+            </p>
+        </bao-summary-description>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonText"
+        >
+          <span>Modifier</span>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonIcon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
+        </button>
+        <bao-error>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bao-error>
+      </bao-summary>
+    </div>
+    `
+  }),
+
+  name: 'Summary - Description & hidden label with error text [Compact Mode]',
+
+  args: {
+    ...Primary.args
+  }
 };
 
-export const SummaryWithErrorText: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4" >
-    <bao-summary id="ID1112">
-      <bao-label required="true">Libellé</bao-label>
-      <bao-title-text>Libellé Optionnel</bao-title-text>
-      <bao-summary-description>
-          <p>
-            Lorem ipsum dolor sit amet
-          </p>
-      </bao-summary-description>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonText"
-      >
-        <span>Modifier</span>
-      </button>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonIcon"
-      >
-        <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
-      </button>
-      <bao-error>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </bao-error>
-    </bao-summary>
-  </div>
-  `
-});
-SummaryWithErrorText.storyName =
-  'Summary - Description & label with error text';
-SummaryWithErrorText.args = {
-  ...Primary.args
-};
+export const SummaryWithHiddenLabelErrorTextResponsive: Story = {
+  render: args => ({
+    props: args,
+    template: `
+    <div class="col-12 md-6 md-4">
+      <bao-summary id="ID1114">
+        <bao-label required="true">Libellé</bao-label>
+        <bao-guiding-text>
+        Texte d’assisance Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Ridiculus tempus arcu neque arcu quisque egestas.
+      </bao-guiding-text>
+        <bao-title-text>Libellé optionnel</bao-title-text>
+        <bao-summary-description>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
+            </p>
+        </bao-summary-description>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonText"
+        >
+          <span>Modifier</span>
+        </button>
+        <button
+          bao-button
+          size="medium" 
+          level="tertiary" 
+          displayType="utility" 
+          type="button"
+          class="buttonIcon"
+        >
+          <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
+        </button>
+        <bao-error>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bao-error>
+      </bao-summary>
+    </div>
+    `
+  }),
 
-export const SummaryWithHiddenLabel: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4">
-    <bao-summary id="ID1112" displayMode="compact">
-      <bao-label required="true">Libellé</bao-label>
-      <bao-summary-description>
-          <p>
-            Lorem ipsum dolor sit amet
-          </p>
-      </bao-summary-description>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonText"
-      >
-        <span>Modifier</span>
-      </button>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonIcon"
-      >
-        <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
-      </button>
-    </bao-summary>
-  </div>
-  `
-});
-SummaryWithHiddenLabel.storyName =
-  'Summary - Description & hidden label [Compact Mode]';
-SummaryWithHiddenLabel.args = {
-  ...Primary.args
-};
+  name: 'Summary - Description & hidden label with error text [Responsive Mode]',
 
-export const SummaryWithHiddenLabelWithoutButton: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4">
-    <bao-summary id="ID1112" displayMode="compact">
-      <bao-label required="true">Libellé</bao-label>
-      <bao-summary-description>
-          <p>
-            Lorem ipsum dolor sit amet
-          </p>
-      </bao-summary-description>
-    </bao-summary>
-  </div>
-  `
-});
-SummaryWithHiddenLabelWithoutButton.storyName =
-  'Summary - Description & hidden label without button [Compact Mode]';
-SummaryWithHiddenLabelWithoutButton.args = {
-  ...Primary.args
-};
-
-export const SummaryWithHiddenLabelAndButton: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4">
-    <bao-summary id="ID1113">
-      <bao-label required="true">Libellé</bao-label>
-      <bao-summary-description>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
-          </p>
-      </bao-summary-description>
-    </bao-summary>
-  </div>
-  `
-});
-SummaryWithHiddenLabelAndButton.storyName =
-  'Summary - Description -  hidden label & button';
-SummaryWithHiddenLabelAndButton.args = {
-  ...Primary.args
-};
-
-export const SummaryWithHiddenLabelErrorText: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4">
-    <bao-summary id="ID1114" displayMode="compact">
-      <bao-label required="true">Libellé</bao-label>
-      <bao-guiding-text>
-      Texte d’assisance Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Ridiculus tempus arcu neque arcu quisque egestas.
-    </bao-guiding-text>
-      <bao-title-text>Libellé optionnel</bao-title-text>
-      <bao-summary-description>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
-          </p>
-      </bao-summary-description>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonText"
-      >
-        <span>Modifier</span>
-      </button>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonIcon"
-      >
-        <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
-      </button>
-      <bao-error>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bao-error>
-    </bao-summary>
-  </div>
-  `
-});
-SummaryWithHiddenLabelErrorText.storyName =
-  'Summary - Description & hidden label with error text [Compact Mode]';
-SummaryWithHiddenLabelErrorText.args = {
-  ...Primary.args
-};
-
-export const SummaryWithHiddenLabelErrorTextResponsive: StoryFn = args => ({
-  props: args,
-  template: `
-  <div class="col-12 md-6 md-4">
-    <bao-summary id="ID1114">
-      <bao-label required="true">Libellé</bao-label>
-      <bao-guiding-text>
-      Texte d’assisance Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Ridiculus tempus arcu neque arcu quisque egestas.
-    </bao-guiding-text>
-      <bao-title-text>Libellé optionnel</bao-title-text>
-      <bao-summary-description>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Diam arcu proin imperdiet cras sed quam bibendum lacus facilisis.
-          </p>
-      </bao-summary-description>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonText"
-      >
-        <span>Modifier</span>
-      </button>
-      <button
-        bao-button
-        size="medium" 
-        level="tertiary" 
-        displayType="utility" 
-        type="button"
-        class="buttonIcon"
-      >
-        <bao-icon title="Modifier" svgIcon="icon-edit"></bao-icon>
-      </button>
-      <bao-error>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</bao-error>
-    </bao-summary>
-  </div>
-  `
-});
-SummaryWithHiddenLabelErrorTextResponsive.storyName =
-  'Summary - Description & hidden label with error text [Responsive Mode]';
-SummaryWithHiddenLabelErrorTextResponsive.args = {
-  ...Primary.args
+  args: {
+    ...Primary.args
+  }
 };

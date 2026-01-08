@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { Meta, StoryFn, moduleMetadata } from '@storybook/angular';
+import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { BaoIconComponent, BaoIconModule } from 'angular-ui';
 
 const description = `
@@ -12,7 +12,7 @@ If a color is provided, it will be used as the icon's color. If no color is prov
 The full documentation of this component is available in the Hochelaga design system documentation under "[Icônes utilitaires](https://zeroheight.com/575tugn0n/p/439e2a)".
 `;
 
-export default {
+const meta = {
   title: 'Components/Icon',
   decorators: [
     moduleMetadata({
@@ -78,9 +78,13 @@ export default {
       }
     }
   }
-} as Meta;
+} as Meta<BaoIconComponent>;
 
-const Template: StoryFn = (args: BaoIconComponent) => ({
+export default meta;
+
+type Story = StoryObj;
+
+const Template: Story['render'] = args => ({
   component: BaoIconComponent,
   template: `
   <div style="display: grid; grid-column-gap: 1rem; grid-template-columns: 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem 2rem">
@@ -207,4 +211,6 @@ const Template: StoryFn = (args: BaoIconComponent) => ({
   props: args
 });
 
-export const Primary = Template.bind({});
+export const Primary = {
+  render: Template
+};

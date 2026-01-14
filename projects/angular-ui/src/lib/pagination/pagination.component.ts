@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'bao-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],

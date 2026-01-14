@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: `
     <bao-system-header>
       <bao-breadcrumb>
@@ -25,6 +26,7 @@ import { Component } from '@angular/core';
 export class TestSystemHeaderHostComponent {}
 
 @Component({
+  standalone: false,
   template: `
     <bao-back-navigation-component
       [link]="link"

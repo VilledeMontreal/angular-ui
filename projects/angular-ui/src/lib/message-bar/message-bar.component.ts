@@ -22,12 +22,14 @@ import {
  * This directive is purely visual and does not provide any additional behaviors.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-message-content',
   host: { class: 'bao-message-content' }
 })
 export class BaoMessageBarContent {}
 
 @Component({
+  standalone: false,
   selector: 'bao-message-bar',
   templateUrl: './message-bar.component.html',
   styleUrls: ['./message-bar.component.scss'],

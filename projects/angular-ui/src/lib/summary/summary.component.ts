@@ -17,6 +17,7 @@ import { EDisplayMode } from '../shared';
 
 let summaryUniqueId = 0;
 @Component({
+  standalone: false,
   selector: 'bao-summary, [bao-summary], [baoSummary]',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss'],
@@ -137,6 +138,7 @@ export class BaoSummaryComponent implements OnInit, AfterViewInit {
 }
 
 @Directive({
+  standalone: false,
   selector:
     'bao-summary-description, [bao-summary-description], [baoSummaryDescription]',
   host: { class: 'bao-summary-description' }

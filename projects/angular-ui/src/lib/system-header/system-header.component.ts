@@ -27,6 +27,7 @@ import { Breakpoints } from '../core';
  * Used internally by BaoSystemHeaderComponent only, not to be used by host application.
  */
 @Component({
+  standalone: false,
   selector: 'bao-back-navigation-component',
   template: ` <a>
     <bao-icon
@@ -63,6 +64,7 @@ export class BaoBackNavigationComponent implements OnChanges {
  * when a Breadcrumb component needs to be replaced
  */
 @Directive({
+  standalone: false,
   selector: '[backNavigationInsert]'
 })
 export class BaoBackNavigationInsert {
@@ -70,6 +72,7 @@ export class BaoBackNavigationInsert {
 }
 
 @Component({
+  standalone: false,
   selector: 'bao-system-header',
   templateUrl: './system-header.component.html',
   styleUrls: ['./system-header.component.scss'],

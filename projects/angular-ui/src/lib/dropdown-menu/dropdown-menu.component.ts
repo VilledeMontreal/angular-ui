@@ -39,6 +39,7 @@ import { Subscription } from 'rxjs';
  */
 let dropdownMenuUniqueId = 0;
 @Directive({
+  standalone: false,
   selector: 'bao-dropdown-menu-item, [bao-dropdown-menu-item]',
   host: {
     class: 'bao-dropdown-menu-item',
@@ -180,6 +181,7 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
   }
 }
 @Component({
+  standalone: false,
   selector: 'bao-dropdown-menu',
   templateUrl: './dropdown-menu.component.html',
   styleUrls: ['./dropdown-menu.component.scss'],
@@ -442,6 +444,7 @@ export class BaoDropdownMenuComponent
  * Directive to be applied on element that will trigger the opening and closing of menu.
  */
 @Directive({
+  standalone: false,
   selector:
     'bao-dropdown-menu-trigger, [bao-dropdown-menu-trigger], [baoDropdownMenuTriggerFor]',
   host: { class: 'bao-dropdown-menu-trigger' }
@@ -574,6 +577,7 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
  * Sections of list items in menu. Apply proper styling to section's title if there is one.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-dropdown-menu-section, [bao-dropdown-menu-section]',
   host: { class: 'bao-dropdown-menu-section' }
 })
@@ -617,6 +621,7 @@ export class BaoDropdownMenuSection implements AfterViewInit {
  * Label of a list item, add css class to apply proper styling.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-dropdown-menu-item-label, [bao-dropdown-menu-item-label]',
   host: { class: 'bao-dropdown-menu-item-label' }
 })
@@ -625,6 +630,7 @@ export class BaoDropdownMenuItemLabel {}
  * Description of a list item, add css class to apply proper styling.
  */
 @Directive({
+  standalone: false,
   selector:
     'bao-dropdown-menu-item-description, [bao-dropdown-menu-item-description]',
   host: { class: 'bao-dropdown-menu-item-description' }
@@ -634,6 +640,7 @@ export class BaoDropdownMenuItemDescription {}
  * Divider to separate sections.
  */
 @Component({
+  standalone: false,
   template: `<hr />`,
   selector: 'bao-dropdown-menu-divider, [bao-dropdown-menu-divider]',
   host: { class: 'bao-dropdown-menu-divider' }

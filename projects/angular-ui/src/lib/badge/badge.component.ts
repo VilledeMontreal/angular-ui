@@ -6,6 +6,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'bao-badge',
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],

@@ -54,6 +54,7 @@ export interface ITextOnlySnackBar {
  * This should only be used internally by the snack bar service.
  */
 @Component({
+  standalone: false,
   selector: 'bao-simple-snack-bar',
   templateUrl: 'simple-snack-bar.component.html',
   styleUrls: ['simple-snack-bar.component.scss'],

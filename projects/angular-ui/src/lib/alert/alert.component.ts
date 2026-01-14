@@ -29,6 +29,7 @@ import {
  * BaoAlertTitle provides no behaviors, instead serving as a purely visual treatment.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-alert-title',
   host: { class: 'bao-alert-title' }
 })
@@ -42,6 +43,7 @@ export class BaoAlertTitle {}
  * BaoAlertContent provides no behaviors, instead serving as a purely visual treatment.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-alert-content',
   host: { class: 'bao-alert-content' }
 })
@@ -55,6 +57,7 @@ export class BaoAlertContent {}
  * BaoAlertActions provides no behaviors, instead serving as a purely visual treatment.
  */
 @Directive({
+  standalone: false,
   selector: 'bao-alert-actions',
   exportAs: 'baoAlertActions',
   host: {
@@ -71,6 +74,7 @@ export class BaoAlertActions {}
  * BaoAlertLink provides no behaviors, instead serving as a purely visual treatment.
  */
 @Directive({
+  standalone: false,
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'bao-alert-link',
   host: {
@@ -88,6 +92,7 @@ export class BaoAlertLink {}
  * BaoAlertComponent provides no behaviors, instead serving as a purely visual treatment.
  */
 @Component({
+  standalone: false,
   selector: 'bao-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],

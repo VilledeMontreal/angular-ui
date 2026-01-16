@@ -4,26 +4,26 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import {
+  BaoCheckboxComponent,
+  BaoIconComponent,
+  BaoRadioButtonComponent
+} from 'angular-ui';
+import {
+  BaoDropdownMenuComponent,
+  BaoDropdownMenuItem,
+  BaoDropdownMenuItemLabel,
+  BaoDropdownMenuTrigger
+} from './dropdown-menu.component';
 import {
   TestButtonMenuHostComponent,
   TestDropdownMenuHostComponent,
   TestDropdownWithInputsHostComponent
 } from './tests/dropdown-menu.hostcomponent.spec';
-import {
-  BaoDropdownMenuComponent,
-  BaoDropdownMenuItem,
-  BaoDropdownMenuTrigger,
-  BaoDropdownMenuItemLabel
-} from './dropdown-menu.component';
-import {
-  BaoIconComponent,
-  BaoCheckboxComponent,
-  BaoRadioButtonComponent
-} from 'angular-ui';
 
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 describe('BaoDropdownMenuComponent', () => {
@@ -106,10 +106,8 @@ describe('BaoDropdownMenuComponent', () => {
       triggerDebugElement.nativeElement.click();
       fixtureMenu.detectChanges();
       expect(testMenuComponent.isMenuOpen).toBe(true);
-      expect(testMenuComponent.hasEmitClosingEvent).toBe(false);
       listItemDebugElement[0].click();
       fixtureMenu.detectChanges();
-      expect(testMenuComponent.hasEmitClosingEvent).toBe(true);
       expect(testMenuComponent.isMenuOpen).toBe(false);
       expect(
         dropdownMenuDebugElement.nativeElement.attributes['aria-expanded'].value

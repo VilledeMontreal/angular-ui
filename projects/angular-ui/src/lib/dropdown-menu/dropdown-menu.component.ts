@@ -22,6 +22,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Injectable,
   Input,
   OnChanges,
   OnDestroy,
@@ -32,7 +33,22 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+
+@Injectable()
+export class BaoDropdownMenuService {
+  // Observable stream that notifies when the menu should close
+  public readonly itemClicked$: Observable<void>;
+  private readonly itemClickedSource = new Subject<void>();
+
+  constructor() {
+    this.itemClicked$ = this.itemClickedSource.asObservable();
+  }
+
+  public close(): void {
+    this.itemClickedSource.next();
+  }
+}
 
 /**
  * Unique ID for each dropdown menu
@@ -52,15 +68,11 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
    */
   @Input() public disabled = false;
 
-  /**
-   * Emits when menu item is clicked
-   */
-  @Output() public itemClicked = new EventEmitter();
-
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef<HTMLElement>,
-    private _parent: BaoDropdownMenuComponent
+    private _parent: BaoDropdownMenuComponent,
+    private baoDropdownMenuService: BaoDropdownMenuService
   ) {}
 
   get nativeElement(): HTMLElement {
@@ -176,7 +188,7 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
       }
     }
     if (closeMenu) {
-      this.itemClicked.emit();
+      this.baoDropdownMenuService.close();
     }
   }
 }
@@ -192,11 +204,10 @@ export class BaoDropdownMenuItem implements AfterViewInit, OnChanges {
     '[class.bao-overlay-transparent-backdrop]': 'isOpen===false',
     '[class.bao-dropdown-menu-closed]': 'isOpen===false',
     '[attr.aria-expanded]': 'isOpen'
-  }
+  },
+  providers: [BaoDropdownMenuService]
 })
-export class BaoDropdownMenuComponent
-  implements AfterContentInit, AfterViewInit
-{
+export class BaoDropdownMenuComponent implements AfterViewInit {
   /**
    * Fired when the dropdown-menu changes its 'isOpen' value
    */
@@ -241,7 +252,8 @@ export class BaoDropdownMenuComponent
   constructor(
     private cdr: ChangeDetectorRef,
     private renderer: Renderer2,
-    private elementRef: ElementRef<HTMLElement>
+    private elementRef: ElementRef<HTMLElement>,
+    public baoDropdownMenuService: BaoDropdownMenuService
   ) {}
 
   get isOpen(): boolean {
@@ -255,6 +267,9 @@ export class BaoDropdownMenuComponent
   }
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
+  }
+  get service(): BaoDropdownMenuService {
+    return this.baoDropdownMenuService;
   }
   set isOpen(isOpen: boolean) {
     this._isOpen = isOpen;
@@ -325,13 +340,6 @@ export class BaoDropdownMenuComponent
   public ngAfterViewInit(): void {
     this.renderer.setAttribute(this.nativeElement, 'id', this.menuId);
     this._menuPortal = new DomPortal(this._menuContent);
-  }
-
-  public ngAfterContentInit(): void {
-    this._listItems.forEach(
-      (item: BaoDropdownMenuItem): Subscription =>
-        item.itemClicked.subscribe(() => this.isClosedByKeyEvent.emit())
-    );
   }
 
   public open(): void {
@@ -485,6 +493,10 @@ export class BaoDropdownMenuTrigger implements AfterViewInit, OnDestroy {
       `bao-dropdown-menu-${dropdownMenuUniqueId}`
     );
     this.menu.isClosedByKeyEvent.subscribe(() => {
+      this.closeMenu();
+      this.nativeElement.focus();
+    });
+    this.menu.service.itemClicked$.subscribe(() => {
       this.closeMenu();
       this.nativeElement.focus();
     });

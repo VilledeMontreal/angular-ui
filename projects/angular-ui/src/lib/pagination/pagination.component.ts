@@ -137,7 +137,7 @@ export class BaoPaginationComponent implements OnChanges, OnInit {
     this.endItem = this.updateEndItem();
     this.totalPages = this.updateTotalPages();
     this.displayedPages = this.buildPageNumbers();
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 
   /**

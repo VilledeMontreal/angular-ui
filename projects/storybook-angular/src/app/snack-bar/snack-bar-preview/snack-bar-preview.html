@@ -10,7 +10,8 @@
   </div>
   <div class="toast-body">{{ message }}</div>
   <div class="toast-action">
-    <div *ngIf="hasAction">
+    @if (hasAction) {
+    <div>
       <button
         bao-button
         role="button"
@@ -18,17 +19,18 @@
         level="tertiary"
         [reversed]="true"
       >
+        @if (isActionIcon) {
         <bao-icon
-          *ngIf="isActionIcon; else isActionText"
           [svgIcon]="actionLabelOrIcon"
           [title]="actionLabelOrIcon"
         ></bao-icon>
-        <ng-template #isActionText
-          ><span>{{ actionLabelOrIcon }}</span></ng-template
-        >
+        } @else {
+        <span>{{ actionLabelOrIcon }}</span>
+        }
       </button>
     </div>
-    <div *ngIf="showClose">
+    } @if (showClose) {
+    <div>
       <button
         bao-button
         role="button"
@@ -39,5 +41,6 @@
         <bao-icon svgIcon="icon-x" title="Fermer le message"></bao-icon>
       </button>
     </div>
+    }
   </div>
 </div>

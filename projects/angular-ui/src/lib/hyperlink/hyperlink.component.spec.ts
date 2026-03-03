@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BaoHyperlinkComponent } from './index';
 import {
@@ -24,7 +24,8 @@ describe('BaoHyperlinkComponent', () => {
 
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [BaoHyperlinkComponent, TestHyperlinkHostComponent]
+        declarations: [BaoHyperlinkComponent, TestHyperlinkHostComponent],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));
@@ -75,7 +76,8 @@ describe('BaoHyperlinkComponent', () => {
 
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [BaoHyperlinkComponent, TestHyperlinkListHostComponent]
+        declarations: [BaoHyperlinkComponent, TestHyperlinkListHostComponent],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));
@@ -106,7 +108,8 @@ describe('BaoHyperlinkComponent', () => {
           BaoHyperlinkComponent,
           TestHyperlinkInlineIconHostComponent,
           BaoIconComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));
@@ -137,7 +140,8 @@ describe('BaoHyperlinkComponent', () => {
           BaoHyperlinkComponent,
           TestHyperlinkListIconHostComponent,
           BaoIconComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));

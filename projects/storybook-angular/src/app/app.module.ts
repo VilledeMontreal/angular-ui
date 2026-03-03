@@ -10,6 +10,7 @@ import { BaoSnackBarModuleTest } from './snack-bar/module';
 @NgModule({
   declarations: [AppComponent],
   imports: [BaoSnackBarModuleTest],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -6,7 +6,6 @@
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
@@ -86,10 +85,7 @@ export class BaoButtonComponent implements AfterContentInit {
    */
   public rightIcon = false;
 
-  constructor(
-    private elementRef: ElementRef<HTMLElement>,
-    private cdr: ChangeDetectorRef
-  ) {}
+  constructor(private elementRef: ElementRef<HTMLElement>) {}
 
   get nativeElement(): HTMLElement {
     return this.elementRef.nativeElement;
@@ -105,6 +101,5 @@ export class BaoButtonComponent implements AfterContentInit {
         !(c as HTMLElement).classList.contains(LOADING_SPINNER_CLASS)
     );
     this.rightIcon = iconIdex > textIndex;
-    this.cdr.detectChanges();
   }
 }

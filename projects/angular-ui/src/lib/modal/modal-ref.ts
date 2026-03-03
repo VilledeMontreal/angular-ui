@@ -96,7 +96,7 @@ export class BaoModalRef<T, R = unknown> {
     _overlayRef
       .keydownEvents()
       .pipe(
-        filter(event => {
+        filter((event: KeyboardEvent) => {
           return (
             event.keyCode === ESCAPE &&
             !this.disableClose &&
@@ -104,7 +104,7 @@ export class BaoModalRef<T, R = unknown> {
           );
         })
       )
-      .subscribe(event => {
+      .subscribe((event: KeyboardEvent) => {
         event.preventDefault();
         _closeModalVia(this, 'keyboard');
       });

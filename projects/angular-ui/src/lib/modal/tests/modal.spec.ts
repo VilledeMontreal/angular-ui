@@ -12,7 +12,8 @@ import {
   Injectable,
   Injector,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  provideZoneChangeDetection
 } from '@angular/core';
 import {
   ComponentFixture,
@@ -103,7 +104,7 @@ describe('BaoModalComponent', () => {
           ComponentWithChildViewContainer,
           DirectiveWithViewContainer
         ],
-        providers: []
+        providers: [provideZoneChangeDetection()]
       });
 
       TestBed.compileComponents();

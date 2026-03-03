@@ -5,7 +5,7 @@
  */
 
 import { OverlayModule } from '@angular/cdk/overlay';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import {
@@ -44,7 +44,8 @@ describe('BaoDropdownMenuComponent', () => {
           TestDropdownMenuHostComponent,
           BaoIconComponent
         ],
-        imports: [OverlayModule]
+        imports: [OverlayModule],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));
@@ -128,7 +129,8 @@ describe('BaoDropdownMenuComponent', () => {
           TestButtonMenuHostComponent,
           BaoIconComponent
         ],
-        imports: [OverlayModule]
+        imports: [OverlayModule],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));
@@ -170,7 +172,8 @@ describe('BaoDropdownMenuComponent', () => {
           BaoCheckboxComponent,
           BaoRadioButtonComponent
         ],
-        imports: [OverlayModule]
+        imports: [OverlayModule],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));

@@ -5,7 +5,7 @@
  */
 
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { TestFileInputHostComponent } from './tests/file-input.hostcomponent.spec';
@@ -44,7 +44,7 @@ describe('BaoFileInputComponent', () => {
           TestFileInputHostComponent
         ],
         imports: [OverlayModule],
-        providers: [BaoFileIntl]
+        providers: [BaoFileIntl, provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     }));
@@ -139,7 +139,10 @@ describe('BaoFileInputComponent', () => {
           TestFileInputHostComponent
         ],
         imports: [OverlayModule],
-        providers: [{ provide: BaoFileIntl, useClass: BaoFileIntlEnglish }]
+        providers: [
+          { provide: BaoFileIntl, useClass: BaoFileIntlEnglish },
+          provideZoneChangeDetection()
+        ]
       });
       return TestBed.compileComponents();
     }));

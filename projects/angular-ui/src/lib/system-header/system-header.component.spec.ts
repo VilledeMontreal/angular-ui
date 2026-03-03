@@ -24,7 +24,7 @@ import {
   BaoDropdownMenuItem,
   BaoDropdownMenuItemLabel
 } from '../dropdown-menu/dropdown-menu.component';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 
 declare const viewport;
 /* eslint-disable @typescript-eslint/no-unsafe-return */
@@ -48,7 +48,7 @@ describe('BaoSystemHeaderComponent', () => {
         TestBackNavigationHostComponent
       ],
       imports: [],
-      providers: []
+      providers: [provideZoneChangeDetection()]
     });
     return TestBed.compileComponents();
   }));

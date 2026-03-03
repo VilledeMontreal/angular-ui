@@ -3,13 +3,14 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BaoSnackBarModuleTest } from './snack-bar/module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BaoSnackBarModuleTest],
+  providers: [provideZoneChangeDetection({ eventCoalescing: true })],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

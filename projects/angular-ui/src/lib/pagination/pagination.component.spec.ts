@@ -3,6 +3,7 @@
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
+import { provideZoneChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BaoPaginationComponent } from './pagination.component';
@@ -13,7 +14,8 @@ describe('PaginationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BaoPaginationComponent]
+      declarations: [BaoPaginationComponent],
+      providers: [provideZoneChangeDetection()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(BaoPaginationComponent);

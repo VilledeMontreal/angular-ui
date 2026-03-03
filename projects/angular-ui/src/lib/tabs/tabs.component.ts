@@ -21,6 +21,7 @@ import {
   Renderer2,
   ViewEncapsulation
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 /**
  * Unique number to generate a unique ID
@@ -133,6 +134,11 @@ export class BaoTablistComponent
    */
   private uniqueId: string;
 
+  /**
+   * Subscriptions to tab header click events
+   */
+  private tabClickSubscriptions: Subscription[] = [];
+
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef<HTMLElement>
@@ -201,19 +207,18 @@ export class BaoTablistComponent
 
   ngAfterContentInit(): void {
     this.tabHeaders.forEach((tab: BaoTabHeader) => {
-      tab.onTabClick.subscribe((index: string) => {
+      const sub = tab.onTabClick.subscribe((index: string) => {
         this.renderer.removeClass(this.tabs[index], 'focus-visible');
         this.activeTabIndex = index;
         this.changeActiveTab(index, false);
         this.activeTabChange.emit(index);
       });
+      this.tabClickSubscriptions.push(sub);
     });
   }
 
   ngOnDestroy(): void {
-    this.tabHeaders.forEach((tab: BaoTabHeader) => {
-      tab.onTabClick.unsubscribe();
-    });
+    this.tabClickSubscriptions.forEach(sub => sub.unsubscribe());
   }
 
   private setTablistAttributes(): void {
@@ -298,6 +303,7 @@ export class BaoTabsContainer
 
   private panelIdPrefix = 'bao-panel-';
   private tabIdPrefix = 'bao-tab-';
+  private activeTabChangeSub: Subscription;
 
   constructor(
     private renderer: Renderer2,
@@ -325,13 +331,13 @@ export class BaoTabsContainer
   }
 
   ngAfterContentInit(): void {
-    this.tablist.activeTabChange.subscribe((index: string) =>
-      this.changeActivePanel(index)
+    this.activeTabChangeSub = this.tablist.activeTabChange.subscribe(
+      (index: string) => this.changeActivePanel(index)
     );
   }
 
   ngOnDestroy(): void {
-    this.tablist.activeTabChange.unsubscribe();
+    this.activeTabChangeSub?.unsubscribe();
   }
 
   private setInitialActivePanel(): void {

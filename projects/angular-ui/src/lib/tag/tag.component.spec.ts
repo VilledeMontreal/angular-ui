@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BaoTagComponent } from './index';
 import {
@@ -21,7 +21,8 @@ describe('BaoTagComponent', () => {
 
     beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [BaoTagComponent, TestTagHostComponent]
+        declarations: [BaoTagComponent, TestTagHostComponent],
+        providers: [provideZoneChangeDetection()]
       });
 
       return TestBed.compileComponents();
@@ -112,7 +113,8 @@ describe('BaoTagComponent', () => {
           BaoTagComponent,
           TestTagWithIconHostComponent,
           BaoIconComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       });
 
       return TestBed.compileComponents();

@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
  * @title Basic radioes
  */
 @Component({
+  standalone: false,
   selector: 'bao-radio-button-example',
   templateUrl: './radio-example.component.html'
 })

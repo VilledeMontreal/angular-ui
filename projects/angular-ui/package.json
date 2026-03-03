@@ -1,13 +1,13 @@
 {
   "name": "@villedemontreal/angular-ui",
-  "version": "19.0.1",
+  "version": "20.0.0",
   "dependencies": {
     "tslib": "^2.7.0"
   },
   "peerDependencies": {
-    "@angular/cdk": ">=19.0.0 <20.0.0",
-    "@angular/common": ">=19.0.0 <20.0.0",
-    "@angular/core": ">=19.0.0 <20.0.0",
-    "@angular/forms": ">=19.0.0 <20.0.0"
+    "@angular/cdk": ">=20.0.0 <21.0.0",
+    "@angular/common": ">=20.0.0 <21.0.0",
+    "@angular/core": ">=20.0.0 <21.0.0",
+    "@angular/forms": ">=20.0.0 <21.0.0"
   }
 }

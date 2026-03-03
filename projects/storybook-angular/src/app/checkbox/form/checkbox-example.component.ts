@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
  * @title Basic checkboxes
  */
 @Component({
+  standalone: false,
   selector: 'bao-checkbox-example',
   templateUrl: './checkbox-example.component.html'
 })

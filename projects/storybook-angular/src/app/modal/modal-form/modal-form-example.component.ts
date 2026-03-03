@@ -16,6 +16,7 @@ export interface AddressData {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-form-example',
   templateUrl: 'modal-form-example.html'
 })
@@ -39,6 +40,7 @@ export class ModalFormExample {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-form-example-modal',
   templateUrl: 'modal-form-example-modal.html'
 })

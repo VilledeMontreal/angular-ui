@@ -10,6 +10,7 @@ import { BaoSnackBarService } from 'projects/angular-ui/src/public-api';
  * @title Opens a snackbar with a message and an action. The action dismisses the snackbar.
  */
 @Component({
+  standalone: false,
   selector: 'snack-bar-simple-with-action-example',
   templateUrl: 'snack-bar-simple-with-action-example.html'
 })

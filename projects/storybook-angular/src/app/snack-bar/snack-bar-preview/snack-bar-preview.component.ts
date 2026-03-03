@@ -11,6 +11,7 @@ import { BaoSnackBarConfig, BaoSnackBarToastType } from 'angular-ui';
  * @title Shows the preview snackbar
  */
 @Component({
+  standalone: false,
   selector: 'snack-bar-preview',
   templateUrl: 'snack-bar-preview.html'
 })

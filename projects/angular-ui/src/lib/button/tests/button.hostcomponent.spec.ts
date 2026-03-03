@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { Component, ViewChild } from '@angular/core';
-import { BaoButtonComponent } from 'dist/angular-ui/public-api';
+import { BaoButtonComponent } from '../button.component';
 
 @Component({
   standalone: false,

@@ -10,6 +10,7 @@ import { BaoSnackBarService } from 'projects/angular-ui/src/public-api';
  * @title Opens a snackbar with extra configuration.
  */
 @Component({
+  standalone: false,
   selector: 'snack-bar-simple-with-config-example',
   templateUrl: 'snack-bar-simple-with-config-example.html'
 })

@@ -8,7 +8,6 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import {
   ComponentPortal,
   ComponentType,
-  PortalInjector,
   TemplatePortal
 } from '@angular/cdk/portal';
 import {
@@ -172,10 +171,10 @@ export class BaoSnackBarService implements OnDestroy {
   ): IBaoSnackBarContainer {
     const userInjector =
       config && config.viewContainerRef && config.viewContainerRef.injector;
-    const injector = new PortalInjector(
-      userInjector || this._injector,
-      new WeakMap([[BaoSnackBarConfig, config]])
-    );
+    const injector = Injector.create({
+      parent: userInjector || this._injector,
+      providers: [{ provide: BaoSnackBarConfig, useValue: config }]
+    });
 
     const containerPortal = new ComponentPortal(
       this.snackBarContainerComponent,
@@ -314,16 +313,16 @@ export class BaoSnackBarService implements OnDestroy {
   private createInjector<T>(
     config: BaoSnackBarConfig,
     snackBarRef: BaoSnackBarRef<T>
-  ): PortalInjector {
+  ): Injector {
     const userInjector =
       config && config.viewContainerRef && config.viewContainerRef.injector;
 
-    return new PortalInjector(
-      userInjector || this._injector,
-      new WeakMap<any, any>([
-        [BaoSnackBarRef, snackBarRef],
-        [BAO_SNACK_BAR_DATA, config.data]
-      ])
-    );
+    return Injector.create({
+      parent: userInjector || this._injector,
+      providers: [
+        { provide: BaoSnackBarRef, useValue: snackBarRef },
+        { provide: BAO_SNACK_BAR_DATA, useValue: config.data }
+      ]
+    });
   }
 }

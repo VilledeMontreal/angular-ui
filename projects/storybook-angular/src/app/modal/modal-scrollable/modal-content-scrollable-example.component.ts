@@ -15,6 +15,7 @@ import {
  * @title Modal with header, scrollable content and actions
  */
 @Component({
+  standalone: false,
   selector: 'modal-content-scrollable-example',
   templateUrl: 'modal-content-scrollable-example.html'
 })
@@ -35,6 +36,7 @@ export class ModalContentScrollableExample {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-content-scrollable-example-modal',
   templateUrl: 'modal-content-scrollable-example-modal.html'
 })

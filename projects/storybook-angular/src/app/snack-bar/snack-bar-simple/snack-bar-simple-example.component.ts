@@ -10,6 +10,7 @@ import { BaoSnackBarService } from 'projects/angular-ui/src/public-api';
  * @title Opens a snackbar with a message that expires after 5s.
  */
 @Component({
+  standalone: false,
   selector: 'snack-bar-simple-example',
   templateUrl: 'snack-bar-simple-example.html'
 })

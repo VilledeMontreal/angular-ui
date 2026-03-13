@@ -10,6 +10,7 @@ import { BaoModal, BaoModalRef } from 'projects/angular-ui/src/public-api';
  * @title Modal with header, small content and actions
  */
 @Component({
+  standalone: false,
   selector: 'modal-content-small-example',
   templateUrl: 'modal-content-small-example.html'
 })
@@ -28,6 +29,7 @@ export class ModalContentSmallExample {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-content-small-example-modal',
   templateUrl: 'modal-content-small-example-modal.html'
 })

@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * @title Reactive form file input
  */
 @Component({
+  standalone: false,
   selector: 'bao-file-form-example',
   templateUrl: './file-example.component.html'
 })
@@ -41,7 +42,7 @@ export class BaoFileReactiveFormExampleComponent {
   }
 
   public onUploadedFile(file: File): void {
-    this.fileList.value.push(file);
+    this.fileList.setValue([...this.fileList.value, file]);
   }
 
   public onDelete(index: number): void {

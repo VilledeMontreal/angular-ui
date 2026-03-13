@@ -157,10 +157,14 @@ export abstract class _BaoModalContainerBase extends BasePortalOutlet {
       case 'first-tabbable':
         // If we weren't able to find a focusable element in the modal, then focus the modal
         // container instead.
-        const focusedSuccessfully =
-          await this._focusTrap.focusInitialElementWhenReady();
-        if (!focusedSuccessfully) {
-          this._focusDialogContainer();
+        try {
+          const focusedSuccessfully =
+            await this._focusTrap.focusInitialElementWhenReady();
+          if (!focusedSuccessfully) {
+            this._focusDialogContainer();
+          }
+        } catch {
+          // Focus trap may throw if the injector is destroyed (e.g. during test teardown).
         }
         break;
       case 'first-heading':

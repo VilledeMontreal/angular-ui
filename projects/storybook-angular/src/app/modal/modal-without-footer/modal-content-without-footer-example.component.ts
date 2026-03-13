@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 import { BaoModal, BaoModalRef } from 'projects/angular-ui/src/public-api';
 
 @Component({
+  standalone: false,
   selector: 'modal-content-without-footer-example',
   templateUrl: 'modal-content-without-footer-example.html'
 })
@@ -25,6 +26,7 @@ export class ModalContentWithoutFooterExample {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-content-without-footer-example-modal',
   templateUrl: 'modal-content-without-footer-example-modal.html'
 })

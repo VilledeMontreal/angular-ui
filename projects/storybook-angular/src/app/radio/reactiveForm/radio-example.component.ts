@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * @title Reactive form radios
  */
 @Component({
+  standalone: false,
   selector: 'bao-radio-button-reactive-form-example',
   templateUrl: './radio-example.component.html'
 })

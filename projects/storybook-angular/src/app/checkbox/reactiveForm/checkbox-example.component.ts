@@ -10,6 +10,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
  * @title Reactive form checkboxes
  */
 @Component({
+  standalone: false,
   selector: 'bao-checkbox-reactive-form-example',
   templateUrl: './checkbox-example.component.html'
 })

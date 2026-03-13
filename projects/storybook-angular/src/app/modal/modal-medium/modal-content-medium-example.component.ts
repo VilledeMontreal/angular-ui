@@ -14,6 +14,7 @@ import {
  * @title Modal with header, medium content and actions
  */
 @Component({
+  standalone: false,
   selector: 'modal-content--medium-example',
   templateUrl: 'modal-content-medium-example.html'
 })
@@ -33,6 +34,7 @@ export class ModalContentMediumExample {
 }
 
 @Component({
+  standalone: false,
   selector: 'modal-content-medium-example-modal',
   templateUrl: 'modal-content-medium-example-modal.html'
 })

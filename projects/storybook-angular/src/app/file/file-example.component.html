@@ -9,26 +9,30 @@
       <bao-guiding-text
         >Les documents .pdf, .docx, .png sont acceptés</bao-guiding-text
       >
-      <ul *ngIf="fileList.value.length">
-        <ng-container
-          *ngFor="let uploadedFile of fileList.value; let i = index"
-        >
-          <li bao-file-preview [file]="uploadedFile">
-            <button
-              bao-button
-              type="editorial"
-              level="tertiary"
-              size="medium"
-              (click)="onDelete(i)"
-            >
-              <bao-icon svgIcon="icon-trash"></bao-icon>
-            </button>
-          </li>
-        </ng-container>
-      </ul>
-      <bao-error *ngIf="fileList.dirty && fileList.errors?.['required']">
-        Un formulaire doit être sélectionné
-      </bao-error>
+      @if (fileList.value.length) {
+        <ul>
+          @for (
+            uploadedFile of fileList.value;
+            track uploadedFile;
+            let i = $index
+          ) {
+            <li bao-file-preview [file]="uploadedFile">
+              <button
+                bao-button
+                type="editorial"
+                level="tertiary"
+                size="medium"
+                (click)="onDelete(i)"
+              >
+                <bao-icon svgIcon="icon-trash"></bao-icon>
+              </button>
+            </li>
+          }
+        </ul>
+      }
+      @if (fileList.dirty && fileList.errors?.['required']) {
+        <bao-error> Un formulaire doit être sélectionné </bao-error>
+      }
     </bao-file-input>
     <button
       bao-button
@@ -42,13 +46,14 @@
       Soumettre
     </button>
   </form>
-  <div *ngIf="lastUploadedFiles" style="margin-top: 1rem">
-    Derniers fichiers téléversés :
-    <p
-      *ngFor="let file of lastUploadedFiles"
-      style="font-weight: bold; margin-bottom: 0"
-    >
-      {{ file }}
-    </p>
-  </div>
+  @if (lastUploadedFiles) {
+    <div style="margin-top: 1rem">
+      Derniers fichiers téléversés :
+      @for (file of lastUploadedFiles; track file) {
+        <p style="font-weight: bold; margin-bottom: 0">
+          {{ file }}
+        </p>
+      }
+    </div>
+  }
 </div>

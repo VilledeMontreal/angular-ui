@@ -11,38 +11,42 @@
     {{ data.message }}
   </div>
   <div class="bao-snackbar-action">
-    <div *ngIf="hasAction">
-      <button
-        bao-button
-        role="button"
-        type="utility"
-        level="tertiary"
-        [reversed]="true"
-        [title]="data.actionLabelOrIcon"
-        (click)="action()"
-      >
-        <bao-icon
-          *ngIf="isActionIcon; else isActionText"
-          [svgIcon]="data.actionLabelOrIcon"
+    @if (hasAction) {
+      <div>
+        <button
+          bao-button
+          role="button"
+          type="utility"
+          level="tertiary"
+          [reversed]="true"
           [title]="data.actionLabelOrIcon"
-        ></bao-icon>
-        <ng-template #isActionText
-          ><span>{{ data.actionLabelOrIcon }}</span></ng-template
+          (click)="action()"
         >
-      </button>
-    </div>
-    <div *ngIf="data.showClose">
-      <button
-        bao-button
-        role="button"
-        type="utility"
-        level="tertiary"
-        [reversed]="true"
-        title="{{ showCloseTitle }}"
-        (click)="close()"
-      >
-        <bao-icon svgIcon="icon-x" title="{{ showCloseTitle }}"></bao-icon>
-      </button>
-    </div>
+          @if (isActionIcon) {
+            <bao-icon
+              [svgIcon]="data.actionLabelOrIcon"
+              [title]="data.actionLabelOrIcon"
+            ></bao-icon>
+          } @else {
+            <span>{{ data.actionLabelOrIcon }}</span>
+          }
+        </button>
+      </div>
+    }
+    @if (data.showClose) {
+      <div>
+        <button
+          bao-button
+          role="button"
+          type="utility"
+          level="tertiary"
+          [reversed]="true"
+          title="{{ showCloseTitle }}"
+          (click)="close()"
+        >
+          <bao-icon svgIcon="icon-x" title="{{ showCloseTitle }}"></bao-icon>
+        </button>
+      </div>
+    }
   </div>
 </div>

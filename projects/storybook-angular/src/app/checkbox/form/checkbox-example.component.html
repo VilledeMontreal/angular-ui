@@ -16,16 +16,18 @@
     </span>
     <span class="example-list-section">
       <ul style="list-style-type: none; margin-bottom: 0">
-        <li *ngFor="let subtask of task.subtasks; let uniqueID = index">
-          <bao-checkbox
-            [(ngModel)]="subtask.completed"
-            [id]="uniqueID"
-            [name]="subtask.name"
-            (ngModelChange)="updateAllComplete()"
-          >
-            {{ subtask.name }}
-          </bao-checkbox>
-        </li>
+        @for (subtask of task.subtasks; track subtask; let uniqueID = $index) {
+          <li>
+            <bao-checkbox
+              [(ngModel)]="subtask.completed"
+              [id]="uniqueID"
+              [name]="subtask.name"
+              (ngModelChange)="updateAllComplete()"
+            >
+              {{ subtask.name }}
+            </bao-checkbox>
+          </li>
+        }
       </ul>
     </span>
     <bao-guiding-text

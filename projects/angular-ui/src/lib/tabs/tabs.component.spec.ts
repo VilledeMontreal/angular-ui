@@ -4,7 +4,11 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { DebugElement, DebugNode } from '@angular/core';
+import {
+  DebugElement,
+  DebugNode,
+  provideZoneChangeDetection
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -32,7 +36,8 @@ describe('BaoTablistComponent', () => {
           BaoTabPanel,
           BaoTabHeader,
           TestTablistHostComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       }).compileComponents();
     });
 

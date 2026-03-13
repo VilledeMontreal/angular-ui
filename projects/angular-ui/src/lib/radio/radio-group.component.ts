@@ -65,10 +65,7 @@ export class BaoRadioButtonGroupComponent
   @Output() public readonly change: EventEmitter<string> =
     new EventEmitter<string>();
 
-  @ContentChildren(forwardRef(() => BaoRadioButtonComponent), {
-    descendants: true,
-    read: ViewChild('container', { static: false })
-  })
+  @ViewChild('container', { static: false })
   private staticContainer: ElementRef;
 
   /**
@@ -76,6 +73,9 @@ export class BaoRadioButtonGroupComponent
    */
   public ariaDescribedby: string | null = null;
 
+  @ContentChildren(forwardRef(() => BaoRadioButtonComponent), {
+    descendants: true
+  })
   private _radios: QueryList<BaoRadioButtonComponent>;
   private _value: string | null = null;
   private _name: string | null = null;
@@ -277,6 +277,11 @@ export class BaoRadioButtonGroupComponent
    * Set the aria-describedby property to bao-guiding-text if available
    */
   private setAriaDescribedByToDescription() {
+    if (!this.staticContainer?.nativeElement) {
+      this.showAriaDescribedBy(false);
+      return;
+    }
+
     const children = Array.from(this.staticContainer.nativeElement.children);
     if (children.length === 0) {
       this.showAriaDescribedBy(false);

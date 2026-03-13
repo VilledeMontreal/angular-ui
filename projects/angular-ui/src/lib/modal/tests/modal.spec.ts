@@ -12,7 +12,8 @@ import {
   Injectable,
   Injector,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  provideZoneChangeDetection
 } from '@angular/core';
 import {
   ComponentFixture,
@@ -39,9 +40,9 @@ class DirectiveWithViewContainer {
 @Component({
   standalone: false,
   selector: 'arbitrary-component',
-  template: `<dir-with-view-container
-    *ngIf="showChildView"
-  ></dir-with-view-container>`
+  template: `@if (showChildView) {
+    <dir-with-view-container></dir-with-view-container>
+  }`
 })
 class ComponentWithChildViewContainer {
   @ViewChild(DirectiveWithViewContainer)
@@ -103,7 +104,7 @@ describe('BaoModalComponent', () => {
           ComponentWithChildViewContainer,
           DirectiveWithViewContainer
         ],
-        providers: []
+        providers: [provideZoneChangeDetection()]
       });
 
       TestBed.compileComponents();

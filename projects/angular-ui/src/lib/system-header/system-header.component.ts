@@ -121,7 +121,7 @@ export class BaoSystemHeaderComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.formatNavigation();
     this.applySizeClass();
-    this.cd.detectChanges();
+    this.cd.markForCheck();
   }
 
   private formatNavigation() {

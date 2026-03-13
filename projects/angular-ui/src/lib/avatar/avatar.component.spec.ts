@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -27,7 +27,8 @@ describe('BaoAvatarComponent', () => {
           BaoAvatarComponent,
           BaoAvatarContent,
           TestAvatarIconHostComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       }).compileComponents();
     });
 
@@ -62,7 +63,8 @@ describe('BaoAvatarComponent', () => {
           BaoAvatarComponent,
           BaoAvatarContent,
           TestAvatarTextHostComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       });
       return TestBed.compileComponents();
     });
@@ -114,7 +116,8 @@ describe('BaoAvatarComponent', () => {
           BaoAvatarComponent,
           BaoAvatarContent,
           TestAvatarImageHostComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       }).compileComponents();
     });
 

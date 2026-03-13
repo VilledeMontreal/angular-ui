@@ -328,7 +328,7 @@ export class BaoFileInputComponent
 })
 export class BaoFileDropDirective {
   @Output() public fileDrop: EventEmitter<File> = new EventEmitter<File>();
-  private _isDragOver = false;
+  protected _isDragOver = false;
 
   @HostListener('dragover', ['$event'])
   public onDragOver(event: DragEvent): void {

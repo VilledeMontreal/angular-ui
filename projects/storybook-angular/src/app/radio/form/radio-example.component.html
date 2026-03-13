@@ -3,11 +3,11 @@
   [(ngModel)]="animalFavori"
 >
   <legend required="true" bao-label>Choisissez votre animal favori</legend>
-  <ng-container *ngFor="let animal of animaux; let id = index">
+  @for (animal of animaux; track animal; let id = $index) {
     <bao-radio-button [value]="animal" name="amimaux">
       {{ animal }}
     </bao-radio-button>
-  </ng-container>
+  }
   <bao-guiding-text
     >Vous recevrez en cadeau votre animal favori</bao-guiding-text
   >

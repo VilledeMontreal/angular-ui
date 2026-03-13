@@ -1,13 +1,15 @@
-<bao-icon
-  *ngIf="loading && !rightIcon"
-  class="loading-spinner"
-  svgIcon="icon-spinner"
-  [title]="loadingSpinnerAriaLabel"
-></bao-icon>
+@if (loading && !rightIcon) {
+  <bao-icon
+    class="loading-spinner"
+    svgIcon="icon-spinner"
+    [title]="loadingSpinnerAriaLabel"
+  ></bao-icon>
+}
 <ng-content></ng-content>
-<bao-icon
-  *ngIf="loading && rightIcon"
-  class="loading-spinner loading-spinner-right"
-  svgIcon="icon-spinner"
-  [title]="loadingSpinnerAriaLabel"
-></bao-icon>
+@if (loading && rightIcon) {
+  <bao-icon
+    class="loading-spinner loading-spinner-right"
+    svgIcon="icon-spinner"
+    [title]="loadingSpinnerAriaLabel"
+  ></bao-icon>
+}

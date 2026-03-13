@@ -40,9 +40,9 @@ class DirectiveWithViewContainer {
 @Component({
   standalone: false,
   selector: 'arbitrary-component',
-  template: `<dir-with-view-container
-    *ngIf="showChildView"
-  ></dir-with-view-container>`
+  template: `@if (showChildView) {
+    <dir-with-view-container></dir-with-view-container>
+  }`
 })
 class ComponentWithChildViewContainer {
   @ViewChild(DirectiveWithViewContainer)

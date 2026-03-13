@@ -5,7 +5,9 @@
     <bao-radio-button value="Toyota">Toyota</bao-radio-button>
     <bao-radio-button value="Mercedes">Mercedes</bao-radio-button>
     <bao-radio-button value="Kia">Kia</bao-radio-button>
-    <bao-error *ngIf="!cars.valid">Vous devez choisir une voiture</bao-error>
+    @if (!cars.valid) {
+      <bao-error>Vous devez choisir une voiture</bao-error>
+    }
   </bao-radio-button-group>
   <button
     bao-button

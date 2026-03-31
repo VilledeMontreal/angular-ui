@@ -5,7 +5,7 @@
  */
 
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import {
   TestFilePreviewHostComponent,
@@ -32,7 +32,7 @@ describe('BaoFilePreviewComponent', () => {
         TestFilePreviewWithoutIconHostComponent
       ],
       imports: [],
-      providers: []
+      providers: [provideZoneChangeDetection()]
     });
     return TestBed.compileComponents();
   }));

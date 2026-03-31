@@ -26,13 +26,13 @@ import {
   Directive,
   ElementRef,
   EmbeddedViewRef,
-  EventEmitter,
   Inject,
   NgZone,
   Optional,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
+import { Subject } from 'rxjs';
 import { BaoModalInitialConfig } from './modal-config';
 
 /** Event that captures the state of modal container animations. */
@@ -62,7 +62,7 @@ export abstract class _BaoModalContainerBase extends BasePortalOutlet {
   @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
 
   /** Emits when an animation state changes. */
-  public _animationStateChanged = new EventEmitter<DialogAnimationEvent>();
+  public _animationStateChanged = new Subject<DialogAnimationEvent>();
 
   /**
    * Type of interaction that led to the modal being closed. This is used to determine
@@ -306,13 +306,13 @@ export class BaoModalContainer extends _BaoModalContainerBase {
   _state: 'void' | 'enter' | 'exit' = 'enter';
 
   public _startOpenAnimation() {
-    this._animationStateChanged.emit({ state: 'opening', totalTime: 20 });
+    this._animationStateChanged.next({ state: 'opening', totalTime: 20 });
     void Promise.resolve().then(() => this._finishDialogOpen());
   }
 
   /** Starts the modal exit animation. */
   public _startExitAnimation(): void {
-    this._animationStateChanged.emit({ state: 'closed', totalTime: 20 });
+    this._animationStateChanged.next({ state: 'closed', totalTime: 20 });
   }
 
   private _finishDialogOpen() {

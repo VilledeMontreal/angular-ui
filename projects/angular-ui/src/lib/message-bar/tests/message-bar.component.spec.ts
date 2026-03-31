@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
+import { Component, provideZoneChangeDetection } from '@angular/core';
 import { BaoIconModule } from 'projects/angular-ui/src/lib/icon/module';
 import { BaoButtonModule } from 'projects/angular-ui/src/lib/button/module';
 import { BaoHyperlinkModule } from 'projects/angular-ui/src/lib/hyperlink/module';
@@ -96,7 +96,8 @@ describe('BaoMessageBarComponent', () => {
         TestHostHyperlinkComponent,
         TestHostMixedContentComponent
       ],
-      imports: [BaoIconModule, BaoButtonModule, BaoHyperlinkModule]
+      imports: [BaoIconModule, BaoButtonModule, BaoHyperlinkModule],
+      providers: [provideZoneChangeDetection()]
     }).compileComponents();
   });
 

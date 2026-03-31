@@ -273,7 +273,7 @@ export class BaoDropdownMenuComponent implements AfterViewInit {
   }
   set isOpen(isOpen: boolean) {
     this._isOpen = isOpen;
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
     this.isOpenChange.emit(isOpen);
   }
   set activeItemIndex(index: number) {

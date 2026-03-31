@@ -9,7 +9,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   standalone: false,
   selector: 'bao-label, [bao-label]',
   encapsulation: ViewEncapsulation.None,
-  template: '<ng-content></ng-content><span *ngIf="required">&nbsp;*</span>',
+  template: '<ng-content></ng-content>@if (required) {<span>&nbsp;*</span>}',
   styleUrls: ['./labelText.component.scss'],
   host: { class: 'bao-label' }
 })

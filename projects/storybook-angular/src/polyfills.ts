@@ -49,8 +49,10 @@
 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
+ * NOTE: Commented out for Storybook since Angular 21 uses zoneless change detection by default.
+ * Keeping zone.js loaded when not used causes NG0914 warnings.
  */
-import 'zone.js'; // Included with Angular CLI.
+// import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

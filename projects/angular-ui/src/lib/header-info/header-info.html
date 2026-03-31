@@ -1,10 +1,12 @@
-<div *ngIf="imageUrl" class="document-heading-image-container">
+@if (imageUrl) {
+<div class="document-heading-image-container">
   <div
     [ngStyle]="{
       'background-image': 'url(\'' + imageUrl + '\')'}"
     class="document-heading-background"
   ></div>
 </div>
+}
 
 <div class="bao-container document-heading-header-container">
   <div class="bao-row document-heading-header">
@@ -13,12 +15,16 @@
       <div class="bao-header-content">
         <ng-content></ng-content>
       </div>
-      <div *ngIf="brandBorder" class="brand-border-bottom"></div>
+      @if (brandBorder) {
+      <div class="brand-border-bottom"></div>
+      }
     </div>
   </div>
-  <div *ngIf="notch" class="document-heading-wrapper notch">
+  @if (notch) {
+  <div class="document-heading-wrapper notch">
     <div class="document-heading-content-wrapper">
       <div class="document-heading-content"></div>
     </div>
   </div>
+  }
 </div>

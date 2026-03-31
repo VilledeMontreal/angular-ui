@@ -4,7 +4,7 @@
  * See LICENSE file in the project root for full license information.
  */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, provideZoneChangeDetection } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BaoButtonComponent } from './index';
 import {
@@ -25,7 +25,8 @@ describe('BaoButtonComponent', () => {
           BaoButtonComponent,
           TestButtonHostComponent,
           BaoIconComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       });
 
       return TestBed.compileComponents();
@@ -280,7 +281,8 @@ describe('BaoButtonComponent', () => {
           BaoButtonComponent,
           TestButtonWithIconHostComponent,
           BaoIconComponent
-        ]
+        ],
+        providers: [provideZoneChangeDetection()]
       });
 
       return TestBed.compileComponents();

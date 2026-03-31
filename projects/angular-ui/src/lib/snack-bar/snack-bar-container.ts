@@ -27,7 +27,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { from, Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { matSnackBarAnimations } from './snack-bar-animations';
 import { BaoSnackBarConfig } from './snack-bar-config';
@@ -239,10 +239,12 @@ export class BaoSnackBarContainerComponent
    * errors where we end up removing an element which is in the middle of an animation.
    */
   private completeExit() {
-    this._ngZone.onMicrotaskEmpty.pipe(take(1)).subscribe(() => {
-      this._onExit.next();
-      this._onExit.complete();
-    });
+    from(this._ngZone.onMicrotaskEmpty)
+      .pipe(take(1))
+      .subscribe(() => {
+        this._onExit.next();
+        this._onExit.complete();
+      });
   }
 
   /** Applies the various positioning and user-configured CSS classes to the snack bar. */

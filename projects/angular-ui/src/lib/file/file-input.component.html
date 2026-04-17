@@ -1,4 +1,10 @@
-<label bao-label [required]="required" [for]="inputId">{{ label }}</label>
+<label
+  bao-label
+  [required]="required"
+  [for]="inputId"
+  [id]="inputId + '-label'"
+  >{{ label }}</label
+>
 <ng-content select="bao-guiding-text"></ng-content>
 <div
   baoFileDrop
@@ -8,20 +14,19 @@
 >
   <button
     bao-button
+    [id]="inputId + '-button'"
+    [attr.aria-labelledby]="inputId + '-label'"
     type="button"
     displayType="utility"
     level="secondary"
     [disabled]="disabled"
     (click)="uploader.click()"
-    aria-hidden="true"
-    tabIndex="-1"
   >
-    {{ intl.dropzoneButtonLabel }}
+    <span>{{ intl.dropzoneButtonLabel }}</span>
   </button>
   <input
     [id]="inputId"
     type="file"
-    class="sr-only"
     [disabled]="disabled"
     (change)="uploadFile($event.target.files[0])"
     #uploader

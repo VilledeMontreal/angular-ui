@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -271,23 +271,41 @@ export class BaoFileInputComponent
   }
 
   private setDescribedByAttribute(): void {
+    this._helperTextId = `bao-guiding-text-${fileTextUniqueId++}`;
+    const buttonText = `${this._helperTextId}-label`;
+    const describedbyIds = [];
+
     const helperText = Array.from(this.nativeElement.children).find(
       (el: HTMLElement) => el.localName === 'bao-guiding-text'
     );
+
     if (helperText) {
-      this._helperTextId = `bao-guiding-text-${fileTextUniqueId++}`;
+      describedbyIds.push(this._helperTextId);
       this.renderer.setAttribute(
         helperText.firstElementChild,
         'id',
         this._helperTextId
       );
-      const inputElement = Array.from(this.nativeElement.children)
-        .find((el: HTMLElement) => el.className == 'file-drop-zone')
-        .children.item(1);
+    }
+
+    const inputElement = Array.from(this.nativeElement.children)
+      .find((el: HTMLElement) => el.className == 'file-drop-zone')
+      .children.item(0);
+
+    if (inputElement) {
+      describedbyIds.push(buttonText);
+      this.renderer.setAttribute(
+        inputElement.firstElementChild,
+        'id',
+        buttonText
+      );
+    }
+
+    if (describedbyIds.length) {
       this.renderer.setAttribute(
         inputElement,
         'aria-describedby',
-        this._helperTextId
+        describedbyIds.filter(String).join(' ')
       );
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Ville de Montreal. All rights reserved.
+ * Copyright (c) 2026 Ville de Montreal. All rights reserved.
  * Licensed under the MIT license.
  * See LICENSE file in the project root for full license information.
  */
@@ -100,10 +100,15 @@ describe('BaoFileInputComponent', () => {
       expect(helperText.length).toBe(1);
       expect(dropZone.length).toBe(1);
       const innerHelperText = helperText[0].nativeNode.firstElementChild;
-      const inputElement = dropZone[0].nativeNode.children.item(1);
-      expect(inputElement.attributes['aria-describedby']).toBeDefined();
-      expect(inputElement.attributes['aria-describedby'].value).toBe(
-        innerHelperText.id
+      const buttonElement = dropZone[0].nativeNode.children.item(0);
+      const buttonSpan = buttonElement.firstElementChild;
+
+      expect(buttonElement.attributes['aria-describedby']).toBeDefined();
+      expect(buttonSpan.id).toBeDefined();
+      expect(innerHelperText.id).toBeDefined();
+
+      expect(buttonElement.attributes['aria-describedby'].value).toBe(
+        `${innerHelperText.id} ${buttonSpan.id}`
       );
     });
     it('should display text in french by default', () => {

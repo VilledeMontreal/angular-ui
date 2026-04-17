@@ -38,6 +38,9 @@ bao-file-input {
     border-width: 1px;
     display: inline-flex;
     align-items: center;
+    > input {
+      display: none;
+    }
     &:focus-within.dropzone-focus {
       box-shadow: 0 0 0 0.1875rem $highlight-focus;
       background-color: $highlight-light;

@@ -271,16 +271,13 @@ export class BaoFileInputComponent
   }
 
   private setDescribedByAttribute(): void {
-    this._helperTextId = `bao-guiding-text-${fileTextUniqueId++}`;
-    const buttonText = `${this._helperTextId}-label`;
-    const describedbyIds = [];
+    this._helperTextId = `bao-file-input-bao-guiding-text-${fileTextUniqueId++}`;
 
     const helperText = Array.from(this.nativeElement.children).find(
       (el: HTMLElement) => el.localName === 'bao-guiding-text'
     );
 
     if (helperText) {
-      describedbyIds.push(this._helperTextId);
       this.renderer.setAttribute(
         helperText.firstElementChild,
         'id',
@@ -288,24 +285,15 @@ export class BaoFileInputComponent
       );
     }
 
-    const inputElement = Array.from(this.nativeElement.children)
+    const buttonElement = Array.from(this.nativeElement.children)
       .find((el: HTMLElement) => el.className == 'file-drop-zone')
       .children.item(0);
 
-    if (inputElement) {
-      describedbyIds.push(buttonText);
+    if (buttonElement) {
       this.renderer.setAttribute(
-        inputElement.firstElementChild,
-        'id',
-        buttonText
-      );
-    }
-
-    if (describedbyIds.length) {
-      this.renderer.setAttribute(
-        inputElement,
+        buttonElement,
         'aria-describedby',
-        describedbyIds.filter(String).join(' ')
+        this._helperTextId
       );
     }
   }
@@ -316,7 +304,7 @@ export class BaoFileInputComponent
       (el: HTMLElement) => el.localName == 'bao-error'
     );
     errors.forEach((errorText: HTMLElement) => {
-      const errorTextId = `bao-error-${fileTextUniqueId++}`;
+      const errorTextId = `bao-file-input-bao-error-${fileTextUniqueId++}`;
       this.renderer.setAttribute(
         errorText.firstElementChild,
         'id',
@@ -324,14 +312,14 @@ export class BaoFileInputComponent
       );
       textsIds.push(errorTextId);
     });
-    const inputElement = Array.from(this.nativeElement.children)
+    const buttonElement = Array.from(this.nativeElement.children)
       .find((el: HTMLElement) => el.classList.contains('file-drop-zone'))
-      .children.item(1);
+      .children.item(0);
     if (this._helperTextId) {
       textsIds.unshift(this._helperTextId);
     }
     this.renderer.setAttribute(
-      inputElement,
+      buttonElement,
       'aria-describedby',
       textsIds.join(' ')
     );

@@ -15,14 +15,14 @@
   <button
     bao-button
     [id]="inputId + '-button'"
-    [attr.aria-labelledby]="inputId + '-label'"
+    [attr.aria-labelledby]="inputId + '-label ' + inputId + '-button'"
     type="button"
     displayType="utility"
     level="secondary"
     [disabled]="disabled"
     (click)="uploader.click()"
   >
-    <span>{{ intl.dropzoneButtonLabel }}</span>
+    {{ intl.dropzoneButtonLabel }}
   </button>
   <input
     [id]="inputId"

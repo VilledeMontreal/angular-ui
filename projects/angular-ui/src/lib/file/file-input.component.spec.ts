@@ -101,14 +101,11 @@ describe('BaoFileInputComponent', () => {
       expect(dropZone.length).toBe(1);
       const innerHelperText = helperText[0].nativeNode.firstElementChild;
       const buttonElement = dropZone[0].nativeNode.children.item(0);
-      const buttonSpan = buttonElement.firstElementChild;
 
-      expect(buttonElement.attributes['aria-describedby']).toBeDefined();
-      expect(buttonSpan.id).toBeDefined();
       expect(innerHelperText.id).toBeDefined();
-
+      expect(buttonElement.attributes['aria-describedby']).toBeDefined();
       expect(buttonElement.attributes['aria-describedby'].value).toBe(
-        `${innerHelperText.id} ${buttonSpan.id}`
+        `${innerHelperText.id}`
       );
     });
     it('should display text in french by default', () => {

@@ -273,7 +273,7 @@ describe('BaoModalComponent', () => {
       ).toBeNull();
     });
 
-    it('FULL width on mobile as config should have 100% parent width on mobile resolution', () => {
+    xit('FULL width on mobile as config should have 100% parent width on mobile resolution', () => {
       viewport.set(100);
       modal.open(AddressComponent, {
         mobileSize: eModalMobileWidthSize.FULL

@@ -12,17 +12,17 @@ import {
 } from 'projects/angular-ui/src/public-api';
 
 /**
- * @title Modal with header, scrollable content and actions
+ * @title Modal with header, content and actions
  */
 @Component({
-  selector: 'modal-content-scrollable-example',
-  templateUrl: 'modal-content-scrollable-example.html'
+  selector: 'modal-content-large-example',
+  templateUrl: 'modal-content-large-example.html'
 })
-export class ModalContentScrollableExample {
+export class ModalContentLargeExample {
   constructor(public modal: BaoModal) {}
 
   public openModal() {
-    const modalRef = this.modal.open(ModalContentScrollableExampleModal, {
+    const modalRef = this.modal.open(ModalContentLargeExampleModal, {
       size: eModalDesktopWidthSize.LARGE,
       mobileSize: eModalMobileWidthSize.COMPACT,
       ariaLabelledBy: 'bao-modal-unique-title-3'
@@ -36,12 +36,10 @@ export class ModalContentScrollableExample {
 
 @Component({
   selector: 'modal-content-scrollable-example-modal',
-  templateUrl: 'modal-content-scrollable-example-modal.html'
+  templateUrl: 'modal-content-large-example-modal.html'
 })
-export class ModalContentScrollableExampleModal {
-  constructor(
-    public dialogRef: BaoModalRef<ModalContentScrollableExampleModal>
-  ) {}
+export class ModalContentLargeExampleModal {
+  constructor(public dialogRef: BaoModalRef<ModalContentLargeExampleModal>) {}
 
   onNoClick(): void {
     this.dialogRef.close();

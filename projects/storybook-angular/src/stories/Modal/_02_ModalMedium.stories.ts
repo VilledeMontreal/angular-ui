@@ -6,18 +6,29 @@
 
 import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
 import { BaoModalClose, BaoModalInitialConfig, BaoModalRef } from 'angular-ui';
-import { ModalContentWithoutFooterExample } from 'projects/storybook-angular/src/app/modal/modal-without-footer/modal-content-without-footer-example.component';
+import { ModalContentMediumExample } from 'projects/storybook-angular/src/app/modal/modal-medium/modal-content-medium-example.component';
 import { BaoModalModuleTest } from 'projects/storybook-angular/src/app/modal/module';
 
 const description = `
 The modal is used to make the user focus on a specific message or process.
+## Usage
+To use the medium size on desktop, you can set the size property. The full size on mobile is already set by default. 
+- Set \`size: eModalDesktopWidthSize.MEDIUM\`
+- Defalut \`mobileSize: eModalMobileWidthSize.FULL \`
+
+\`\`\`typescript
+this.modal.open(ModalComponent, {
+  size: eModalDesktopWidthSize.MEDIUM
+});
+\`\`\`
+
 ## Documentation
 The full documentation of this component is available in the Hochelaga design system documentation under "[Modale](https://zeroheight.com/575tugn0n/p/905970)".
 `;
 
 export default {
-  title: 'Components/Modal/WithoutFooter',
-  component: ModalContentWithoutFooterExample,
+  title: 'Components/Modal/Desktop Medium and Mobile Full',
+  component: ModalContentMediumExample,
   parameters: {
     docs: {
       description: {

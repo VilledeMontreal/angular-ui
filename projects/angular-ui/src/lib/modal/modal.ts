@@ -233,7 +233,8 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
           : config.width,
       minWidth: config.minWidth,
       minHeight: config.minHeight,
-      maxWidth: config.maxWidth,
+      maxWidth:
+        config.variant === eModalVariant.FILTER ? config.maxWidth : 'none',
       maxHeight: config.maxHeight
     });
 
@@ -419,6 +420,7 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
     const ariaLabelledBy = config?.ariaLabelledBy || null;
     const variant = config?.variant || eModalVariant.GLOBAL;
     const triggerElement = config?.triggerElement;
+    const disableClose = config?.disableClose || false;
 
     // Add variant class for styling
     const variantClass =
@@ -437,7 +439,8 @@ export abstract class BaoModalBase<C extends _BaoModalContainerBase>
         ariaLabelledBy,
         data,
         variant,
-        triggerElement
+        triggerElement,
+        disableClose
       }
     };
   }

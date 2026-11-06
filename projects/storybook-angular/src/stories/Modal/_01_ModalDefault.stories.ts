@@ -6,17 +6,26 @@
 
 import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
 import { BaoModalClose, BaoModalInitialConfig, BaoModalRef } from 'angular-ui';
-import { ModalContentSmallExample } from 'projects/storybook-angular/src/app/modal/modal-small/modal-content-small-example.component';
 import { BaoModalModuleTest } from 'projects/storybook-angular/src/app/modal/module';
+import { ModalContentSmallExample } from '../../app/modal/modal-small/modal-content-small-example.component';
 
 const description = `
 The modal is used to make the user focus on a specific message or process.
+## Usage
+You do not need to set the properties size and mobileSize as they are set by default.
+- Default \`size: eModalDesktopWidthSize.SMALL\`
+- Default \`mobileSize: eModalMobileWidthSize.FULL \`
+
+\`\`\`typescript
+this.modal.open(ModalContentComponent, {});
+\`\`\`
+
 ## Documentation
 The full documentation of this component is available in the Hochelaga design system documentation under "[Modale](https://zeroheight.com/575tugn0n/p/905970)".
 `;
 
 export default {
-  title: 'Components/Modal',
+  title: 'Components/Modal/Desktop Small and Mobile Full (Default)',
   component: ModalContentSmallExample,
   parameters: {
     docs: {

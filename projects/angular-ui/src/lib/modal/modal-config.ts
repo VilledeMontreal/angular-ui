@@ -32,6 +32,7 @@ export interface BaoModalConfig {
   ariaLabelledBy?: string;
   variant?: eModalVariant;
   triggerElement?: ElementRef;
+  disableClose?: boolean;
 }
 
 /** Options for where to set focus to automatically on dialog open */

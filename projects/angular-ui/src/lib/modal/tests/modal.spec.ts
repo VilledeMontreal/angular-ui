@@ -305,7 +305,7 @@ describe('BaoModalComponent', () => {
       expect(width).toBeLessThanOrEqual(300);
     });
 
-    it('SMALL width on desktop as config should have 500px on deskop resolution (>=768px)', () => {
+    it('SMALL width on desktop as config should have 500px on desktop resolution (>=768px)', () => {
       viewport.from('md', () => {
         modal.open(AddressComponent, {
           size: eModalDesktopWidthSize.SMALL

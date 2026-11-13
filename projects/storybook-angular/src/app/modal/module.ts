@@ -24,10 +24,6 @@ import {
   ModalContentMediumExampleModal
 } from './modal-medium/modal-content-medium-example.component';
 import {
-  ModalContentScrollableExample,
-  ModalContentScrollableExampleModal
-} from './modal-scrollable/modal-content-scrollable-example.component';
-import {
   ModalContentSmallExample,
   ModalContentSmallExampleModal
 } from './modal-small/modal-content-small-example.component';
@@ -35,20 +31,30 @@ import {
   ModalContentWithoutFooterExample,
   ModalContentWithoutFooterExampleModal
 } from './modal-without-footer/modal-content-without-footer-example.component';
+import {
+  ModalDisableCloseExample,
+  ModalDisableCloseExampleModal
+} from './modal-disable-backdrop/modal-disable-backdrop-example.component';
+import {
+  ModalContentLargeExample,
+  ModalContentLargeExampleModal
+} from './modal-large/modal-content-large-example.component';
 
 const MODAL_DIRECTIVES = [
   ModalFormExampleModal,
   ModalFormExample,
   ModalFilterExample,
   ModalFilterExampleModal,
-  ModalContentScrollableExample,
-  ModalContentScrollableExampleModal,
-  ModalContentMediumExampleModal,
-  ModalContentMediumExample,
   ModalContentSmallExample,
   ModalContentSmallExampleModal,
+  ModalContentMediumExampleModal,
+  ModalContentMediumExample,
+  ModalContentLargeExample,
+  ModalContentLargeExampleModal,
   ModalContentWithoutFooterExampleModal,
-  ModalContentWithoutFooterExample
+  ModalContentWithoutFooterExample,
+  ModalDisableCloseExample,
+  ModalDisableCloseExampleModal
 ];
 
 @NgModule({
